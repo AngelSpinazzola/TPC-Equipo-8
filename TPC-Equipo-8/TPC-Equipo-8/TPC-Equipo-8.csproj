@@ -71,6 +71,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dominio\Admin.cs" />
+    <Compile Include="Dominio\Direccion.cs" />
+    <Compile Include="Dominio\Donante.cs" />
+    <Compile Include="Dominio\Filiales.cs" />
+    <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -87,6 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Datos\" />
+    <Folder Include="Manager\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

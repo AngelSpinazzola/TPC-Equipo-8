@@ -35,7 +35,7 @@ Create table Usuarios(
 	Pass Varchar(30) Not Null,
 	IdRol int Not Null Foreign Key references Roles(IdRol),
 	IdDireccion Varchar(10) Null,
-	Estado bit not null default 0
+	Estado bit not null default 1
 )
 
 Create Table Direcciones_x_Usuario(
@@ -265,3 +265,41 @@ INSERT INTO Localidades (IdCiudad, Nombre, CodigoPostal) VALUES
 (50, 'Centro', '4427'),
 (50, 'Humahuaca', '4630')
 
+
+Insert Into Usuarios (Username, Pass, IdRol, IdDireccion, Estado)
+Values 
+('angel.admin', 'angel123', 1, NULL, 1),
+('juan.filial', 'juan123', 3, NULL, 1),
+('raul.donante', 'raul123', 2, NULL, 1)
+
+Insert Into Direcciones_x_Usuario (IdUsuario, IdLocalidad, NombreCalle, Altura) 
+Values 
+(1, 13, 'El Aconcagua', 3263),
+(2, 26, 'Av. Falucho', 1398),
+(3, 2, 'Entre Rios', 1816)
+
+Insert Into TiposDeSangre (Nombre)
+Values
+('A+'),
+('A-'),
+('B+'),
+('B-'),
+('AB+'),
+('AB-'),
+('O+'),
+('O-')
+
+Insert Into Donantes (IdUsuario, Nombre, Apellido, Dni, IdTipoSangre, UrlFoto)
+Values (3, 'Raul', 'Rolon', '30565812', 5, 'https://img.freepik.com/foto-gratis/chico-guapo-seguro-posando-contra-pared-blanca_176420-32936.jpg?size=626&ext=jpg&ga=GA1.1.1488620777.1708214400&semt=sph')
+
+Insert Into Filiales (IdUsuario, Nombre, Telefono, HorarioAtencion, Mail, UrlImagen, UrlWeb)
+Values (2, 'Clinica San Gabriel', '11-5368-8796', 'Lun a Vie 9:00 a 20:00 - Sab, Dom y Feriados 9:00 a 15:00', 'quiero.donar@clinicasangabriel.com','https://clinicasdelafamilia.com.ar/wp-content/uploads/clinica-san-pablo-revision-y-opiniones.png', 'https://www.instagram.com/clinica.san.gabriel/')
+
+Insert into Administradores (IdUsuario, Nombre)
+Values (1, 'Angel')
+
+Go
+
+Update Usuarios Set IdDireccion = 1 Where IdUsuario = 1
+Update Usuarios Set IdDireccion = 2 Where IdUsuario = 2
+Update Usuarios Set IdDireccion = 3 Where IdUsuario = 3
