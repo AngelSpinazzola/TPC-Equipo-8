@@ -71,17 +71,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\AccesoDatos.cs" />
     <Compile Include="Dominio\Admin.cs" />
     <Compile Include="Dominio\Direccion.cs" />
     <Compile Include="Dominio\Donante.cs" />
-    <Compile Include="Dominio\Filiales.cs" />
+    <Compile Include="Dominio\Filial.cs" />
     <Compile Include="Dominio\Usuario.cs" />
+    <Compile Include="Forms\SiteMaster.Master.cs">
+      <DependentUpon>SiteMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\SiteMaster.Master.designer.cs">
+      <DependentUpon>SiteMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Manager\FilialManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Forms\SiteMaster.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -92,8 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Datos\" />
-    <Folder Include="Manager\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

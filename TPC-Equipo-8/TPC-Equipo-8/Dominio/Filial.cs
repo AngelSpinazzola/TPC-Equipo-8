@@ -5,8 +5,9 @@ using System.Web;
 
 namespace TPC_Equipo_8.Dominio
 {
-    public class Filiales : Usuario
+    public class Filial
     {
+        public int idFilial { get; set; }
         public string nombre { get; set; }
         public string telefono { get; set; }
         public string horarioAtencion { get; set; }
