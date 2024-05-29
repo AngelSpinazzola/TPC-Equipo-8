@@ -20,7 +20,7 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
-                datos.setearConsulta("SELECT * From Filiales");
+                datos.setearConsulta("SP_ListarFiliales");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

@@ -303,3 +303,8 @@ Go
 Update Usuarios Set IdDireccion = 1 Where IdUsuario = 1
 Update Usuarios Set IdDireccion = 2 Where IdUsuario = 2
 Update Usuarios Set IdDireccion = 3 Where IdUsuario = 3
+
+Go
+
+Create Or Alter Procedure SP_ListarFiliales As
+Select * From Filiales
