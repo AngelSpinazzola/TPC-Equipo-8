@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace TPC_Equipo_8.Forms
+namespace TPC_Equipo_8
 {
     public partial class SiteMaster : System.Web.UI.MasterPage
     {

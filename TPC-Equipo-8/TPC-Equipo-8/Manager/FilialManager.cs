@@ -31,8 +31,12 @@ namespace TPC_Equipo_8.Manager
                     aux.nombre = (string)datos.Lector["Nombre"];
                     aux.telefono = (string)datos.Lector["Telefono"];
                     aux.horarioAtencion = (string)datos.Lector["HorarioAtencion"];
-                    aux.mail = (string)datos.Lector["Mail"];
-                                         
+                    
+                    if (!Convert.IsDBNull(datos.Lector["Mail"]))
+                    {
+                        aux.mail = (string)datos.Lector["Mail"];
+                    }
+
                     if (!Convert.IsDBNull(datos.Lector["UrlImagen"]))
                     {
                         aux.urlImagen = (string)datos.Lector["UrlImagen"];

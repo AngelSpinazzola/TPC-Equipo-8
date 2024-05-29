@@ -295,6 +295,7 @@ Values (3, 'Raul', 'Rolon', '30565812', 5, 'https://img.freepik.com/foto-gratis/
 Insert Into Filiales (IdUsuario, Nombre, Telefono, HorarioAtencion, Mail, UrlImagen, UrlWeb)
 Values (2, 'Clinica San Gabriel', '11-5368-8796', 'Lun a Vie 9:00 a 20:00 - Sab, Dom y Feriados 9:00 a 15:00', 'quiero.donar@clinicasangabriel.com','https://clinicasdelafamilia.com.ar/wp-content/uploads/clinica-san-pablo-revision-y-opiniones.png', 'https://www.instagram.com/clinica.san.gabriel/')
 
+
 Insert into Administradores (IdUsuario, Nombre)
 Values (1, 'Angel')
 
@@ -308,3 +309,9 @@ Go
 
 Create Or Alter Procedure SP_ListarFiliales As
 Select * From Filiales
+
+Insert Into Usuarios (Username, Pass, IdRol, IdDireccion, Estado)
+Values ('pablito.filial2', 'pablo123', 3, Null, 1)
+
+insert into Filiales (IdUsuario, Nombre, Telefono, HorarioAtencion, Mail, UrlImagen, UrlWeb)
+values(4, 'Nueva Filial Loca', '15-6546-7852', 'Atendemos cuando queremos', Null, Null, Null)

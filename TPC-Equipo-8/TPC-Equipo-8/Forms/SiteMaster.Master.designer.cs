@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace TPC_Equipo_8.Forms
+namespace TPC_Equipo_8
 {
 
 
