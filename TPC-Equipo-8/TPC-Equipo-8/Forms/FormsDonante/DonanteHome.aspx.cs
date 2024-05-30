@@ -24,5 +24,35 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             }
 
         }
+
+        //Función para la barra de búsqueda
+        public List<Filial> BuscarFiliales(string textoBusqueda)
+        {
+            FilialManager manager = new FilialManager();
+            List<Filial> listaFiliales = manager.ListarFiliales();
+            List<Filial> filialesEncontradas = listaFiliales
+
+                .Where(a => a.nombre.ToLower().Contains(textoBusqueda.ToLower()))
+                .GroupBy(a => a.nombre) // Agrupamos por nombre de artículo
+                .Select(group => group.First()) // Tomamos el primer artículo de cada grupo
+                .ToList();
+
+            return filialesEncontradas;
+        }
+
+        protected void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string textoBusqueda = txtBuscar.Text;
+
+            List<Filial> filialesEncontradas = BuscarFiliales(textoBusqueda);
+
+            repFiliales.DataSource = filialesEncontradas;
+            repFiliales.DataBind();
+        }
     }
 }

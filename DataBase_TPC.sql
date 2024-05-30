@@ -322,19 +322,27 @@ VALUES
 ('juan.filial3', 'juan123', 3, Null, 1),
 ('ana.filial4', 'ana123', 3, Null, 1),
 ('carlos.filial5', 'carlos123', 3, Null, 1)
+Go
+
+UPDATE Filiales SET UrlImagen = 'https://www.indisa.cl/files/2022/11/Foto-urgencia-cortada-landing-1-1200x825.png' WHERE IdFilial = 1
+Go
 
 insert into Filiales (IdUsuario, Nombre, Telefono, HorarioAtencion, Mail, UrlImagen, UrlWeb)
 values
-(5, 'Clínica Trinidad', '15-4321-6789', 'Atendemos cuando queremos', Null, 'https://images.adsttc.com/media/images/63fd/0d7a/2b86/6c47/3464/837d/large_jpg/clinica-girona-pmmt_3.jpg?1677528478', Null),
-(6, 'Clínica del Sol', '15-5678-1234', 'Atendemos cuando queremos', Null, 'https://clinicagirona.cat/wp-content/uploads/2022/07/Edifici-1000x1000.jpg', Null),
-(7, 'Hospital Esperanza', '15-9876-5432', 'Atendemos cuando queremos', Null, 'https://mujer.sanagustin.com.ar/wp-content/uploads/sites/2/2022/09/001.webp', Null),
-(8, 'Sanatorio Luz y Vida', '15-2468-1357', 'Atendemos cuando queremos', Null, 'https://www.clinicacolonial.cl/wp-content/uploads/2021/10/img-landing-min-1024x683.jpg', Null),
-(9, 'Hospital Mendez', '15-7890-4561', 'Atendemos cuando queremos', Null, 'https://www.df.cl/noticias/site/artic/20210923/imag/foto_0000000320210923181407.jpg', Null)
-
+(4, 'Clínica Trinidad', '15-4321-6789', 'Atendemos cuando queremos', Null, 'https://images.adsttc.com/media/images/63fd/0d7a/2b86/6c47/3464/837d/large_jpg/clinica-girona-pmmt_3.jpg?1677528478', Null),
+(5, 'Clínica del Sol', '15-5678-1234', 'Atendemos cuando queremos', Null, 'https://www.indisa.cl/files/2022/10/Image2-1200x692.jpg', Null),
+(6, 'Hospital Esperanza', '15-9876-5432', 'Atendemos cuando queremos', Null, 'https://mujer.sanagustin.com.ar/wp-content/uploads/sites/2/2022/09/001.webp', Null),
+(7, 'Sanatorio Luz y Vida', '15-2468-1357', 'Atendemos cuando queremos', Null, 'https://www.clinicacolonial.cl/wp-content/uploads/2021/10/img-landing-min-1024x683.jpg', Null),
+(8, 'Hospital Mendez', '15-7890-4561', 'Atendemos cuando queremos', Null, 'https://www.df.cl/noticias/site/artic/20210923/imag/foto_0000000320210923181407.jpg', Null)
+Go
 
 -- PROCEDIMIENTOS ALMACENADOS
 Create Or Alter Procedure SP_ListarFiliales As
 Select * From Filiales
+Go
+
+
+
 
 
 

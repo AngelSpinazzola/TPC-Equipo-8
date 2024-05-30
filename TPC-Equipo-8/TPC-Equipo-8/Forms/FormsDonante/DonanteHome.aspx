@@ -4,8 +4,23 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h1>HOME DEL DONANTE</h1>
-    <div class="container">
+    <!-- Barra de búsqueda por nombre de Filial-->
+    <!-- Aclaración: luego de re-hacer la DB, la búsqueda será por nombre de localidad, de momento solo es por nombre de filiar.-->
+    <div class="container" style="margin-top: 35px;">
+        <div class="row justify-content-start">
+            <div class="col-auto">
+                <div class="input-group mb-3">
+                    <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" Style="border-radius: 30px; width: 400px;" placeholder="Buscar por nombre de Filial.." AutoPostBack="false" OnTextChanged="txtBuscar_TextChanged" oninput="buscarFiliales()"></asp:TextBox>
+                    <div class="input-group-append">
+                        <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-custom" OnClick="btnBuscar_Click" Text="Buscar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección con cartas de las Filiales -->
+    <div class="container" style="margin-top: 25px;">
         <div class="row justify-content-center">
             <asp:Repeater ID="repFiliales" runat="server">
                 <ItemTemplate>
