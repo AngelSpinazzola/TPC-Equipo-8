@@ -5,3 +5,20 @@
     color: black;
     font-size: 35px;
 }
+
+.footer-container {
+    margin-top: 400px;
+}
+
+.btn-customVerPublicaciones {
+    background-color: white;
+    border: solid 2px #7bc947;
+    color: #7bc947;
+    border-radius: 30px;
+}
+
+    .btn-customVerPublicaciones:hover {
+        background-color: #7bc947;
+        border: solid 2px #7bc947;
+        color: white;
+    }

@@ -1,7 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsDonante/MasterDonante.Master" AutoEventWireup="true" CodeBehind="DonanteDetalleFilial.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsDonante.DonanteDetalleFilial" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
     <link rel="stylesheet" href="Content/styles/StyleDonanteDetalleFilial.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -11,27 +15,64 @@
     </div>
 
     <div class="container">
-        <div class="row row-cols-1 row-cols-lg-1 g-4 galeria">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
             <asp:Repeater ID="repDetalle" runat="server" ClientIDMode="Static">
                 <ItemTemplate>
-                    <div class="col">
-                        <div class="card mb-3" style="max-width: 540px;">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="<%# Eval("UrlImagen") %>" class="img-fluid rounded-start" alt="Imagen de la filial" style="height: 200px; object-fit: cover;">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><%# Eval("Nombre") %></h5>
-                                        <p class="card-text"><%# Eval("HorarioAtencion") %></p>
-                                    </div>
+                    <div class="col mb-3">
+                        <div class="card" style="height: 600px; border:0;">
+                            <img src='<%# Eval("UrlImagen") %>' class="card-img-top" style="height: 410px; object-fit: cover;" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%# Eval("Nombre") %></h5>
+                                <p class="card-text">Teléfono: <%# Eval("Telefono") %></p>
+                                <p class="card-text">Horario de atención: <%# Eval("HorarioAtencion") %></p>
+                                <div class="mt-3 text-center">
+                                    <!-- Muevo la clase text-center aquí -->
+                                    <asp:Button ID="btnVerPublicaciones" Text="Ver publicaciones" runat="server" CssClass="btn btn-customVerPublicaciones"/>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- API MAP -->
+                    <div id="map-<%# Container.ItemIndex %>" class="w-50" style="height: 410px;">
+                        <p>Mapa</p>
+                    </div>
+                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var mapId = 'map-<%# Container.ItemIndex %>';
+                            /* 
+                                PD Leer:
+                                Luego de re-hacer la DB, se configura el address para que sea el de la filial.
+                                De momento dejo un address de ejemplo para poder visualizar el mapa - Angel 30/05
+                            */
+                            var address = 'Juncal 3002, Buenos Aires, Argentina'; // Dirección de ejemplo
+                            var mapElement = document.getElementById(mapId);
+                            if (mapElement) {
+                                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        if (data && data.length > 0) {
+                                            var latlng = [data[0].lat, data[0].lon];
+                                            var map = L.map(mapId).setView(latlng, 15);
+                                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                                attribution: '&copy; OpenStreetMap contributors'
+                                            }).addTo(map);
+                                            L.marker(latlng).addTo(map);
+                                        } else {
+                                            console.error('Geocode was not successful');
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Error fetching geocode: ', error);
+                                    });
+                            }
+                        });
+                     </script>
                 </ItemTemplate>
             </asp:Repeater>
         </div>
     </div>
+
 
 </asp:Content>
