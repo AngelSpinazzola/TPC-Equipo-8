@@ -305,13 +305,39 @@ Update Usuarios Set IdDireccion = 1 Where IdUsuario = 1
 Update Usuarios Set IdDireccion = 2 Where IdUsuario = 2
 Update Usuarios Set IdDireccion = 3 Where IdUsuario = 3
 
-Go
-
-Create Or Alter Procedure SP_ListarFiliales As
-Select * From Filiales
-
+/*
 Insert Into Usuarios (Username, Pass, IdRol, IdDireccion, Estado)
 Values ('pablito.filial2', 'pablo123', 3, Null, 1)
 
 insert into Filiales (IdUsuario, Nombre, Telefono, HorarioAtencion, Mail, UrlImagen, UrlWeb)
 values(4, 'Nueva Filial Loca', '15-6546-7852', 'Atendemos cuando queremos', Null, Null, Null)
+*/
+
+Go
+
+INSERT INTO Usuarios (Username, Pass, IdRol, IdDireccion, Estado)
+VALUES 
+('pablito.filial2', 'pablo123', 3, Null, 1),
+('maria.filial1', 'maria123', 3, Null, 1),
+('juan.filial3', 'juan123', 3, Null, 1),
+('ana.filial4', 'ana123', 3, Null, 1),
+('carlos.filial5', 'carlos123', 3, Null, 1)
+
+insert into Filiales (IdUsuario, Nombre, Telefono, HorarioAtencion, Mail, UrlImagen, UrlWeb)
+values
+(5, 'Clínica Trinidad', '15-4321-6789', 'Atendemos cuando queremos', Null, 'https://images.adsttc.com/media/images/63fd/0d7a/2b86/6c47/3464/837d/large_jpg/clinica-girona-pmmt_3.jpg?1677528478', Null),
+(6, 'Clínica del Sol', '15-5678-1234', 'Atendemos cuando queremos', Null, 'https://clinicagirona.cat/wp-content/uploads/2022/07/Edifici-1000x1000.jpg', Null),
+(7, 'Hospital Esperanza', '15-9876-5432', 'Atendemos cuando queremos', Null, 'https://mujer.sanagustin.com.ar/wp-content/uploads/sites/2/2022/09/001.webp', Null),
+(8, 'Sanatorio Luz y Vida', '15-2468-1357', 'Atendemos cuando queremos', Null, 'https://www.clinicacolonial.cl/wp-content/uploads/2021/10/img-landing-min-1024x683.jpg', Null),
+(9, 'Hospital Mendez', '15-7890-4561', 'Atendemos cuando queremos', Null, 'https://www.df.cl/noticias/site/artic/20210923/imag/foto_0000000320210923181407.jpg', Null)
+
+
+-- PROCEDIMIENTOS ALMACENADOS
+Create Or Alter Procedure SP_ListarFiliales As
+Select * From Filiales
+
+
+
+
+
+
