@@ -54,5 +54,41 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             repFiliales.DataSource = filialesEncontradas;
             repFiliales.DataBind();
         }
+
+        protected void btnVerDetalle_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int IDFilial = Convert.ToInt32(btn.CommandArgument);
+
+            FilialManager manager = new FilialManager();
+            ListaFiliales = manager.ListarFiliales();
+
+            List<Filial> seleccionados;
+            if (Session["Seleccion"] == null)
+            {
+                seleccionados = new List<Filial>();
+            }
+            else
+            {
+                seleccionados = (List<Filial>)Session["Seleccion"];
+            }
+
+            foreach (Filial item in ListaFiliales)
+            {
+                if (IDFilial == item.idFilial)
+                {
+
+                    if (!seleccionados.Any(a => a.idFilial == item.idFilial))
+                    {
+                        seleccionados.Add(item);
+
+                    }
+
+                    break;
+                }
+            }
+            Session["ListaArticulos"] = seleccionados;
+            Response.Redirect("DonanteDetalleFilial.aspx?idFilial=" + IDFilial);
+        }
     }
 }

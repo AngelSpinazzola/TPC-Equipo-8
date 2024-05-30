@@ -70,6 +70,8 @@
     <Content Include="Forms\FormsAdmin\AdminGestionFiliales.aspx" />
     <Content Include="Forms\FormsAdmin\AdminGestionPublicaciones.aspx" />
     <Content Include="Forms\FormsAdmin\AdminPerfil.aspx" />
+    <Content Include="Forms\FormsDonante\Content\styles\StyleDonanteDetalleFilial.css" />
+    <Content Include="Forms\FormsDonante\Content\styles\StyleDonanteHome.css" />
     <Content Include="Forms\FormsDonante\DonanteDetalleFilial.aspx" />
     <Content Include="Forms\FormsDonante\DonanteHome.aspx" />
     <Content Include="Forms\FormsDonante\DonantePerfil.aspx" />

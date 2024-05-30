@@ -1,11 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsDonante/MasterDonante.Master" AutoEventWireup="true" CodeBehind="DonanteHome.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsDonante.DonanteHome" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="Content/styles/StyleDonanteHome.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <!-- Barra de búsqueda por nombre de Filial-->
-    <!-- Aclaración: luego de re-hacer la DB, la búsqueda será por nombre de localidad, de momento solo es por nombre de filiar.-->
+    <!-- Sección de Barra de búsqueda por nombre de Filial-->
+    <!-- Aclaración: luego de re-hacer la DB, la búsqueda será por nombre de localidad, de momento es por nombre de filiar.-->
     <div class="container" style="margin-top: 35px;">
         <div class="row justify-content-start">
             <div class="col-auto">
@@ -30,6 +31,10 @@
                             <div class="card-body">
                                 <p class="card-title"><%# Eval("nombre") %></p>
                             </div>
+                            <div class="card-body text-center">
+                                <asp:Button ID="btnVerDetalle" runat="server" Text="Ver detalle" OnClick="btnVerDetalle_Click" CssClass="btn btn-custom2" CommandArgument='<%# Eval("idFilial") %>' CommandName="idFilial" />
+
+                            </div>
                         </div>
                     </div>
                 </ItemTemplate>
@@ -37,7 +42,6 @@
         </div>
     </div>
 
-    <h3>FILIAL X</h3>
-    <a href="DonanteDetalleFilial.aspx">VER DETALLE</a>
+
 
 </asp:Content>

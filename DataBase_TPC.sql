@@ -329,23 +329,17 @@ Go
 
 insert into Filiales (IdUsuario, Nombre, Telefono, HorarioAtencion, Mail, UrlImagen, UrlWeb)
 values
-(4, 'Clínica Trinidad', '15-4321-6789', 'Atendemos cuando queremos', Null, 'https://images.adsttc.com/media/images/63fd/0d7a/2b86/6c47/3464/837d/large_jpg/clinica-girona-pmmt_3.jpg?1677528478', Null),
-(5, 'Clínica del Sol', '15-5678-1234', 'Atendemos cuando queremos', Null, 'https://www.indisa.cl/files/2022/10/Image2-1200x692.jpg', Null),
-(6, 'Hospital Esperanza', '15-9876-5432', 'Atendemos cuando queremos', Null, 'https://mujer.sanagustin.com.ar/wp-content/uploads/sites/2/2022/09/001.webp', Null),
-(7, 'Sanatorio Luz y Vida', '15-2468-1357', 'Atendemos cuando queremos', Null, 'https://www.clinicacolonial.cl/wp-content/uploads/2021/10/img-landing-min-1024x683.jpg', Null),
-(8, 'Hospital Mendez', '15-7890-4561', 'Atendemos cuando queremos', Null, 'https://www.df.cl/noticias/site/artic/20210923/imag/foto_0000000320210923181407.jpg', Null)
+(4, 'Clínica Trinidad', '15-4321-6789', 'Lun a Vie 9:00 a 20:00 - Sab, Dom y Feriados 9:00 a 15:00', Null, 'https://images.adsttc.com/media/images/63fd/0d7a/2b86/6c47/3464/837d/large_jpg/clinica-girona-pmmt_3.jpg?1677528478', Null),
+(5, 'Clínica del Sol', '15-5678-1234', 'Lun a Vie 9:00 a 20:00 - Sab, Dom y Feriados 9:00 a 15:00', Null, 'https://www.indisa.cl/files/2022/10/Image2-1200x692.jpg', Null),
+(6, 'Hospital Esperanza', '15-9876-5432', 'Lun a Vie 9:00 a 20:00 - Sab, Dom y Feriados 9:00 a 15:00', Null, 'https://mujer.sanagustin.com.ar/wp-content/uploads/sites/2/2022/09/001.webp', Null),
+(7, 'Sanatorio Luz y Vida', '15-2468-1357', 'Lun a Vie 9:00 a 20:00 - Sab, Dom y Feriados 9:00 a 15:00', Null, 'https://www.clinicacolonial.cl/wp-content/uploads/2021/10/img-landing-min-1024x683.jpg', Null),
+(8, 'Hospital Mendez', '15-7890-4561', 'Lun a Vie 9:00 a 20:00 - Sab, Dom y Feriados 9:00 a 15:00', Null, 'https://www.df.cl/noticias/site/artic/20210923/imag/foto_0000000320210923181407.jpg', Null)
 Go
 
 -- PROCEDIMIENTOS ALMACENADOS
 Create Or Alter Procedure SP_ListarFiliales As
 Select * From Filiales
 Go
-
-
-
-
-
-
 
 
 
