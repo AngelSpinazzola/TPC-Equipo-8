@@ -31,7 +31,7 @@ namespace TPC_Equipo_8.Manager
                     aux.nombre = (string)datos.Lector["Nombre"];
                     aux.telefono = (string)datos.Lector["Telefono"];
                     aux.horarioAtencion = (string)datos.Lector["HorarioAtencion"];
-                    
+
                     if (!Convert.IsDBNull(datos.Lector["Correo"]))
                     {
                         aux.correo = (string)datos.Lector["Correo"];
@@ -59,6 +59,27 @@ namespace TPC_Equipo_8.Manager
             {
                 datos.cerrarConexion();
             }
+        }
+
+        //Función para obtener la dirección de la filial, devuelve un string con (nombre de calle, altura y provincia).
+        public string ObtenerDireccion(int idFilial)
+        {
+            datos.setearProcedimiento("SP_DireccionesCompletas");
+            datos.setearParametro("@IdFilial", idFilial);
+            datos.ejecutarLectura();
+
+            string direccion = string.Empty;
+
+            while (datos.Lector.Read())
+            {
+                string calle = datos.Lector["Calle"].ToString();
+                string altura = datos.Lector["Altura"].ToString();
+                string nombre = datos.Lector["Nombre"].ToString();
+
+                direccion = calle + " " + altura + ", " + nombre + ", Argentina";
+            }
+
+            return direccion;
         }
     }
 }

@@ -19,7 +19,7 @@
             <asp:Repeater ID="repDetalle" runat="server" ClientIDMode="Static">
                 <ItemTemplate>
                     <div class="col mb-3">
-                        <div class="card" style="height: 600px; border:0;">
+                        <div class="card" style="height: 600px; border: 0;">
                             <img src='<%# Eval("UrlImagen") %>' class="card-img-top" style="height: 410px; object-fit: cover;" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><%# Eval("Nombre") %></h5>
@@ -28,29 +28,25 @@
                                 <p class="card-text">Correo: <%# Eval("Correo") %></p>
                                 <div class="mt-3 text-center">
                                     <!-- Muevo la clase text-center aquí -->
-                                    <asp:Button ID="btnVerPublicaciones" Text="Ver publicaciones" runat="server" CssClass="btn btn-customVerPublicaciones"/>
+                                    <asp:Button ID="btnVerPublicaciones" Text="Ver publicaciones" runat="server" CssClass="btn btn-customVerPublicaciones" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- API MAP -->
-                    <div id="map-<%# Container.ItemIndex %>" class="w-50" style="height: 410px;">
+                    <div id="map-<%# Container.ItemIndex %>" class="w-50" style="height: 410px;" data-direccion='<%# ObtenerDireccionFilial(Convert.ToInt32(Eval("IdFilial"))) %>'>
                         <p>Mapa</p>
                     </div>
                     </div>
                     <script>
                         document.addEventListener('DOMContentLoaded', function () {
                             var mapId = 'map-<%# Container.ItemIndex %>';
-                            /* 
-                                PD Leer:
-                                Luego de re-hacer la DB, se configura el address para que sea el de la filial.
-                                De momento dejo un address de ejemplo para poder visualizar el mapa - Angel 30/05
-                            */
-                            var address = 'Juncal 3002, Buenos Aires, Argentina'; // Dirección de ejemplo
+                            var direccion = document.getElementById(mapId).getAttribute('data-direccion');
+
                             var mapElement = document.getElementById(mapId);
                             if (mapElement) {
-                                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
+                                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}`)
                                     .then(response => response.json())
                                     .then(data => {
                                         if (data && data.length > 0) {
@@ -69,7 +65,7 @@
                                     });
                             }
                         });
-                     </script>
+  </script>
                 </ItemTemplate>
             </asp:Repeater>
         </div>

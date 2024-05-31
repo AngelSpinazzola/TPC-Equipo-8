@@ -30,5 +30,14 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 }
             }
         }
+
+        protected string ObtenerDireccionFilial(int idFilial)
+        {
+            FilialManager manager = new FilialManager();
+            string direccion = manager.ObtenerDireccion(idFilial);
+
+            return direccion;
+        }
+
     }
 }
