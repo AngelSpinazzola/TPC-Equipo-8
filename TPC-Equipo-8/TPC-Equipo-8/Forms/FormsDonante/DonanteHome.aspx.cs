@@ -32,9 +32,9 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             List<Filial> listaFiliales = manager.ListarFiliales();
             List<Filial> filialesEncontradas = listaFiliales
 
-                .Where(a => a.nombre.ToLower().Contains(textoBusqueda.ToLower()))
-                .GroupBy(a => a.nombre) // Agrupamos por nombre de artículo
-                .Select(group => group.First()) // Tomamos el primer artículo de cada grupo
+                .Where(a => a.localidad.ToLower().Contains(textoBusqueda.ToLower()))
+                .GroupBy(a => a.localidad) 
+                .Select(group => group.First())
                 .ToList();
 
             return filialesEncontradas;
@@ -92,3 +92,5 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         }
     }
 }
+
+

@@ -12,7 +12,7 @@ namespace TPC_Equipo_8.Manager
     public class FilialManager
     {
         AccesoDatos datos = new AccesoDatos();
-
+        
         public List<Filial> ListarFiliales()
         {
 
@@ -46,6 +46,13 @@ namespace TPC_Equipo_8.Manager
                     {
                         aux.urlWeb = (string)datos.Lector["UrlWeb"];
                     }
+
+                    if (!Convert.IsDBNull(datos.Lector["Localidad"]))
+                    {
+                        aux.localidad = (string)datos.Lector["Localidad"];
+                    }
+
+                    aux.estado = (bool)datos.Lector["Estado"];
 
                     lista.Add(aux);
                 }
@@ -81,5 +88,8 @@ namespace TPC_Equipo_8.Manager
 
             return direccion;
         }
+
+
+
     }
 }

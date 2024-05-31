@@ -14,6 +14,9 @@ namespace TPC_Equipo_8.Dominio
         public string correo { get; set; }
         public string urlImagen { get; set; }
         public string urlWeb { get; set; }
+        public string localidad { get; set; }
+        public List<Publicacion> publicacion { get; set; }
         public bool estado { get; set; }
+
     }
 }

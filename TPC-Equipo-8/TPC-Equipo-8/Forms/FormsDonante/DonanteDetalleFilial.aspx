@@ -19,8 +19,8 @@
             <asp:Repeater ID="repDetalle" runat="server" ClientIDMode="Static">
                 <ItemTemplate>
                     <div class="col mb-3">
-                        <div class="card" style="height: 600px; border: 0;">
-                            <img src='<%# Eval("UrlImagen") %>' class="card-img-top" style="height: 410px; object-fit: cover;" alt="...">
+                        <div class="card" style="height: 650px; border: 0;">
+                            <img src='<%# Eval("UrlImagen") %>' class="card-img-top" style="height: 410px; object-fit: cover; max-width: 100%; margin: auto;" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><%# Eval("Nombre") %></h5>
                                 <p class="card-text">Teléfono: <%# Eval("Telefono") %></p>
