@@ -32,9 +32,9 @@ namespace TPC_Equipo_8.Manager
                     aux.telefono = (string)datos.Lector["Telefono"];
                     aux.horarioAtencion = (string)datos.Lector["HorarioAtencion"];
                     
-                    if (!Convert.IsDBNull(datos.Lector["Mail"]))
+                    if (!Convert.IsDBNull(datos.Lector["Correo"]))
                     {
-                        aux.mail = (string)datos.Lector["Mail"];
+                        aux.correo = (string)datos.Lector["Correo"];
                     }
 
                     if (!Convert.IsDBNull(datos.Lector["UrlImagen"]))

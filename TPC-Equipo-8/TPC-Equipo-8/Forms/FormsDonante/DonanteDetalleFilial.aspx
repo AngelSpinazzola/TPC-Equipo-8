@@ -25,6 +25,7 @@
                                 <h5 class="card-title"><%# Eval("Nombre") %></h5>
                                 <p class="card-text">Teléfono: <%# Eval("Telefono") %></p>
                                 <p class="card-text">Horario de atención: <%# Eval("HorarioAtencion") %></p>
+                                <p class="card-text">Correo: <%# Eval("Correo") %></p>
                                 <div class="mt-3 text-center">
                                     <!-- Muevo la clase text-center aquí -->
                                     <asp:Button ID="btnVerPublicaciones" Text="Ver publicaciones" runat="server" CssClass="btn btn-customVerPublicaciones"/>
