@@ -31,6 +31,42 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             }
         }
 
+        protected void btnVerPublicaciones_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int idFilial = Convert.ToInt32(btn.CommandArgument);
+
+            FilialManager filialManager = new FilialManager();
+            ListaFiliales = filialManager.ListarFiliales();
+
+            List<Filial> seleccionadas;
+
+            if (Session["Seleccion"] == null)
+            {
+                seleccionadas = new List<Filial>();
+            }
+            else
+            {
+                seleccionadas = (List<Filial>)Session["Seleccion"];
+            }
+
+            foreach(Filial item in ListaFiliales)
+            {
+                if(idFilial == item.idFilial)
+                {
+                    if(!seleccionadas.Any(a => a.idFilial == item.idFilial))
+                    {
+                        seleccionadas.Add(item);
+                    }
+                    break;
+                }
+            }
+
+            Session["Seleccion"] = seleccionadas;
+            Response.Redirect("DonantePublicaciones.aspx?idFilial=" + idFilial);
+
+        }
+
         protected string ObtenerDireccionFilial(int idFilial)
         {
             FilialManager manager = new FilialManager();

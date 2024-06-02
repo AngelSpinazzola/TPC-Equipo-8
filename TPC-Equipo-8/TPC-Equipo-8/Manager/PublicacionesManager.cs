@@ -11,7 +11,7 @@ namespace TPC_Equipo_8.Manager
     {
         public AccesoDatos datos = new AccesoDatos();
 
-        public List<Publicacion> ListarPublicacion()
+        public List<Publicacion> ListarPublicaciones(int idFilial)
         {
 
             List<Publicacion> lista = new List<Publicacion>();
@@ -19,6 +19,7 @@ namespace TPC_Equipo_8.Manager
             try
             {
                 datos.setearProcedimiento("SP_ListarPublicaciones");
+                datos.setearParametro("@IdFilial", idFilial);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

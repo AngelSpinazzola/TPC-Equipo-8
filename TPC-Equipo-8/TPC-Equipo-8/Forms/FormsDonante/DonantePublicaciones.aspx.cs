@@ -14,10 +14,11 @@ namespace TPC_Equipo_8.Forms.FormsDonante
     {
         public AccesoDatos datos = new AccesoDatos();
         public List<Publicacion> ListaPublicaciones { get; set; }
+        public Filial filialSeleccionada {  get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            PublicacionesManager manager = new PublicacionesManager();
-            ListaPublicaciones = manager.ListarPublicacion();
+            /*PublicacionesManager manager = new PublicacionesManager();
+
 
             if (!IsPostBack)
             {
@@ -25,6 +26,45 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 repPublicaciones.DataBind();
             }
 
+            if (Session["ListarFiliales"] != null)
+            {
+                List<Filial> seleccionadas = (List<Filial>)Session["ListarFiliales"];
+                int idFilial = Convert.ToInt32(Request.QueryString["idFilial"]);
+
+                ListaPublicaciones = manager.ListarPublicaciones(idFilial);
+
+                if (!IsPostBack)
+                {
+                    var filial = seleccionadas.FirstOrDefault(a => a.idFilial == idFilial);
+                    var listaPublicaciones = new List<Filial>() { filial };
+                    repPublicaciones.DataSource = listaPublicaciones;
+                    repPublicaciones.DataBind();
+                }
+            }*/
+
+            PublicacionesManager manager = new PublicacionesManager();
+
+            if (Session["Seleccion"] != null)
+            {
+                List<Filial> seleccionadas = (List<Filial>)Session["Seleccion"];
+                int idFilial;
+
+                if (int.TryParse(Request.QueryString["idFilial"], out idFilial))
+                {
+                    ListaPublicaciones = manager.ListarPublicaciones(idFilial);
+
+                    if (!IsPostBack)
+                    {
+                        Filial filial = seleccionadas.FirstOrDefault(a => a.idFilial == idFilial);
+
+                        if (filial != null)
+                        {
+                            repPublicaciones.DataSource = ListaPublicaciones;
+                            repPublicaciones.DataBind();
+                        }
+                    }
+                }
+            }
         }
 
         public string ObtenerPosiblesDonantes(int grupoReceptor)
