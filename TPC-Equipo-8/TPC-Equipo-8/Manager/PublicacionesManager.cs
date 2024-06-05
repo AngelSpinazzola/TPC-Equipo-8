@@ -19,7 +19,16 @@ namespace TPC_Equipo_8.Manager
             try
             {
                 datos.setearProcedimiento("SP_ListarPublicaciones");
-                datos.setearParametro("@IdFilial", idFilial);
+
+                if (idFilial != -1)
+                {
+                    datos.setearParametro("@IdFilial", idFilial);
+                }
+                else
+                {
+                    datos.setearParametro("@IdFilial", -1);
+                }
+
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -38,7 +47,12 @@ namespace TPC_Equipo_8.Manager
                     {
                         aux.grupoSanguineo = (string)datos.Lector["Grupo"];
                     }
-                    
+
+                    if (!Convert.IsDBNull(datos.Lector["PosiblesDonantes"]))
+                    {
+                        aux.posiblesDonantes = (string)datos.Lector["PosiblesDonantes"];
+                    }
+
                     aux.urgencia = (string)datos.Lector["DescripcionUrgencia"];
 
                     if (!Convert.IsDBNull(datos.Lector["DonantesNecesarios"]))
@@ -55,7 +69,7 @@ namespace TPC_Equipo_8.Manager
                     {
                         aux.fechaLimite = (DateTime)datos.Lector["FechaLimite"];
                     }
-
+                    
                     aux.estado = (bool)datos.Lector["Estado"];
 
                     lista.Add(aux);

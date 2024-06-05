@@ -60,12 +60,6 @@ CREATE TABLE DonacionesPosibles(
     IdGrupoReceptor INT NOT NULL FOREIGN KEY REFERENCES GruposSanguineos(IdGrupoSanguineo)
 )
 
-CREATE TABLE RecepcionesPosibles(
-    IdRecepcionPosible INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    IdGrupoReceptor INT NOT NULL FOREIGN KEY REFERENCES GruposSanguineos(IdGrupoSanguineo),
-    IdGrupoDonante INT NOT NULL FOREIGN KEY REFERENCES GruposSanguineos(IdGrupoSanguineo)
-)
-
 CREATE TABLE Donantes(
 	IdDonante INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 	IdUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuarios(IdUsuario),
