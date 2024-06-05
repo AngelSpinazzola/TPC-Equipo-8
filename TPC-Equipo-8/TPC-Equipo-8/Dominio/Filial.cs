@@ -16,6 +16,7 @@ namespace TPC_Equipo_8.Dominio
         public string urlWeb { get; set; }
         public string localidad { get; set; }
         public List<Publicacion> publicacion { get; set; }
+        public Direccion direccion { get; set; }
         public bool estado { get; set; }
 
     }
