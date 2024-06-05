@@ -18,13 +18,13 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1 class="text-center">GESTION DE LAS FILIALES</h1>
-    <div class="container-fluid text-center">
+    <div class="container-fluid">
         <asp:GridView ID="dgvFiliales" runat="server" CssClass="table table-hover table-bordered" AutoGenerateColumns="false" OnRowDataBound="dgvFiliales_RowDataBound">
             <Columns>
-                <asp:BoundField HeaderText="Filial" DataField="nombre" HeaderStyle-CssClass="table-header" ItemStyle-CssClass="table-item" />
+                <asp:BoundField HeaderText="Filial" DataField="nombre" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
 
                 <asp:TemplateField HeaderText="Telefono">
-                    <HeaderStyle CssClass="table-header" Width="150px" />
+                    <HeaderStyle CssClass="table-header text-center" Width="150px" />
                     <ItemStyle CssClass="table-item" Width="150px"/>
                     <ItemTemplate>
                         <asp:Label ID="lblTelefono" runat="server" Text='<%# Eval("telefono") %>' CssClass="label-text"></asp:Label>
@@ -32,7 +32,7 @@
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="Horario de Atención">
-                    <HeaderStyle CssClass="table-header" />
+                    <HeaderStyle CssClass="table-header text-center" />
                     <ItemStyle CssClass="table-item truncate" />
                     <ItemTemplate>
                         <asp:Label ID="lblHorarioAtencion" runat="server" Text='<%# Eval("horarioAtencion") %>' CssClass="label-text truncate" ToolTip='<%# Eval("horarioAtencion") %>'></asp:Label>
@@ -48,17 +48,17 @@
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="Foto">
-                    <HeaderStyle CssClass="table-header" Width="200px" />
-                    <ItemStyle CssClass="table-item" Width="200px" Height="100px" />
+                    <HeaderStyle CssClass="table-header text-center" Width="100px" />
+                    <ItemStyle CssClass="table-item text-center" Width="100px" Height="50px" />
                     <ItemTemplate>
                         <a href="#" onclick="showImageModal('<%# Eval("urlImagen") %>')">
-                            <img src='<%# Eval("urlImagen") %>' class="img-thumbnail" style="width: 150px; margin: auto;" />
+                            <img src='<%# Eval("urlImagen") %>' class="img-thumbnail" style="width: 70px; height:70px; margin: auto;" />
                         </a>
                     </ItemTemplate>
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="Web">
-                    <HeaderStyle CssClass="table-header" />
+                    <HeaderStyle CssClass="table-header text-center" />
                     <ItemStyle CssClass="table-item" />
                     <ItemTemplate>
                         <asp:HyperLink ID="hlWeb" runat="server" NavigateUrl='<%# Eval("urlWeb") %>' Text="Link" Target="_blank"></asp:HyperLink>
@@ -66,7 +66,7 @@
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="Direccion">
-                    <HeaderStyle CssClass="table-header" />
+                    <HeaderStyle CssClass="table-header text-center" />
                     <ItemStyle CssClass="table-item" />
                     <ItemTemplate>
                         <asp:Label ID="lblDireccion" runat="server" Text='<%# Eval("idFilial") %>' CssClass="label-text"></asp:Label>
@@ -74,7 +74,7 @@
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="Acciones">
-                    <HeaderStyle CssClass="table-header" />
+                    <HeaderStyle CssClass="table-header text-center" />
                     <ItemStyle CssClass="table-item" />
                     <ItemTemplate>
                         <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-primary btn-sm" CommandName="Edit">
@@ -94,7 +94,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <img id="modalImage" src="#" class="img-fluid" style="margin: auto;" alt="Foto Filial">
+                    <img id="modalImage" src="#" class="img-fluid" style="margin: auto; width: 100%;" alt="Foto Filial">
                 </div>
             </div>
         </div>
