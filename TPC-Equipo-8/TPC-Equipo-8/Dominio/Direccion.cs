@@ -8,7 +8,7 @@ namespace TPC_Equipo_8.Dominio
     public class Direccion
     {
         public string calle { get; set; }
-        public int numero { get; set; }
+        public int altura { get; set; }
         public int piso { get; set; }
         public string departamento { get; set; }
         public string localidad { get; set; }

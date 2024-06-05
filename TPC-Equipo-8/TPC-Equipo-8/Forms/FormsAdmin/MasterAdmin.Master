@@ -49,6 +49,21 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
+
+     <div class="footer-container" style="margin-top: 100px;">
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <p class="col-md-4 mb-0 text-body-secondary">Salvá vidas &copy; AJR Solutions</p>
+    
+                <ul class="nav col-md-6 justify-content-end d-flex flex-row">
+                    <li class="nav-item"><a href="https://github.com/raul-valerio" target="_blank"; class="nav-link px-2 text-body-secondary"><i class="bi bi-github"></i>Raul Valerio</a></li>
+                    <li class="nav-item"><a href="https://github.com/AngelSpinazzola" target="_blank"; class="nav-link px-2 text-body-secondary"><i class="bi bi-github"></i>Angel Spinazzola</a></li>
+                    <li class="nav-item"><a href="https://github.com/juanpereyrajmp" target="_blank" class="nav-link px-2 text-body-secondary"><i class="bi bi-github"></i>Juan Pereyra</a></li>
+                </ul>
+            </footer>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>

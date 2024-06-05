@@ -1,26 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsAdmin/MasterAdmin.Master" AutoEventWireup="true" CodeBehind="AdminGestionFiliales.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsAdmin.AdminGestionFiliales" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        .truncate {
-            max-width: 200px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .tooltip-inner {
-            white-space: pre-wrap;
-            max-width: 100px;
-        }
-    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1 class="text-center">GESTION DE LAS FILIALES</h1>
     <div class="container-fluid">
-        <asp:GridView ID="dgvFiliales" runat="server" CssClass="table table-hover table-bordered" AutoGenerateColumns="false" OnRowDataBound="dgvFiliales_RowDataBound">
+        <asp:GridView ID="dgvFiliales" runat="server" CssClass="table table-hover table-bordered" AutoGenerateColumns="false" OnRowDataBound="dgvFiliales_RowDataBound" >
             <Columns>
+
+                <asp:BoundField DataField="idFilial" visible="false"/>
+
                 <asp:BoundField HeaderText="Filial" DataField="nombre" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
 
                 <asp:TemplateField HeaderText="Telefono">
@@ -77,10 +67,10 @@
                     <HeaderStyle CssClass="table-header text-center" />
                     <ItemStyle CssClass="table-item" />
                     <ItemTemplate>
-                        <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-primary btn-sm" CommandName="Edit">
+                        <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-primary btn-sm" CommandArgument='<%# Eval("idFilial") %>' CommandName="idFilial" OnClick="btnEditar_Click">
                             <i class="fas fa-edit fa-sm"></i>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnEliminar" runat="server" CssClass="btn btn-danger btn-sm" CommandName="Delete" OnClientClick="return confirm('¿Está seguro de que desea eliminar esta publicación?');">
+                        <asp:LinkButton ID="btnDesactivar" runat="server" CssClass="btn btn-danger btn-sm" CommandName="Delete" OnClientClick="return confirm('¿Está seguro de que desea eliminar esta publicación?');" OnClick="btnDesactivar_Click">
                             <i class="fas fa-trash fa-sm"></i>
                         </asp:LinkButton>
                     </ItemTemplate>

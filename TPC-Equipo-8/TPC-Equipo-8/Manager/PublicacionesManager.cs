@@ -11,7 +11,7 @@ namespace TPC_Equipo_8.Manager
     {
         public AccesoDatos datos = new AccesoDatos();
 
-        public List<Publicacion> ListarPublicaciones(int idFilial)
+        public List<Publicacion> ListarPublicaciones(int idFilial = -1)
         {
 
             List<Publicacion> lista = new List<Publicacion>();

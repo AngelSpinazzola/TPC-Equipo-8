@@ -5,8 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <!-- Sección de Barra de búsqueda por nombre de Filial-->
-    <!-- Aclaración: luego de re-hacer la DB, la búsqueda será por nombre de localidad, de momento es por nombre de filiar.-->
+    <!-- Sección de Barra de búsqueda por localidad-->
     <div class="container" style="margin-top: 35px;">
         <div class="row justify-content-start">
             <div class="col-auto">

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TPC_Equipo_8.Dominio
 {
-    public class Filial
+    public class Filial : Usuario
     {
         public int idFilial { get; set; }
         public string nombre { get; set; }
@@ -14,9 +14,7 @@ namespace TPC_Equipo_8.Dominio
         public string correo { get; set; }
         public string urlImagen { get; set; }
         public string urlWeb { get; set; }
-        public string localidad { get; set; }
         public List<Publicacion> publicacion { get; set; }
-        public Direccion direccion { get; set; }
         public bool estado { get; set; }
 
     }

@@ -13,7 +13,7 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
         protected void Page_Load(object sender, EventArgs e)
         {
             PublicacionesManager manager = new PublicacionesManager();
-            dgvPublicaciones.DataSource = manager.ListarPublicaciones(-1);
+            dgvPublicaciones.DataSource = manager.ListarPublicaciones();
             dgvPublicaciones.DataBind();
         }
 

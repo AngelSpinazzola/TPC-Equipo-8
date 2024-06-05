@@ -26,9 +26,9 @@
                                 <p class="card-text">Teléfono: <%# Eval("Telefono") %></p>
                                 <p class="card-text">Horario de atención: <%# Eval("HorarioAtencion") %></p>
                                 <p class="card-text">Correo: <%# Eval("Correo") %></p>
-                                
-                                <div class="mt-3 text-center">                                   
-                                    <asp:Button ID="btnVerPublicaciones" Text="Ver publicaciones" runat="server" OnCLick="btnVerPublicaciones_Click" CssClass="btn btn-customVerPublicaciones" CommandArgument='<%# Eval("IdFilial") %>' CommandName="IdFilial" />
+
+                                <div class="mt-3 text-center">
+                                    <asp:Button ID="btnVerPublicaciones" Text="Ver publicaciones" runat="server" OnClick="btnVerPublicaciones_Click" CssClass="btn btn-customVerPublicaciones" CommandArgument='<%# Eval("IdFilial") %>' CommandName="IdFilial" />
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                     });
                             }
                         });
-  </script>
+                    </script>
                 </ItemTemplate>
             </asp:Repeater>
         </div>

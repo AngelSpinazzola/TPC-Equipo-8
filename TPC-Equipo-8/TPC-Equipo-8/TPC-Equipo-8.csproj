@@ -67,6 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Estilos\EstilosGlobales.css" />
+    <Content Include="Forms\FormsAdmin\AdminEdicionFilial.aspx" />
     <Content Include="Forms\FormsAdmin\AdminGestionFiliales.aspx" />
     <Content Include="Forms\FormsAdmin\AdminGestionPublicaciones.aspx" />
     <Content Include="Forms\FormsAdmin\AdminPerfil.aspx" />
@@ -88,6 +90,13 @@
   <ItemGroup>
     <Compile Include="Datos\AccesoDatos.cs" />
     <Compile Include="Dominio\Publicacion.cs" />
+    <Compile Include="Forms\FormsAdmin\AdminEdicionFilial.aspx.cs">
+      <DependentUpon>AdminEdicionFilial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAdmin\AdminEdicionFilial.aspx.designer.cs">
+      <DependentUpon>AdminEdicionFilial.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormsAdmin\AdminGestionFiliales.aspx.cs">
       <DependentUpon>AdminGestionFiliales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
