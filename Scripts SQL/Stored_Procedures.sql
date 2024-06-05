@@ -69,7 +69,7 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		SELECT P.*, GP.Grupo, F.Nombre as NombreFilial, U.Descripcion as DescripcionUrgencia
+		SELECT P.*, GP.Grupo, dbo.FN_PosiblesDonantes(P.IdGrupoSanguineo) AS PosiblesDonantes, F.Nombre AS NombreFilial, U.Descripcion AS DescripcionUrgencia
 		FROM Publicaciones P
 		INNER JOIN GruposSanguineos GP ON GP.IdGrupoSanguineo = P.IdGrupoSanguineo
 		INNER JOIN Filiales F ON F.IdFilial = P.IdFilial
