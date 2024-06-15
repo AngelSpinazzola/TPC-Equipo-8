@@ -80,3 +80,17 @@ END
 
 GO
 
+-- PROCEDURE QUE DEVUELVE LISTADO DE UNA FILIAL
+
+CREATE OR ALTER PROCEDURE SP_ListarFilial ( @IdFilial INT)
+AS
+
+	SELECT U.IdUsuario, F.*, DU.Calle, DU.Altura, DU.Piso, DU.Departamento, L.Nombre AS Localidad, L.CodigoPostal, C.Nombre AS Ciudad, P.Nombre AS Provincia, U.Estado 
+	FROM Filiales F
+	INNER JOIN Usuarios U ON U.IdUsuario = F.IdUsuario
+	INNER JOIN Direcciones_x_Usuario DU ON DU.IdUsuario = U.IdUsuario
+	INNER JOIN Localidades L ON L.IdLocalidad = DU.IdLocalidad
+	INNER JOIN Ciudades C ON C.IdCiudad = L.IdCiudad
+	INNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia
+	WHERE F.IdFilial = @IdFilial
+GO
