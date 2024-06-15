@@ -6,6 +6,8 @@ USE TPC;
 
 GO
 
+SET DATEFORMAT YMD;
+
 CREATE TABLE Roles(
 	IdRol INT NOT NULL PRIMARY KEY,
 	Nombre NVARCHAR(20) NOT NULL
@@ -110,10 +112,18 @@ CREATE TABLE DonacionesRealizadas(
 	IdDonante INT NOT NULL FOREIGN KEY REFERENCES Donantes(IdDonante),
 	IdFilial INT NOT NULL FOREIGN KEY REFERENCES Filiales(IdFilial),
 	IdPublicacion INT FOREIGN KEY REFERENCES Publicaciones(IdPublicacion),
-	FechaDonacion DATETIME NOT NULL
+	FechaDonacion DATETIME NOT NULL DEFAULT GETDATE(),
 )
 
 GO
+
+CREATE TABLE ProximosDonantes(
+	IdProximoDonante INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	IdDonante INT NOT NULL FOREIGN KEY REFERENCES Donantes(IdDonante),
+	IdFilial INT NOT NULL FOREIGN KEY REFERENCES Filiales(IdFilial),
+	IdPublicacion INT FOREIGN KEY REFERENCES Publicaciones(IdPublicacion),
+	FechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
+)
 
 Insert Into Roles(IdRol, Nombre)
 Values
@@ -457,7 +467,7 @@ Values
 (12, 204, 'Av. Cerviño', 3356, NULL, NULL, 'Hospital Fernandez'),
 (13, 205, 'Nueva York', 3952, NULL, NULL, 'Hospital Pirovano')
 
-Insert Into GruposSanguineos(IdGrupoSanguineo, Grupo) Values
+INSERT INTO GruposSanguineos(IdGrupoSanguineo, Grupo) Values
 (1,'A+'),
 (2,'A-'),
 (3,'B+'),
@@ -496,35 +506,6 @@ INSERT INTO DonacionesPosibles (IdGrupoDonante, IdGrupoReceptor) VALUES
 (8,7),
 (8,8)
 
-INSERT INTO RecepcionesPosibles(IdGrupoReceptor, IdGrupoDonante) VALUES 
-(1,1),
-(1,2),
-(1,7),
-(1,8),
-(2,2),
-(2,8),
-(3,3),
-(3,4),
-(3,7),
-(3,8),
-(4,4),
-(4,8),
-(5,1),
-(5,2),
-(5,3),
-(5,4),
-(5,5),
-(5,6),
-(5,7),
-(5,8),
-(6,2),
-(6,4),
-(6,6),
-(6,8),
-(7,7),
-(7,8),
-(8,8)
-
 Insert Into Donantes (IdUsuario, Nombre, Apellido, Dni, FechaNacimiento, IdGrupoSanguineo, UrlFoto) Values 
 (3, 'Raul', 'Rolon', '30565812', '1990-01-01', 5, 'https://img.freepik.com/foto-gratis/chico-guapo-seguro-posando-contra-pared-blanca_176420-32936.jpg?size=626&ext=jpg&ga=GA1.1.1488620777.1708214400&semt=sph'),
 (4, 'Osvaldo', 'Negri', '27653986', '1985-12-16', 2, 'https://images.ecestaticos.com/vU8sC8tLdkx-2YYh1fkOGL8vfeY=/0x0:990x557/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F62c%2Fe5d%2F314%2F62ce5d3141c0b670144a692b7f6a21fa.jpg'),
@@ -560,11 +541,19 @@ INSERT INTO Publicaciones(IdFilial, NombreReceptor, IdGrupoSanguineo, IdUrgencia
 (3, 'Flavio Mendoza', 3, 1, 3, 'De Lunes a Viernes de 10 a 14hs', '2024-09-15'),
 (3, 'Alberto Fernandez', 6, 1, 2, 'De Lunes a Viernes de 10 a 14hs', '2024-10-17')
 
-INSERT INTO DonacionesRealizadas(IdDonante, IdFilial, IdPublicacion, FechaDonacion) VALUES
-(1, 1, 1, '2023-10-01'),
-(2, 1, 1, '2023-11-11'),
-(3, 1, 1, '2023-07-05'),
-(4, 1, 1, '2022-12-21'),
-(2, 1, 1, '2023-08-03'),
-(4, 1, 1, '2024-03-24'),
-(1, 1, 1, '2024-01-10')
+INSERT INTO DonacionesRealizadas(IdDonante, IdFilial, IdPublicacion) VALUES
+(1, 1, 1),
+(2, 1, 1),
+(3, 1, 1),
+(4, 1, 1),
+(2, 1, 1),
+(4, 1, 1),
+(1, 1, 1)
+
+INSERT INTO ProximosDonantes(IdDonante, IdFilial, IdPublicacion) VALUES
+(2, 1, 1),
+(3, 1, 1),
+(2, 1, 1),
+(4, 1, 1),
+(2, 1, 1),
+(1, 1, 1)
