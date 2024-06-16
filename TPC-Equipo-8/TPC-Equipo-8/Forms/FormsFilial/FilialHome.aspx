@@ -8,54 +8,57 @@
     <asp:TextBox ID="TextBoxPrueba" runat="server"></asp:TextBox>
     <asp:Button ID="ButtonPrueba" runat="server" Text="Login" OnClick="ButtonPrueba_Click" />
 
-
+    <%--INFORMACION DE LA FILIAL --%>
     <div class="container" style="margin-top: 35px;">
-        <asp:GridView ID="dgvHomeFilial" CssClass="table" AutoGenerateColumns="false" runat="server">
-
-            <Columns>
-                <asp:TemplateField HeaderText="Nombre">
-                    <ItemTemplate>
-                        <%# Eval("Nombre") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:CommandField ShowEditButton="True" />
-            </Columns>
-            <Columns>
-                <asp:TemplateField HeaderText="Calle">
-                    <ItemTemplate>
-                        <%# Eval("Direccion.calle") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:CommandField ShowEditButton="True" />
-            </Columns>
-            <Columns>
-                <asp:TemplateField HeaderText="Telefono">
-                    <ItemTemplate>
-                        <%# Eval("Telefono") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:CommandField ShowEditButton="True" />
-            </Columns>
-            <Columns>
-                <asp:TemplateField HeaderText="Email">
-                    <ItemTemplate>
-                        <%# Eval("Correo") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:CommandField ShowEditButton="True" />
-            </Columns>
-        </asp:GridView>
+            <asp:GridView ID="dgvHomeFilial" CssClass="table" AutoGenerateColumns="false" runat="server">
+                <Columns>
+                    <asp:TemplateField HeaderText="Nombre">
+                        <ItemTemplate>
+                            <%# Eval("Nombre") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" />
+                </Columns>
+                <Columns>
+                    <asp:TemplateField HeaderText="Calle">
+                        <ItemTemplate>
+                            <%# Eval("Direccion.calle") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" />
+                </Columns>
+                <Columns>
+                    <asp:TemplateField HeaderText="Telefono">
+                        <ItemTemplate>
+                            <%# Eval("Telefono") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" />
+                </Columns>
+                <Columns>
+                    <asp:TemplateField HeaderText="Email">
+                        <ItemTemplate>
+                            <%# Eval("Correo") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" />
+                </Columns>
+            </asp:GridView>
     </div>
-    <div class="container" style="margin-top: 35px;">
-        <asp:Repeater ID="RepHomeFilial" runat="server">
 
+     <%--LISTA DE DONANTES DE LA FILIAL --%>
+   
+    <div class="container  " style="margin-top: 35px;">
+         <h3 class="text-center">Lista de Donaciones: </h3>
+        <asp:Repeater ID="RepHomeFilial" runat="server">
             <ItemTemplate>
-                <%# Eval("Nombre") %>
-                <%# Eval("Apellido") %>
-                <%# Eval("FechaRealizada") %>
+                <div class="table">
+                    <%# Eval("Nombre") %>
+                    <%# Eval("Apellido") %>
+                    <%# Eval("FechaRealizada") %>
+                </div>
             </ItemTemplate>
         </asp:Repeater>
-
     </div>
 
 
