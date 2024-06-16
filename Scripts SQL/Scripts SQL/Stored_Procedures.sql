@@ -94,3 +94,13 @@ AS
 	INNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia
 	WHERE F.IdFilial = @IdFilial
 GO
+
+-- PROCEDURE QUE DEVUELVE LISTADO DE DONANTES DE UNA FILIAL
+
+CREATE OR ALTER PROCEDURE SP_ListarDonantes ( @IdFilial INT)
+AS
+
+	SELECT Donantes.Nombre, Donantes.Apellido, DR.FechaDonacion FROM DonacionesRealizadas AS DR 
+    INNER JOIN Donantes ON DR.IdDonante= Donantes.IdDonante
+	WHERE IdFilial = @IdFilial
+GO
