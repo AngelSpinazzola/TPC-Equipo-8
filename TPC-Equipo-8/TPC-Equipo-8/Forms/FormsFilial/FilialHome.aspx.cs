@@ -19,12 +19,15 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             }
             
             int id = Convert.ToInt32(TextBoxPrueba.Text);
-            FilialManager manager = new FilialManager();
+           FilialManager managerFilial = new FilialManager();
+           DonacionManager manager = new DonacionManager();
 
             if(!IsPostBack)
             {
-                dgvHomeFilial.DataSource = manager.ListarFilial(id);
+                dgvHomeFilial.DataSource = managerFilial.ListarFilial(id);
                 dgvHomeFilial.DataBind();
+                RepHomeFilial.DataSource = manager.ListarDonaciones(id);
+                RepHomeFilial.DataBind();
             }
             
 
@@ -34,13 +37,16 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         {
             string text = TextBoxPrueba.Text;
             int id = Convert.ToInt32(TextBoxPrueba.Text);
-            FilialManager manager = new FilialManager();
+            //FilialManager manager = new FilialManager();
+            FilialManager managerFilial = new FilialManager();
+            DonacionManager manager = new DonacionManager();
 
-            
-        
-                dgvHomeFilial.DataSource = manager.ListarFilial(id);
-                dgvHomeFilial.DataBind();
-            
+            dgvHomeFilial.DataSource = managerFilial.ListarFilial(id);
+            dgvHomeFilial.DataBind();
+
+            RepHomeFilial.DataSource = manager.ListarDonaciones(id);
+            RepHomeFilial.DataBind();
+
 
         }
     }

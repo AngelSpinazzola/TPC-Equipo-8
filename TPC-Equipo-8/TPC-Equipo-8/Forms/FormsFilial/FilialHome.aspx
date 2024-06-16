@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsFilial/MasterFilial.Master" AutoEventWireup="true" CodeBehind="FilialHome.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsFilial.FilialHome" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -43,8 +44,20 @@
                 </asp:TemplateField>
                 <asp:CommandField ShowEditButton="True" />
             </Columns>
-           
-            
         </asp:GridView>
     </div>
+    <div class="container" style="margin-top: 35px;">
+        <asp:Repeater ID="RepHomeFilial" runat="server">
+
+            <ItemTemplate>
+                <%# Eval("Nombre") %>
+                <%# Eval("Apellido") %>
+                <%# Eval("FechaRealizada") %>
+            </ItemTemplate>
+        </asp:Repeater>
+
+    </div>
+
+
+
 </asp:Content>
