@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="Datos\AccesoDatos.cs" />
     <Compile Include="Dominio\Donacion.cs" />
+    <Compile Include="Dominio\ProximasDonaciones.cs" />
     <Compile Include="Dominio\Publicacion.cs" />
     <Compile Include="Forms\FormsAdmin\AdminEdicionFilial.aspx.cs">
       <DependentUpon>AdminEdicionFilial.aspx</DependentUpon>
@@ -222,6 +223,7 @@
     </Compile>
     <Compile Include="Manager\DonacionManager.cs" />
     <Compile Include="Manager\FilialManager.cs" />
+    <Compile Include="Manager\ProximasDonacionesManager.cs" />
     <Compile Include="Manager\PublicacionesManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\FormsGlobales\SiteMaster.Master.cs">

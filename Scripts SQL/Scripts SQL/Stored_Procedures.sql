@@ -110,7 +110,7 @@ GO
 CREATE OR ALTER PROCEDURE SP_ListarProximasDonaciones ( @IdFilial INT)
 AS
 
-	SELECT D.Nombre, D.Apellido, D.Dni, GSD.Grupo, PUB.NombreReceptor, GSR.Grupo, PUB.DonantesNecesarios, U.Descripcion FROM ProximosDonantes P
+	SELECT D.Nombre, D.Apellido, D.Dni, GSD.Grupo, PUB.NombreReceptor, GSR.Grupo, PUB.DonantesNecesarios, U.Descripcion, P.FechaRegistro,PUB.FechaLimite  FROM ProximosDonantes P
     INNER JOIN Donantes D ON D.IdDonante = P.IdDonante
     INNER JOIN GruposSanguineos GSD ON GSD.IdGrupoSanguineo = D.IdGrupoSanguineo
     INNER JOIN Publicaciones PUB ON PUB.IdPublicacion = P.IdPublicacion

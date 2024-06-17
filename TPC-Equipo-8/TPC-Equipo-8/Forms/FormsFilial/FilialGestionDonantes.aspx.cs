@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsFilial
 {
@@ -11,6 +12,18 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            int id = Convert.ToInt32(Session["Filialid"]);
+            ProximasDonacionesManager manager = new ProximasDonacionesManager();
+           
+            if (!IsPostBack)
+            {
+
+                RepProximasDonaciones.DataSource = manager.ListarProximasDonaciones(id);
+                RepProximasDonaciones.DataBind();
+
+            }
+
 
         }
     }

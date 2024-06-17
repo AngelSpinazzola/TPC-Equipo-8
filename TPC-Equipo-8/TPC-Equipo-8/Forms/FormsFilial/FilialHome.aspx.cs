@@ -18,7 +18,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 TextBoxPrueba.Text = "1";
             }
             
-            int id = Convert.ToInt32(TextBoxPrueba.Text);
+           int id = Convert.ToInt32(TextBoxPrueba.Text);
            FilialManager managerFilial = new FilialManager();
            DonacionManager manager = new DonacionManager();
 
@@ -28,6 +28,8 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 dgvHomeFilial.DataBind();
                 RepHomeFilial.DataSource = manager.ListarDonaciones(id);
                 RepHomeFilial.DataBind();
+
+                Session.Add("Filialid",id);
             }
             
 
@@ -47,7 +49,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             RepHomeFilial.DataSource = manager.ListarDonaciones(id);
             RepHomeFilial.DataBind();
 
-
+            Session.Add("Filialid", id);
         }
     }
 }
