@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Estilos\EstilosGlobales.css" />
+    <Content Include="Forms\Content\Pics\donarSangre1.jpg" />
+    <Content Include="Forms\Content\Pics\salvaVidas.jpg" />
     <Content Include="Forms\FormsAdmin\AdminEdicionFilial.aspx" />
     <Content Include="Forms\FormsAdmin\AdminGestionFiliales.aspx" />
     <Content Include="Forms\FormsAdmin\AdminGestionPublicaciones.aspx" />
