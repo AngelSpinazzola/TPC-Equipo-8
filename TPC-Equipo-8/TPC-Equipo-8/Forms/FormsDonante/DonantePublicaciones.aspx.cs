@@ -17,30 +17,6 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         public Filial filialSeleccionada {  get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*PublicacionesManager manager = new PublicacionesManager();
-
-
-            if (!IsPostBack)
-            {
-                repPublicaciones.DataSource = ListaPublicaciones;
-                repPublicaciones.DataBind();
-            }
-
-            if (Session["ListarFiliales"] != null)
-            {
-                List<Filial> seleccionadas = (List<Filial>)Session["ListarFiliales"];
-                int idFilial = Convert.ToInt32(Request.QueryString["idFilial"]);
-
-                ListaPublicaciones = manager.ListarPublicaciones(idFilial);
-
-                if (!IsPostBack)
-                {
-                    var filial = seleccionadas.FirstOrDefault(a => a.idFilial == idFilial);
-                    var listaPublicaciones = new List<Filial>() { filial };
-                    repPublicaciones.DataSource = listaPublicaciones;
-                    repPublicaciones.DataBind();
-                }
-            }*/
 
             PublicacionesManager manager = new PublicacionesManager();
 
@@ -49,19 +25,28 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 List<Filial> seleccionadas = (List<Filial>)Session["Seleccion"];
                 int idFilial;
 
+                // Verificar si idFilial está presente en el QueryString
                 if (int.TryParse(Request.QueryString["idFilial"], out idFilial))
                 {
+                    // Cargar publicaciones para el idFilial especificado en la URL
                     ListaPublicaciones = manager.ListarPublicaciones(idFilial);
+                }
+                else
+                {
+                    // Cargar todas las publicaciones de donantes si no se especifica idFilial en la URL
+                    ListaPublicaciones = manager.ListarPublicaciones(-1);
+                    idFilial = -1; // Establecer idFilial en -1 para asegurar la vinculación de datos
+                }
 
-                    if (!IsPostBack)
+                if (!IsPostBack)
+                {
+                    Filial filial = seleccionadas.FirstOrDefault(a => a.idFilial == idFilial);
+
+                    // Asegurarse de que las publicaciones se vinculen incluso si idFilial es -1
+                    if (filial != null || idFilial == -1)
                     {
-                        Filial filial = seleccionadas.FirstOrDefault(a => a.idFilial == idFilial);
-
-                        if (filial != null)
-                        {
-                            repPublicaciones.DataSource = ListaPublicaciones;
-                            repPublicaciones.DataBind();
-                        }
+                        repPublicaciones.DataSource = ListaPublicaciones;
+                        repPublicaciones.DataBind();
                     }
                 }
             }
