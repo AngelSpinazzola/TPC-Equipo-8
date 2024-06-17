@@ -64,6 +64,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             {
                 lblDireccion.Text = direccion;
             }
+            Session.Add("Filialid", id);
         }
     }
 }
