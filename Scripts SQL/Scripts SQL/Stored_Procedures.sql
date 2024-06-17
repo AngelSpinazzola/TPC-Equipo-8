@@ -104,3 +104,17 @@ AS
     INNER JOIN Donantes ON DR.IdDonante= Donantes.IdDonante
 	WHERE IdFilial = @IdFilial
 GO
+
+-- PROCEDURE QUE DEVUELVE LISTADO DE PROXIMAS DONACIONES DE UNA FILIAL
+
+CREATE OR ALTER PROCEDURE SP_ListarProximasDonaciones ( @IdFilial INT)
+AS
+
+	SELECT D.Nombre, D.Apellido, D.Dni, GSD.Grupo, PUB.NombreReceptor, GSR.Grupo, PUB.DonantesNecesarios, U.Descripcion FROM ProximosDonantes P
+    INNER JOIN Donantes D ON D.IdDonante = P.IdDonante
+    INNER JOIN GruposSanguineos GSD ON GSD.IdGrupoSanguineo = D.IdGrupoSanguineo
+    INNER JOIN Publicaciones PUB ON PUB.IdPublicacion = P.IdPublicacion
+    INNER JOIN GruposSanguineos GSR ON GSR.IdGrupoSanguineo = PUB.IdGrupoSanguineo
+    INNER JOIN Urgencias U ON U.IdUrgencia = PUB.IdUrgencia
+	WHERE P.IdFilial = @IdFilial
+GO
