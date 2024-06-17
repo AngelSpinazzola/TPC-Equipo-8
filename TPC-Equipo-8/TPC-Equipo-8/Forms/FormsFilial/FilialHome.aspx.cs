@@ -51,5 +51,19 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
             Session.Add("Filialid", id);
         }
+
+        protected void dgvHomeFilial_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            FilialManager filialManager = new FilialManager();
+
+            int id = Convert.ToInt32(TextBoxPrueba.Text);
+            string direccion = filialManager.ObtenerDireccion(id);
+
+            Label lblDireccion = (Label)e.Row.FindControl("lblDireccion");
+            if (lblDireccion != null)
+            {
+                lblDireccion.Text = direccion;
+            }
+        }
     }
 }
