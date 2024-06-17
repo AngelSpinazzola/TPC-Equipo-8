@@ -51,12 +51,12 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected global::System.Web.UI.WebControls.GridView dgvHomeFilial;
 
         /// <summary>
-        /// Control RepHomeFilial.
+        /// Control dgvHomeFilialDonantes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RepHomeFilial;
+        protected global::System.Web.UI.WebControls.GridView dgvHomeFilialDonantes;
     }
 }

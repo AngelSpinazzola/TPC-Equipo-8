@@ -26,8 +26,8 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             {
                 dgvHomeFilial.DataSource = managerFilial.ListarFilial(id);
                 dgvHomeFilial.DataBind();
-                RepHomeFilial.DataSource = manager.ListarDonaciones(id);
-                RepHomeFilial.DataBind();
+                dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(id);
+                dgvHomeFilialDonantes.DataBind();
 
                 Session.Add("Filialid",id);
             }
@@ -46,8 +46,8 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             dgvHomeFilial.DataSource = managerFilial.ListarFilial(id);
             dgvHomeFilial.DataBind();
 
-            RepHomeFilial.DataSource = manager.ListarDonaciones(id);
-            RepHomeFilial.DataBind();
+            dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(id);
+            dgvHomeFilialDonantes.DataBind();
 
             Session.Add("Filialid", id);
         }
