@@ -14,37 +14,27 @@ namespace TPC_Equipo_8.Forms.FormsDonante
     {
         public AccesoDatos datos = new AccesoDatos();
         public List<Publicacion> ListaPublicaciones { get; set; }
-        public Filial filialSeleccionada {  get; set; }
+        public Filial filialSeleccionada { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             PublicacionesManager manager = new PublicacionesManager();
+            int idFilial;
 
-            if (Session["Seleccion"] != null)
+            if (Request.QueryString["idFilial"] != null && int.TryParse(Request.QueryString["idFilial"], out idFilial))
             {
-                List<Filial> seleccionadas = (List<Filial>)Session["Seleccion"];
-                int idFilial;
-         
-                if (int.TryParse(Request.QueryString["idFilial"], out idFilial))
-                {
-                    ListaPublicaciones = manager.ListarPublicaciones(idFilial);
-                }
-                else
-                {
-                    ListaPublicaciones = manager.ListarPublicaciones(-1);
-                    idFilial = -1; 
-                }
-
-                if (!IsPostBack)
-                {
-                    Filial filial = seleccionadas.FirstOrDefault(a => a.idFilial == idFilial);
-
-                    if (filial != null || idFilial == -1)
-                    {
-                        repPublicaciones.DataSource = ListaPublicaciones;
-                        repPublicaciones.DataBind();
-                    }
-                }
+                ListaPublicaciones = manager.ListarPublicaciones(idFilial);
             }
+            else
+            {
+                ListaPublicaciones = manager.ListarPublicaciones();
+            }
+
+            if (ListaPublicaciones != null && ListaPublicaciones.Count > 0)
+            {
+                repPublicaciones.DataSource = ListaPublicaciones;
+                repPublicaciones.DataBind();
+            }
+
         }
 
         public string ObtenerPosiblesDonantes(int grupoReceptor)
