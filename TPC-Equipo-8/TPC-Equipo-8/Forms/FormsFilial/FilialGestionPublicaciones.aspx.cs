@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsFilial
 {
@@ -11,6 +12,18 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            PublicacionesManager manager = new PublicacionesManager();
+            int id = Convert.ToInt32(Session["Filialid"]);
+
+            if (!IsPostBack)
+            {
+
+                repPublicacionesFilial.DataSource = manager.ListarPublicaciones(id);
+                repPublicacionesFilial.DataBind();
+
+            }
+
 
         }
     }
