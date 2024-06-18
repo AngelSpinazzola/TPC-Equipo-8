@@ -15,12 +15,12 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
 
         /// <summary>
-        /// Control RepProximasDonaciones.
+        /// Control dgvFilialDonantes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RepProximasDonaciones;
+        protected global::System.Web.UI.WebControls.GridView dgvFilialDonantes;
     }
 }

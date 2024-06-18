@@ -37,7 +37,7 @@ namespace TPC_Equipo_8.Manager
 
                     if (!Convert.IsDBNull(datos.Lector["dni"]))
                     {
-                        aux.DIN = (string)datos.Lector["dni"];
+                        aux.DNI = (string)datos.Lector["dni"];
                     }
 
                     if (!Convert.IsDBNull(datos.Lector["Grupo"]))

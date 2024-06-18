@@ -10,7 +10,7 @@ namespace TPC_Equipo_8.Dominio
   
         public string NombreDonante { get; set; }
         public string ApellidoDonante { get; set; }
-        public string DIN { get; set; }
+        public string DNI { get; set; }
         public string GrupoSanguineoDonante { get; set; }
         public string NombreReceptor { get; set; }
         public string GrupoSanguineoReceptor { get; set; }

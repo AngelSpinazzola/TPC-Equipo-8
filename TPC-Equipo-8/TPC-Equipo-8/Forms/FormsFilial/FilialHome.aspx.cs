@@ -13,12 +13,17 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int id;
             if(TextBoxPrueba.Text=="")
             {
-                TextBoxPrueba.Text = "1";
+                id = 1;
+              
             }
-            
-           int id = Convert.ToInt32(TextBoxPrueba.Text);
+            else
+            {
+                id = Convert.ToInt32(TextBoxPrueba.Text);
+            }
+           
            FilialManager managerFilial = new FilialManager();
            DonacionManager manager = new DonacionManager();
 
@@ -29,10 +34,9 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(id);
                 dgvHomeFilialDonantes.DataBind();
 
-                Session.Add("Filialid",id);
             }
-            
 
+            
         }
 
         protected void ButtonPrueba_Click(object sender, EventArgs e)
@@ -56,7 +60,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         {
             FilialManager filialManager = new FilialManager();
 
-            int id = Convert.ToInt32(TextBoxPrueba.Text);
+            int id = Convert.ToInt32(Session["Filialid"]);
             string direccion = filialManager.ObtenerDireccion(id);
 
             Label lblDireccion = (Label)e.Row.FindControl("lblDireccion");
@@ -64,7 +68,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             {
                 lblDireccion.Text = direccion;
             }
-            Session.Add("Filialid", id);
+            
         }
     }
 }

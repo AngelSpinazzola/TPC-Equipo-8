@@ -19,8 +19,8 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             if (!IsPostBack)
             {
 
-                RepProximasDonaciones.DataSource = manager.ListarProximasDonaciones(id);
-                RepProximasDonaciones.DataBind();
+                dgvFilialDonantes.DataSource = manager.ListarProximasDonaciones(id);
+                dgvFilialDonantes.DataBind();
 
             }
 
