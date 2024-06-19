@@ -12,5 +12,11 @@ namespace TPC_Equipo_8.Dominio
         public string password { get; set; }
         public int rol { get; set; }
         public Direccion direccion { get; set; }
+
+        public Usuario()
+        {
+            direccion = new Direccion();
+        }
+
     }
 }

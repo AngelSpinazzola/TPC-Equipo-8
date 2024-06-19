@@ -111,7 +111,42 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
-       
+        public void modificarFilial(Filial filial)
+        {
+            try
+            {
+                datos.setearProcedimiento("SP_ModificarFilial");
+
+                datos.setearParametro("IdUsuario", filial.idUsuario);
+                datos.setearParametro("IdFilial", filial.idFilial);
+                datos.setearParametro("Nombre", filial.nombre);
+                datos.setearParametro("Telefono", filial.telefono);
+                datos.setearParametro("Horario", filial.horarioAtencion);
+                datos.setearParametro("Correo", filial.correo);
+                datos.setearParametro("UrlImagen", filial.urlImagen);
+                datos.setearParametro("UrlWeb", filial.urlWeb);
+                datos.setearParametro("Calle", filial.direccion.calle);
+                datos.setearParametro("Altura", filial.direccion.altura);
+                datos.setearParametro("Piso", filial.direccion.piso);
+                datos.setearParametro("Departamento", filial.direccion.departamento);
+                datos.setearParametro("Localidad", filial.direccion.localidad);
+                datos.setearParametro("CodigoPostal", filial.direccion.codigoPostal);
+                datos.setearParametro("Ciudad", filial.direccion.ciudad);
+                datos.setearParametro("Provincia", filial.direccion.provincia);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         //Función para obtener la dirección de la filial, devuelve un string con (nombre de calle, altura y provincia).
         public string ObtenerDireccion(int idFilial)
         {

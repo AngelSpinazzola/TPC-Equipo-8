@@ -9,6 +9,8 @@
 
     <div class="container">
         <div class="row g-3">
+            <asp:TextBox ID="txtIdUsuario" runat="server" type="text" class="form-control" Visible="false"></asp:TextBox>
+            <asp:TextBox ID="txtIdFilial" runat="server" type="text" class="form-control" Visible="false"></asp:TextBox>
             <div class="col-12">
                 <label for="txtNombre" class="form-label">Nombre</label>
                 <asp:TextBox ID="txtNombre" runat="server" type="text" class="form-control"></asp:TextBox>
@@ -52,20 +54,24 @@
                 <label for="txtDepartamento" class="form-label">Departamento</label>
                 <asp:TextBox ID="txtDepartamento" runat="server" type="text" class="form-control"></asp:TextBox>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <label for="txtLocalidad" class="form-label">Localidad</label>
                 <asp:TextBox ID="txtLocalidad" runat="server" type="text" class="form-control"></asp:TextBox>
-            </div>
-            <div class="col-md-5">
-                <label for="txtCiudad" class="form-label">Ciudad</label>
-                <asp:TextBox ID="txtCiudad" runat="server" type="text" class="form-control"></asp:TextBox>
             </div>
             <div class="col-md-2">
                 <label for="txtCodigoPostal" class="form-label">Codigo Postal</label>
                 <asp:TextBox ID="txtCodigoPostal" runat="server" type="number" class="form-control"></asp:TextBox>
             </div>
+            <div class="col-md-3">
+                <label for="txtCiudad" class="form-label">Ciudad</label>
+                <asp:TextBox ID="txtCiudad" runat="server" type="text" class="form-control"></asp:TextBox>
+            </div>
+            <div class="col-md-3">
+                <label for="txtProvincia" class="form-label">Provincia</label>
+                <asp:TextBox ID="txtProvincia" runat="server" type="text" class="form-control"></asp:TextBox>
+            </div>
 
-            <button type="submit" class="btn btn-primary">Aceptar</button>
+            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" />
         </div>
     </div>
 

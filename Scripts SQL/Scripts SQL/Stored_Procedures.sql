@@ -119,3 +119,118 @@ AS
     INNER JOIN Urgencias U ON U.IdUrgencia = PUB.IdUrgencia
 	WHERE P.IdFilial = @IdFilial
 GO
+
+-- PROCEDURE PARA EDITAR UNA FILIAL
+
+CREATE OR ALTER PROCEDURE SP_ModificarFilial
+	@IdUsuario INT,
+	@IdFilial INT,
+	@Nombre NVARCHAR(50),
+	@Telefono NVARCHAR(30),
+	@Horario NVARCHAR(100),
+	@Correo NVARCHAR(50),
+	@UrlImagen NVARCHAR(1000),
+	@UrlWeb NVARCHAR(1000),
+	@Calle NVARCHAR(100),
+	@Altura INT,
+	@Piso INT,
+	@Departamento NVARCHAR(10),
+	@Localidad NVARCHAR(75),
+	@CodigoPostal NVARCHAR(10),
+	@Ciudad NVARCHAR(75),
+	@Provincia NVARCHAR(50)
+AS
+
+BEGIN
+	BEGIN TRANSACTION;
+	BEGIN TRY
+
+	-- ACTUALIZA LA FILIAL
+
+	UPDATE Filiales
+	SET
+		Nombre = @Nombre,
+		Telefono = @Telefono,
+		HorarioAtencion = @Horario,
+		Correo = @Correo,
+		UrlImagen = @UrlImagen,
+		UrlWeb = @UrlWeb
+	WHERE IdFilial = @IdFilial
+
+	-- VERIFICA SI LA PROVINCIA EXISTE
+
+	DECLARE @IdProvincia INT
+
+	SELECT @IdProvincia = IdProvincia
+	FROM Provincias
+	WHERE Nombre = @Provincia
+
+	-- SI NO EXISTE, LA INSERTA
+
+	IF @IdProvincia IS NULL
+	BEGIN
+		INSERT INTO Provincias (Nombre) 
+		VALUES (@Provincia)
+
+		SET @IdProvincia = SCOPE_IDENTITY();
+	END
+
+	-- VERIFICA SI LA CIUDAD EXISTE
+
+	DECLARE @IdCiudad INT
+
+	SELECT @IdCiudad = IdCiudad
+	FROM Ciudades
+	WHERE Nombre = @Ciudad
+
+	-- SI NO EXISTE, LA INSERTA
+
+	IF @IdCiudad IS NULL
+	BEGIN
+		INSERT INTO Ciudades (IdProvincia, Nombre) 
+		VALUES ((SELECT IdProvincia FROM Provincias WHERE Nombre = @Provincia), @Ciudad)
+
+		SET @IdCiudad = SCOPE_IDENTITY();
+	END
+
+	-- VERIFICA SI LA LOCALIDAD EXISTE
+
+	DECLARE @IdLocalidad INT
+
+	SELECT @IdLocalidad = IdLocalidad
+	FROM Localidades
+	WHERE Nombre = @Localidad
+
+	-- SI NO EXISTE, LA INSERTA
+
+	IF @IdLocalidad IS NULL
+	BEGIN
+		INSERT INTO Localidades (IdCiudad, Nombre, CodigoPostal) 
+		VALUES ((SELECT IdCiudad FROM Ciudades WHERE Nombre = @Ciudad), @Localidad, @CodigoPostal)
+
+		SET @IdLocalidad = SCOPE_IDENTITY();
+	END
+
+	IF NOT EXISTS (
+		SELECT 1
+		FROM Direcciones_x_Usuario
+		WHERE IdLocalidad = @IdLocalidad AND IdUsuario = @IdUsuario)
+
+        BEGIN
+            INSERT INTO Direcciones_x_Usuario (IdUsuario, IdLocalidad, Calle, Altura, Piso, Departamento)
+            VALUES (@IdUsuario, @IdLocalidad, @Calle, @Altura, @Piso, @Departamento);
+        END
+
+		ELSE
+		BEGIN
+		UPDATE Direcciones_x_Usuario SET IdLocalidad = @IdLocalidad, Calle = @Calle, Altura = @Altura, Piso = @Piso, Departamento = @Departamento 
+		WHERE IdUsuario = @IdUsuario
+		END
+
+		COMMIT TRANSACTION;
+	END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION
+		THROW
+	END CATCH
+END
