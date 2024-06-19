@@ -29,7 +29,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
             if(!IsPostBack)
             {
-                dgvHomeFilial.DataSource = managerFilial.ListarFilial(id);
+                dgvHomeFilial.DataSource = managerFilial.ListarFiliales(id);
                 dgvHomeFilial.DataBind();
                 dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(id);
                 dgvHomeFilialDonantes.DataBind();
@@ -47,7 +47,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             FilialManager managerFilial = new FilialManager();
             DonacionManager manager = new DonacionManager();
 
-            dgvHomeFilial.DataSource = managerFilial.ListarFilial(id);
+            dgvHomeFilial.DataSource = managerFilial.ListarFiliales(id);
             dgvHomeFilial.DataBind();
 
             dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(id);

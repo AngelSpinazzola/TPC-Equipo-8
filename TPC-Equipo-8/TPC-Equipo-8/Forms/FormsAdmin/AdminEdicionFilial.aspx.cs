@@ -11,10 +11,20 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["idFilial"] != null)
-            {
 
+            try
+            {
+                if (Request.QueryString["idFilial"] != null)
+                {
+
+                }
             }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw;
+            }
+            
         }
     }
 }

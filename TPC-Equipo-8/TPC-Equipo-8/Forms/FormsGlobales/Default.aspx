@@ -2,20 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-      <style>
-        .image-container {
-            width: 100%;
-            max-height: 700px; 
-            overflow: hidden;
-        }
-
-        .image-container img {
-            width: 100%; 
-            height: auto; 
-            object-fit: cover;
-        }
-    </style>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <a href="../FormsDonante/DonanteHome.aspx">DONANTE</a>
