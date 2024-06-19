@@ -211,21 +211,10 @@ BEGIN
 		SET @IdLocalidad = SCOPE_IDENTITY();
 	END
 
-	IF NOT EXISTS (
-		SELECT 1
-		FROM Direcciones_x_Usuario
-		WHERE IdLocalidad = @IdLocalidad AND IdUsuario = @IdUsuario)
 
-        BEGIN
-            INSERT INTO Direcciones_x_Usuario (IdUsuario, IdLocalidad, Calle, Altura, Piso, Departamento)
-            VALUES (@IdUsuario, @IdLocalidad, @Calle, @Altura, @Piso, @Departamento);
-        END
+	UPDATE Direcciones_x_Usuario SET IdLocalidad = @IdLocalidad, Calle = @Calle, Altura = @Altura, Piso = @Piso, Departamento = @Departamento 
+	WHERE IdUsuario = @IdUsuario
 
-		ELSE
-		BEGIN
-		UPDATE Direcciones_x_Usuario SET IdLocalidad = @IdLocalidad, Calle = @Calle, Altura = @Altura, Piso = @Piso, Departamento = @Departamento 
-		WHERE IdUsuario = @IdUsuario
-		END
 
 		COMMIT TRANSACTION;
 	END TRY

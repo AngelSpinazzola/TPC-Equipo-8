@@ -16,38 +16,33 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
 
             try
             {
-                if (Request.QueryString["idFilial"] != null)
+                if(!IsPostBack)
                 {
-                    FilialManager manager = new FilialManager();
-                    List<Filial> lista = manager.ListarFiliales(Int32.Parse(Request.QueryString["idFilial"]));
-                    Filial seleccionada = lista[0];
 
-                    txtIdUsuario.Text = seleccionada.idUsuario.ToString();
-                    txtIdFilial.Text = seleccionada.idFilial.ToString();
-                    txtNombre.Text = seleccionada.nombre;
-                    txtTelefono.Text = seleccionada.telefono;
-                    txtHorario.Text = seleccionada.horarioAtencion;
-                    txtCorreo.Text = seleccionada.correo;
-                    txtFoto.Text = seleccionada.urlImagen;
-                    txtWeb.Text = seleccionada.urlWeb;
-
-                    txtCalle.Text = seleccionada.direccion.calle;
-                    txtAltura.Text = seleccionada.direccion.altura.ToString();
-
-                    if(seleccionada.direccion.piso != 0)
+                    if (Request.QueryString["idFilial"] != null)
                     {
+                        FilialManager manager = new FilialManager();
+                        List<Filial> lista = manager.ListarFiliales(Int32.Parse(Request.QueryString["idFilial"]));
+                        Filial seleccionada = lista[0];
+
+                        txtIdUsuario.Text = seleccionada.idUsuario.ToString();
+                        txtIdFilial.Text = seleccionada.idFilial.ToString();
+                        txtNombre.Text = seleccionada.nombre;
+                        txtTelefono.Text = seleccionada.telefono;
+                        txtHorario.Text = seleccionada.horarioAtencion;
+                        txtCorreo.Text = seleccionada.correo;
+                        txtFoto.Text = seleccionada.urlImagen;
+                        txtWeb.Text = seleccionada.urlWeb;
+
+                        txtCalle.Text = seleccionada.direccion.calle;
+                        txtAltura.Text = seleccionada.direccion.altura.ToString();
                         txtPiso.Text = seleccionada.direccion.piso.ToString();
+                        txtDepartamento.Text = seleccionada.direccion.departamento;
+                        txtLocalidad.Text = seleccionada.direccion.localidad;
+                        txtCiudad.Text = seleccionada.direccion.ciudad;
+                        txtCodigoPostal.Text = seleccionada.direccion.codigoPostal;
+                        txtProvincia.Text = seleccionada.direccion.provincia;
                     }
-                    else
-                    {
-                        txtPiso.Text = "";
-                    }
-                    
-                    txtDepartamento.Text = seleccionada.direccion.departamento;
-                    txtLocalidad.Text = seleccionada.direccion.localidad;
-                    txtCiudad.Text = seleccionada.direccion.ciudad;
-                    txtCodigoPostal.Text = seleccionada.direccion.codigoPostal;
-                    txtProvincia.Text = seleccionada.direccion.provincia;
                 }
             }
             catch (Exception ex)
@@ -73,12 +68,12 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
                 filial.correo = txtCorreo.Text;
                 filial.urlImagen = txtFoto.Text;
                 filial.urlWeb = txtWeb.Text;
+
+                filial.direccion = new Direccion();
+
                 filial.direccion.calle = txtCalle.Text;
                 filial.direccion.altura = int.Parse(txtAltura.Text);
-                if(txtPiso.Text != "")
-                {
-                    filial.direccion.piso = int.Parse(txtPiso.Text);
-                }
+                filial.direccion.piso = int.Parse(txtPiso.Text);
                 filial.direccion.departamento = txtDepartamento.Text;
                 filial.direccion.localidad = txtLocalidad.Text;
                 filial.direccion.ciudad = txtCiudad.Text;

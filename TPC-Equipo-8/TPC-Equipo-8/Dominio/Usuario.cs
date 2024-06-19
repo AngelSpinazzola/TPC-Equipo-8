@@ -13,10 +13,6 @@ namespace TPC_Equipo_8.Dominio
         public int rol { get; set; }
         public Direccion direccion { get; set; }
 
-        public Usuario()
-        {
-            direccion = new Direccion();
-        }
 
     }
 }

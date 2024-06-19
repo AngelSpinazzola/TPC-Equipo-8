@@ -44,11 +44,11 @@
             </div>
             <div class="col-md-2">
                 <label for="txtAltura" class="form-label">Altura</label>
-                <asp:TextBox ID="txtAltura" runat="server" type="number" class="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtAltura" runat="server" type="text" class="form-control"></asp:TextBox>
             </div>
             <div class="col-md-2">
                 <label for="txtPiso" class="form-label">Piso</label>
-                <asp:TextBox ID="txtPiso" runat="server" type="number" class="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtPiso" runat="server" type="text" class="form-control"></asp:TextBox>
             </div>
             <div class="col-md-2">
                 <label for="txtDepartamento" class="form-label">Departamento</label>
