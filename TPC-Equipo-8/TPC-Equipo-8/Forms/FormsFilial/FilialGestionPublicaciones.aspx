@@ -5,6 +5,15 @@
     <h1>GESTION DE PUBLICACIONES DE LA FILIAL</h1>
 
     <div class="container" style="margin-top: 25px;">
+
+        <asp:Button ID="btnCrearPublicacion" runat="server" Text="Crear Publicacion" OnClick="btnCrearPublicacion_Click" CssClass="btn btn-success" />
+
+    </div>
+
+
+  
+
+    <div class="container" style="margin-top: 25px;">
     <div class="row">
         <asp:Repeater ID="repPublicacionesFilial" runat="server">
             <ItemTemplate>

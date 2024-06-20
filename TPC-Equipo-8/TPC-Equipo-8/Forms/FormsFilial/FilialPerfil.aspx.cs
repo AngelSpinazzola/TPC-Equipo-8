@@ -11,6 +11,33 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int id;
+            if (TextBoxLogin.Text == "")
+            {
+                id = 1;
+
+            }
+            else
+            {
+                id = Convert.ToInt32(TextBoxLogin.Text);
+            }
+            Session.Add("Filialid", id);
+
+        }
+
+        protected void ButtonLogin_Click(object sender, EventArgs e)
+        {
+            int id;
+            if (TextBoxLogin.Text == "")
+            {
+                id = 1;
+
+            }
+            else
+            {
+                id = Convert.ToInt32(TextBoxLogin.Text);
+            }
+            Session.Add("Filialid", id);
 
         }
     }

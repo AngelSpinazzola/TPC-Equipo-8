@@ -13,17 +13,8 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int id;
-            if(TextBoxPrueba.Text=="")
-            {
-                id = 1;
-              
-            }
-            else
-            {
-                id = Convert.ToInt32(TextBoxPrueba.Text);
-            }
-           
+
+           int id = Convert.ToInt32(Session["Filialid"]);
            FilialManager managerFilial = new FilialManager();
            DonacionManager manager = new DonacionManager();
 
@@ -41,8 +32,8 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         protected void ButtonPrueba_Click(object sender, EventArgs e)
         {
-            string text = TextBoxPrueba.Text;
-            int id = Convert.ToInt32(TextBoxPrueba.Text);
+            int id = Convert.ToInt32(Session["Filialid"]);
+            
             //FilialManager manager = new FilialManager();
             FilialManager managerFilial = new FilialManager();
             DonacionManager manager = new DonacionManager();
@@ -53,7 +44,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(id);
             dgvHomeFilialDonantes.DataBind();
 
-            Session.Add("Filialid", id);
+           
         }
 
         protected void dgvHomeFilial_RowDataBound(object sender, GridViewRowEventArgs e)

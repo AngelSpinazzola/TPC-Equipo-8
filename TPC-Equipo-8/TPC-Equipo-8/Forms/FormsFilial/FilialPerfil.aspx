@@ -3,4 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>PERFIL FILIAL</h1>
+    <asp:Label ID="Labelogin" runat="server" Text="ID FILIAL"></asp:Label>
+    <asp:TextBox ID="TextBoxLogin" runat="server"></asp:TextBox>
+    <asp:Button ID="ButtonLogin" runat="server" Text="Login" OnClick="ButtonLogin_Click"/>
 </asp:Content>

@@ -80,6 +80,7 @@
     <Content Include="Forms\FormsDonante\DonanteHome.aspx" />
     <Content Include="Forms\FormsDonante\DonantePerfil.aspx" />
     <Content Include="Forms\FormsDonante\DonantePublicaciones.aspx" />
+    <Content Include="Forms\FormsFilial\FilialAltaPublicacion.aspx" />
     <Content Include="Forms\FormsFilial\FilialGestionDonantes.aspx" />
     <Content Include="Forms\FormsFilial\FilialGestionPublicaciones.aspx" />
     <Content Include="Forms\FormsFilial\FilialHome.aspx" />
@@ -149,6 +150,13 @@
     </Compile>
     <Compile Include="Forms\FormsDonante\DonantePublicaciones.aspx.designer.cs">
       <DependentUpon>DonantePublicaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsFilial\FilialAltaPublicacion.aspx.cs">
+      <DependentUpon>FilialAltaPublicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsFilial\FilialAltaPublicacion.aspx.designer.cs">
+      <DependentUpon>FilialAltaPublicacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormsFilial\FilialGestionDonantes.aspx.cs">
       <DependentUpon>FilialGestionDonantes.aspx</DependentUpon>

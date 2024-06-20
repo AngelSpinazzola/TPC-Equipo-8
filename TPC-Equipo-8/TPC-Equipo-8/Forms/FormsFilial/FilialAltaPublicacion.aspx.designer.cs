@@ -11,25 +11,25 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 {
 
 
-    public partial class FilialGestionPublicaciones
+    public partial class FilialAltaPublicacion
     {
 
         /// <summary>
-        /// Control btnCrearPublicacion.
+        /// Control txtNombreReceptor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCrearPublicacion;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreReceptor;
 
         /// <summary>
-        /// Control repPublicacionesFilial.
+        /// Control DropDownTipoSangre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repPublicacionesFilial;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownTipoSangre;
     }
 }

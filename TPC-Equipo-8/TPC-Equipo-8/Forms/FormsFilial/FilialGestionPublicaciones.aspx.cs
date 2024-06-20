@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TPC_Equipo_8.Dominio;
 using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsFilial
@@ -25,6 +26,11 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             }
 
 
+        }
+
+        protected void btnCrearPublicacion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FilialAltaPublicacion.aspx",false);
         }
     }
 }
