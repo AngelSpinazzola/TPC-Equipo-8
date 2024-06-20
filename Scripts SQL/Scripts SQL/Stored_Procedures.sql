@@ -223,3 +223,40 @@ BEGIN
 		THROW
 	END CATCH
 END
+
+GO
+
+-- PROCEDURE PARA CREAR UNA PUBLICACION
+
+CREATE OR ALTER PROCEDURE SP_AgregarPublicacion
+    @IdFilial INT,
+    @NombreReceptor NVARCHAR(50),
+    @IdGrupoSanguineo INT,
+    @IdUrgencia INT,
+    @DonantesNecesarios INT,
+    @Horario NVARCHAR(100),
+    @FechaLimite DATE,
+    @Estado BIT
+AS
+BEGIN
+    
+    INSERT INTO Publicaciones (
+        IdFilial,
+        NombreReceptor,
+        IdGrupoSanguineo,
+        IdUrgencia,
+        DonantesNecesarios,
+        Horario,
+        FechaLimite,
+        Estado
+    ) VALUES (
+        @IdFilial,
+        @NombreReceptor,
+        @IdGrupoSanguineo,
+        @IdUrgencia,
+        @DonantesNecesarios,
+        @Horario,
+        @FechaLimite,
+        @Estado
+    )
+END

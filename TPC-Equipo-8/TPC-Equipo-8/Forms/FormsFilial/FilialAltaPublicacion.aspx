@@ -11,6 +11,12 @@
                 <label for="txtNombre" class="form-label">Nombre Receptor</label>
                 <asp:TextBox ID="txtNombreReceptor" runat="server" type="text" class="form-control"></asp:TextBox>
             </div>
+
+            <div class="col-12">
+                <label for="txtApellido" class="form-label">Apellido Receptor</label>
+                <asp:TextBox ID="txtApellidoRecptor" runat="server" type="text" class="form-control"></asp:TextBox>
+            </div>
+
             <div class="col-12" >
                 <label for="tipoSangre" class="form-label">Tipo de Sangrue</label>
                     <asp:DropDownList ID="DropDownTipoSangre" runat="server" CssClass="form-select">
@@ -34,8 +40,28 @@
                 </asp:DropDownList>
             </div>
 
+            <div class="col-12">
+                <label for="txtDonantesNec" class="form-label">Donantes Necesarios</label>
+                <asp:TextBox ID="txtDonantesNec" runat="server" type="text" class="form-control"></asp:TextBox>
+            </div>
 
+            <div class="col-12">
+                <label for="txtHorarios" class="form-label">Horarios</label>
+                <asp:TextBox ID="textHorarios" runat="server" type="text" class="form-control"></asp:TextBox>
+            </div>
+
+            <div class="col-12">
+                <label for="txtFecha" class="form-label">Fecha Limite</label>
+                <asp:TextBox ID="textFecha" runat="server" TextMode="Date" type="text" class="form-control"></asp:TextBox>
+            </div>
+
+            
         </div>
+        <div class="col-12" style="margin-top: 25px;">
+            <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-success " Text="Crear Publicacion" OnClick="btnCrear_Click" />
+            <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-danger " Text="Cancelar" OnClick="btnCancelar_Click" />
+        </div>
+      
 
     </div>
     

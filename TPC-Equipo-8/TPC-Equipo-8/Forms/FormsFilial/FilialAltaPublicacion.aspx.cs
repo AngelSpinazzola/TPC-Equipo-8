@@ -12,6 +12,18 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected void Page_Load(object sender, EventArgs e)
         {
 
+
+
+        }
+
+        protected void btnCrear_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FilialGestionPublicaciones.aspx", false);
         }
     }
 }
