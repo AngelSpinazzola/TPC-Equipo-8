@@ -13,8 +13,24 @@
             </div>
             <div class="col-12" >
                 <label for="tipoSangre" class="form-label">Tipo de Sangrue</label>
-                <asp:DropDownList ID="DropDownTipoSangre" runat="server" CssClass="form-select">
+                    <asp:DropDownList ID="DropDownTipoSangre" runat="server" CssClass="form-select">
+                        <asp:ListItem Text="A+" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="A-" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="B+" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="B-" Value="4"></asp:ListItem>
+                        <asp:ListItem Text="AB+" Value="5"></asp:ListItem>
+                        <asp:ListItem Text="AB-" Value="6"></asp:ListItem>
+                        <asp:ListItem Text="O+" Value="7"></asp:ListItem>
+                        <asp:ListItem Text="O-" Value="8"></asp:ListItem>
+                    </asp:DropDownList>
+            </div>
 
+            <div class="col-12">
+                <label for="urgencia" class="form-label">Urgencia</label>
+                <asp:DropDownList ID="DropDownUrgencia" runat="server" CssClass="form-select">
+                    <asp:ListItem Text="Baja" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Media" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="Alta" Value="3"></asp:ListItem>
                 </asp:DropDownList>
             </div>
 
