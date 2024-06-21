@@ -260,3 +260,14 @@ BEGIN
         @Estado
     )
 END
+GO
+
+-- PROCEDURE PARA LOGUEAR
+
+CREATE OR ALTER PROCEDURE SP_Loguear
+	@Email NVARCHAR(75),
+	@Pass NVARCHAR(75)
+AS
+BEGIN
+	SELECT U.IdUsuario, U.IdRol FROM Usuarios U WHERE U.Email = @Email AND U.Pass = @Pass
+END

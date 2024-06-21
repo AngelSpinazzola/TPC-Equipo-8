@@ -33,12 +33,15 @@ CREATE TABLE Localidades(
 
 CREATE TABLE Usuarios(
 	IdUsuario INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-	Username NVARCHAR(30) NOT NULL UNIQUE,
-	Pass NVARCHAR(50)NOT NULL,
-	IdRol INT NOT NULL FOREIGN KEY REFERENCES Roles(IdRol),
+	Username NVARCHAR(30) NULL,
+	Email NVARCHAR(50) NOT NULL,
+	Pass NVARCHAR(50) NOT NULL,
+	IdRol INT NOT NULL FOREIGN KEY REFERENCES Roles(IdRol) DEFAULT 3,
 	FechaAlta DATETIME NOT NULL DEFAULT GETDATE(),
 	Estado BIT NOT NULL DEFAULT 1
+	CONSTRAINT UQ_Email_Pass UNIQUE (Email, Pass)
 )
+
 
 CREATE TABLE Direcciones_x_Usuario(
 	IdDireccion INT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -65,12 +68,12 @@ CREATE TABLE DonacionesPosibles(
 CREATE TABLE Donantes(
 	IdDonante INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 	IdUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuarios(IdUsuario),
-	Nombre NVARCHAR(50) NOT NULL,
-	Apellido NVARCHAR(50) NOT NULL,
+	Nombre NVARCHAR(50) NULL,
+	Apellido NVARCHAR(50) NULL,
 	Dni NVARCHAR(30) NOT NULL,
-	FechaNacimiento DATE NOT NULL,
-	IdGrupoSanguineo INT NOT NULL FOREIGN KEY REFERENCES GruposSanguineos(IdGrupoSanguineo),
-	UrlFoto NVARCHAR(1000)
+	FechaNacimiento DATE NULL,
+	IdGrupoSanguineo INT NULL FOREIGN KEY REFERENCES GruposSanguineos(IdGrupoSanguineo),
+	UrlFoto NVARCHAR(1000) NULL
 )
 
 CREATE TABLE Filiales(
@@ -125,13 +128,7 @@ CREATE TABLE ProximosDonantes(
 	FechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
 )
 
-CREATE TABLE Cuentas(
-	IdCuenta INT NOT NULL PRIMARY KEY IDENTITY (1,1),
-	IdUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuarios(IdUsuario),
-	Email VARCHAR(75) NOT NULL,
-	Pass VARCHAR(75) NOT NULL
-	CONSTRAINT UQ_Email_Pass UNIQUE (Email, Pass)
-)
+
 
 Insert Into Roles(IdRol, Nombre)
 Values
@@ -444,21 +441,21 @@ INSERT INTO Localidades (IdCiudad, Nombre, CodigoPostal) VALUES
 (71, 'Palermo', '1425'),
 (71, 'Villa Devoto', '1419')
 
-Insert Into Usuarios (Username, Pass, IdRol)
+Insert Into Usuarios (Username, Email, Pass, IdRol)
 Values 
-('juan.admin', 'juan123', 1),
-('San.Gabriel.filial', 'sanga2', 3),
-('raul.donante', 'raul123', 2),
-('un.donante', 'abc123', 2),
-('paco.donante', 'soypaco', 2),
-('jorgito.donante', '123456', 2),
-('pedro.donante', 'aguantedonar', 2),
-('pablito.donante', 'donamadonna', 2),
-('hospital.pirovano', 'soyfilial', 3),
-('velez.sarfield', 'fil123', 3),
-('imaginacion.filial', 'img159', 3),
-('otra.filial', '159753', 3),
-('ultima.filial', 'junio1', 3)
+('juan.admin', 'juanadmin@gmail.com', 'juan123', 1),
+('San.Gabriel.filial', 'sangabriel@gmail.com', 'sanga2', 3),
+('raul.donante', 'rauldonante@gmail.com', 'raul123', 2),
+('un.donante', 'randomuser@gmail.com', 'abc123', 2),
+('paco.donante', 'pacodona@gmail.com', 'soypaco', 2),
+('jorgito.donante', 'jorgedona@gmail.com', '123456', 2),
+('pedro.donante', 'pedrodona@gmail.com', 'aguantedonar', 2),
+('pablito.donante', 'pablodonadaleee@gmail.com', 'donamadonna', 2),
+('hospital.pirovano', 'pirovano@gmail.com', 'soyfilial', 3),
+('velez.sarfield', 'velezsarfield@gmail.com', 'fil123', 3),
+('imaginacion.filial', 'imaginate@gmail.com', 'img159', 3),
+('otra.filial', 'otramas@gmail.com', '159753', 3),
+('ultima.filial', 'laultima@gmail.com', 'junio1', 3)
 
 Insert Into Direcciones_x_Usuario (IdUsuario, IdLocalidad, Calle, Altura, Piso, Departamento, Comentarios) 
 Values 
@@ -565,8 +562,3 @@ INSERT INTO ProximosDonantes(IdDonante, IdFilial, IdPublicacion) VALUES
 (4, 1, 1),
 (2, 1, 1),
 (1, 1, 1)
-
-INSERT INTO Cuentas VALUES
-(1, 'juan@gmail.com', '321'), -- ADMIN
-(2, 'clinicaSanGabriel@gmail.com', '123'), -- FILIAL
-(3, 'raul@gmail.com', '12345') -- DONANTE
