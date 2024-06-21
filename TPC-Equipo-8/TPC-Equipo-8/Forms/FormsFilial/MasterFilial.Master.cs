@@ -13,18 +13,21 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Seguridad.sessionActiva(Session["usuario"]))
+            if (!IsPostBack)
             {
-                Response.Redirect("../FormsGlobales/Login.aspx");
-            }
-            else
-            {
-                Usuario usuario = (Usuario)Session["usuario"];
-                if (usuario.TipoUsuario != TipoUsuario.FILIAL)
+                if (Session["usuario"] == null || ((Usuario)Session["usuario"]).TipoUsuario != TipoUsuario.FILIAL)
                 {
-                    Response.Redirect("../FormsGlobales/FilialHome.aspx");
+                    Response.Redirect("../FormsGlobales/Login.aspx");
                 }
             }
+        }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+
+            Response.Redirect("../FormsGlobales/Default.aspx");
         }
     }
 }

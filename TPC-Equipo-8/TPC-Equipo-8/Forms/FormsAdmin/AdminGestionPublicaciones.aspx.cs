@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TPC_Equipo_8.Dominio;
 using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsAdmin

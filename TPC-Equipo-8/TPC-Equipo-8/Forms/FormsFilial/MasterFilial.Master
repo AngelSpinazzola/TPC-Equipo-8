@@ -36,7 +36,7 @@
                                 <a class="nav-link" href="FilialPerfil.aspx">Perfil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link disabled" href="#">LogOut</a>
+                                <asp:Button ID="btnSalir" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
                             </li>
                         </ul>
                     </div>

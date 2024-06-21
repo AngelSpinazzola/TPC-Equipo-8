@@ -40,7 +40,6 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
                     }
                     else
                     {
-                        // Redirección por defecto o manejo de errores
                         Response.Redirect("../FormsGlobales/Default.aspx", false);
                     }
                 }

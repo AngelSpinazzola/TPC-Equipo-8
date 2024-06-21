@@ -34,13 +34,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="Default.aspx">Home</a>
                             </li>
+                            <%if (Session["usuario"] == null) { %>
                             <li class="nav-item">
                                 <a class="nav-link" href="LogIn.aspx">Ingresá</a>
                             </li>
-
+                            <%} else { %>
                             <li class="nav-item">
-                                <a class="nav-link" href="Default.aspx">Salir</a>
+                                <asp:Button ID="btnSalir" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
                             </li>
+                            <%} %>
                         </ul>
                     </div>
                 </div>

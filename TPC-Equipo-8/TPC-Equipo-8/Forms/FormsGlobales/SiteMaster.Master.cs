@@ -14,5 +14,11 @@ namespace TPC_Equipo_8
         {
             
         }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+        }
     }
 }

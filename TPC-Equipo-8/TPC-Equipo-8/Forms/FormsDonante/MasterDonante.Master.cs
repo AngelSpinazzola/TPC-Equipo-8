@@ -14,5 +14,13 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         {
 
         }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+
+            Response.Redirect("../FormsGlobales/Default.aspx");
+        }
     }
 }

@@ -13,12 +13,10 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             try
             {
                 if(!IsPostBack)
                 {
-
                     if (Request.QueryString["idFilial"] != null)
                     {
                         FilialManager manager = new FilialManager();
