@@ -76,18 +76,18 @@
     <Content Include="Forms\FormsAdmin\AdminPerfil.aspx" />
     <Content Include="Forms\FormsDonante\Content\styles\StyleDonanteDetalleFilial.css" />
     <Content Include="Forms\FormsDonante\Content\styles\StyleDonanteHome.css" />
-    <Content Include="Forms\FormsDonante\DonanteDetalleFilial.aspx" />
-    <Content Include="Forms\FormsDonante\DonanteHome.aspx" />
+    <Content Include="Forms\FormsDonante\DonanteFormularioDonacion.aspx" />
     <Content Include="Forms\FormsDonante\DonantePerfil.aspx" />
-    <Content Include="Forms\FormsDonante\DonantePublicaciones.aspx" />
     <Content Include="Forms\FormsFilial\FilialAltaPublicacion.aspx" />
     <Content Include="Forms\FormsFilial\FilialGestionDonantes.aspx" />
     <Content Include="Forms\FormsFilial\FilialGestionPublicaciones.aspx" />
     <Content Include="Forms\FormsFilial\FilialHome.aspx" />
     <Content Include="Forms\FormsFilial\FilialPerfil.aspx" />
     <Content Include="Forms\FormsGlobales\Default.aspx" />
+    <Content Include="Forms\FormsGlobales\DetalleFilial.aspx" />
     <Content Include="Forms\FormsGlobales\Error.aspx" />
     <Content Include="Forms\FormsGlobales\LogIn.aspx" />
+    <Content Include="Forms\FormsGlobales\PublicacionesDonantes.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -124,19 +124,12 @@
     <Compile Include="Forms\FormsAdmin\AdminPerfil.aspx.designer.cs">
       <DependentUpon>AdminPerfil.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormsDonante\DonanteDetalleFilial.aspx.cs">
-      <DependentUpon>DonanteDetalleFilial.aspx</DependentUpon>
+    <Compile Include="Forms\FormsDonante\DonanteFormularioDonacion.aspx.cs">
+      <DependentUpon>DonanteFormularioDonacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\FormsDonante\DonanteDetalleFilial.aspx.designer.cs">
-      <DependentUpon>DonanteDetalleFilial.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormsDonante\DonanteHome.aspx.cs">
-      <DependentUpon>DonanteHome.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\FormsDonante\DonanteHome.aspx.designer.cs">
-      <DependentUpon>DonanteHome.aspx</DependentUpon>
+    <Compile Include="Forms\FormsDonante\DonanteFormularioDonacion.aspx.designer.cs">
+      <DependentUpon>DonanteFormularioDonacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormsDonante\DonantePerfil.aspx.cs">
       <DependentUpon>DonantePerfil.aspx</DependentUpon>
@@ -144,13 +137,6 @@
     </Compile>
     <Compile Include="Forms\FormsDonante\DonantePerfil.aspx.designer.cs">
       <DependentUpon>DonantePerfil.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormsDonante\DonantePublicaciones.aspx.cs">
-      <DependentUpon>DonantePublicaciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\FormsDonante\DonantePublicaciones.aspx.designer.cs">
-      <DependentUpon>DonantePublicaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormsFilial\FilialAltaPublicacion.aspx.cs">
       <DependentUpon>FilialAltaPublicacion.aspx</DependentUpon>
@@ -220,6 +206,13 @@
     <Compile Include="Forms\FormsFilial\MasterFilial.Master.designer.cs">
       <DependentUpon>MasterFilial.Master</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormsGlobales\DetalleFilial.aspx.cs">
+      <DependentUpon>DetalleFilial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsGlobales\DetalleFilial.aspx.designer.cs">
+      <DependentUpon>DetalleFilial.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormsGlobales\Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -233,6 +226,13 @@
     </Compile>
     <Compile Include="Forms\FormsGlobales\LogIn.aspx.designer.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsGlobales\PublicacionesDonantes.aspx.cs">
+      <DependentUpon>PublicacionesDonantes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsGlobales\PublicacionesDonantes.aspx.designer.cs">
+      <DependentUpon>PublicacionesDonantes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

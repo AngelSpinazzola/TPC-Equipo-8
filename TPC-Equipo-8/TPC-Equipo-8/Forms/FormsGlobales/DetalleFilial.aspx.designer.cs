@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace TPC_Equipo_8.Forms.FormsDonante
+namespace TPC_Equipo_8.Forms.FormsGlobales
 {
 
 
-    public partial class DonanteDetalleFilial
+    public partial class DetalleFilial
     {
 
         /// <summary>

@@ -32,7 +32,7 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
                     }
                     else if (usuario.TipoUsuario == TipoUsuario.DONANTE)
                     {
-                        Response.Redirect("../FormsDonante/DonanteHome.aspx", false);
+                        Response.Redirect("Default.aspx", false);
                     }
                     else if (usuario.TipoUsuario == TipoUsuario.ADMIN)
                     {

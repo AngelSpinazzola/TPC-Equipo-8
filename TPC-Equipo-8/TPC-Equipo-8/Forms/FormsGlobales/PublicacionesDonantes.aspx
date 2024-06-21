@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsDonante/MasterDonante.Master" AutoEventWireup="true" CodeBehind="DonantePublicaciones.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsDonante.DonantePublicaciones" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsGlobales/SiteMaster.Master" AutoEventWireup="true" CodeBehind="PublicacionesDonantes.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsGlobales.PublicacionesDonantes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <div class="container" style="margin-top: 25px;">
         <div class="row">
             <asp:Repeater ID="repPublicaciones" runat="server">
@@ -22,7 +21,7 @@
                                 <li class="list-group-item"><strong>Fecha Limite: </strong><%# Eval("fechaLimite") %></li>
                             </ul>
                             <div class="card-body">
-                                <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary" Text="Donar" />
+                                <asp:Button ID="btnDonar" OnClick="btnDonar_Click" runat="server" CssClass="btn btn-primary" Text="Donar" />
                             </div>
                         </div>
                     </div>
@@ -30,5 +29,4 @@
             </asp:Repeater>
         </div>
     </div>
-
 </asp:Content>

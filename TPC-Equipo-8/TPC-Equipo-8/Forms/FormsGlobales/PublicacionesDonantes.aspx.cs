@@ -8,13 +8,14 @@ using System.Web.UI.WebControls;
 using TPC_Equipo_8.Dominio;
 using TPC_Equipo_8.Manager;
 
-namespace TPC_Equipo_8.Forms.FormsDonante
+namespace TPC_Equipo_8.Forms.FormsGlobales
 {
-    public partial class DonantePublicaciones : System.Web.UI.Page
+    public partial class PublicacionesDonantes : System.Web.UI.Page
     {
         public AccesoDatos datos = new AccesoDatos();
         public List<Publicacion> ListaPublicaciones { get; set; }
         public Filial filialSeleccionada { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             PublicacionesManager manager = new PublicacionesManager();
@@ -34,27 +35,38 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 repPublicaciones.DataSource = ListaPublicaciones;
                 repPublicaciones.DataBind();
             }
-
         }
 
-        public string ObtenerPosiblesDonantes(int grupoReceptor)
+        protected void btnDonar_Click(object sender, EventArgs e)
         {
-            datos.setearProcedimiento("SP_PosiblesDonantes");
-            datos.setearParametro("@IdGrupoSanguineo", grupoReceptor);
-            datos.ejecutarLectura();
-
-            List<string> gruposDonantes = new List<string>();
-
-            while (datos.Lector.Read())
+            if (Session["usuario"] == null)
             {
-                gruposDonantes.Add(datos.Lector["Grupo"].ToString());
-
+                Response.Redirect("Login.aspx");
             }
-
-            string concat = string.Join(", ", gruposDonantes);
-
-            return concat;
         }
+
+
+
+
+        //public string ObtenerPosiblesDonantes(int grupoReceptor)
+        //{
+        //    datos.setearProcedimiento("SP_PosiblesDonantes");
+        //    datos.setearParametro("@IdGrupoSanguineo", grupoReceptor);
+        //    datos.ejecutarLectura();
+
+        //    List<string> gruposDonantes = new List<string>();
+
+        //    while (datos.Lector.Read())
+        //    {
+        //        gruposDonantes.Add(datos.Lector["Grupo"].ToString());
+
+        //    }
+
+        //    string concat = string.Join(", ", gruposDonantes);
+
+        //    return concat;
+        //}
+
 
     }
 }

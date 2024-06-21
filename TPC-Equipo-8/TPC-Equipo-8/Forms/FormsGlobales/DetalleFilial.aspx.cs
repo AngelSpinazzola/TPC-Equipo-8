@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 using TPC_Equipo_8.Dominio;
 using TPC_Equipo_8.Manager;
 
-namespace TPC_Equipo_8.Forms.FormsDonante
+namespace TPC_Equipo_8.Forms.FormsGlobales
 {
-    public partial class DonanteDetalleFilial : System.Web.UI.Page
+    public partial class DetalleFilial : System.Web.UI.Page
     {
         public List<Filial> ListaFiliales { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -50,11 +51,11 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 seleccionadas = (List<Filial>)Session["Seleccion"];
             }
 
-            foreach(Filial item in ListaFiliales)
+            foreach (Filial item in ListaFiliales)
             {
-                if(idFilial == item.idFilial)
+                if (idFilial == item.idFilial)
                 {
-                    if(!seleccionadas.Any(a => a.idFilial == item.idFilial))
+                    if (!seleccionadas.Any(a => a.idFilial == item.idFilial))
                     {
                         seleccionadas.Add(item);
                     }
@@ -63,8 +64,7 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             }
 
             Session["Seleccion"] = seleccionadas;
-            Response.Redirect("DonantePublicaciones.aspx?idFilial=" + idFilial);
-
+            Response.Redirect("PublicacionesDonantes.aspx?idFilial=" + idFilial);
         }
 
         protected string ObtenerDireccionFilial(int idFilial)
@@ -74,6 +74,5 @@ namespace TPC_Equipo_8.Forms.FormsDonante
 
             return direccion;
         }
-
     }
 }
