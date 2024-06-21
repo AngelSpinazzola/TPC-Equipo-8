@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TPC_Equipo_8.Dominio;
+using TPC_Equipo_8.Helpers;
 
 namespace TPC_Equipo_8.Forms.FormsFilial
 {
@@ -11,7 +13,18 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Seguridad.sessionActiva(Session["usuario"]))
+            {
+                Response.Redirect("../FormsGlobales/Login.aspx");
+            }
+            else
+            {
+                Usuario usuario = (Usuario)Session["usuario"];
+                if (usuario.TipoUsuario != TipoUsuario.FILIAL)
+                {
+                    Response.Redirect("../FormsGlobales/FilialHome.aspx");
+                }
+            }
         }
     }
 }

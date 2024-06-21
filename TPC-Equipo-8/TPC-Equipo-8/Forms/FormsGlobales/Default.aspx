@@ -6,10 +6,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <a href="../FormsDonante/DonanteHome.aspx">DONANTE</a>
-    <a href="../FormsFilial/FilialHome.aspx">FILIAL</a>
-    <a href="../FormsAdmin/AdminGestionFiliales.aspx">ADMINISTRADOR</a>
-
     <div class="container">
 
         <!-- Imagen principal -->

@@ -30,20 +30,20 @@ namespace TPC_Equipo_8.Manager
                     switch (rol)
                     {
                         case 1:
-                            usuario.TipoUsuario = TipoUsuario.DONANTE;
+                            usuario.TipoUsuario = TipoUsuario.ADMIN;
                             break;
 
                         case 2:
-                            usuario.TipoUsuario = TipoUsuario.FILIAL;
+                            usuario.TipoUsuario = TipoUsuario.DONANTE;
                             break;
 
                         case 3:
-                            usuario.TipoUsuario = TipoUsuario.ADMIN;
+                            usuario.TipoUsuario = TipoUsuario.FILIAL;
                             break;
+
                     }
 
-
-                    return true;
+                    return true; 
                 }
                 return false;
             }

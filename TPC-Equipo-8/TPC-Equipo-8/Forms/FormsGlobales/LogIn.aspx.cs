@@ -26,7 +26,23 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
                 if (usuarioManager.Loguear(usuario))
                 {
                     Session.Add("usuario", usuario);
-                    Response.Redirect("../FormsDonante/DonanteHome.aspx", false);
+                    if (usuario.TipoUsuario == TipoUsuario.FILIAL)
+                    {
+                        Response.Redirect("../FormsFilial/FilialHome.aspx", false);
+                    }
+                    else if (usuario.TipoUsuario == TipoUsuario.DONANTE)
+                    {
+                        Response.Redirect("../FormsDonante/DonanteHome.aspx", false);
+                    }
+                    else if (usuario.TipoUsuario == TipoUsuario.ADMIN)
+                    {
+                        Response.Redirect("../FormsAdmin/AdminGestionFiliales.aspx", false);
+                    }
+                    else
+                    {
+                        // Redirección por defecto o manejo de errores
+                        Response.Redirect("../FormsGlobales/Default.aspx", false);
+                    }
                 }
                 else
                 {

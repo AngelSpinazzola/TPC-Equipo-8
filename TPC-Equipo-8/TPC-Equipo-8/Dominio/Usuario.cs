@@ -7,9 +7,9 @@ namespace TPC_Equipo_8.Dominio
 {
     public enum TipoUsuario
     {
-        DONANTE = 1,
-        FILIAL = 2,
-        ADMIN = 3
+        ADMIN = 1,
+        DONANTE = 2,
+        FILIAL = 3,
     }
     public class Usuario
     {

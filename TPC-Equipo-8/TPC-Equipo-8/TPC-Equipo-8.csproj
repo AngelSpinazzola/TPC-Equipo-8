@@ -237,6 +237,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Seguridad.cs" />
     <Compile Include="Manager\DonacionManager.cs" />
     <Compile Include="Manager\FilialManager.cs" />
     <Compile Include="Manager\ProximasDonacionesManager.cs" />
