@@ -125,6 +125,14 @@ CREATE TABLE ProximosDonantes(
 	FechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
 )
 
+CREATE TABLE Cuentas(
+	IdCuenta INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+	IdUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuarios(IdUsuario),
+	Email VARCHAR(75) NOT NULL,
+	Pass VARCHAR(75) NOT NULL
+	CONSTRAINT UQ_Email_Pass UNIQUE (Email, Pass)
+)
+
 Insert Into Roles(IdRol, Nombre)
 Values
 (1,'Administrador'),
@@ -557,3 +565,8 @@ INSERT INTO ProximosDonantes(IdDonante, IdFilial, IdPublicacion) VALUES
 (4, 1, 1),
 (2, 1, 1),
 (1, 1, 1)
+
+INSERT INTO Cuentas VALUES
+(1, 'juan@gmail.com', '321'), -- ADMIN
+(2, 'clinicaSanGabriel@gmail.com', '123'), -- FILIAL
+(3, 'raul@gmail.com', '12345') -- DONANTE
