@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TPC_Equipo_8.Dominio;
+using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsFilial
 {
@@ -18,7 +20,22 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         protected void btnCrear_Click(object sender, EventArgs e)
         {
+            Publicacion nuevaPublicacion = new Publicacion();
 
+
+            nuevaPublicacion.filial = Session["Filialid"].ToString();
+            nuevaPublicacion.nombreReceptor = txtNombreReceptor.Text;
+            nuevaPublicacion.grupoSanguineo = DropDownTipoSangre.SelectedValue;
+            nuevaPublicacion.urgencia = DropDownUrgencia.SelectedValue;
+            nuevaPublicacion.donantesNecesarios = int.Parse(txtDonantesNec.Text);
+            nuevaPublicacion.horarios= textHorarios.Text;
+            nuevaPublicacion.fechaLimite= DateTime.Parse(textFecha.Text);
+            nuevaPublicacion.estado = true;
+
+            PublicacionesManager manager = new PublicacionesManager();
+            manager.AgregarPublicacion(nuevaPublicacion);
+
+            Response.Redirect("FilialGestionPublicaciones.aspx", false);
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

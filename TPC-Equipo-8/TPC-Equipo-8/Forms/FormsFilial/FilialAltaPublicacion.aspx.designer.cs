@@ -24,15 +24,6 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected global::System.Web.UI.WebControls.TextBox txtNombreReceptor;
 
         /// <summary>
-        /// Control txtApellidoRecptor.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApellidoRecptor;
-
-        /// <summary>
         /// Control DropDownTipoSangre.
         /// </summary>
         /// <remarks>

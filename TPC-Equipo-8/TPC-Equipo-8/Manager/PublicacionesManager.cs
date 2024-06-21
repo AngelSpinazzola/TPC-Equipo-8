@@ -85,5 +85,45 @@ namespace TPC_Equipo_8.Manager
                 datos.cerrarConexion();
             }
         }
+
+        public void AgregarPublicacion(Publicacion publicacion)
+        {
+            
+            int idFilial = int.Parse(publicacion.filial);
+            int idGrupoSanguineo = int.Parse(publicacion.grupoSanguineo);
+            int idUrgencia = int.Parse(publicacion.urgencia);
+
+
+
+            try
+            {
+                datos.setearProcedimiento("SP_AgregarPublicacion");
+                datos.setearParametro("@IdFilial", idFilial);
+                datos.setearParametro("@NombreReceptor", publicacion.nombreReceptor);
+                datos.setearParametro("@IdGrupoSanguineo", idGrupoSanguineo);
+                datos.setearParametro("@IdUrgencia", idUrgencia);
+                datos.setearParametro("@DonantesNecesarios", publicacion.donantesNecesarios);
+                datos.setearParametro("@Horario", publicacion.horarios);
+                datos.setearParametro("@FechaLimite", publicacion.fechaLimite);
+                datos.setearParametro("@Estado", publicacion.estado);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
+
+
+
+
+
+
 }

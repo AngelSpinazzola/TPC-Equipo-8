@@ -8,14 +8,10 @@
 
         <div class="row g-3">
             <div class="col-12">
-                <label for="txtNombre" class="form-label">Nombre Receptor</label>
+                <label for="txtNombre" class="form-label">Nombre y Apellido del Receptor</label>
                 <asp:TextBox ID="txtNombreReceptor" runat="server" type="text" class="form-control"></asp:TextBox>
             </div>
 
-            <div class="col-12">
-                <label for="txtApellido" class="form-label">Apellido Receptor</label>
-                <asp:TextBox ID="txtApellidoRecptor" runat="server" type="text" class="form-control"></asp:TextBox>
-            </div>
 
             <div class="col-12" >
                 <label for="tipoSangre" class="form-label">Tipo de Sangrue</label>
