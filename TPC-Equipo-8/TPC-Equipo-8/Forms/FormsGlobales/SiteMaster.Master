@@ -37,6 +37,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="LogIn.aspx">Ingresá</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Registro.aspx">Creá tu cuenta</a>
+                            </li>
                             <%} else { %>
                             <li class="nav-item">
                                 <asp:Button ID="btnSalir" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />

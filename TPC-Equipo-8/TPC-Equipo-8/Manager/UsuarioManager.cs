@@ -15,7 +15,7 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
-                datos.setearConsulta("select C.IdUsuario, U.IdRol from Cuentas C JOIN Usuarios U on U.IdUsuario = C.IdUsuario Where C.Email = @Email and C.Pass = @Pass");
+                datos.setearProcedimiento("SP_Loguear");
                 datos.setearParametro("@Email", usuario.email);
                 datos.setearParametro("@Pass", usuario.pass);
 
@@ -56,6 +56,27 @@ namespace TPC_Equipo_8.Manager
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public int insertarNuevo(Usuario nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("");
+                datos.setearParametro("@Email", nuevo.email);
+                datos.setearParametro("@Pass", nuevo.pass);
+
+                return 1;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            return 1;
         }
     }
 }

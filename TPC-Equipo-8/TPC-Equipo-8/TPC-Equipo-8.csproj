@@ -88,6 +88,7 @@
     <Content Include="Forms\FormsGlobales\Error.aspx" />
     <Content Include="Forms\FormsGlobales\LogIn.aspx" />
     <Content Include="Forms\FormsGlobales\PublicacionesDonantes.aspx" />
+    <Content Include="Forms\FormsGlobales\Registro.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -233,6 +234,13 @@
     </Compile>
     <Compile Include="Forms\FormsGlobales\PublicacionesDonantes.aspx.designer.cs">
       <DependentUpon>PublicacionesDonantes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsGlobales\Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsGlobales\Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
