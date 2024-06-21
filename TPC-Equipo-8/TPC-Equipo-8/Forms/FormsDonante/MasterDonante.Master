@@ -26,13 +26,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="DonanteHome.aspx">Home</a>
+                                <a class="nav-link" href="../FormsGlobales/Default.aspx">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="DonantePublicaciones.aspx">Doná</a>
-                            </li>
+                                <a class="nav-link" href="../FormsGlobales/PublicacionesDonantes.aspx">Doná</a>
                             <li class="nav-item">
                                 <a class="nav-link" href="DonantePerfil.aspx">Perfil</a>
+                            </li>
                             </li>
                             <li class="nav-item">
                                 <asp:Button ID="btnSalir" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />

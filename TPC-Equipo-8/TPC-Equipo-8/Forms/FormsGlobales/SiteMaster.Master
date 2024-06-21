@@ -33,18 +33,56 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="Default.aspx">Home</a>
                             </li>
-                            <%if (Session["usuario"] == null) { %>
-                            <li class="nav-item">
-                                <a class="nav-link" href="LogIn.aspx">Ingresá</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Registro.aspx">Creá tu cuenta</a>
-                            </li>
-                            <%} else { %>
-                            <li class="nav-item">
-                                <asp:Button ID="btnSalir" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
-                            </li>
-                            <%} %>
+                           <%if (Session["usuario"] == null) {%>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="LogIn.aspx">Ingresá</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Registro.aspx">Creá tu cuenta</a>
+                                </li>
+                           <% } %>
+                           <%if (Session["usuario"] != null && ObtenerRolUsuario() == 1) {%>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../FormsAdmin/AdminGestionFiliales.aspx">Filiales</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../FormsAdmin/AdminGestionPublicaciones.aspx">Publicaciones</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../FormsAdmin/AdminPerfil.aspx">Perfil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <asp:Button ID="Button2" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
+                                </li>
+                           <% } %>
+                           <%if (Session["usuario"] != null && ObtenerRolUsuario() == 2) {%>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="PublicacionesDonantes.aspx">Doná</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../FormsDonante/DonantePerfil.aspx">Perfil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <asp:Button ID="btnSalir" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
+                                </li>
+                           <% } %>
+                           <%if (Session["usuario"] != null && ObtenerRolUsuario() == 3) {%>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../FormsFilial/FilialGestionDonantes.aspx">Donantes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../FormsFilial/FilialGestionPublicaciones.aspx">Publicaciones</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../FormsFilial/FilialPerfil.aspx">Perfil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <asp:Button ID="Button1" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
+                                </li>
+                           <% } %>
+
+ 
+
                         </ul>
                     </div>
                 </div>

@@ -11,6 +11,8 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
 {
     public partial class LogIn : System.Web.UI.Page
     {
+        private Usuario usuarioEnSession { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
