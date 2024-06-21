@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TPC_Equipo_8.Dominio;
+using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsGlobales
 {
@@ -20,15 +21,13 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
             try
             {
                 Usuario nuevo = new Usuario();
-
+                UsuarioManager usuarioManager = new UsuarioManager();
                 nuevo.email = txtRegistroEmail.Text;
                 nuevo.pass = txtRegistroPass.Text;
                 nuevo.dni = txtRegistroDni.Text;
+                nuevo.idUsuario = usuarioManager.insertarNuevo(nuevo);
 
-
-
-
-
+                Response.Redirect("Login.aspx");
             }
             catch (Exception ex)
             {

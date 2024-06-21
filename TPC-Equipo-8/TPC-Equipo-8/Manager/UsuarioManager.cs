@@ -64,19 +64,24 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
-                datos.setearConsulta("");
+                datos.setearProcedimiento("SP_Registro");
                 datos.setearParametro("@Email", nuevo.email);
                 datos.setearParametro("@Pass", nuevo.pass);
+                datos.setearParametro("@Dni", nuevo.dni);
+                return datos.ejecutarAccionScalar();
 
-                return 1;
             }
             catch (Exception ex)
             {
 
                 throw ex;
             }
-
-            return 1;
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            
         }
+
     }
 }

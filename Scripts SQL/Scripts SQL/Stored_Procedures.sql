@@ -265,9 +265,38 @@ GO
 -- PROCEDURE PARA LOGUEAR
 
 CREATE OR ALTER PROCEDURE SP_Loguear
-	@Email NVARCHAR(75),
-	@Pass NVARCHAR(75)
+	@Email NVARCHAR(50),
+	@Pass NVARCHAR(50)
 AS
 BEGIN
 	SELECT U.IdUsuario, U.IdRol FROM Usuarios U WHERE U.Email = @Email AND U.Pass = @Pass
 END
+GO
+
+-- PROCEDURE PARA REGISTRO
+
+CREATE OR ALTER PROCEDURE SP_Registro
+	@Email NVARCHAR(50),
+	@Pass NVARCHAR(50),
+	@Dni NVARCHAR(30)
+AS
+BEGIN
+
+INSERT INTO Usuarios (Email, Pass)
+VALUES(@Email, @Pass)
+
+DECLARE @UltimoIdUsuario INT
+SET @UltimoIdUsuario = SCOPE_IDENTITY();
+
+
+INSERT INTO Donantes (IdUsuario, Dni)
+OUTPUT inserted.IdUsuario
+VALUES(@UltimoIdUsuario, @Dni)
+END
+GO
+
+-- PROCEDURE PARA . . . 
+
+
+
+
