@@ -269,7 +269,7 @@ CREATE OR ALTER PROCEDURE SP_Loguear
 	@Pass NVARCHAR(50)
 AS
 BEGIN
-	SELECT U.IdUsuario, U.IdRol FROM Usuarios U WHERE U.Email = @Email AND U.Pass = @Pass
+	SELECT U.IdUsuario, U.IdRol, U.Username FROM Usuarios U WHERE U.Email = @Email AND U.Pass = @Pass
 END
 GO
 
@@ -296,7 +296,4 @@ END
 GO
 
 -- PROCEDURE PARA . . . 
-
-
-
 

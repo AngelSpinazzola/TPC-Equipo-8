@@ -30,6 +30,12 @@ namespace TPC_Equipo_8
             return (int)usuario.TipoUsuario;
         }
 
+        public string ObtenerNombreUsuario()
+        {
+            Usuario usuario = Session["usuario"] as Usuario;
+            return usuario != null ? usuario.Username : string.Empty;
+        }
+
         protected void btnSalir_Click(object sender, EventArgs e)
         {
             Session.Clear();

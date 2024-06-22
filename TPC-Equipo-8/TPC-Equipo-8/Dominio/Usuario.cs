@@ -14,6 +14,7 @@ namespace TPC_Equipo_8.Dominio
     public class Usuario
     {
         public int idUsuario { get; set; }
+        public string Username { get; set; }
         public string dni { get; set; }
         public string email { get; set; }
         public string pass { get; set; }

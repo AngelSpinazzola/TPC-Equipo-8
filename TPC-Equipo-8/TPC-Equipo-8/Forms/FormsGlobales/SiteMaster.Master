@@ -80,6 +80,11 @@
                                     <asp:Button ID="Button1" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
                                 </li>
                            <% } %>
+                           <% if (Session["usuario"] != null) { %>
+                               <li class="nav-item">
+                                   <a class="nav-link">Bienvenido <%: ObtenerNombreUsuario() %></a>
+                               </li>
+                           <% } %>
 
  
 

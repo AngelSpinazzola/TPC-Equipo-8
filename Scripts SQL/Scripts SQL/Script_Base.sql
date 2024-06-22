@@ -442,19 +442,19 @@ INSERT INTO Localidades (IdCiudad, Nombre, CodigoPostal) VALUES
 
 Insert Into Usuarios (Username, Email, Pass, IdRol)
 Values 
-('juan.admin', 'juanadmin@gmail.com', 'juan123', 1),
-('San.Gabriel.filial', 'sangabriel@gmail.com', 'sanga2', 3),
-('raul.donante', 'rauldonante@gmail.com', 'raul123', 2),
-('un.donante', 'randomuser@gmail.com', 'abc123', 2),
-('paco.donante', 'pacodona@gmail.com', 'soypaco', 2),
-('jorgito.donante', 'jorgedona@gmail.com', '123456', 2),
-('pedro.donante', 'pedrodona@gmail.com', 'aguantedonar', 2),
-('pablito.donante', 'pablodonadaleee@gmail.com', 'donamadonna', 2),
-('hospital.pirovano', 'pirovano@gmail.com', 'soyfilial', 3),
-('velez.sarfield', 'velezsarfield@gmail.com', 'fil123', 3),
-('imaginacion.filial', 'imaginate@gmail.com', 'img159', 3),
-('otra.filial', 'otramas@gmail.com', '159753', 3),
-('ultima.filial', 'laultima@gmail.com', 'junio1', 3)
+('Juan Perez', 'juanadmin@gmail.com', 'juan123', 1),
+('Clinica San Gabriel', 'sangabriel@gmail.com', 'sanga2', 3),
+('Raul Gonzales', 'rauldonante@gmail.com', 'raul123', 2),
+('Pepe Saenz', 'randomuser@gmail.com', 'abc123', 2),
+('Angel Di María', 'pacodona@gmail.com', 'soypaco', 2),
+('Jorge Camaleón', 'jorgedona@gmail.com', '123456', 2),
+('Pedro Dona', 'pedrodona@gmail.com', 'aguantedonar', 2),
+('Pablo Pirez', 'pablodonadaleee@gmail.com', 'donamadonna', 2),
+('Hospital Pirovano', 'pirovano@gmail.com', 'soyfilial', 3),
+('Clinica Velez Sarfield', 'velezsarfield@gmail.com', 'fil123', 3),
+('Clinica Imaginate', 'imaginate@gmail.com', 'img159', 3),
+('Hospital Gold', 'otramas@gmail.com', '159753', 3),
+('Clinica Blue Label', 'laultima@gmail.com', 'junio1', 3)
 
 Insert Into Direcciones_x_Usuario (IdUsuario, IdLocalidad, Calle, Altura, Piso, Departamento, Comentarios) 
 Values 

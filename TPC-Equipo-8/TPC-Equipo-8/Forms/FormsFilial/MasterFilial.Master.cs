@@ -29,5 +29,11 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
             Response.Redirect("../FormsGlobales/Default.aspx");
         }
+
+        public string ObtenerNombreUsuario()
+        {
+            Usuario usuario = Session["usuario"] as Usuario;
+            return usuario != null ? usuario.Username : string.Empty;
+        }
     }
 }
