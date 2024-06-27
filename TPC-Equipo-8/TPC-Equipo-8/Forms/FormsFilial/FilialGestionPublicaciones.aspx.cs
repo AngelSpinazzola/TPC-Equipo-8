@@ -15,12 +15,12 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         {
 
             PublicacionesManager manager = new PublicacionesManager();
-            int id = Convert.ToInt32(Session["Filialid"]);
+            //int id = Convert.ToInt32(Session["Filialid"]);
 
             if (!IsPostBack)
             {
 
-                repPublicacionesFilial.DataSource = manager.ListarPublicaciones(id);
+                repPublicacionesFilial.DataSource = manager.ListarPublicaciones(1);
                 repPublicacionesFilial.DataBind();
 
             }

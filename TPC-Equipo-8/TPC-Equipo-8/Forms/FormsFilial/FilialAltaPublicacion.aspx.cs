@@ -20,7 +20,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                     if (Request.QueryString["idPublicacion"] != null)
                     {
                         PublicacionesManager manager = new PublicacionesManager();
-                        List<Publicacion> lista = manager.ListarPublicaciones(Int32.Parse(Request.QueryString["idPublicacion"]));
+                        List<Publicacion> lista = manager.ListarUnaPublicacion(1,Int32.Parse(Request.QueryString["idPublicacion"]));
                         Publicacion seleccionada = lista[0];
 
                         txtNombreReceptor.Text = seleccionada.nombreReceptor;

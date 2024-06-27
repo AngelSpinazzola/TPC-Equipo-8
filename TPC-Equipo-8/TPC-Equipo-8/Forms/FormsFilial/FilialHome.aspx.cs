@@ -15,18 +15,18 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected void Page_Load(object sender, EventArgs e)
         {
 
-           Usuario usuario = new Usuario();
-           usuario = (Usuario)(Session["usuario"]);
+           //Usuario usuario = new Usuario();
+           //usuario = (Usuario)(Session["usuario"]);
            
            FilialManager managerFilial = new FilialManager();
            DonacionManager manager = new DonacionManager();
-           int id = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+           //int id = managerFilial.ObtenerIdFilial(usuario.idUsuario);
 
             if(!IsPostBack)
             {
-                dgvHomeFilial.DataSource = managerFilial.ListarFiliales(id);
+                dgvHomeFilial.DataSource = managerFilial.ListarFiliales(1);
                 dgvHomeFilial.DataBind();
-                dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(id);
+                dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(1);
                 dgvHomeFilialDonantes.DataBind();
 
             }

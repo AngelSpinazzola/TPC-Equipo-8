@@ -21,7 +21,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             {
                 id = Convert.ToInt32(TextBoxLogin.Text);
             }
-            Session.Add("Filialid", id);
+          
 
         }
 
@@ -37,8 +37,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             {
                 id = Convert.ToInt32(TextBoxLogin.Text);
             }
-            Session.Add("Filialid", id);
-
+           
         }
     }
 }

@@ -86,6 +86,80 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
+
+        public List<Publicacion> ListarUnaPublicacion(int idFilial, int idPublicacion)
+        {
+
+            List<Publicacion> lista = new List<Publicacion>();
+
+            try
+            {
+                datos.setearProcedimiento("SP_ObtenerUnaPublicacionPorId");
+
+                
+               
+               datos.setearParametro("@IdFilial", idFilial);
+               datos.setearParametro(" @IdPublicacion", idPublicacion);
+
+               datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Publicacion aux = new Publicacion();
+
+                    aux.idPublicacion = (int)datos.Lector["IdPublicacion"];
+                    aux.filial = (string)datos.Lector["NombreFilial"];
+
+                    if (!Convert.IsDBNull(datos.Lector["NombreReceptor"]))
+                    {
+                        aux.nombreReceptor = (string)datos.Lector["NombreReceptor"];
+                    }
+
+                    if (!Convert.IsDBNull(datos.Lector["Grupo"]))
+                    {
+                        aux.grupoSanguineo = (string)datos.Lector["Grupo"];
+                    }
+
+                    if (!Convert.IsDBNull(datos.Lector["PosiblesDonantes"]))
+                    {
+                        aux.posiblesDonantes = datos.Lector["PosiblesDonantes"].ToString();
+                    }
+
+                    aux.urgencia = (string)datos.Lector["DescripcionUrgencia"];
+
+                    if (!Convert.IsDBNull(datos.Lector["DonantesNecesarios"]))
+                    {
+                        aux.donantesNecesarios = (int)datos.Lector["DonantesNecesarios"];
+                    }
+
+                    if (!Convert.IsDBNull(datos.Lector["Horario"]))
+                    {
+                        aux.horarios = (string)datos.Lector["Horario"];
+                    }
+
+                    if (!Convert.IsDBNull(datos.Lector["FechaLimite"]))
+                    {
+                        aux.fechaLimite = (DateTime)datos.Lector["FechaLimite"];
+                    }
+
+                    aux.estado = (bool)datos.Lector["Estado"];
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+
         public void AgregarPublicacion(Publicacion publicacion)
         {
             

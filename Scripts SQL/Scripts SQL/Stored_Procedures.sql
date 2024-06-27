@@ -304,3 +304,28 @@ BEGIN
     WHERE F.IdUsuario=@idUser
 END
 GO
+
+-- PROCEDURE PARA OBTENER UNA PUBLICACION CON SU ID
+CREATE  OR ALTER PROCEDURE SP_ObtenerUnaPublicacionPorId
+    @IdFilial INT,
+    @IdPublicacion INT
+AS
+BEGIN
+  
+    SELECT 
+        p.IdPublicacion,
+        p.IdFilial,
+        p.NombreReceptor,
+        p.IdGrupoSanguineo,
+        p.IdUrgencia,
+        p.DonantesNecesarios,
+        p.Horario,
+        p.FechaLimite,
+        p.Estado
+    FROM 
+        Publicaciones p
+    WHERE 
+        p.IdFilial = @IdFilial
+        AND p.IdPublicacion = @IdPublicacion;
+END
+GO

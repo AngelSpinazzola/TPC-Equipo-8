@@ -25,13 +25,15 @@ namespace TPC_Equipo_8.Manager
                 if (idFilial != -1)
                 {
                     datos.setearParametro("@IdFilial", idFilial);
+                    
                 }
                 else
                 {
                     datos.setearParametro("@IdFilial", -1);
+                    
                 }
 
-                datos.ejecutarLectura();
+               datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
