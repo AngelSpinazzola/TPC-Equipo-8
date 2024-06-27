@@ -13,6 +13,31 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                if (!IsPostBack)
+                {
+                    if (Request.QueryString["idPublicacion"] != null)
+                    {
+                        PublicacionesManager manager = new PublicacionesManager();
+                        List<Publicacion> lista = manager.ListarPublicaciones(Int32.Parse(Request.QueryString["idPublicacion"]));
+                        Publicacion seleccionada = lista[0];
+
+                        txtNombreReceptor.Text = seleccionada.nombreReceptor;
+                        DropDownTipoSangre.SelectedValue = seleccionada.grupoSanguineo;
+                        DropDownUrgencia.SelectedValue = seleccionada.urgencia;
+                        txtDonantesNec.Text = seleccionada.donantesNecesarios.ToString();
+                        textHorarios.Text = seleccionada.horarios;
+                        textFecha.Text = seleccionada.fechaLimite.ToString();
+
+                    } 
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+                throw;
+            }
 
 
 

@@ -32,5 +32,12 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         {
             Response.Redirect("FilialAltaPublicacion.aspx",false);
         }
+
+        protected void EditarPublicacion_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int idPublicacion = Convert.ToInt32(btn.CommandArgument);
+            Response.Redirect("FilialAltaPublicacion.aspx?idPublicacion=" + idPublicacion);
+        }
     }
 }
