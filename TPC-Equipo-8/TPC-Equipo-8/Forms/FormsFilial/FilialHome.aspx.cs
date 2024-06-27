@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using manager;
+using TPC_Equipo_8.Dominio;
 using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsFilial
@@ -14,9 +15,12 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected void Page_Load(object sender, EventArgs e)
         {
 
-           int id = Convert.ToInt32(Session["Filialid"]);
+           Usuario usuario = new Usuario();
+           usuario = (Usuario)(Session["usuario"]);
+           
            FilialManager managerFilial = new FilialManager();
            DonacionManager manager = new DonacionManager();
+           int id = managerFilial.ObtenerIdFilial(usuario.idUsuario);
 
             if(!IsPostBack)
             {
@@ -32,17 +36,17 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         protected void ButtonPrueba_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(Session["Filialid"]);
+            //int id = Convert.ToInt32(Session["Filialid"]);
             
-            //FilialManager manager = new FilialManager();
-            FilialManager managerFilial = new FilialManager();
-            DonacionManager manager = new DonacionManager();
+            ////FilialManager manager = new FilialManager();
+            //FilialManager managerFilial = new FilialManager();
+            //DonacionManager manager = new DonacionManager();
 
-            dgvHomeFilial.DataSource = managerFilial.ListarFiliales(id);
-            dgvHomeFilial.DataBind();
+            //dgvHomeFilial.DataSource = managerFilial.ListarFiliales(id);
+            //dgvHomeFilial.DataBind();
 
-            dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(id);
-            dgvHomeFilialDonantes.DataBind();
+            //dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(id);
+            //dgvHomeFilialDonantes.DataBind();
 
            
         }
@@ -51,8 +55,8 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         {
             FilialManager filialManager = new FilialManager();
 
-            int id = Convert.ToInt32(Session["Filialid"]);
-            string direccion = filialManager.ObtenerDireccion(id);
+            //int id = Convert.ToInt32(Session["Filialid"]);
+            string direccion = filialManager.ObtenerDireccion(1);
 
             Label lblDireccion = (Label)e.Row.FindControl("lblDireccion");
             if (lblDireccion != null)

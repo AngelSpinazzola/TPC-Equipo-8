@@ -295,5 +295,12 @@ VALUES(@UltimoIdUsuario, @Dni)
 END
 GO
 
--- PROCEDURE PARA . . . 
-
+-- PROCEDURE PARA OBTENER ID DE FILIAL CON ID DE USIARIO REGRISTRADO 
+CREATE OR ALTER PROCEDURE SP_ObtenerIdFilialPorIdUsuario
+    @idUser INT
+AS
+BEGIN
+    SELECT F.IdFilial FROM Filiales F
+    WHERE F.IdUsuario=@idUser
+END
+GO
