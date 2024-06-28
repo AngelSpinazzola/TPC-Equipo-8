@@ -11,8 +11,55 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 {
     public partial class FilialAltaPublicacion : System.Web.UI.Page
     {
+        private Dictionary<string, string> tipoSangreValores = new Dictionary<string, string>
+        {
+            { "A+", "1" },
+            { "A-", "2" },
+            { "B+", "3" },
+            { "B-", "4" },
+            { "AB+", "5" },
+            { "AB-", "6" },
+            { "O+", "7" },
+            { "O-", "8" }
+        };
+        protected string ObtenerValorTipoSangre(string tipoSangre)
+        {
+            if (tipoSangreValores.ContainsKey(tipoSangre))
+            {
+                return tipoSangreValores[tipoSangre];
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        private Dictionary<string, string> tipoUrgenciaValores = new Dictionary<string, string>
+        {
+            { "Baja", "1" },
+            { "Media", "2" },
+            { "Alta", "3" },
+        };
+        protected string ObtenerValorTipoUrgencia(string tipoUrgencia)
+        {
+            if (tipoUrgenciaValores.ContainsKey(tipoUrgencia))
+            {
+                return tipoUrgenciaValores[tipoUrgencia];
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
+
+
             try
             {
                 if (!IsPostBack)
@@ -24,8 +71,8 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                         Publicacion seleccionada = lista[0];
 
                         txtNombreReceptor.Text = seleccionada.nombreReceptor;
-                        DropDownTipoSangre.SelectedValue = seleccionada.grupoSanguineo;
-                        DropDownUrgencia.SelectedValue = seleccionada.urgencia;
+                        DropDownTipoSangre.SelectedValue = ObtenerValorTipoSangre(seleccionada.grupoSanguineo); ;
+                        DropDownUrgencia.SelectedValue = ObtenerValorTipoUrgencia(seleccionada.urgencia);
                         txtDonantesNec.Text = seleccionada.donantesNecesarios.ToString();
                         textHorarios.Text = seleccionada.horarios;
                         textFecha.Text = seleccionada.fechaLimite.ToString();
