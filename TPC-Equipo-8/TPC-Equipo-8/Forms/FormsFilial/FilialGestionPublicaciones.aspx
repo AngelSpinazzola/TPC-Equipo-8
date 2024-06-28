@@ -28,7 +28,7 @@
                             <li class="list-group-item"><strong>Urgencia: </strong><%# Eval("urgencia") %></li>
                             <li class="list-group-item"><strong>Donantes Necesarios: </strong><%# Eval("donantesNecesarios") %></li>
                             <li class="list-group-item"><strong>Horarios: </strong><%# Eval("horarios") %></li>
-                            <li class="list-group-item"><strong>Fecha Limite: </strong><%# Eval("fechaLimite") %></li>
+                            <li class="list-group-item"><strong>Fecha Limite: </strong><%#  Convert.ToDateTime(Eval("fechaLimite")).ToShortDateString() %></li>
                         </ul>
                         <div class="card-body">
                             <asp:Button ID="EditarPublicacion" runat="server" CssClass="btn btn-primary" Text="Editar" OnClick="EditarPublicacion_Click" CommandArgument='<%# Eval("IdPublicacion") %>' CommandName="IdPublicacion"/>

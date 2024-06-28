@@ -54,7 +54,7 @@
             
         </div>
         <div class="col-12" style="margin-top: 25px;">
-            <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-success " Text="Crear Publicacion" OnClick="btnCrear_Click" />
+            <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-success " Text="Aceptar" OnClick="btnCrear_Click" />
             <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-danger " Text="Cancelar" OnClick="btnCancelar_Click" />
         </div>
       

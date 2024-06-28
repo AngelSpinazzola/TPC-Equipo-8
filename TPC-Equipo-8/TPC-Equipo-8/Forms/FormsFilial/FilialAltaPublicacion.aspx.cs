@@ -57,9 +57,6 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
-
-
             try
             {
                 if (!IsPostBack)
@@ -75,7 +72,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                         DropDownUrgencia.SelectedValue = ObtenerValorTipoUrgencia(seleccionada.urgencia);
                         txtDonantesNec.Text = seleccionada.donantesNecesarios.ToString();
                         textHorarios.Text = seleccionada.horarios;
-                        textFecha.Text = seleccionada.fechaLimite.ToString();
+                        textFecha.Text = seleccionada.fechaLimite.ToString("yyyy-MM-dd");
 
                     } 
                 }
@@ -94,8 +91,8 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         {
             Publicacion nuevaPublicacion = new Publicacion();
 
-
-            nuevaPublicacion.filial = Session["Filialid"].ToString();
+            
+            nuevaPublicacion.filial = "1"; //valor casteado
             nuevaPublicacion.nombreReceptor = txtNombreReceptor.Text;
             nuevaPublicacion.grupoSanguineo = DropDownTipoSangre.SelectedValue;
             nuevaPublicacion.urgencia = DropDownUrgencia.SelectedValue;
@@ -105,7 +102,17 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             nuevaPublicacion.estado = true;
 
             PublicacionesManager manager = new PublicacionesManager();
-            manager.AgregarPublicacion(nuevaPublicacion);
+
+            if(Request.QueryString["idPublicacion"] != null)
+            {
+                nuevaPublicacion.idPublicacion = (Convert.ToInt32(Request.QueryString["idPublicacion"]));
+                manager.ModificarPublicacion(nuevaPublicacion);
+            }
+            else
+            {
+                manager.AgregarPublicacion(nuevaPublicacion);
+            }
+            
 
             Response.Redirect("FilialGestionPublicaciones.aspx", false);
         }

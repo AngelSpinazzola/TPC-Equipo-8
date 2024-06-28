@@ -262,6 +262,36 @@ BEGIN
 END
 GO
 
+-- PROCEDURE PARA MODIFICAR UNA PUBLICACION
+
+CREATE OR ALTER PROCEDURE SP_ModificarPublicacion
+    @IdPublicacion INT,
+    @IdFilial INT,
+    @NombreReceptor NVARCHAR(50),
+    @IdGrupoSanguineo INT,
+    @IdUrgencia INT,
+    @DonantesNecesarios INT,
+    @Horario NVARCHAR(100),
+    @FechaLimite DATE,
+    @Estado BIT
+AS
+BEGIN
+    UPDATE Publicaciones
+    SET
+        IdFilial = @IdFilial,
+        NombreReceptor = @NombreReceptor,
+        IdGrupoSanguineo = @IdGrupoSanguineo,
+        IdUrgencia = @IdUrgencia,
+        DonantesNecesarios = @DonantesNecesarios,
+        Horario = @Horario,
+        FechaLimite = @FechaLimite,
+        Estado = @Estado
+    WHERE
+        IdPublicacion = @IdPublicacion;
+END
+GO
+
+
 -- PROCEDURE PARA LOGUEAR
 
 CREATE OR ALTER PROCEDURE SP_Loguear
