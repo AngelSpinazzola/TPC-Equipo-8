@@ -15,29 +15,30 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected void Page_Load(object sender, EventArgs e)
         {
 
-           //Usuario usuario = new Usuario();
-           //usuario = (Usuario)(Session["usuario"]);
-           
-           FilialManager managerFilial = new FilialManager();
-           DonacionManager manager = new DonacionManager();
-           //int id = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+            Usuario usuario = new Usuario();
+            usuario = (Usuario)(Session["usuario"]);
 
-            if(!IsPostBack)
+            FilialManager managerFilial = new FilialManager();
+            DonacionManager manager = new DonacionManager();
+
+            int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+
+            if (!IsPostBack)
             {
-                dgvHomeFilial.DataSource = managerFilial.ListarFiliales(1);
+                dgvHomeFilial.DataSource = managerFilial.ListarFiliales(IdFilial);
                 dgvHomeFilial.DataBind();
-                dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(1);
+                dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(IdFilial);
                 dgvHomeFilialDonantes.DataBind();
 
             }
 
-            
+
         }
 
         protected void ButtonPrueba_Click(object sender, EventArgs e)
         {
             //int id = Convert.ToInt32(Session["Filialid"]);
-            
+
             ////FilialManager manager = new FilialManager();
             //FilialManager managerFilial = new FilialManager();
             //DonacionManager manager = new DonacionManager();
@@ -48,7 +49,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             //dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(id);
             //dgvHomeFilialDonantes.DataBind();
 
-           
+
         }
 
         protected void dgvHomeFilial_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -63,7 +64,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             {
                 lblDireccion.Text = direccion;
             }
-            
+
         }
     }
 }

@@ -20,20 +20,11 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
+                datos.comando.Parameters.Clear();
                 datos.setearProcedimiento("SP_ListarFiliales");
-
-                if (idFilial != -1)
-                {
-                    datos.setearParametro("@IdFilial", idFilial);
-                    
-                }
-                else
-                {
-                    datos.setearParametro("@IdFilial", -1);
-                    
-                }
-
-               datos.ejecutarLectura();
+                //No hace falta el if, ya que, si no recibe el ID de la filial, usa el -1 defecto que tiene en el parametro.
+                datos.setearParametro("@IdFilial", idFilial);
+                datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
@@ -187,7 +178,7 @@ namespace TPC_Equipo_8.Manager
             }
             catch (Exception ex)
             {
-           
+
                 throw ex;
             }
             finally

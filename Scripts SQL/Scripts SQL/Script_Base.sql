@@ -561,8 +561,3 @@ INSERT INTO ProximosDonantes(IdDonante, IdFilial, IdPublicacion) VALUES
 (4, 1, 1),
 (2, 1, 1),
 (1, 1, 1)
-
-
-
-
-
