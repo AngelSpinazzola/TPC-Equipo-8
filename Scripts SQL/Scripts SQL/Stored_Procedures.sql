@@ -312,19 +312,20 @@ CREATE  OR ALTER PROCEDURE SP_ObtenerUnaPublicacionPorId
 AS
 BEGIN
   
-    SELECT 
-        p.IdPublicacion,
-        p.IdFilial,
+   SELECT 
+     
         p.NombreReceptor,
-        p.IdGrupoSanguineo,
-        p.IdUrgencia,
+        g.Grupo,
+		u.Descripcion AS Urgencia,
         p.DonantesNecesarios,
         p.Horario,
         p.FechaLimite,
         p.Estado
     FROM 
         Publicaciones p
-    WHERE 
+    INNER JOIN GruposSanguineos g ON p.IdGrupoSanguineo = g.IdGrupoSanguineo
+    INNER JOIN Urgencias u ON p.IdUrgencia = u.IdUrgencia
+    WHERE  
         p.IdFilial = @IdFilial
         AND p.IdPublicacion = @IdPublicacion;
 END

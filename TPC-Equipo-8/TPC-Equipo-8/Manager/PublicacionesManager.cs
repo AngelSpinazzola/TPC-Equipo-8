@@ -57,7 +57,7 @@ namespace TPC_Equipo_8.Manager
 
                     if (!Convert.IsDBNull(datos.Lector["DonantesNecesarios"]))
                     {
-                        aux.donantesNecesarios = (int)datos.Lector["DonantesNecesarios"];
+                        aux.donantesNecesarios = (int)(datos.Lector["DonantesNecesarios"]);
                     }
 
                     if (!Convert.IsDBNull(datos.Lector["Horario"]))
@@ -94,12 +94,11 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
-                datos.setearProcedimiento("SP_ObtenerUnaPublicacionPorId");
+               datos.setearProcedimiento("SP_ObtenerUnaPublicacionPorId");
 
-                
                
                datos.setearParametro("@IdFilial", idFilial);
-               datos.setearParametro(" @IdPublicacion", idPublicacion);
+               datos.setearParametro("@IdPublicacion", idPublicacion);
 
                datos.ejecutarLectura();
 
@@ -120,18 +119,14 @@ namespace TPC_Equipo_8.Manager
                         aux.grupoSanguineo = (string)datos.Lector["Grupo"];
                     }
 
-                    if (!Convert.IsDBNull(datos.Lector["PosiblesDonantes"]))
-                    {
-                        aux.posiblesDonantes = datos.Lector["PosiblesDonantes"].ToString();
-                    }
-
-                    aux.urgencia = (string)datos.Lector["DescripcionUrgencia"];
-
                     if (!Convert.IsDBNull(datos.Lector["DonantesNecesarios"]))
                     {
                         aux.donantesNecesarios = (int)datos.Lector["DonantesNecesarios"];
                     }
 
+                    aux.urgencia = (string)datos.Lector["DescripcionUrgencia"];
+
+                 
                     if (!Convert.IsDBNull(datos.Lector["Horario"]))
                     {
                         aux.horarios = (string)datos.Lector["Horario"];
