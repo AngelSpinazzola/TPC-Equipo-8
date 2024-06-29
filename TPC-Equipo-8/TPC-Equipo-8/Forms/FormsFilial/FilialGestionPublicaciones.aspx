@@ -32,6 +32,7 @@
                         </ul>
                         <div class="card-body">
                             <asp:Button ID="EditarPublicacion" runat="server" CssClass="btn btn-primary" Text="Editar" OnClick="EditarPublicacion_Click" CommandArgument='<%# Eval("IdPublicacion") %>' CommandName="IdPublicacion"/>
+                            <asp:Button ID="BtnEliminar" runat="server" CssClass="btn btn-danger" Text="Eliminar" OnClick="BtnEliminar_Click" CommandArgument='<%# Eval("IdPublicacion") %>' CommandName="IdPublicacion" />
                         </div>
                     </div>
                 </div>

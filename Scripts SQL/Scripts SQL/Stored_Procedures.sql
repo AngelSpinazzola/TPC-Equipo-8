@@ -82,6 +82,7 @@ BEGIN
 		INNER JOIN GruposSanguineos GP ON GP.IdGrupoSanguineo = P.IdGrupoSanguineo
 		INNER JOIN Filiales F ON F.IdFilial = P.IdFilial
 		INNER JOIN Urgencias U ON U.IdUrgencia = P.IdUrgencia
+		WHERE P.Estado=1
 	END
 	ELSE
 	BEGIN
@@ -90,7 +91,7 @@ BEGIN
 		INNER JOIN GruposSanguineos GP ON GP.IdGrupoSanguineo = P.IdGrupoSanguineo
 		INNER JOIN Filiales F ON F.IdFilial = P.IdFilial
 		INNER JOIN Urgencias U ON U.IdUrgencia = P.IdUrgencia
-		WHERE P.IdFilial = @IdFilial
+		WHERE P.IdFilial = @IdFilial AND P.Estado=1
 	END
 END
 
