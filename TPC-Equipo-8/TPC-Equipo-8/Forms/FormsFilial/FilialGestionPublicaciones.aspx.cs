@@ -56,7 +56,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
             PublicacionesManager manager = new PublicacionesManager();
            
-            List<Publicacion> lista = manager.ListarUnaPublicacion(IdFilial, idPublicacion);
+            List<Publicacion> lista = manager.ListarUnaPublicacion(idPublicacion);
 
             Publicacion seleccionada = lista[0];
             seleccionada.idPublicacion = idPublicacion;

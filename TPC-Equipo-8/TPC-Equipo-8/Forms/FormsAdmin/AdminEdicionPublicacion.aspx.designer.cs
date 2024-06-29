@@ -42,13 +42,22 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
         protected global::System.Web.UI.WebControls.TextBox txtNombreReceptor;
 
         /// <summary>
-        /// Control txtGrupoSanguineo.
+        /// Control DropDownTipoSangre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGrupoSanguineo;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownTipoSangre;
+
+        /// <summary>
+        /// Control DropDownUrgencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownUrgencia;
 
         /// <summary>
         /// Control txtDonantesNecesarios.

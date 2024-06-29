@@ -14,7 +14,7 @@
 
 
             <div class="col-12" >
-                <label for="tipoSangre" class="form-label">Tipo de Sangrue</label>
+                <label for="tipoSangre" class="form-label">Tipo de Sangre</label>
                     <asp:DropDownList ID="DropDownTipoSangre" runat="server" CssClass="form-select">
                         <asp:ListItem Text="A+" Value="1"></asp:ListItem>
                         <asp:ListItem Text="A-" Value="2"></asp:ListItem>

@@ -19,7 +19,7 @@
                     <HeaderStyle CssClass="table-header text-center" />
                     <ItemStyle CssClass="table-item" />
                     <ItemTemplate>
-                        <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-primary btn-sm" CommandArgument='<%# Eval("idPublicacion") %>' CommandName="idFilial" OnClick="btnEditar_Click">
+                        <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-primary btn-sm" CommandArgument='<%# Eval("idPublicacion") %>' CommandName="idPublicacion" OnClick="btnEditar_Click">
                             <i class="fas fa-edit fa-sm"></i>
                         </asp:LinkButton>
                         <asp:LinkButton ID="btnDesactivar" runat="server" CssClass="btn btn-danger btn-sm" CommandName="Delete" OnClick="btnDesactivar_Click">

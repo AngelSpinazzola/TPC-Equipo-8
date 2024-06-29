@@ -24,7 +24,7 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 DateTime fechaLimite = Convert.ToDateTime(DataBinder.Eval(e.Row.DataItem, "fechaLimite"));
-                e.Row.Cells[6].Text = fechaLimite.ToString("dd-MM-yyyy"); 
+                e.Row.Cells[6].Text = fechaLimite.ToString("dd/MM/yyyy"); 
             }
         }
 

@@ -88,7 +88,7 @@ namespace TPC_Equipo_8.Manager
         }
 
 
-        public List<Publicacion> ListarUnaPublicacion(int idFilial, int idPublicacion)
+        public List<Publicacion> ListarUnaPublicacion(int idPublicacion)
         {
 
             List<Publicacion> lista = new List<Publicacion>();
@@ -98,8 +98,6 @@ namespace TPC_Equipo_8.Manager
                 datos.comando.Parameters.Clear();
                 datos.setearProcedimiento("SP_ObtenerUnaPublicacionPorId");
 
-               
-               datos.setearParametro("@IdFilial", idFilial);
                datos.setearParametro("@IdPublicacion", idPublicacion);
 
                datos.ejecutarLectura();
@@ -108,8 +106,8 @@ namespace TPC_Equipo_8.Manager
                 {
                     Publicacion aux = new Publicacion();
 
-                    //aux.idPublicacion = (int)datos.Lector["IdPublicacion"];
-                    //aux.filial = (string)datos.Lector["NombreFilial"];
+                    aux.idPublicacion = (int)datos.Lector["IdPublicacion"];
+                    aux.filial = (string)datos.Lector["NombreFilial"];
 
                     if (!Convert.IsDBNull(datos.Lector["NombreReceptor"]))
                     {
@@ -195,18 +193,14 @@ namespace TPC_Equipo_8.Manager
         public void ModificarPublicacion(Publicacion publicacion)
         {
 
-            int idFilial = int.Parse(publicacion.filial);
             int idGrupoSanguineo = int.Parse(publicacion.grupoSanguineo);
             int idUrgencia = int.Parse(publicacion.urgencia);
-
-
 
             try
             {
                 datos.comando.Parameters.Clear();
                 datos.setearProcedimiento("SP_ModificarPublicacion");
                 datos.setearParametro("@IdPublicacion", publicacion.idPublicacion);
-                datos.setearParametro("@IdFilial", idFilial);
                 datos.setearParametro("@NombreReceptor", publicacion.nombreReceptor);
                 datos.setearParametro("@IdGrupoSanguineo", idGrupoSanguineo);
                 datos.setearParametro("@IdUrgencia", idUrgencia);
