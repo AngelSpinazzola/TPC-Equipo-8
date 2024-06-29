@@ -49,13 +49,13 @@
                     </ItemTemplate>
                 </asp:TemplateField>
 
-                <asp:TemplateField HeaderText="Grupo Sanguineo Receptor">
+              <%--  <asp:TemplateField HeaderText="Grupo Sanguineo Receptor">
                     <HeaderStyle CssClass="table-header text-center" Width="150px" />
                     <ItemStyle CssClass="table-item text-center " Width="150px" />
                     <ItemTemplate>
                         <asp:Label ID="lblGSR" runat="server" Text='<%# Eval("GrupoSanguineoReceptor") %>' CssClass="label-text"></asp:Label>
                     </ItemTemplate>
-                </asp:TemplateField>
+                </asp:TemplateField> --%>
 
                 <asp:TemplateField HeaderText="Donantes Necesarios">
                     <HeaderStyle CssClass="table-header text-center" Width="150px" />

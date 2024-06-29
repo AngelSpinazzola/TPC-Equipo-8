@@ -36,14 +36,14 @@ namespace TPC_Equipo_8.Manager
                         aux.ApellidoDonante = (string)datos.Lector["Apellido"];
                     }
 
-                    if (!Convert.IsDBNull(datos.Lector["dni"]))
+                    if (!Convert.IsDBNull(datos.Lector["DNI"]))
                     {
-                        aux.DNI = (string)datos.Lector["dni"];
+                        aux.DNI = (string)datos.Lector["DNI"];
                     }
 
-                    if (!Convert.IsDBNull(datos.Lector["Grupo"]))
+                    if (!Convert.IsDBNull(datos.Lector["GrupoDonante"]))
                     {
-                        aux.GrupoSanguineoDonante = (string)datos.Lector["Grupo"];
+                        aux.GrupoSanguineoDonante = (string)datos.Lector["GrupoDonante"];
                     }
 
                     if (!Convert.IsDBNull(datos.Lector["NombreReceptor"]))
@@ -51,19 +51,19 @@ namespace TPC_Equipo_8.Manager
                         aux.NombreReceptor = (string)datos.Lector["NombreReceptor"];
                     }
 
-                    if (!Convert.IsDBNull(datos.Lector["Grupo"]))
+                    /*if (!Convert.IsDBNull(datos.Lector["GrupoReceptor"]))
                     {
-                        aux.GrupoSanguineoReceptor = (string)datos.Lector["Grupo"];
-                    }
+                        aux.GrupoSanguineoReceptor = (string)datos.Lector["GrupoReceptor"];
+                    }*/
 
                     if (!Convert.IsDBNull(datos.Lector["DonantesNecesarios"]))
                     {
                         aux.DonantesNecesarios = (int)datos.Lector["DonantesNecesarios"];
                     }
 
-                    if (!Convert.IsDBNull(datos.Lector["Descripcion"]))
+                    if (!Convert.IsDBNull(datos.Lector["Urgencia"]))
                     {
-                        aux.Urgencia = (string)datos.Lector["Descripcion"];
+                        aux.Urgencia = (string)datos.Lector["Urgencia"];
                     }
 
                     if (!Convert.IsDBNull(datos.Lector["FechaRegistro"]))
