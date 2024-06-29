@@ -71,6 +71,7 @@
     <Content Include="Forms\Content\Pics\donarSangre1.jpg" />
     <Content Include="Forms\Content\Pics\salvaVidas.jpg" />
     <Content Include="Forms\FormsAdmin\AdminEdicionFilial.aspx" />
+    <Content Include="Forms\FormsAdmin\AdminEdicionPublicacion.aspx" />
     <Content Include="Forms\FormsAdmin\AdminGestionFiliales.aspx" />
     <Content Include="Forms\FormsAdmin\AdminGestionPublicaciones.aspx" />
     <Content Include="Forms\FormsAdmin\AdminPerfil.aspx" />
@@ -103,6 +104,13 @@
     </Compile>
     <Compile Include="Forms\FormsAdmin\AdminEdicionFilial.aspx.designer.cs">
       <DependentUpon>AdminEdicionFilial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsAdmin\AdminEdicionPublicacion.aspx.cs">
+      <DependentUpon>AdminEdicionPublicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsAdmin\AdminEdicionPublicacion.aspx.designer.cs">
+      <DependentUpon>AdminEdicionPublicacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormsAdmin\AdminGestionFiliales.aspx.cs">
       <DependentUpon>AdminGestionFiliales.aspx</DependentUpon>

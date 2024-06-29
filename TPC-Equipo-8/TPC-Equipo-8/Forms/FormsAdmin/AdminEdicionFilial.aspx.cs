@@ -80,7 +80,10 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
 
                 manager.modificarFilial(filial);
 
-                Response.Redirect("AdminGestionFiliales.aspx", false);
+                string script = "alert('La modificación fue exitosa.'); window.location='AdminGestionFiliales.aspx';";
+                ClientScript.RegisterStartupScript(this.GetType(), "redirect", script, true);
+
+                //Response.Redirect("AdminGestionFiliales.aspx", false);
             }
             catch (Exception ex)
             {

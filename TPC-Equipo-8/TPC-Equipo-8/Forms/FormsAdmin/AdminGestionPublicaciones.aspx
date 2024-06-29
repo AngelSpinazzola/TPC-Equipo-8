@@ -17,10 +17,14 @@
 
                 <asp:TemplateField HeaderText="Acciones">
                     <HeaderStyle CssClass="table-header text-center" />
-                    <ItemStyle CssClass="table-item text-center" />
+                    <ItemStyle CssClass="table-item" />
                     <ItemTemplate>
-                        <asp:Button ID="btnEditar" runat="server" Text="Editar" CssClass="btn btn-primary btn-sm" />
-                        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger btn-sm" OnClientClick="return confirm('¿Está seguro de que desea eliminar esta publicación?');" />
+                        <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-primary btn-sm" CommandArgument='<%# Eval("idPublicacion") %>' CommandName="idFilial" OnClick="btnEditar_Click">
+                            <i class="fas fa-edit fa-sm"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="btnDesactivar" runat="server" CssClass="btn btn-danger btn-sm" CommandName="Delete" OnClick="btnDesactivar_Click">
+                            <i class="fas fa-trash fa-sm"></i>
+                        </asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
 
