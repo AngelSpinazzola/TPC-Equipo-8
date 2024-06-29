@@ -54,10 +54,17 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         protected void dgvHomeFilial_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            FilialManager filialManager = new FilialManager();
 
-            //int id = Convert.ToInt32(Session["Filialid"]);
-            string direccion = filialManager.ObtenerDireccion(1);
+            Usuario usuario = new Usuario();
+            usuario = (Usuario)(Session["usuario"]);
+
+            FilialManager managerFilial = new FilialManager();
+            DonacionManager manager = new DonacionManager();
+
+            int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+
+
+            string direccion = managerFilial.ObtenerDireccion(IdFilial);
 
             Label lblDireccion = (Label)e.Row.FindControl("lblDireccion");
             if (lblDireccion != null)

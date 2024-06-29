@@ -17,6 +17,7 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
+                datos.comando.Parameters.Clear();
                 datos.setearProcedimiento("SP_ListarProximasDonaciones");
                 datos.setearParametro("@IdFilial", idFilial);
                 datos.ejecutarLectura();

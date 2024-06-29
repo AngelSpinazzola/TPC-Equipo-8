@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TPC_Equipo_8.Dominio;
 using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsFilial
@@ -12,14 +13,20 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = new Usuario();
+            usuario = (Usuario)(Session["usuario"]);
 
-            //int id = Convert.ToInt32(Session["Filialid"]);
+            FilialManager managerFilial = new FilialManager();
+            
+
+            int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+
             ProximasDonacionesManager manager = new ProximasDonacionesManager();
            
             if (!IsPostBack)
             {
 
-                dgvFilialDonantes.DataSource = manager.ListarProximasDonaciones(1);
+                dgvFilialDonantes.DataSource = manager.ListarProximasDonaciones(IdFilial);
                 dgvFilialDonantes.DataBind();
 
             }

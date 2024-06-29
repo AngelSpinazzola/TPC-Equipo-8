@@ -18,6 +18,7 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
+                datos.comando.Parameters.Clear();
                 datos.setearProcedimiento("SP_ListarPublicaciones");
 
                 if (idFilial != -1)
@@ -94,7 +95,8 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
-               datos.setearProcedimiento("SP_ObtenerUnaPublicacionPorId");
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_ObtenerUnaPublicacionPorId");
 
                
                datos.setearParametro("@IdFilial", idFilial);
@@ -106,8 +108,8 @@ namespace TPC_Equipo_8.Manager
                 {
                     Publicacion aux = new Publicacion();
 
-                    aux.idPublicacion = (int)datos.Lector["IdPublicacion"];
-                    aux.filial = (string)datos.Lector["NombreFilial"];
+                    //aux.idPublicacion = (int)datos.Lector["IdPublicacion"];
+                    //aux.filial = (string)datos.Lector["NombreFilial"];
 
                     if (!Convert.IsDBNull(datos.Lector["NombreReceptor"]))
                     {
@@ -124,7 +126,7 @@ namespace TPC_Equipo_8.Manager
                         aux.donantesNecesarios = (int)datos.Lector["DonantesNecesarios"];
                     }
 
-                    aux.urgencia = (string)datos.Lector["DescripcionUrgencia"];
+                    aux.urgencia = (string)datos.Lector["Urgencia"];
 
                  
                     if (!Convert.IsDBNull(datos.Lector["Horario"]))
@@ -166,6 +168,7 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
+                datos.comando.Parameters.Clear();
                 datos.setearProcedimiento("SP_AgregarPublicacion");
                 datos.setearParametro("@IdFilial", idFilial);
                 datos.setearParametro("@NombreReceptor", publicacion.nombreReceptor);
@@ -200,6 +203,7 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
+                datos.comando.Parameters.Clear();
                 datos.setearProcedimiento("SP_ModificarPublicacion");
                 datos.setearParametro("@IdPublicacion", publicacion.idPublicacion);
                 datos.setearParametro("@IdFilial", idFilial);

@@ -61,10 +61,16 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             {
                 if (!IsPostBack)
                 {
+                    Usuario usuario = new Usuario();
+                    usuario = (Usuario)(Session["usuario"]);
+
+                    FilialManager managerFilial = new FilialManager();
+                    int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+
                     if (Request.QueryString["idPublicacion"] != null)
                     {
                         PublicacionesManager manager = new PublicacionesManager();
-                        List<Publicacion> lista = manager.ListarUnaPublicacion(1,Int32.Parse(Request.QueryString["idPublicacion"]));
+                        List<Publicacion> lista = manager.ListarUnaPublicacion(IdFilial,Int32.Parse(Request.QueryString["idPublicacion"]));
                         Publicacion seleccionada = lista[0];
 
                         txtNombreReceptor.Text = seleccionada.nombreReceptor;
@@ -91,8 +97,14 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         {
             Publicacion nuevaPublicacion = new Publicacion();
 
-            
-            nuevaPublicacion.filial = "1"; //valor casteado
+            Usuario usuario = new Usuario();
+            usuario = (Usuario)(Session["usuario"]);
+
+            FilialManager managerFilial = new FilialManager();
+            int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+
+
+            nuevaPublicacion.filial = IdFilial.ToString();
             nuevaPublicacion.nombreReceptor = txtNombreReceptor.Text;
             nuevaPublicacion.grupoSanguineo = DropDownTipoSangre.SelectedValue;
             nuevaPublicacion.urgencia = DropDownUrgencia.SelectedValue;

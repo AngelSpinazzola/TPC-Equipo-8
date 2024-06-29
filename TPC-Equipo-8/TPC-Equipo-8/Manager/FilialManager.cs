@@ -143,6 +143,7 @@ namespace TPC_Equipo_8.Manager
         //Función para obtener la dirección de la filial, devuelve un string con (nombre de calle, altura y provincia).
         public string ObtenerDireccion(int idFilial)
         {
+            datos.comando.Parameters.Clear();
             datos.setearProcedimiento("SP_DireccionesCompletas");
             datos.setearParametro("@IdFilial", idFilial);
             datos.ejecutarLectura();
@@ -167,6 +168,7 @@ namespace TPC_Equipo_8.Manager
             int id = -1;
             try
             {
+                datos.comando.Parameters.Clear();
                 datos.setearProcedimiento("SP_ObtenerIdFilialPorIdUsuario");
                 datos.setearParametro("@idUser", idUsuario);
                 datos.ejecutarLectura();
