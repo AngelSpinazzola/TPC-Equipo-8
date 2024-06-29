@@ -124,10 +124,17 @@ CREATE TABLE ProximosDonantes(
 	IdDonante INT NOT NULL FOREIGN KEY REFERENCES Donantes(IdDonante),
 	IdFilial INT NOT NULL FOREIGN KEY REFERENCES Filiales(IdFilial),
 	IdPublicacion INT FOREIGN KEY REFERENCES Publicaciones(IdPublicacion),
-	FechaRegistro DATETIME NOT NULL DEFAULT GETDATE(),
+	FechaRegistro DATETIME NOT NULL DEFAULT GETDATE()
 )
 
-
+CREATE TABLE DonacionesRechazadas(
+	IdDonacionRechazada INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+	IdDonante INT NOT NULL FOREIGN KEY REFERENCES Donantes(IdDonante),
+	IdFilial INT NOT NULL FOREIGN KEY REFERENCES Filiales(IdFilial),
+	IdPublicacion INT FOREIGN KEY REFERENCES Publicaciones(IdPublicacion),
+	Motivo NVARCHAR(200) NULL,
+	FechaRechazo DATETIME NOT NULL DEFAULT GETDATE()
+)
 
 Insert Into Roles(IdRol, Nombre)
 Values
@@ -549,15 +556,10 @@ INSERT INTO DonacionesRealizadas(IdDonante, IdFilial, IdPublicacion) VALUES
 (1, 1, 1),
 (2, 1, 1),
 (3, 1, 1),
-(4, 1, 1),
-(2, 1, 1),
-(4, 1, 1),
-(1, 1, 1)
+(4, 1, 1)
 
 INSERT INTO ProximosDonantes(IdDonante, IdFilial, IdPublicacion) VALUES
-(2, 1, 1),
-(3, 1, 1),
-(2, 1, 1),
+(3, 2, 4),
 (4, 1, 1),
-(2, 1, 1),
-(1, 1, 1)
+(5, 3, 6),
+(6, 1, 1)

@@ -109,16 +109,22 @@ GO
 
 -- PROCEDURE QUE DEVUELVE LISTADO DE PROXIMAS DONACIONES DE UNA FILIAL
 
-CREATE OR ALTER PROCEDURE SP_ListarProximasDonaciones ( @IdFilial INT)
+CREATE OR ALTER PROCEDURE SP_ListarProximasDonaciones 
+	@IdFilial INT
 AS
 
-	SELECT D.Nombre, D.Apellido, D.Dni, GSD.Grupo, PUB.NombreReceptor, GSR.Grupo, PUB.DonantesNecesarios, U.Descripcion, P.FechaRegistro,PUB.FechaLimite  FROM ProximosDonantes P
-    INNER JOIN Donantes D ON D.IdDonante = P.IdDonante
-    INNER JOIN GruposSanguineos GSD ON GSD.IdGrupoSanguineo = D.IdGrupoSanguineo
-    INNER JOIN Publicaciones PUB ON PUB.IdPublicacion = P.IdPublicacion
-    INNER JOIN GruposSanguineos GSR ON GSR.IdGrupoSanguineo = PUB.IdGrupoSanguineo
-    INNER JOIN Urgencias U ON U.IdUrgencia = PUB.IdUrgencia
-	WHERE P.IdFilial = @IdFilial
+	SELECT D.Nombre, D.Apellido, D.DNI, GS.Grupo as GrupoDonante, P.NombreReceptor, 
+	P.DonantesNecesarios, 
+	U.Descripcion AS Urgencia,
+	PD.FechaRegistro,
+	P.FechaLimite
+	FROM Donantes D
+	INNER JOIN GruposSanguineos GS ON GS.IdGrupoSanguineo = D.IdGrupoSanguineo
+	INNER JOIN ProximosDonantes PD ON PD.IdDonante = D.IdDonante
+	INNER JOIN Publicaciones P ON P.IdPublicacion = PD.IdPublicacion
+	INNER JOIN Urgencias U ON U.IdUrgencia = P.IdUrgencia
+	WHERE PD.IdFilial = @IdFilial
+
 GO
 
 -- PROCEDURE PARA EDITAR UNA FILIAL
@@ -267,7 +273,6 @@ GO
 
 CREATE OR ALTER PROCEDURE SP_ModificarPublicacion
     @IdPublicacion INT,
-    @IdFilial INT,
     @NombreReceptor NVARCHAR(50),
     @IdGrupoSanguineo INT,
     @IdUrgencia INT,
@@ -279,7 +284,6 @@ AS
 BEGIN
     UPDATE Publicaciones
     SET
-        IdFilial = @IdFilial,
         NombreReceptor = @NombreReceptor,
         IdGrupoSanguineo = @IdGrupoSanguineo,
         IdUrgencia = @IdUrgencia,
@@ -290,6 +294,7 @@ BEGIN
     WHERE
         IdPublicacion = @IdPublicacion;
 END
+
 GO
 
 
@@ -338,13 +343,13 @@ GO
 
 -- PROCEDURE PARA OBTENER UNA PUBLICACION CON SU ID
 CREATE  OR ALTER PROCEDURE SP_ObtenerUnaPublicacionPorId
-    @IdFilial INT,
     @IdPublicacion INT
 AS
 BEGIN
   
-   SELECT 
-     
+   SELECT    
+		p.IdPublicacion,
+		f.Nombre as NombreFilial,
         p.NombreReceptor,
         g.Grupo,
 		u.Descripcion AS Urgencia,
@@ -356,8 +361,69 @@ BEGIN
         Publicaciones p
     INNER JOIN GruposSanguineos g ON p.IdGrupoSanguineo = g.IdGrupoSanguineo
     INNER JOIN Urgencias u ON p.IdUrgencia = u.IdUrgencia
+	INNER JOIN Filiales f ON f.IdFilial = p.IdFilial
     WHERE  
-        p.IdFilial = @IdFilial
-        AND p.IdPublicacion = @IdPublicacion;
+        p.IdPublicacion = @IdPublicacion;
 END
+GO
+
+-- PROCEDURE QUE INSERTA DATOS EN EN DONACIONES REALIZADAS Y ELIMINA DE PROXIMOS DONANTES
+
+CREATE OR ALTER PROCEDURE SP_DonacionRealizada
+	@IdDonante INT,
+	@IdFilial INT,
+	@IdPublicacion INT = NULL
+AS
+BEGIN
+	
+	BEGIN TRY
+	BEGIN TRANSACTION
+
+	INSERT INTO DonacionesRealizadas (IdDonante, IdFilial, IdPublicacion, FechaDonacion)
+	VALUES (@IdDonante, @IdFilial, @IdPublicacion, GETDATE())
+
+	DELETE FROM ProximosDonantes WHERE IdDonante = @IdDonante AND IdPublicacion = @IdPublicacion
+
+	COMMIT TRANSACTION
+	END TRY
+
+	BEGIN CATCH
+		RAISERROR('ERROR AL CONFIRMAR LA DONACION',16,1)
+		ROLLBACK TRANSACTION
+	END CATCH
+END
+
+GO
+
+-- PROCEDURE QUE ELIMINA UNA PROXIMA DONACION E INSERTA UNA RECHAZADA
+
+CREATE OR ALTER PROCEDURE SP_DonacionRechazada
+	@IdDonante INT,
+	@IdFilial INT,
+	@IdPublicacion INT = NULL,
+	@Motivo NVARCHAR(200)
+AS
+BEGIN
+
+	BEGIN TRY
+
+		BEGIN TRANSACTION
+
+			INSERT INTO DonacionesRechazadas (IdDonante, IdFilial, IdPublicacion, Motivo, FechaRechazo)
+			VALUES (@IdDonante, @IdFilial, @IdPublicacion, @Motivo, GETDATE())
+
+			DELETE FROM ProximosDonantes WHERE IdDonante = @IdDonante AND IdPublicacion = @IdPublicacion
+
+		COMMIT TRANSACTION
+
+	END TRY
+	BEGIN CATCH
+
+		RAISERROR('ERROR AL RECHAZAR DONANTE', 16, 1)
+		ROLLBACK TRANSACTION
+
+	END CATCH
+
+END
+
 GO
