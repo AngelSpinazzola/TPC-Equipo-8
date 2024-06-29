@@ -26,6 +26,27 @@ namespace TPC_Equipo_8.Manager
                 {
                     ProximasDonaciones aux = new ProximasDonaciones();
 
+                    if (!Convert.IsDBNull(datos.Lector["IdProximoDonante"]))
+                    {
+                        aux.id = (int)datos.Lector["IdProximoDonante"];
+                    }
+
+                    if (!Convert.IsDBNull(datos.Lector["IdFilial"]))
+                    {
+                        aux.idFilial = (int)datos.Lector["IdFilial"];
+                    }
+
+                    if (!Convert.IsDBNull(datos.Lector["IdDonante"]))
+                    {
+                        aux.idDonante = (int)datos.Lector["IdDonante"];
+                    }
+
+                    if (!Convert.IsDBNull(datos.Lector["IdPublicacion"]))
+                    {
+                        aux.idPublicacion = (int)datos.Lector["IdPublicacion"];
+                    }
+
+
                     if (!Convert.IsDBNull(datos.Lector["Nombre"]))
                     {
                         aux.NombreDonante = (string)datos.Lector["Nombre"];

@@ -33,5 +33,10 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
 
         }
+
+        protected void btnDono_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

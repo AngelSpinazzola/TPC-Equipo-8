@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>GESTION DE DONANTES DE LA FILIAL:</h2>
+    <h2>GESTION DE POSIBLES DONANTES DE LA FILIAL:</h2>
     <div class="container-fluid">
         <asp:GridView ID="dgvFilialDonantes" runat="server" CssClass="table table-bordered"
             AutoGenerateColumns="false">
@@ -86,6 +86,20 @@
                     <ItemStyle CssClass="table-item text-center " Width="150px" />
                     <ItemTemplate>
                         <asp:Label ID="lblFlimite" runat="server" Text='<%# Eval("FechaLimite", "{0:dd/MM/yyyy}") %>' CssClass="label-text"></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+
+
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button ID="btnDono" runat="server" Text="Dono" CssClass="btn btn-success" OnClick="btnDono_Click" CommandName="Dono" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button ID="btnNoDono" runat="server" Text="No Dono" CssClass="btn btn-danger" CommandName="NoDono" />
                     </ItemTemplate>
                 </asp:TemplateField>
 

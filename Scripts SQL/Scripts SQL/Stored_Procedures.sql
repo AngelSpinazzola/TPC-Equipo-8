@@ -113,7 +113,7 @@ CREATE OR ALTER PROCEDURE SP_ListarProximasDonaciones
 	@IdFilial INT
 AS
 
-	SELECT D.Nombre, D.Apellido, D.DNI, GS.Grupo as GrupoDonante, P.NombreReceptor, 
+	SELECT PD.IdProximoDonante, PD.IdFilial, PD.IdDonante,PD.IdPublicacion, D.Nombre, D.Apellido, D.Dni, GS.Grupo as GrupoDonante, P.NombreReceptor, 
 	P.DonantesNecesarios, 
 	U.Descripcion AS Urgencia,
 	PD.FechaRegistro,

@@ -8,6 +8,10 @@ namespace TPC_Equipo_8.Dominio
     public class ProximasDonaciones
     {
   
+        public int id {  get; set; }    
+        public int idFilial { get; set; }   
+        public int idDonante { get; set; }
+        public int idPublicacion {  get; set; }
         public string NombreDonante { get; set; }
         public string ApellidoDonante { get; set; }
         public string DNI { get; set; }
