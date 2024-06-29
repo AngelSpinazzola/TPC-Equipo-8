@@ -111,5 +111,39 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
+
+        public void AgregarDonacion(ProximasDonaciones seleccionado)
+        {
+
+            
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_DonacionRealizada");
+                datos.setearParametro("@IdDonante", seleccionado.idDonante);
+                datos.setearParametro("@IdFilial", seleccionado.idFilial);
+                datos.setearParametro("@IdPublicacion", seleccionado.idPublicacion);
+
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+
+
+
+
+
+
+
     }
 }

@@ -11,6 +11,9 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 {
     public partial class FilialGestionDonantes : System.Web.UI.Page
     {
+
+        public List<ProximasDonaciones> proximasDonaciones { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
@@ -22,11 +25,12 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
 
             ProximasDonacionesManager manager = new ProximasDonacionesManager();
-           
+            proximasDonaciones = manager.ListarProximasDonaciones(IdFilial);
+
             if (!IsPostBack)
             {
-
-                dgvFilialDonantes.DataSource = manager.ListarProximasDonaciones(IdFilial);
+       
+                dgvFilialDonantes.DataSource = proximasDonaciones;
                 dgvFilialDonantes.DataBind();
 
             }
@@ -36,6 +40,16 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         protected void btnDono_Click(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
+            int id = Convert.ToInt32(btn.CommandArgument);
+
+            ProximasDonaciones seleccionado = proximasDonaciones.FirstOrDefault(d => d.id == id);
+
+            ProximasDonacionesManager manager =new ProximasDonacionesManager();
+
+            manager.AgregarDonacion(seleccionado);
+
+            Response.Redirect("FilialHome.aspx", false);
 
         }
     }

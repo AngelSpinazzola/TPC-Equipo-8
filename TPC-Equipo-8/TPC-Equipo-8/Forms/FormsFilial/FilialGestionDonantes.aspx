@@ -93,13 +93,13 @@
 
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Button ID="btnDono" runat="server" Text="Dono" CssClass="btn btn-success" OnClick="btnDono_Click" CommandName="Dono" />
+                        <asp:Button ID="btnDono" runat="server" Text="Dono" CssClass="btn btn-success" OnClick="btnDono_Click" CommandArgument='<%# Eval("id") %>' CommandName="id" />
                     </ItemTemplate>
                 </asp:TemplateField>
 
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Button ID="btnNoDono" runat="server" Text="No Dono" CssClass="btn btn-danger" CommandName="NoDono" />
+                        <asp:Button ID="btnNoDono" runat="server" Text="No Dono" CssClass="btn btn-danger" CommandArgument='<%# Eval("id") %>' CommandName="id" />
                     </ItemTemplate>
                 </asp:TemplateField>
 
