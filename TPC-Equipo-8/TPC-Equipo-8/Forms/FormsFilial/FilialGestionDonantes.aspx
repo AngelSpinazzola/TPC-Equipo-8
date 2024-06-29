@@ -99,7 +99,7 @@
 
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Button ID="btnNoDono" runat="server" Text="No Dono" CssClass="btn btn-danger" CommandArgument='<%# Eval("id") %>' CommandName="id" />
+                        <asp:Button ID="btnNoDono" runat="server" Text="No Dono" CssClass="btn btn-danger" OnClick="btnNoDono_Click" CommandArgument='<%# Eval("id") %>' CommandName="id" />
                     </ItemTemplate>
                 </asp:TemplateField>
 

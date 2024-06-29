@@ -137,7 +137,31 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
+        public void RechazarDonacion(ProximasDonaciones seleccionado, string motivo)
+        {
 
+
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_DonacionRechazada");
+                datos.setearParametro("@IdDonante", seleccionado.idDonante);
+                datos.setearParametro("@IdFilial", seleccionado.idFilial);
+                datos.setearParametro("@IdPublicacion", seleccionado.idPublicacion);
+                datos.setearParametro("@Motivo", motivo);
+
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
 
 

@@ -52,5 +52,14 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             Response.Redirect("FilialHome.aspx", false);
 
         }
+
+        protected void btnNoDono_Click(object sender, EventArgs e)
+        {
+
+            Button btn = (Button)sender;
+            int id = Convert.ToInt32(btn.CommandArgument);
+
+            Response.Redirect("FilialRechazoDonacion.aspx?id=" +id);
+        }
     }
 }

@@ -84,6 +84,7 @@
     <Content Include="Forms\FormsFilial\FilialGestionPublicaciones.aspx" />
     <Content Include="Forms\FormsFilial\FilialHome.aspx" />
     <Content Include="Forms\FormsFilial\FilialPerfil.aspx" />
+    <Content Include="Forms\FormsFilial\FilialRechazoDonacion.aspx" />
     <Content Include="Forms\FormsGlobales\Default.aspx" />
     <Content Include="Forms\FormsGlobales\DetalleFilial.aspx" />
     <Content Include="Forms\FormsGlobales\Error.aspx" />
@@ -181,6 +182,13 @@
     </Compile>
     <Compile Include="Forms\FormsFilial\FilialPerfil.aspx.designer.cs">
       <DependentUpon>FilialPerfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsFilial\FilialRechazoDonacion.aspx.cs">
+      <DependentUpon>FilialRechazoDonacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsFilial\FilialRechazoDonacion.aspx.designer.cs">
+      <DependentUpon>FilialRechazoDonacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormsGlobales\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
