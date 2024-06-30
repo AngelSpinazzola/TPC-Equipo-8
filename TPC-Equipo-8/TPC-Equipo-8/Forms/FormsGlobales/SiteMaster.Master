@@ -23,72 +23,114 @@
         <div>
 
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="Default.aspx">AJR Solutions</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <!-- LOG IN Y SIGN IN -->
+
+                        <%if (Session["usuario"] == null)
+                            {%>
+
+                        <a class="navbar-brand" href="Default.aspx">SANGUIS</a>
+                        <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="Default.aspx">Home</a>
+                                <a class="nav-link" href="Requisitos.aspx">Requisitos</a>
                             </li>
-                           <%if (Session["usuario"] == null) {%>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="LogIn.aspx">Ingresá</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="Registro.aspx">Creá tu cuenta</a>
-                                </li>
-                           <% } %>
-                           <%if (Session["usuario"] != null && ObtenerRolUsuario() == 1) {%>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../FormsAdmin/AdminGestionFiliales.aspx">Filiales</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../FormsAdmin/AdminGestionPublicaciones.aspx">Publicaciones</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../FormsAdmin/AdminPerfil.aspx">Perfil</a>
-                                </li>
-                                <li class="nav-item">
-                                    <asp:Button ID="Button2" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
-                                </li>
-                           <% } %>
-                           <%if (Session["usuario"] != null && ObtenerRolUsuario() == 2) {%>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="PublicacionesDonantes.aspx">Doná</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../FormsDonante/DonantePerfil.aspx">Perfil</a>
-                                </li>
-                                <li class="nav-item">
-                                    <asp:Button ID="btnSalir" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
-                                </li>
-                           <% } %>
-                           <%if (Session["usuario"] != null && ObtenerRolUsuario() == 3) {%>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../FormsFilial/FilialGestionDonantes.aspx">Donantes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../FormsFilial/FilialGestionPublicaciones.aspx">Publicaciones</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../FormsFilial/FilialPerfil.aspx">Perfil</a>
-                                </li>
-                                <li class="nav-item">
-                                    <asp:Button ID="Button1" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
-                                </li>
-                           <% } %>
-                           <% if (Session["usuario"] != null) { %>
-                               <li class="nav-item">
-                                   <a class="nav-link">Bienvenido <%: ObtenerNombreUsuario() %></a>
-                               </li>
-                           <% } %>
-
- 
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="VerFiliales.aspx">Filiales</a>
+                            </li>
                         </ul>
+
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="LogIn.aspx">Ingresá</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Registro.aspx">Creá tu cuenta</a>
+                            </li>
+                        </ul>
+
+                        <% } %>
+
+                        <%if (Session["usuario"] != null && ObtenerRolUsuario() == 1)
+                            {%>
+
+                        <a class="navbar-brand">SANGUIS</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../FormsAdmin/AdminGestionFiliales.aspx">Gestion Filiales</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../FormsAdmin/AdminGestionPublicaciones.aspx">Publicaciones</a>
+                            </li>
+                        </ul>
+
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <asp:Button ID="Button3" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
+                            </li>
+                        </ul>
+
+                        <% } %>
+
+                        <%if (Session["usuario"] != null && ObtenerRolUsuario() == 2)
+                            {%>
+
+                        <a class="navbar-brand" href="Default.aspx">SANGUIS</a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="Requisitos.aspx">Requisitos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="VerFiliales.aspx">Filiales</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="PublicacionesDonantes.aspx">Quiero Donar</a>
+                            </li>
+                        </ul>
+
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../FormsDonante/DonantePerfil.aspx"><%: ObtenerNombreUsuario() %></a>
+                            </li>
+                            <li class="nav-item">
+                                <asp:Button ID="Button2" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
+                            </li>
+                        </ul>
+
+                        <% } %>
+
+                        <%if (Session["usuario"] != null && ObtenerRolUsuario() == 3)
+                            {%>
+
+                        <a class="navbar-brand">SANGUIS</a>
+                        <ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Requisitos.aspx">Requisitos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../FormsFilial/FilialGestionDonantes.aspx">Donantes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../FormsFilial/FilialGestionPublicaciones.aspx">Publicaciones</a>
+                            </li>
+                        </ul>
+
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <asp:Button ID="Button1" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
+                            </li>
+                        </ul>
+
+                        <% } %>
+                        <% if (Session["usuario"] != null)
+                            { %>
+
+
+
+                        <% } %>
                     </div>
                 </div>
             </nav>
@@ -101,11 +143,11 @@
     <div class="footer-container" style="margin-top: 100px;">
         <div class="container">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-                <p class="col-md-4 mb-0 text-body-secondary">Salvá vidas &copy; AJR Solutions</p>
-    
+                <p class="col-md-4 mb-0 text-body-secondary">Sanguis &copy; AJR Solutions</p>
+
                 <ul class="nav col-md-6 justify-content-end d-flex flex-row">
-                    <li class="nav-item"><a href="https://github.com/raul-valerio" target="_blank"; class="nav-link px-2 text-body-secondary"><i class="bi bi-github"></i>Raul Valerio</a></li>
-                    <li class="nav-item"><a href="https://github.com/AngelSpinazzola" target="_blank"; class="nav-link px-2 text-body-secondary"><i class="bi bi-github"></i>Angel Spinazzola</a></li>
+                    <li class="nav-item"><a href="https://github.com/raul-valerio" target="_blank" class="nav-link px-2 text-body-secondary"><i class="bi bi-github"></i>Raul Valerio</a></li>
+                    <li class="nav-item"><a href="https://github.com/AngelSpinazzola" target="_blank" class="nav-link px-2 text-body-secondary"><i class="bi bi-github"></i>Angel Spinazzola</a></li>
                     <li class="nav-item"><a href="https://github.com/juanpereyrajmp" target="_blank" class="nav-link px-2 text-body-secondary"><i class="bi bi-github"></i>Juan Pereyra</a></li>
                 </ul>
             </footer>

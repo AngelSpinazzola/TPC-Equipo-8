@@ -67,9 +67,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Estilos\EstilosAdmin.css" />
+    <Content Include="Estilos\EstilosDonante.css" />
+    <Content Include="Estilos\EstilosFilial.css" />
     <Content Include="Estilos\EstilosGlobales.css" />
-    <Content Include="Forms\Content\Pics\donarSangre1.jpg" />
-    <Content Include="Forms\Content\Pics\salvaVidas.jpg" />
     <Content Include="Forms\FormsAdmin\AdminEdicionFilial.aspx" />
     <Content Include="Forms\FormsAdmin\AdminEdicionPublicacion.aspx" />
     <Content Include="Forms\FormsAdmin\AdminGestionFiliales.aspx" />
@@ -91,6 +92,8 @@
     <Content Include="Forms\FormsGlobales\LogIn.aspx" />
     <Content Include="Forms\FormsGlobales\PublicacionesDonantes.aspx" />
     <Content Include="Forms\FormsGlobales\Registro.aspx" />
+    <Content Include="Forms\FormsGlobales\Requisitos.aspx" />
+    <Content Include="Forms\FormsGlobales\VerFiliales.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -258,6 +261,20 @@
     <Compile Include="Forms\FormsGlobales\Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormsGlobales\Requisitos.aspx.cs">
+      <DependentUpon>Requisitos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsGlobales\Requisitos.aspx.designer.cs">
+      <DependentUpon>Requisitos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsGlobales\VerFiliales.aspx.cs">
+      <DependentUpon>VerFiliales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsGlobales\VerFiliales.aspx.designer.cs">
+      <DependentUpon>VerFiliales.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -291,6 +308,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Contenidos\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

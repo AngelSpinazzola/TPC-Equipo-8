@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace TPC_Equipo_8
+namespace TPC_Equipo_8.Forms.FormsGlobales
 {
 
 
-    public partial class Default
+    public partial class Requisitos
     {
     }
 }

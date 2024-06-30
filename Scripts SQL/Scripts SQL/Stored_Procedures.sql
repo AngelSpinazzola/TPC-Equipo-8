@@ -76,24 +76,6 @@ CREATE OR ALTER PROCEDURE SP_ListarPublicaciones
 	@SoloActivas BIT
 AS
 BEGIN
-	/*IF @IdFilial = -1
-	BEGIN
-		SELECT P.*, GP.Grupo, dbo.FN_PosiblesDonantes(P.IdGrupoSanguineo) AS PosiblesDonantes, F.Nombre AS NombreFilial, U.Descripcion as DescripcionUrgencia
-		FROM Publicaciones P
-		INNER JOIN GruposSanguineos GP ON GP.IdGrupoSanguineo = P.IdGrupoSanguineo
-		INNER JOIN Filiales F ON F.IdFilial = P.IdFilial
-		INNER JOIN Urgencias U ON U.IdUrgencia = P.IdUrgencia
-		WHERE P.Estado=1
-	END
-	ELSE
-	BEGIN
-		SELECT P.*, GP.Grupo, dbo.FN_PosiblesDonantes(P.IdGrupoSanguineo) AS PosiblesDonantes, F.Nombre AS NombreFilial, U.Descripcion AS DescripcionUrgencia
-		FROM Publicaciones P
-		INNER JOIN GruposSanguineos GP ON GP.IdGrupoSanguineo = P.IdGrupoSanguineo
-		INNER JOIN Filiales F ON F.IdFilial = P.IdFilial
-		INNER JOIN Urgencias U ON U.IdUrgencia = P.IdUrgencia
-		WHERE P.IdFilial = @IdFilial AND P.Estado=1
-	END*/
 
 	SELECT P.*, GP.Grupo, dbo.FN_PosiblesDonantes(P.IdGrupoSanguineo) AS PosiblesDonantes, 
     F.Nombre AS NombreFilial, U.Descripcion as DescripcionUrgencia
