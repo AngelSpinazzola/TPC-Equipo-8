@@ -1,5 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
 
 * {
     box-sizing: border-box;
@@ -31,4 +33,50 @@
 .tooltip-inner {
     white-space: pre-wrap;
     max-width: 100px;
+}
+
+/* NAV */
+
+#customNav a{
+    color: #c12222;
+}
+
+#customNav a:hover{
+    color: black;
+}
+
+/* DEFAULT */
+
+body {
+    background-color: #c12222;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+    color: white;
+    font-family: 'Roboto';
+    font-weight: 1000;
+}
+
+#logo {
+    font-family: "DM Serif Display", serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 60px;
+}
+
+.btn-customDonar {
+    color: #c12222;
+    font-weight: 500;
+    background-color: white;
+    border-radius: 100px;
+    margin-top: -50px;
+    border: solid white;
+}
+
+.btn.btn-customDonar:hover {
+    color: white;
+    border: solid white;
 }
