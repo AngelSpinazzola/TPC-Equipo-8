@@ -72,10 +72,11 @@ GO
 -- SI RECIBE EL VALOR -1 DEVUELVE TODAS LAS PUBLICACIONES
 
 CREATE OR ALTER PROCEDURE SP_ListarPublicaciones 
-	@IdFilial INT
+	@IdFilial INT,
+	@SoloActivas BIT
 AS
 BEGIN
-	IF @IdFilial = -1
+	/*IF @IdFilial = -1
 	BEGIN
 		SELECT P.*, GP.Grupo, dbo.FN_PosiblesDonantes(P.IdGrupoSanguineo) AS PosiblesDonantes, F.Nombre AS NombreFilial, U.Descripcion as DescripcionUrgencia
 		FROM Publicaciones P
@@ -92,7 +93,17 @@ BEGIN
 		INNER JOIN Filiales F ON F.IdFilial = P.IdFilial
 		INNER JOIN Urgencias U ON U.IdUrgencia = P.IdUrgencia
 		WHERE P.IdFilial = @IdFilial AND P.Estado=1
-	END
+	END*/
+
+	SELECT P.*, GP.Grupo, dbo.FN_PosiblesDonantes(P.IdGrupoSanguineo) AS PosiblesDonantes, 
+    F.Nombre AS NombreFilial, U.Descripcion as DescripcionUrgencia
+    FROM Publicaciones P
+    INNER JOIN GruposSanguineos GP ON GP.IdGrupoSanguineo = P.IdGrupoSanguineo
+    INNER JOIN Filiales F ON F.IdFilial = P.IdFilial
+    INNER JOIN Urgencias U ON U.IdUrgencia = P.IdUrgencia
+    WHERE (@IdFilial = -1 OR P.IdFilial = @IdFilial)
+    AND (@SoloActivas = 0 OR P.Estado = 1)
+
 END
 
 GO
@@ -427,3 +438,12 @@ BEGIN
 END
 
 GO
+
+-- PROCEDURE PARA LA ELIMINACION LOGICA DE UNA PUBLICACION
+
+CREATE OR ALTER PROCEDURE SP_DesactivarPublicacion
+	@IdPublicacion INT
+AS
+BEGIN
+	UPDATE Publicaciones SET Estado = 0 WHERE IdPublicacion = @IdPublicacion
+END

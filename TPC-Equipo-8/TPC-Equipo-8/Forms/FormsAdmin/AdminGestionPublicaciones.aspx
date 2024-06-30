@@ -7,6 +7,7 @@
     <div class="container-fluid">
         <asp:GridView ID="dgvPublicaciones" runat="server" CssClass="table table-hover table-bordered" AutoGenerateColumns="false" OnRowDataBound="dgvPublicaciones_RowDataBound">
             <Columns>
+                <asp:BoundField DataField="IdPublicacion" visible="false" />
                 <asp:BoundField HeaderText="Receptor" DataField="nombreReceptor" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
                 <asp:BoundField HeaderText="Filial" DataField="filial" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
                 <asp:BoundField HeaderText="Posibles Grupos Donantes" DataField="posiblesDonantes" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
@@ -22,7 +23,7 @@
                         <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-primary btn-sm" CommandArgument='<%# Eval("idPublicacion") %>' CommandName="idPublicacion" OnClick="btnEditar_Click">
                             <i class="fas fa-edit fa-sm"></i>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnDesactivar" runat="server" CssClass="btn btn-danger btn-sm" CommandName="Delete" OnClick="btnDesactivar_Click">
+                        <asp:LinkButton ID="btnDesactivar" runat="server" CssClass="btn btn-danger btn-sm" CommandName="Desactivar" CommandArgument='<%# Eval("IdPublicacion") %>' OnClientClick="return confirm('¿Estás seguro que deseas eliminar esta publicación?');" OnClick="btnDesactivar_Click">
                             <i class="fas fa-trash fa-sm"></i>
                         </asp:LinkButton>
                     </ItemTemplate>

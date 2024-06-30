@@ -14,9 +14,21 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
         public List<Publicacion> ListarPublicaciones { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            PublicacionesManager manager = new PublicacionesManager();
-            dgvPublicaciones.DataSource = manager.ListarPublicaciones();
-            dgvPublicaciones.DataBind();
+           
+            if (!IsPostBack)
+            {
+                PublicacionesManager manager = new PublicacionesManager();
+                List<Publicacion> publicaciones = manager.RecargarPublicaciones(soloActivas: true);
+                dgvPublicaciones.DataSource = publicaciones;
+                dgvPublicaciones.DataBind();
+
+                if (Session["MensajeExito"] != null)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", $"alert('{Session["MensajeExito"]}');", true);
+                    Session.Remove("MensajeExito");
+                }
+            }
+
         }
 
         protected void dgvPublicaciones_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -64,7 +76,29 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
 
         protected void btnDesactivar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                LinkButton btn = (LinkButton)sender;
+                int idPublicacion = Convert.ToInt32(btn.CommandArgument);
 
+                PublicacionesManager manager = new PublicacionesManager();
+                manager.DesactivarPublicacion(idPublicacion);
+
+                Session["MensajeExito"] = "Publicación eliminada con éxito.";
+
+                Response.Redirect(Request.RawUrl);
+
+                /*List<Publicacion> publicacionesActualizadas = manager.RecargarPublicaciones(soloActivas: true);
+                dgvPublicaciones.DataSource = publicacionesActualizadas;
+                dgvPublicaciones.DataBind();*/
+
+
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
         }
     }
 }

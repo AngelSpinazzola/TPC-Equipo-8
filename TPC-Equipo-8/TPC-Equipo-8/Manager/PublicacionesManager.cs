@@ -11,7 +11,7 @@ namespace TPC_Equipo_8.Manager
     {
         public AccesoDatos datos = new AccesoDatos();
 
-        public List<Publicacion> ListarPublicaciones(int idFilial = -1)
+        public List<Publicacion> ListarPublicaciones(int idFilial = -1, bool soloActivas = false)
         {
 
             List<Publicacion> lista = new List<Publicacion>();
@@ -20,16 +20,8 @@ namespace TPC_Equipo_8.Manager
             {
                 datos.comando.Parameters.Clear();
                 datos.setearProcedimiento("SP_ListarPublicaciones");
-
-                if (idFilial != -1)
-                {
-                    datos.setearParametro("@IdFilial", idFilial);
-                }
-                else
-                {
-                    datos.setearParametro("@IdFilial", -1);
-                }
-
+                datos.setearParametro("@IdFilial", idFilial);
+                datos.setearParametro("@SoloActivas", soloActivas);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -85,6 +77,11 @@ namespace TPC_Equipo_8.Manager
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public List<Publicacion> RecargarPublicaciones(int idFilial = -1, bool soloActivas = true)
+        {
+            return ListarPublicaciones(idFilial, soloActivas);
         }
 
 
@@ -213,6 +210,26 @@ namespace TPC_Equipo_8.Manager
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void DesactivarPublicacion(int idPublicacion)
+        {
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_DesactivarPublicacion");
+                datos.setearParametro("@IdPublicacion", idPublicacion);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
             finally
