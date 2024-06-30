@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="col-6">
-                <img src="../../Contenidos/Imagenes/manosgota.png" alt="ManosGota" />
+                <img src="../../Contenidos/Imagenes/manosgota.png" alt="ManosGota" class="rounded float-end" style="height: 600px;"/>
             </div>
         </div>
 
@@ -73,19 +73,21 @@
 
         <hr style="border: 0; height: 3px; background-color: white; margin: 30px 0;">
 
-        <div class="mt-5">
-            <h2>¿En qué consiste la donación?</h2>
-            <ol>
-                <li>Recibirás un breve chequeo de salud antes de la donación para asegurar que estás en condiciones óptimas para donar.</li>
-                <li>La donación de sangre es un proceso rápido y seguro que puede ayudar a salvar vidas en tu comunidad.</li>
-                <li>Después de donar, se te proporcionará información sobre cómo mantener una dieta saludable y equilibrada para recuperar la energía.</li>
-            </ol>
-            <p>
-                Los donantes que concurran serán atendidos con amabilidad y eficiencia, 
-                saldrán con la satisfacción de haber realizado un acto de solidaridad.
+
+            <div class="mt-5 container" style="color: white;">
+                <h2>¿En qué consiste la donación?</h2>
+                <ul>
+                    <li>Recibirás un breve chequeo de salud antes de la donación para asegurar que estás en condiciones óptimas para donar.</li>
+                    <li>La donación de sangre es un proceso rápido y seguro que puede ayudar a salvar vidas en tu comunidad.</li>
+                    <li>Después de donar, se te proporcionará información sobre cómo mantener una dieta saludable y equilibrada para recuperar la energía.</li>
+                </ul>
+                <p>
+                    Los donantes que concurran serán atendidos con amabilidad y eficiencia, 
+                    saldrán con la satisfacción de haber realizado un acto de solidaridad.
            
-            </p>
-        </div>
+                </p>
+            </div>
+
     </div>
 
 
