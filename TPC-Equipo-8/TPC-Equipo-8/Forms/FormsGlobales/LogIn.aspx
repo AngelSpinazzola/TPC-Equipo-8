@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsGlobales/SiteMaster.Master" AutoEventWireup="true" CodeBehind="LogIn.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsGlobales.LogIn" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -20,9 +19,14 @@
                         <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                         <asp:TextBox runat="server" type="password" placeholder="******" ID="txtPass" CssClass="form-control" />
                     </div>
+                    <div class="d-grid" style="margin-bottom: 20px; margin-top: -10px;">
+
+                        <asp:Button Text="Continuar" ID="btnContinuar" OnClick="btnContinuar_Click" runat="server" CssClass="btn btn-customContinuar" />
+                    </div>
+
                     <div class="d-flex justify-content-between">
                         <a href="Default.aspx" style="color: #c12222;">Cancelar</a>
-                        <asp:Button Text="Continuar" ID="btnContinuar" OnClick="btnContinuar_Click" runat="server" CssClass="btn btn-customContinuar" />
+                        <a href="Registro.aspx" style="color: #c12222;">No tengo cuenta</a>
                     </div>
                 </div>
             </div>
