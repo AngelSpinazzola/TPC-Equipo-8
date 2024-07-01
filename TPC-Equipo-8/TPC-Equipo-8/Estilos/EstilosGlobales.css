@@ -58,6 +58,7 @@ body {
     background-attachment: fixed;
 }
 
+
 h1, h2, h3, h4 {
     color: white;
     font-family: 'Roboto';
@@ -84,3 +85,6 @@ h1, h2, h3, h4 {
     color: white;
     border: solid white;
 }
+
+/* FOOTER */
+
