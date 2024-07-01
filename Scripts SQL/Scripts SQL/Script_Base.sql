@@ -83,7 +83,8 @@ CREATE TABLE Filiales(
 	HorarioAtencion NVARCHAR(100),
 	Correo NVARCHAR(50),
 	UrlImagen NVARCHAR(1000),
-	UrlWeb NVARCHAR(1000)
+	UrlWeb NVARCHAR(1000),
+	Habilitado BIT DEFAULT 0
 )
 
 CREATE TABLE Administradores(
@@ -525,13 +526,13 @@ Insert Into Donantes (IdUsuario, Nombre, Apellido, Dni, FechaNacimiento, IdGrupo
 (7, 'Pedro', 'Dominguez', '25326458', '1994-01-06', 8, 'https://us.123rf.com/450wm/carballo/carballo2008/carballo200800131/152787240-joven-adolescente-hombre-apuntando-aislado-sobre-fondo-de-color-con-camiseta-blanca.jpg?ver=6'),
 (8, 'Pablito', 'Blood', '38568296', '1975-08-11', 3, 'https://previews.123rf.com/images/warrengoldswain/warrengoldswain1201/warrengoldswain120100216/11900075-retrato-est%C3%A1ndar-de-una-persona-real-isloated-en-blanco.jpg')
 
-Insert Into Filiales (IdUsuario, Nombre, Telefono, HorarioAtencion, Correo, UrlImagen, UrlWeb) Values 
-(2, 'Clinica San Gabriel', '11-5368-8796', 'Lun a Vie 9:00 a 20:00 - Sab, Dom y Feriados 9:00 a 15:00', 'quiero.donar@clinicasangabriel.com','https://lh5.googleusercontent.com/proxy/dyoXByWBDd5w5Otft5ZlobI5Zx-du5WpMrJvgeC09BYXqRP4ZcfQcCSdoQWZp82IE54YQ--621ucLh6wyhDki46V6PS5wiQ17MMsdz8N', 'https://www.instagram.com/clinica.san.gabriel/'),
-(9, 'Hospital Pirovano', 'No Tiene', 'Lun a Vie 9:00 a 18:00', 'donacionesr@hospitalpirovano.com','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-AkvdiQmfpghcMbRR9YfSalsXgTxknxjyKA&s', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospitalpirovano'),
-(10, 'Hospital Velez Sarfield', '11-4639-8700', 'Abrimos cuando queremos', 'No tenemos','https://www.medmun.org.ar/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-05-at-15.19.39.jpeg', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospital-velez-sarsfield'),
-(11, 'Hospital Argerich', '11-4121-0700', '24 / 7', 'hospitalargerich@gmail.com','https://buenosaires.gob.ar/sites/default/files/media/image/2018/11/29/a96e327336207c2e75861f534b4fa754c96635ca.jpg', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospital-argerich'),
-(12, 'Hospital Fernandez', '11-4808-2600', 'Estamos siempre que nos necesites', 'fernandez@hospital.com','https://upload.wikimedia.org/wikipedia/commons/4/46/DefPuebloCABA_-_hospital_Fernandez.jpg', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospital-fernandez'),
-(13, 'Hospital Dr. Abel Zubizarreta', '11-4501-5985', 'Lunes a Sabados de 9:00 a 22:00', 'elzubi@dona.com','https://buenosaires.gob.ar/sites/default/files/media/image/2015/09/18/b97af68b93dcf75c7bfe1902535506dead9595b2.jpg', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospital-zubizarreta')
+Insert Into Filiales (IdUsuario, Nombre, Telefono, HorarioAtencion, Correo, UrlImagen, UrlWeb, Habilitado) Values 
+(2, 'Clinica San Gabriel', '11-5368-8796', 'Lun a Vie 9:00 a 20:00 - Sab, Dom y Feriados 9:00 a 15:00', 'quiero.donar@clinicasangabriel.com','https://lh5.googleusercontent.com/proxy/dyoXByWBDd5w5Otft5ZlobI5Zx-du5WpMrJvgeC09BYXqRP4ZcfQcCSdoQWZp82IE54YQ--621ucLh6wyhDki46V6PS5wiQ17MMsdz8N', 'https://www.instagram.com/clinica.san.gabriel/', 1),
+(9, 'Hospital Pirovano', 'No Tiene', 'Lun a Vie 9:00 a 18:00', 'donacionesr@hospitalpirovano.com','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-AkvdiQmfpghcMbRR9YfSalsXgTxknxjyKA&s', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospitalpirovano', 1),
+(10, 'Hospital Velez Sarfield', '11-4639-8700', 'Abrimos cuando queremos', 'No tenemos','https://www.medmun.org.ar/wp-content/uploads/2024/04/WhatsApp-Image-2024-04-05-at-15.19.39.jpeg', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospital-velez-sarsfield', 1),
+(11, 'Hospital Argerich', '11-4121-0700', '24 / 7', 'hospitalargerich@gmail.com','https://buenosaires.gob.ar/sites/default/files/media/image/2018/11/29/a96e327336207c2e75861f534b4fa754c96635ca.jpg', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospital-argerich', 1),
+(12, 'Hospital Fernandez', '11-4808-2600', 'Estamos siempre que nos necesites', 'fernandez@hospital.com','https://upload.wikimedia.org/wikipedia/commons/4/46/DefPuebloCABA_-_hospital_Fernandez.jpg', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospital-fernandez', 1),
+(13, 'Hospital Dr. Abel Zubizarreta', '11-4501-5985', 'Lunes a Sabados de 9:00 a 22:00', 'elzubi@dona.com','https://buenosaires.gob.ar/sites/default/files/media/image/2015/09/18/b97af68b93dcf75c7bfe1902535506dead9595b2.jpg', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospital-zubizarreta', 1)
 
 
 Insert into Administradores (IdUsuario, Nombre) Values 
