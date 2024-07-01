@@ -68,9 +68,6 @@
         </div>
     </div>
 
-    <hr style="border: 0; height: 3px; background-color: #c12222; margin: 30px 0;">
-
-
     <div class="mt-5 container" style="color: black;">
         <h2>¿En qué consiste la donación?</h2>
         <ul>

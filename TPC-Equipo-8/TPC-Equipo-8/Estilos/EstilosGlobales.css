@@ -132,16 +132,31 @@ h1, h2, h3, h4 {
     }
 
 .btn-customDetalle {
-    color: #808080;
+    color: black;
     background-color: white;
     border-radius: 100px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s ease;
 }
 
     .btn-customDetalle:hover {
-        color: black;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        color: #808080;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+.btn-customPublicaciones {
+    color: black;
+    background-color: white;
+    border-radius: 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-customPublicaciones:hover {
+        color: white;
+        background-color: #c12222;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
 
 /* FOOTER */

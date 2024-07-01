@@ -26,11 +26,11 @@
                     <div class="col-12 col-md-4 mb-4 d-flex align-items-stretch">
                         <div class="card shadow-sm" style="width: 100%; margin: auto; border: 2px solid rgba(128, 128, 128, 0.1);">
                             <img src='<%# Eval("urlImagen") %>' class="card-img-top" alt="Imagen de la filial" style="height: 200px; object-fit: cover; margin: auto; max-width: 100%;" onerror="this.onerror=null;this.src='https://simacolor.com.gt/sistema/files/articulos/no.png';">
-                            <div class="card-body">
+                            <div class="card-body text-center">
                                 <h5 class="card-title"><strong><%# Eval("nombre") %></strong></h5>
                                 <p class="card-text"><%# Eval("direccion.calle") %> <%# Eval("direccion.altura") %>, <%# Eval("direccion.localidad") %> </p>
                             </div>
-                            <div class="card-body text-center">
+                            <div class="card-body text-center" style="margin-top: -15px;">
                                 <asp:Button ID="btnVerDetalle" runat="server" Text="Ver detalle" OnClick="btnVerDetalle_Click" CssClass="btn btn-customDetalle" CommandArgument='<%# Eval("idFilial") %>' CommandName="idFilial" />
                             </div>
                         </div>
