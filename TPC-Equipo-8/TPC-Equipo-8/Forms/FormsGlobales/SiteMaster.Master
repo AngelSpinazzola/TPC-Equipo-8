@@ -74,7 +74,7 @@
 
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <asp:Button ID="Button3" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
+                                <asp:Button ID="Button3" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link btn-customSalir" />
                             </li>
                         </ul>
 
@@ -101,7 +101,7 @@
                                 <a class="nav-link" href="../FormsDonante/DonantePerfil.aspx"><%: ObtenerNombreUsuario() %></a>
                             </li>
                             <li class="nav-item">
-                                <asp:Button ID="Button2" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
+                                <asp:Button ID="Button2" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link btn-customSalir" />
                             </li>
                         </ul>
 
@@ -125,17 +125,12 @@
 
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <asp:Button ID="Button1" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
+                                <asp:Button ID="Button1" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link btn-customSalir" />
                             </li>
                         </ul>
 
                         <% } %>
-                        <% if (Session["usuario"] != null)
-                            { %>
 
-
-
-                        <% } %>
                     </div>
                 </div>
             </nav>

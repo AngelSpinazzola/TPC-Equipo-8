@@ -43,7 +43,7 @@ html {
     box-shadow: 0 2px 2px rgba(0,0,0,0.2);
     position: fixed;
     width: 100%;
-    z-index: 1000;
+    z-index: 100000;
 }
 
 .navbar-brand {
@@ -59,6 +59,14 @@ html {
     }
 
     #customNav ul a:hover {
+        color: #ff5b5b;
+    }
+
+.btn-customSalir {
+    color: white;
+}
+
+    .btn-customSalir:hover {
         color: #ff5b5b;
     }
 
@@ -98,6 +106,18 @@ h1, h2, h3, h4 {
 
 #default-div h1, #default-div h2{
     color: white;
+}
+
+.custom-login {
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    margin-top: 50px !important;
+    margin-bottom: 360px;
 }
 
 /* BOTONES */
@@ -140,7 +160,8 @@ h1, h2, h3, h4 {
 }
 
     .btn-customDetalle:hover {
-        color: #808080;
+        color: white;
+        background-color: #c12222;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
 
@@ -173,6 +194,18 @@ h1, h2, h3, h4 {
         color: #c12222;
         background-color: white;
         border: 2px solid #c12222;
+    }
+
+.btn-customContinuar {
+    color: white;
+    background-color: #c12222;
+    border-radius: 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+    .btn-customContinuar:hover {
+        color: white;
+        background-color: #ff5b5b;
     }
 
 /* FOOTER */

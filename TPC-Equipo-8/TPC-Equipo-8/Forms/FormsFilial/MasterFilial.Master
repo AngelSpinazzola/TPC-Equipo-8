@@ -52,7 +52,7 @@
                                 <a class="nav-link" href="FilialPerfil.aspx"><%: ObtenerNombreUsuario() %></a>
                             </li>
                             <li class="nav-item">
-                                <asp:Button ID="btnSalir" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link" />
+                                <asp:Button ID="btnSalir" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link btn-customSalir" />
                             </li>
                             <% } %>
                         </ul>

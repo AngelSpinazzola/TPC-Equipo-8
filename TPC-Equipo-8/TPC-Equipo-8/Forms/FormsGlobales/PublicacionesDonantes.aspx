@@ -15,7 +15,7 @@
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" style="font-size: 13px; "><strong>Grupo receptor: </strong><%# Eval("grupoSanguineo") %></li>
-                                <li class="list-group-item" style="font-size: 13px; "><strong>Donantes: </strong><%# Eval("posiblesDonantes") %></li>
+                                <li class="list-group-item" style="font-size: 13px; "><strong>Posibles Donantes: </strong><%# Eval("posiblesDonantes") %></li>
                                 <li class="list-group-item" style="font-size: 13px; "><strong>Urgencia: </strong><%# Eval("urgencia") %></li>
                                 <li class="list-group-item" style="font-size: 13px; "><strong>Donantes necesarios: </strong><%# Eval("donantesNecesarios") %></li>
                                 <li class="list-group-item" style="font-size: 13px; "><strong>Fecha Limite: </strong><%# Eval("fechaLimite", "{0:dd/MM/yyyy}") %></li>
