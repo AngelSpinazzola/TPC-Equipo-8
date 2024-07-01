@@ -20,7 +20,7 @@
                     <h1 style="font-size: 150px; margin-top: -60px;">Sangre</h1>
                     <h2 style="margin-top: -30px;">y salvá vidas</h2>
                     <div class="justify-content-start mt-5">
-                        <a href="Registro.aspx" class="btn btn-customDonar btn-lg">¡Quiero donar!</a>
+                        <a href="Registro.aspx" class="btn btn-customQuiero btn-lg">¡Quiero donar!</a>
                     </div>
                 </div>
                 <div class="col-6">

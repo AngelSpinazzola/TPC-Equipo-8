@@ -23,11 +23,11 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
 
             if (Request.QueryString["idFilial"] != null && int.TryParse(Request.QueryString["idFilial"], out idFilial))
             {
-                ListaPublicaciones = manager.ListarPublicaciones(idFilial);
+                ListaPublicaciones = manager.ListarPublicaciones(idFilial, true);
             }
             else
             {
-                ListaPublicaciones = manager.ListarPublicaciones();
+                ListaPublicaciones = manager.ListarPublicaciones(soloActivas: true);
             }
 
             if (ListaPublicaciones != null && ListaPublicaciones.Count > 0)

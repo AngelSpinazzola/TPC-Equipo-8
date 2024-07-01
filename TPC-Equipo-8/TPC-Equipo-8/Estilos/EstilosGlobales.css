@@ -102,7 +102,7 @@ h1, h2, h3, h4 {
 
 /* BOTONES */
 
-.btn-customDonar {
+.btn-customQuiero {
     color: #c12222;
     font-weight: 500;
     background-color: white;
@@ -112,7 +112,7 @@ h1, h2, h3, h4 {
     box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
 }
 
-    .btn-customDonar:hover {
+    .btn-customQuiero:hover {
         color: white;
         border: solid white;
     }
@@ -157,6 +157,22 @@ h1, h2, h3, h4 {
         color: white;
         background-color: #c12222;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+.btn-customDonar {
+    color: white;
+    background-color: #c12222;
+    border-radius: 100px;
+    border: 2px solid #c12222;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-customDonar:hover {
+        color: #c12222;
+        background-color: white;
+        border: 2px solid #c12222;
     }
 
 /* FOOTER */

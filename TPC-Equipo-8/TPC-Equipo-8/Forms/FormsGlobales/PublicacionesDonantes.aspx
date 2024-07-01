@@ -7,21 +7,21 @@
         <div class="row">
             <asp:Repeater ID="repPublicaciones" runat="server">
                 <ItemTemplate>
-                    <div class="col-12 col-md-4 mb-4 d-flex align-items-stretch">
-                        <div class="card shadow-sm" style="width: 18rem;">
+                    <div class="col-12 col-md-4 mb-4 d-flex align-items-stretch" >
+                        <div class="card shadow-sm" style="width: 25rem; border: 0;">
                             <div class="card-body">
-                                <h5 class="card-title"><strong><%# Eval("nombreReceptor") %></strong></h5>
-                                <p class="card-subtitle"><strong>Filial: </strong><%# Eval("filial") %></p>
+                                <h5 class="card-title text-center"><strong><%# Eval("nombreReceptor") %></strong></h5>
+                                <p class="card-subtitle text-center"><%# Eval("filial") %></p>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><strong>Grupo: </strong><%# Eval("grupoSanguineo") %></li>
-                                <li class="list-group-item"><strong>Urgencia: </strong><%# Eval("urgencia") %></li>
-                                <li class="list-group-item"><strong>Donantes Necesarios: </strong><%# Eval("donantesNecesarios") %></li>
-                                <li class="list-group-item"><strong>Horarios: </strong><%# Eval("horarios") %></li>
-                                <li class="list-group-item"><strong>Fecha Limite: </strong><%# Eval("fechaLimite") %></li>
+                                <li class="list-group-item" style="font-size: 13px; "><strong>Grupo receptor: </strong><%# Eval("grupoSanguineo") %></li>
+                                <li class="list-group-item" style="font-size: 13px; "><strong>Donantes: </strong><%# Eval("posiblesDonantes") %></li>
+                                <li class="list-group-item" style="font-size: 13px; "><strong>Urgencia: </strong><%# Eval("urgencia") %></li>
+                                <li class="list-group-item" style="font-size: 13px; "><strong>Donantes necesarios: </strong><%# Eval("donantesNecesarios") %></li>
+                                <li class="list-group-item" style="font-size: 13px; "><strong>Fecha Limite: </strong><%# Eval("fechaLimite", "{0:dd/MM/yyyy}") %></li>
                             </ul>
-                            <div class="card-body">
-                                <asp:Button ID="btnDonar" OnClick="btnDonar_Click" runat="server" CssClass="btn btn-primary" Text="Donar" />
+                            <div class="card-body d-grid">
+                                <asp:Button ID="btnDonar" OnClick="btnDonar_Click" runat="server" CssClass="btn btn-customDonar" Text="¡Quiero Donar!" />
                             </div>
                         </div>
                     </div>

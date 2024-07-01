@@ -27,7 +27,7 @@
     <form id="form1" runat="server">
         <div>
 
-            <nav class="navbar navbar-expand-lg bg-body-tertiary nav-container" id="customNav">
+            <nav class="navbar navbar-expand-lg nav-container" id="customNav">
                 <div class="container-fluid">
 
                     <a class="navbar-brand">sanguis</a>
