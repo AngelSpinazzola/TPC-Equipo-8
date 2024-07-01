@@ -120,6 +120,12 @@ h1, h2, h3, h4 {
     margin-bottom: 360px;
 }
 
+.custom-table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
 /* BOTONES */
 
 .btn-customQuiero {
@@ -208,6 +214,17 @@ h1, h2, h3, h4 {
         background-color: #ff5b5b;
     }
 
+.btn-customEditar {
+    color: white;
+    background-color: #c12222;
+    border-radius: 100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+    .btn-customEditar:hover {
+        color: white;
+        background-color: #ff5b5b;
+    }
 /* FOOTER */
 
 .footer-container p,

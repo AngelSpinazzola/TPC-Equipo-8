@@ -98,6 +98,8 @@ AS
 	SELECT Donantes.Nombre, Donantes.Apellido, DR.FechaDonacion FROM DonacionesRealizadas AS DR 
     INNER JOIN Donantes ON DR.IdDonante= Donantes.IdDonante
 	WHERE IdFilial = @IdFilial
+	ORDER BY DR.FechaDonacion DESC
+
 GO
 
 -- PROCEDURE QUE DEVUELVE LISTADO DE PROXIMAS DONACIONES DE UNA FILIAL

@@ -25,8 +25,8 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
             if (!IsPostBack)
             {
-                dgvHomeFilial.DataSource = managerFilial.ListarFiliales(IdFilial);
-                dgvHomeFilial.DataBind();
+                rptFilialDetails.DataSource = managerFilial.ListarFiliales(IdFilial);
+                rptFilialDetails.DataBind();
                 dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(IdFilial);
                 dgvHomeFilialDonantes.DataBind();
 

@@ -40,7 +40,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         protected void btnDono_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            LinkButton btn = (LinkButton)sender;
             int id = Convert.ToInt32(btn.CommandArgument);
 
             ProximasDonaciones seleccionado = proximasDonaciones.FirstOrDefault(d => d.id == id);
@@ -56,7 +56,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected void btnNoDono_Click(object sender, EventArgs e)
         {
 
-            Button btn = (Button)sender;
+            LinkButton btn = (LinkButton)sender;
             int id = Convert.ToInt32(btn.CommandArgument);
 
             Response.Redirect("FilialRechazoDonacion.aspx?id=" +id);
