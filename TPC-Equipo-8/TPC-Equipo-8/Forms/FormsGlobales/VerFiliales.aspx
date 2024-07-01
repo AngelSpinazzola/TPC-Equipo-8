@@ -7,11 +7,11 @@
 
     <div class="container" style="margin-top: 35px;">
         <div class="row justify-content-start">
-            <div class="col-auto">
-                <div class="input-group mb-3">
+            <div class="col">
+                <div class="input-group mb-3" style="">
                     <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" Style="border-radius: 30px; width: 400px;" OnTextChanged="txtBuscar_TextChanged" AutoPostBack="true" placeholder="Buscar por localidad.."></asp:TextBox>
-                    <div class="input-group-append">
-                        <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-primary" OnClick="btnBuscar_Click" Text="Buscar" />
+                    <div>
+                        <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-customBuscar" OnClick="btnBuscar_Click" Text="Buscar" />
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                                 <p class="card-title"><%# Eval("nombre") %></p>
                             </div>
                             <div class="card-body text-center">
-                                <asp:Button ID="btnVerDetalle" runat="server" Text="Ver detalle" OnClick="btnVerDetalle_Click" CssClass="btn btn-primary" CommandArgument='<%# Eval("idFilial") %>' CommandName="idFilial" />
+                                <asp:Button ID="btnVerDetalle" runat="server" Text="Ver detalle" OnClick="btnVerDetalle_Click" CssClass="btn btn-customDetalle" CommandArgument='<%# Eval("idFilial") %>' CommandName="idFilial" />
 
                             </div>
                         </div>
