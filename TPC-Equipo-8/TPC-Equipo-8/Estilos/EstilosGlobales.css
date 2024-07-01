@@ -39,13 +39,26 @@ html {
 }
 
 /* NAV */
+.nav-container{
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
 
+.navbar-brand{
+    font-weight: 500;
+}
+
+#customNav{
+    background-color: #fff;
+}
 
 #customNav a {
     color: #c12222;
 }
 
-    #customNav a:hover {
+    #customNav ul a:hover {
         color: black;
     }
 
@@ -58,6 +71,9 @@ body {
     background-attachment: fixed;
 }
 
+.general-container{
+    padding-top: 60px;
+}
 
 h1, h2, h3, h4 {
     color: white;
@@ -68,9 +84,11 @@ h1, h2, h3, h4 {
 #logo {
     font-family: "DM Serif Display", serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 500;
     font-size: 60px;
 }
+
+/* BOTONES */
 
 .btn-customDonar {
     color: #c12222;
@@ -79,6 +97,7 @@ h1, h2, h3, h4 {
     border-radius: 100px;
     margin-top: -50px;
     border: solid white;
+    box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
 }
 
 .btn.btn-customDonar:hover {

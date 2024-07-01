@@ -30,7 +30,7 @@
 
         <hr style="border: 0; height: 3px; background-color: white; margin: 30px 0;">
 
-        <div class="container text-center" style="background-color: white; margin-top: 30px; border-radius: 50px; padding: 30px;">
+        <div class="container text-center" style="background-color: white; margin-top: 30px; border-radius: 50px; padding: 30px; box-shadow: 4px 4px 8px 4px rgba(0,0,0,0.4);">
             <div class="row align-items-start">
 
                 <div class="col mt-4">
