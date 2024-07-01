@@ -118,21 +118,31 @@ h1, h2, h3, h4 {
     }
 
 .btn-customBuscar {
-    color: #c12222;
-    font-weight: 500;
-    background-color: white;
+    color: white;
+    background-color: #c12222;
     border-radius: 100px;
-    border: solid white;
-    box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.4);
+    border: 2px solid #c12222;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
 }
 
     .btn-customBuscar:hover {
-        color: white;
-        border: solid white;
+        color: #c12222;
+        border: 2px solid #c12222;
+        background-color: white;
     }
 
 .btn-customDetalle {
+    color: #808080;
+    background-color: white;
+    border-radius: 100px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
 }
+
+    .btn-customDetalle:hover {
+        color: black;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
 /* FOOTER */
 
