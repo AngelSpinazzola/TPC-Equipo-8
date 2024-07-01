@@ -9,7 +9,7 @@
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card shadow-sm">
+                        <div class="card border-light mb-3 shadow-sm">
                             <div class="card-body">
                                 <h2 class="card-title"><%# Eval("nombre") %></h2>
                                 <hr>

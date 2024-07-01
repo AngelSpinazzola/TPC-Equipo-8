@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1 class="text-center" style="margin: 30px">Mis Publicaciones</h1>
+    <h2 class="text-center" style="margin: 30px">Mis Publicaciones</h2>
 
     <div class="text-center">
         <a href="FilialAltaPublicacion.aspx" class="btn btn-customCrear"">Nueva Publicacion <i class="fa-solid fa-circle-plus"></i><span class="overlay"></span></a>
