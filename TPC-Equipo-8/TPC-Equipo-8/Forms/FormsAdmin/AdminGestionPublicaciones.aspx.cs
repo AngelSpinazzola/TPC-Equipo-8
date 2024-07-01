@@ -87,13 +87,6 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
                 Session["MensajeExito"] = "Publicación eliminada con éxito.";
 
                 Response.Redirect(Request.RawUrl);
-
-                /*List<Publicacion> publicacionesActualizadas = manager.RecargarPublicaciones(soloActivas: true);
-                dgvPublicaciones.DataSource = publicacionesActualizadas;
-                dgvPublicaciones.DataBind();*/
-
-
-
             }
             catch (Exception ex)
             {

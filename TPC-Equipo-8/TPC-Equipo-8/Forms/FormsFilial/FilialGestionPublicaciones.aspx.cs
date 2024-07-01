@@ -24,27 +24,35 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             if (!IsPostBack)
             {
 
-                repPublicacionesFilial.DataSource = managerPublicaciones.ListarPublicaciones(IdFilial);
+                repPublicacionesFilial.DataSource = managerPublicaciones.ListarPublicaciones(IdFilial, soloActivas: true);
                 repPublicacionesFilial.DataBind();
 
             }
 
         }
 
-        protected void btnCrearPublicacion_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("FilialAltaPublicacion.aspx",false);
-        }
-
         protected void EditarPublicacion_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            LinkButton btn = (LinkButton)sender;
             int idPublicacion = Convert.ToInt32(btn.CommandArgument);
             Response.Redirect("FilialAltaPublicacion.aspx?idPublicacion=" + idPublicacion);
         }
 
         protected void BtnEliminar_Click(object sender, EventArgs e)
         {
+
+            LinkButton btn = (LinkButton)sender;
+            int idPublicacion = Convert.ToInt32(btn.CommandArgument);
+
+            PublicacionesManager manager = new PublicacionesManager();
+            manager.DesactivarPublicacion(idPublicacion);
+
+            Session["MensajeExito"] = "Publicación eliminada con éxito.";
+
+            Response.Redirect(Request.RawUrl);
+
+            /*
+
             Usuario usuario = new Usuario();
             usuario = (Usuario)(Session["usuario"]);
 
@@ -98,7 +106,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             //manager.ModificarPublicacion(nuevaPublicacion);
 
 
-            Response.Redirect("FilialGestionPublicaciones.aspx", false);
+            Response.Redirect("FilialGestionPublicaciones.aspx", false);*/
 
         }
     }
