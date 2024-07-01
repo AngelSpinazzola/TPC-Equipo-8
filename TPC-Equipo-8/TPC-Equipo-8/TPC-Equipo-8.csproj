@@ -67,9 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Estilos\EstilosAdmin.css" />
-    <Content Include="Estilos\EstilosDonante.css" />
-    <Content Include="Estilos\EstilosFilial.css" />
     <Content Include="Estilos\EstilosGlobales.css" />
     <Content Include="Forms\FormsAdmin\AdminEdicionFilial.aspx" />
     <Content Include="Forms\FormsAdmin\AdminEdicionPublicacion.aspx" />

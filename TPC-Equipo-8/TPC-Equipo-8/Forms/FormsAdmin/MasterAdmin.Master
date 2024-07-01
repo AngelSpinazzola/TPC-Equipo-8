@@ -18,19 +18,8 @@
 
     <!-- Hojas de estilo personalizadas -->
     <link rel="stylesheet" href="../../Estilos/EstilosGlobales.css" />
-    <link rel="stylesheet" href="../Estilos/EstilosAdmin.css" />
 
-    <style>
-        .footer-container p,
-        .footer-container a,
-        .footer-container i {
-            color: #fff !important;
-        }
 
-            .footer-container a:hover {
-                color: #808080 !important;
-            }
-    </style>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -40,14 +29,14 @@
     <form id="form1" runat="server">
         <div>
 
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary" id="customNav">
                 <div class="container-fluid">
-                    <a class="navbar-brand">SANGUIS</a>
+                    <a class="navbar-brand">sanguis</a>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="AdminGestionFiliales.aspx">Filiales</a>
+                                <a class="nav-link" href="AdminGestionFiliales.aspx">Gestion Filiales</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="AdminGestionPublicaciones.aspx">Publicaciones</a>

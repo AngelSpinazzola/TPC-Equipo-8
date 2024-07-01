@@ -41,13 +41,13 @@ html {
 /* NAV */
 
 
-#customNav a{
+#customNav a {
     color: #c12222;
 }
 
-#customNav a:hover{
-    color: black;
-}
+    #customNav a:hover {
+        color: black;
+    }
 
 /* DEFAULT */
 
@@ -88,3 +88,12 @@ h1, h2, h3, h4 {
 
 /* FOOTER */
 
+.footer-container p,
+.footer-container a,
+.footer-container i {
+    color: #fff !important;
+}
+
+    .footer-container a:hover {
+        color: #808080 !important;
+    }
