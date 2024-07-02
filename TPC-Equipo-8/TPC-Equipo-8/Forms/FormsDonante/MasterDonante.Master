@@ -57,10 +57,10 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item micuenta" href="DonantePerfil.aspx">Mi perfil</a>
+                                        <a class="dropdown-item micuenta" href="../FormsDonante/DonantePerfil.aspx">Mi perfil</a>
                                     </li>
                                     <li>
-                                        <asp:Button ID="Button2" runat="server" Text="Salir" OnClick="Button2_Click" CssClass="dropdown-item salir-button" />
+                                        <asp:Button ID="Button2" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="dropdown-item salir-button" />
                                     </li>
                                 </ul>
                             </li>
@@ -99,27 +99,27 @@
     <script src="https://kit.fontawesome.com/af9212b45d.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-    $(document).ready(function () {
-        $('.navbar .nav-link.dropdown-toggle').mouseenter(function () {
-            var dropdownMenu = $(this).next('.dropdown-menu');
-            dropdownMenu.stop(true, true).slideDown(300);
-        });
+        $(document).ready(function () {
+            $('.navbar .nav-link.dropdown-toggle').mouseenter(function () {
+                var dropdownMenu = $(this).next('.dropdown-menu');
+                dropdownMenu.stop(true, true).slideDown(300);
+            });
 
-        $('.navbar .dropdown').mouseleave(function () {
-            var dropdownMenu = $(this).find('.dropdown-menu');
-            dropdownMenu.stop(true, true).slideUp(300);
-        });
+            $('.navbar .dropdown').mouseleave(function () {
+                var dropdownMenu = $(this).find('.dropdown-menu');
+                dropdownMenu.stop(true, true).slideUp(300);
+            });
 
-        $('.navbar .dropdown-menu .salir-button').click(function (e) {
-            e.stopPropagation(); 
-        });
+            $('.navbar .dropdown-menu .salir-button').click(function (e) {
+                e.stopPropagation();
+            });
 
-        $('.navbar .dropdown-menu .micuenta, .navbar .dropdown-menu .salir-button').mouseenter(function () {
-            $(this).css('opacity', '1'); 
-        }).mouseleave(function () {
-            $(this).css('opacity', ''); 
+            $('.navbar .dropdown-menu .micuenta, .navbar .dropdown-menu .salir-button').mouseenter(function () {
+                $(this).css('opacity', '1');
+            }).mouseleave(function () {
+                $(this).css('opacity', '');
+            });
         });
-    });
 </script>
 
 </body>

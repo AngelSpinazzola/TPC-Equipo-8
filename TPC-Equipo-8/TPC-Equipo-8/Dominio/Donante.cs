@@ -13,5 +13,6 @@ namespace TPC_Equipo_8.Dominio
         public string tipoSangre { get; set; }
         public string urlFoto { get; set; }
         public bool estado { get; set; }
+        public DateTime fechaAlta { get; set; }
     }
 }

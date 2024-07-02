@@ -301,13 +301,19 @@ h1, h2, h3, h4 {
 /* DROPDOWN */
 
 .dropdown-menu .salir-button {
-    color: black; 
+    color: black;
 }
 
     .dropdown-menu .salir-button:hover {
         color: white;
-        background-color: #ff5b5b; 
+        background-color: #ff5b5b;
     }
 
+.navbar .dropdown-menu .micuenta {
+    color: black !important;
+}
 
-
+    .navbar .dropdown-menu .micuenta:hover {
+        color: white;
+        background-color: #ff5b5b;
+    }

@@ -431,3 +431,38 @@ AS
 BEGIN
 	UPDATE Publicaciones SET Estado = 0 WHERE IdPublicacion = @IdPublicacion
 END
+
+GO
+
+--- PROCEDURE QUE RECIBE ID DE USUARIO, DEVUELVE REGISTRO COMPLETO DEL DONANTE
+CREATE OR ALTER PROCEDURE SP_ListarDonante(
+	@IdUsuario INT
+)
+AS
+BEGIN
+SELECT
+	U.Username,
+	D.Nombre,
+	D.Apellido,
+	D.Dni, 
+	U.Email, 
+	U.Pass, 
+	U.FechaAlta,
+	GS.Grupo,
+	P.Nombre AS nombreProvincia,
+	C.Nombre AS nombreCiudad,
+	L.Nombre AS nombreLocalidad,
+	L.CodigoPostal,
+	DXU.Calle,
+	DXU.Altura
+	FROM Usuarios U
+LEFT JOIN Donantes D ON D.IdUsuario = U.IdUsuario
+LEFT JOIN Direcciones_x_Usuario DXU ON DXU.IdUsuario = U.IdUsuario
+LEFT JOIN Localidades L ON L.IdLocalidad = DXU.IdLocalidad
+LEFT JOIN Ciudades C ON C.IdCiudad = L.IdCiudad
+LEFT JOIN Provincias P ON P.IdProvincia = C.IdProvincia
+INNER JOIN GruposSanguineos GS ON GS.IdGrupoSanguineo = D.IdGrupoSanguineo 
+WHERE u.IdUsuario = @IdUsuario
+END
+
+GO

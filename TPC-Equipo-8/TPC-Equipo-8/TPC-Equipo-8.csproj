@@ -277,6 +277,7 @@
     </Compile>
     <Compile Include="Helpers\Seguridad.cs" />
     <Compile Include="Manager\DonacionManager.cs" />
+    <Compile Include="Manager\DonanteManager.cs" />
     <Compile Include="Manager\FilialManager.cs" />
     <Compile Include="Manager\ProximasDonacionesManager.cs" />
     <Compile Include="Manager\PublicacionesManager.cs" />

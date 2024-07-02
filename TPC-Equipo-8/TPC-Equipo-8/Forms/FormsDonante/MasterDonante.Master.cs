@@ -33,6 +33,8 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         {
             Session.Clear();
             Session.Abandon();
+
+            Response.Redirect("../FormsGlobales/Default.aspx");
         }
     }
 }
