@@ -71,6 +71,15 @@ html {
         color: #ff5b5b;
     }
 
+.navbar .dropdown-menu .micuenta {
+    color: black !important;
+}
+
+    .navbar .dropdown-menu .micuenta:hover {
+        color: white !important;
+        background-color: #ff5b5b !important;
+    }
+
 /* DEFAULT */
 
 body {
@@ -291,20 +300,13 @@ h1, h2, h3, h4 {
 
 /* DROPDOWN */
 
-.navbar .dropdown-menu .micuenta {
-    color: black !important;
-}
-
-    .navbar .dropdown-menu .micuenta:hover {
-        color: #ff5b5b !important;
-    }
-
 .dropdown-menu .salir-button {
-    color: black;
+    color: black; 
 }
 
     .dropdown-menu .salir-button:hover {
-        color: #ff5b5b;
+        color: white;
+        background-color: #ff5b5b; 
     }
 
 
