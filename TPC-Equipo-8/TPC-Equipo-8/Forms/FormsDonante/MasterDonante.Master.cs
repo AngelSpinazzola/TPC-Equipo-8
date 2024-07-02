@@ -28,5 +28,11 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             Usuario usuario = Session["usuario"] as Usuario;
             return usuario != null ? usuario.Username : string.Empty;
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+        }
     }
 }

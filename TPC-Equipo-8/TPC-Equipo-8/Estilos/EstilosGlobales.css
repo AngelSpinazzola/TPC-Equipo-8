@@ -39,6 +39,7 @@ html {
 }
 
 /* NAV */
+
 .nav-container {
     box-shadow: 0 2px 2px rgba(0,0,0,0.2);
     position: fixed;
@@ -104,9 +105,9 @@ h1, h2, h3, h4 {
     background-attachment: fixed;
 }
 
-#default-div h1, #default-div h2{
-    color: white;
-}
+    #default-div h1, #default-div h2 {
+        color: white;
+    }
 
 .custom-login {
     max-width: 400px;
@@ -287,3 +288,24 @@ h1, h2, h3, h4 {
     .footer-container a:hover i {
         color: #c12222 !important;
     }
+
+/* DROPDOWN */
+
+.navbar .dropdown-menu .micuenta {
+    color: black !important;
+}
+
+    .navbar .dropdown-menu .micuenta:hover {
+        color: #ff5b5b !important;
+    }
+
+.dropdown-menu .salir-button {
+    color: black;
+}
+
+    .dropdown-menu .salir-button:hover {
+        color: #ff5b5b;
+    }
+
+
+

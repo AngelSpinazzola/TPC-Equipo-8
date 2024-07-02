@@ -16,9 +16,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- Hojas de estilo personalizadas -->
     <link rel="stylesheet" href="../../Estilos/EstilosGlobales.css" />
-
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -27,116 +25,121 @@
 <body>
     <form id="form1" runat="server">
 
-            <nav class="navbar navbar-expand-lg nav-container" id="customNav">
+        <nav class="navbar navbar-expand-lg nav-container" id="customNav">
 
-                <div class="container-fluid">
+            <div class="container-fluid">
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                        <!-- LOG IN Y SIGN IN -->
+                    <!-- LOG IN Y SIGN IN -->
 
-                        <%if (Session["usuario"] == null)
-                            {%>
+                    <%if (Session["usuario"] == null)
+                        {%>
 
-                        <a class="navbar-brand" href="Default.aspx">sanguis</a>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="Requisitos.aspx">Requisitos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="VerFiliales.aspx">Filiales</a>
-                            </li>
-                        </ul>
+                    <a class="navbar-brand" href="Default.aspx">sanguis</a>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Requisitos.aspx">Requisitos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="VerFiliales.aspx">Filiales</a>
+                        </li>
+                    </ul>
 
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="LogIn.aspx">Ingresá</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Registro.aspx">Creá tu cuenta</a>
-                            </li>
-                        </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="LogIn.aspx">Ingresá</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Registro.aspx">Creá tu cuenta</a>
+                        </li>
+                    </ul>
 
-                        <% } %>
+                    <% } %>
 
-                        <%if (Session["usuario"] != null && ObtenerRolUsuario() == 1)
-                            {%>
+                    <%if (Session["usuario"] != null && ObtenerRolUsuario() == 1)
+                        {%>
 
-                        <a class="navbar-brand">sanguis</a>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../FormsAdmin/AdminGestionFiliales.aspx">Gestion Filiales</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../FormsAdmin/AdminGestionPublicaciones.aspx">Publicaciones</a>
-                            </li>
-                        </ul>
+                    <a class="navbar-brand">sanguis</a>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../FormsAdmin/AdminGestionFiliales.aspx">Gestion Filiales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../FormsAdmin/AdminGestionPublicaciones.aspx">Publicaciones</a>
+                        </li>
+                    </ul>
 
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <asp:Button ID="Button3" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link btn-customSalir" />
-                            </li>
-                        </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <asp:Button ID="Button3" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link btn-customSalir" />
+                        </li>
+                    </ul>
 
-                        <% } %>
+                    <% } %>
 
-                        <%if (Session["usuario"] != null && ObtenerRolUsuario() == 2)
-                            {%>
+                    <%if (Session["usuario"] != null && ObtenerRolUsuario() == 2)
+                        {%>
 
-                        <a class="navbar-brand" href="Default.aspx">sanguis</a>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="Requisitos.aspx">Requisitos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="VerFiliales.aspx">Filiales</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="PublicacionesDonantes.aspx">Quiero Donar</a>
-                            </li>
-                        </ul>
+                    <a class="navbar-brand" href="Default.aspx">sanguis</a>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Requisitos.aspx">Requisitos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="VerFiliales.aspx">Filiales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="PublicacionesDonantes.aspx">Quiero Donar</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-lg-auto">
+                        <li class="nav-item dropdown" id="dropdownUser">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <%: ObtenerNombreUsuario() %>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item micuenta" href="../FormsDonante/DonantePerfil.aspx">Mi perfil</a>
+                                </li>
+                                <li>
+                                    <asp:Button ID="Button2" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="dropdown-item salir-button" />
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
 
-                        <ul class="navbar-nav ms-lg-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../FormsDonante/DonantePerfil.aspx"><%: ObtenerNombreUsuario() %></a>
-                            </li>
-                            <li class="nav-item">
-                                <asp:Button ID="Button2" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link btn-customSalir" />
-                            </li>
-                        </ul>
+                    <% } %>
 
-                        <% } %>
+                    <%if (Session["usuario"] != null && ObtenerRolUsuario() == 3)
+                        {%>
 
-                        <%if (Session["usuario"] != null && ObtenerRolUsuario() == 3)
-                            {%>
+                    <a class="navbar-brand">sanguis</a>
+                    <ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Requisitos.aspx">Requisitos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../FormsFilial/FilialGestionDonantes.aspx">Donantes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../FormsFilial/FilialGestionPublicaciones.aspx">Publicaciones</a>
+                        </li>
+                    </ul>
 
-                        <a class="navbar-brand">sanguis</a>
-                        <ul>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Requisitos.aspx">Requisitos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../FormsFilial/FilialGestionDonantes.aspx">Donantes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../FormsFilial/FilialGestionPublicaciones.aspx">Publicaciones</a>
-                            </li>
-                        </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <asp:Button ID="Button1" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link btn-customSalir" />
+                        </li>
+                    </ul>
 
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <asp:Button ID="Button1" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link btn-customSalir" />
-                            </li>
-                        </ul>
-
-                        <% } %>
-
-                    </div>
+                    <% } %>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
         <div class="general-container">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"> 
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
 
@@ -158,6 +161,30 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/af9212b45d.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.navbar .nav-link.dropdown-toggle').mouseenter(function () {
+                var dropdownMenu = $(this).next('.dropdown-menu');
+                dropdownMenu.stop(true, true).slideDown(300);
+            });
+
+            $('.navbar .dropdown').mouseleave(function () {
+                var dropdownMenu = $(this).find('.dropdown-menu');
+                dropdownMenu.stop(true, true).slideUp(300);
+            });
+
+            $('.navbar .dropdown-menu .salir-button').click(function (e) {
+                e.stopPropagation(); 
+            });
+
+            $('.navbar .dropdown-menu .micuenta, .navbar .dropdown-menu .salir-button').mouseenter(function () {
+                $(this).css('opacity', '1'); 
+            }).mouseleave(function () {
+                $(this).css('opacity', ''); 
+            });
+        });
+    </script>
 
 </body>
 </html>

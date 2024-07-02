@@ -50,12 +50,19 @@
                         <% if (Session["usuario"] != null)
                             { %>
 
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="DonantePerfil.aspx"><%: ObtenerNombreUsuario() %></a>
-                            </li>
-                            <li class="nav-item">
-                                <asp:Button ID="btnSalir" runat="server" Text="Salir" OnClick="btnSalir_Click" CssClass="nav-link btn-customSalir" />
+                        <ul class="navbar-nav ms-lg-auto">
+                            <li class="nav-item dropdown" id="dropdownUser">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <%: ObtenerNombreUsuario() %>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item micuenta" href="DonantePerfil.aspx">Mi perfil</a>
+                                    </li>
+                                    <li>
+                                        <asp:Button ID="Button2" runat="server" Text="Salir" OnClick="Button2_Click" CssClass="dropdown-item salir-button" />
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
 
@@ -90,6 +97,30 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/af9212b45d.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $('.navbar .nav-link.dropdown-toggle').mouseenter(function () {
+            var dropdownMenu = $(this).next('.dropdown-menu');
+            dropdownMenu.stop(true, true).slideDown(300);
+        });
+
+        $('.navbar .dropdown').mouseleave(function () {
+            var dropdownMenu = $(this).find('.dropdown-menu');
+            dropdownMenu.stop(true, true).slideUp(300);
+        });
+
+        $('.navbar .dropdown-menu .salir-button').click(function (e) {
+            e.stopPropagation(); 
+        });
+
+        $('.navbar .dropdown-menu .micuenta, .navbar .dropdown-menu .salir-button').mouseenter(function () {
+            $(this).css('opacity', '1'); 
+        }).mouseleave(function () {
+            $(this).css('opacity', ''); 
+        });
+    });
+</script>
 
 </body>
 </html>
