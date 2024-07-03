@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Forms\FormsDonante\Content\images\imagen-perfil-usuario\placeHolderPerfilUsuario.jpg" />
     <Content Include="Estilos\EstilosGlobales.css" />
     <Content Include="Forms\FormsAdmin\AdminEdicionFilial.aspx" />
     <Content Include="Forms\FormsAdmin\AdminEdicionPublicacion.aspx" />

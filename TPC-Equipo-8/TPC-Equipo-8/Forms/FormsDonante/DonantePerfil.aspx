@@ -13,13 +13,13 @@
 
         .barra-lateral {
             background: #c12222;
-            width: 250px; 
+            width: 250px;
             height: 100vh;
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 1000; 
-            padding-top: 60px; 
+            z-index: 1000;
+            padding-top: 60px;
         }
 
         .menu a {
@@ -55,94 +55,105 @@
         <div class="row justify-content-center align-content-center text-center">
             <div class="columna col-lg-6">
                 <div id="infoPersonal" style="display: none;">
-
                     <h1 class="text-center">Edición del perfil</h1>
-
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-6">
-                                <label for="txtNombre" class="form-label">Nombre</label>
-                                <asp:TextBox ID="txtNombre" runat="server" type="text" class="form-control"></asp:TextBox>
+                            <!-- Formulario de información personal -->
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="txtNombre" class="form-label">Nombre</label>
+                                        <asp:TextBox ID="txtNombre" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="txtApellido" class="form-label">Apellido</label>
+                                        <asp:TextBox ID="txtApellido" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="txtEmail" class="form-label">Email</label>
+                                        <asp:TextBox ID="txtEmail" runat="server" type="text" class="form-control" ReadOnly="true"></asp:TextBox>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="txtDni" class="form-label">Dni</label>
+                                        <asp:TextBox ID="txtDni" runat="server" type="text" class="form-control" ReadOnly="true"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="txtFechaAlta" class="form-label">Fecha de Alta</label>
+                                        <asp:TextBox ID="txtFechaAlta" runat="server" type="text" class="form-control" ReadOnly="true"></asp:TextBox>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="txtNombreGrupoSanguineo" class="form-label">Grupo Sanguíneo</label>
+                                        <asp:TextBox ID="txtNombreGrupoSanguineo" runat="server" type="text" class="form-control" ReadOnly="true"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="txtCalle" class="form-label">Calle</label>
+                                        <asp:TextBox ID="txtCalle" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="txtAltura" class="form-label">Altura</label>
+                                        <asp:TextBox ID="txtAltura" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="txtCp" class="form-label">Código Postal</label>
+                                        <asp:TextBox ID="txtCp" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="txtNombreLocalidad" class="form-label">Localidad</label>
+                                        <asp:TextBox ID="txtNombreLocalidad" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="txtNombreProvincia" class="form-label">Provincia</label>
+                                        <asp:TextBox ID="txtNombreProvincia" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="txtNombreCiudad" class="form-label">Ciudad</label>
+                                        <asp:TextBox ID="txtNombreCiudad" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="txtApellido" class="form-label">Apellido</label>
-                                <asp:TextBox ID="txtApellido" runat="server" type="text" class="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="txtEmail" class="form-label">Email</label>
-                                <asp:TextBox ID="txtEmail" runat="server" type="text" class="form-control" ReadOnly="true"></asp:TextBox>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="txtDni" class="form-label">Dni</label>
-                                <asp:TextBox ID="txtDni" runat="server" type="text" class="form-control" ReadOnly="true"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="txtFechaAlta" class="form-label">Fecha de Alta</label>
-                                <asp:TextBox ID="txtFechaAlta" runat="server" type="text" class="form-control" ReadOnly="true"></asp:TextBox>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="txtNombreGrupoSanguineo" class="form-label">Grupo Sanguíneo</label>
-                                <asp:TextBox ID="txtNombreGrupoSanguineo" runat="server" type="text" class="form-control" ReadOnly="true"></asp:TextBox>
-                            </div>
-                        </div>
 
-                        <!-- Direccion -->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="txtCalle" class="form-label">Calle</label>
-                                <asp:TextBox ID="txtCalle" runat="server" type="text" class="form-control"></asp:TextBox>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="txtAltura" class="form-label">Altura</label>
-                                <asp:TextBox ID="txtAltura" runat="server" type="text" class="form-control"></asp:TextBox>
+                            <!-- Sección de carga de imagen -->
+                            <div class="col-md-4">
+                                <asp:Image ID="imgNuevoPerfil" runat="server" CssClass="img-fluid mb-3" />
+                                <div class="mb-3">
+                                    <label class="form-label">Imagen Perfil</label>
+                                    <input type="file" id="txtImagen" runat="server" class="form-control" accept="image/*" />
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="txtCp" class="form-label">Código Postal</label>
-                                <asp:TextBox ID="txtCp" runat="server" type="text" class="form-control"></asp:TextBox>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="txtNombreLocalidad" class="form-label">Localidad</label>
-                                <asp:TextBox ID="txtNombreLocalidad" runat="server" type="text" class="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="txtNombreProvincia" class="form-label">Provincia</label>
-                                <asp:TextBox ID="txtNombreProvincia" runat="server" type="text" class="form-control"></asp:TextBox>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="txtNombreCiudad" class="form-label">Ciudad</label>
-                                <asp:TextBox ID="txtNombreCiudad" runat="server" type="text" class="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-
-
 
                         <div class="row mt-4">
                             <div class="col-md-12 d-flex justify-content-center">
-                                <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn btn-primary" />
+                                <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" />
                             </div>
                         </div>
                     </div>
-        </div>
-        <div id="contraseña" style="display: none;">
-            Contenido de Contraseña
+
+
+                </div>
+            </div>
+            <div id="contraseña" style="display: none;">
+                Contenido de Contraseña
                
-        </div>
-        <div id="proximaDonacion" style="display: none;">
-            Contenido de Próxima Donación
+            </div>
+            <div id="proximaDonacion" style="display: none;">
+                Contenido de Próxima Donación
                
-        </div>
-        <div id="donacionesRealizadas" style="display: none;">
-            Contenido de Donaciones Realizadas
+            </div>
+            <div id="donacionesRealizadas" style="display: none;">
+                Contenido de Donaciones Realizadas
                
-        </div>
+            </div>
         </div>
     </main>
 
@@ -176,6 +187,7 @@
             document.getElementById('proximaDonacion').style.display = 'none';
             document.getElementById('donacionesRealizadas').style.display = 'block';
         }
+
     </script>
 
 

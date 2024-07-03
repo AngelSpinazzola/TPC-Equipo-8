@@ -51,6 +51,9 @@
                             { %>
 
                         <ul class="navbar-nav ms-lg-auto">
+                            <asp:Image ID="imgAvatar" Style="height: 40px; width: 40px; border-radius: 50%;"
+                                runat="server" />
+
                             <li class="nav-item dropdown" id="dropdownUser">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     <%: ObtenerNombreUsuario() %>

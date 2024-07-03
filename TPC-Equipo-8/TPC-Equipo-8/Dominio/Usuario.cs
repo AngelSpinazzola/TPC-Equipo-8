@@ -20,7 +20,7 @@ namespace TPC_Equipo_8.Dominio
         public string pass { get; set; }
         public Direccion direccion { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
-        
+
         public Usuario()
         {
 

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TPC_Equipo_8.Dominio;
 using TPC_Equipo_8.Helpers;
+using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsDonante
 {
@@ -13,7 +14,12 @@ namespace TPC_Equipo_8.Forms.FormsDonante
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Usuario usuario = (Usuario)Session["usuario"];
+
+            if (usuario != null)
+            {
+                CargarAvatarDonante();
+            }
         }
 
         protected void btnSalir_Click(object sender, EventArgs e)
@@ -35,6 +41,31 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             Session.Abandon();
 
             Response.Redirect("../FormsGlobales/Default.aspx");
+        }
+
+        public void CargarAvatarDonante()
+        {
+            Usuario usuario = (Usuario)Session["usuario"];
+
+            if (usuario != null && usuario.TipoUsuario == TipoUsuario.DONANTE)
+            {
+                DonanteManager manager = new DonanteManager();
+                int IdUsuario = usuario.idUsuario;
+                string nombreArchivo = manager.ObtenerUrlAvatarDonante(IdUsuario);
+
+
+                if (!string.IsNullOrEmpty(nombreArchivo))
+                {
+                    string timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+
+                    string urlImagen = "~/Forms/FormsDonante/Content/images/imagen-perfil-usuario/" + nombreArchivo;
+                    imgAvatar.ImageUrl = ResolveUrl(urlImagen + "?t=" + timestamp);
+                }
+                else
+                {
+                    imgAvatar.ImageUrl = "~/Forms/FormsDonante/Content/images/imagen-perfil-usuario/placeHolderPerfilUsuario.jpg";
+                }
+            }
         }
     }
 }

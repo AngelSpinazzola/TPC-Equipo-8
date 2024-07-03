@@ -18,15 +18,16 @@ namespace TPC_Equipo_8.Manager
                 datos.setearProcedimiento("SP_Loguear");
                 datos.setearParametro("@Email", usuario.email);
                 datos.setearParametro("@Pass", usuario.pass);
-                
-
                 datos.ejecutarLectura();
+
+
 
 
                 while (datos.Lector.Read())
                 {
                     usuario.idUsuario = (int)datos.Lector["IdUsuario"];
                     usuario.Username = (string)datos.Lector["Username"];
+
                     int rol = (int)datos.Lector["IdRol"];
 
                     switch (rol)
@@ -44,6 +45,7 @@ namespace TPC_Equipo_8.Manager
                             break;
 
                     }
+
 
                     return true; 
                 }

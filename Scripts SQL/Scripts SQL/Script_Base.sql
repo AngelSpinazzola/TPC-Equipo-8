@@ -454,7 +454,7 @@ Values
 ('Clinica San Gabriel', 'sangabriel@gmail.com', 'sanga2', 3),
 ('Raul Gonzales', 'rauldonante@gmail.com', 'raul123', 2),
 ('Pepe Saenz', 'randomuser@gmail.com', 'abc123', 2),
-('Angel Di María', 'pacodona@gmail.com', 'soypaco', 2),
+('Michael Jordan', 'pacodona@gmail.com', 'soypaco', 2),
 ('Jorge Camaleón', 'jorgedona@gmail.com', '123456', 2),
 ('Pedro Dona', 'pedrodona@gmail.com', 'aguantedonar', 2),
 ('Pablo Pirez', 'pablodonadaleee@gmail.com', 'donamadonna', 2),
@@ -519,12 +519,12 @@ INSERT INTO DonacionesPosibles (IdGrupoDonante, IdGrupoReceptor) VALUES
 (8,8)
 
 Insert Into Donantes (IdUsuario, Nombre, Apellido, Dni, FechaNacimiento, IdGrupoSanguineo, UrlFoto) Values 
-(3, 'Raul', 'Rolon', '30565812', '1990-01-01', 5, 'https://img.freepik.com/foto-gratis/chico-guapo-seguro-posando-contra-pared-blanca_176420-32936.jpg?size=626&ext=jpg&ga=GA1.1.1488620777.1708214400&semt=sph'),
-(4, 'Osvaldo', 'Negri', '27653986', '1985-12-16', 2, 'https://images.ecestaticos.com/vU8sC8tLdkx-2YYh1fkOGL8vfeY=/0x0:990x557/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F62c%2Fe5d%2F314%2F62ce5d3141c0b670144a692b7f6a21fa.jpg'),
-(5, 'MIchael', 'Jordan', '856324', '1993-11-05', 3, 'https://media.gq.com.mx/photos/61780a08f865d472dfcd66c8/master/w_2560%2Cc_limit/GettyImages-1225777369.jpg'),
-(6, 'Jorgito', 'Perez', '8623515', '1991-03-01', 1, 'https://media.revistagq.com/photos/621343d2c789a63cc825a58b/16:9/w_2367,h_1331,c_limit/virgen%20a%20lo%2040.jpeg'),
-(7, 'Pedro', 'Dominguez', '25326458', '1994-01-06', 8, 'https://us.123rf.com/450wm/carballo/carballo2008/carballo200800131/152787240-joven-adolescente-hombre-apuntando-aislado-sobre-fondo-de-color-con-camiseta-blanca.jpg?ver=6'),
-(8, 'Pablito', 'Blood', '38568296', '1975-08-11', 3, 'https://previews.123rf.com/images/warrengoldswain/warrengoldswain1201/warrengoldswain120100216/11900075-retrato-est%C3%A1ndar-de-una-persona-real-isloated-en-blanco.jpg')
+(3, 'Raul', 'Rolon', '30565812', '1990-01-01', 5, NULL),
+(4, 'Osvaldo', 'Negri', '27653986', '1985-12-16', 2, 'perfil-4.jpg'),
+(5, 'MIchael', 'Jordan', '856324', '1993-11-05', 3, 'perfil-5.jpg'),
+(6, 'Marcos', 'Perez', '8623515', '1991-03-01', 1, NULL),
+(7, 'Pedro', 'Dominguez', '25326458', '1994-01-06', 8, 'perfil-7.jpg'),
+(8, 'Pablito', 'Blood', '38568296', '1975-08-11', 3, 'perfil-8.jpg')
 
 Insert Into Filiales (IdUsuario, Nombre, Telefono, HorarioAtencion, Correo, UrlImagen, UrlWeb, Habilitado) Values 
 (2, 'Clinica San Gabriel', '11-5368-8796', 'Lun a Vie 9:00 a 20:00 - Sab, Dom y Feriados 9:00 a 15:00', 'quiero.donar@clinicasangabriel.com','https://lh5.googleusercontent.com/proxy/dyoXByWBDd5w5Otft5ZlobI5Zx-du5WpMrJvgeC09BYXqRP4ZcfQcCSdoQWZp82IE54YQ--621ucLh6wyhDki46V6PS5wiQ17MMsdz8N', 'https://www.instagram.com/clinica.san.gabriel/', 1),
@@ -533,7 +533,6 @@ Insert Into Filiales (IdUsuario, Nombre, Telefono, HorarioAtencion, Correo, UrlI
 (11, 'Hospital Argerich', '11-4121-0700', '24 / 7', 'hospitalargerich@gmail.com','https://buenosaires.gob.ar/sites/default/files/media/image/2018/11/29/a96e327336207c2e75861f534b4fa754c96635ca.jpg', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospital-argerich', 1),
 (12, 'Hospital Fernandez', '11-4808-2600', 'Estamos siempre que nos necesites', 'fernandez@hospital.com','https://upload.wikimedia.org/wikipedia/commons/4/46/DefPuebloCABA_-_hospital_Fernandez.jpg', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospital-fernandez', 1),
 (13, 'Hospital Dr. Abel Zubizarreta', '11-4501-5985', 'Lunes a Sabados de 9:00 a 22:00', 'elzubi@dona.com','https://buenosaires.gob.ar/sites/default/files/media/image/2015/09/18/b97af68b93dcf75c7bfe1902535506dead9595b2.jpg', 'https://buenosaires.gob.ar/salud/hospitales-y-establecimientos-de-salud/hospital-zubizarreta', 1)
-
 
 Insert into Administradores (IdUsuario, Nombre) Values 
 (1,'Juan')

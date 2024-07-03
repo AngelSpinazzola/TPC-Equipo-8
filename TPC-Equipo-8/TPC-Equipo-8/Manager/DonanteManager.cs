@@ -1,6 +1,7 @@
 ﻿using manager;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using TPC_Equipo_8.Dominio;
@@ -24,7 +25,7 @@ namespace TPC_Equipo_8.Manager
                 datos.setearParametro("@IdUsuario", idUsuario);
                 datos.ejecutarLectura();
 
-                while(datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
                     donante.nombre = (string)datos.Lector["Nombre"];
                     donante.apellido = (string)datos.Lector["Apellido"];
@@ -55,7 +56,57 @@ namespace TPC_Equipo_8.Manager
             return donante;
         }
 
+        public string ObtenerUrlAvatarDonante(int IdUsuario)
+        {
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearConsulta("SELECT UrlFoto FROM Donantes WHERE IdUsuario = @IdUsuario");
+                datos.setearParametro("IdUsuario", IdUsuario);
+                datos.ejecutarLectura();
 
+                while(datos.Lector.Read())
+                {
+                    return datos.Lector["UrlFoto"].ToString();
+                }
+
+                return "??";
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void EditarPerfilDonante(Donante donante, int IdUsuario)
+        {
+            
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_ActualizarDatosDonante");
+                datos.setearParametro("@IdUsuario", IdUsuario);
+                datos.setearParametro("@Nombre", donante.nombre);
+                datos.setearParametro("@Apellido", donante.apellido);
+                datos.setearParametro("@UrlFoto", donante.urlFoto);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
     }
 }

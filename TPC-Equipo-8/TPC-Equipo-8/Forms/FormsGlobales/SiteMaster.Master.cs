@@ -16,7 +16,38 @@ namespace TPC_Equipo_8
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Usuario usuario = (Usuario)Session["usuario"];
+
+            if (usuario != null)
+            {
+                CargarAvatarDonante();
+
+            }
+        }
+
+        public void CargarAvatarDonante()
+        {
+            Usuario usuario = (Usuario)Session["usuario"];
+
+            if (usuario != null && usuario.TipoUsuario == TipoUsuario.DONANTE)
+            {
+                DonanteManager manager = new DonanteManager();
+                int IdUsuario = usuario.idUsuario;
+                string nombreArchivo = manager.ObtenerUrlAvatarDonante(IdUsuario);
+
+
+                if (!string.IsNullOrEmpty(nombreArchivo))
+                {
+                    string timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+
+                    string urlImagen = "~/Forms/FormsDonante/Content/images/imagen-perfil-usuario/" + nombreArchivo;
+                    imgPerfil.ImageUrl = ResolveUrl(urlImagen + "?t=" + timestamp);
+                }
+                else
+                {
+                    imgPerfil.ImageUrl = "~/Forms/FormsDonante/Content/images/imagen-perfil-usuario/placeHolderPerfilUsuario.jpg";
+                }
+            }
         }
 
         public int ObtenerRolUsuario()

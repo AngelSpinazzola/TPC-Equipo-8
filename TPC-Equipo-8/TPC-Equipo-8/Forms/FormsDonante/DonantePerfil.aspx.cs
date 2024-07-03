@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using TPC_Equipo_8.Dominio;
 using TPC_Equipo_8.Manager;
 using TPC_Equipo_8.Helpers;
+using System.IO;
+using manager;
 
 
 namespace TPC_Equipo_8.Forms.FormsDonante
@@ -21,6 +23,8 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 {
                     Response.Redirect("../FormsGlobales/Login.aspx");
                 }
+                
+
             }
 
             Usuario usuario = (Usuario)Session["usuario"];
@@ -29,7 +33,7 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             {
                 Donante donante = new Donante();
                 DonanteManager manager = new DonanteManager();
-                
+
                 int usuarioId = usuario.idUsuario;
 
                 donante = manager.ListarDonante(usuarioId);
@@ -48,8 +52,72 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 txtAltura.Text = donante.direccion.altura.ToString();
                 txtCp.Text = donante.direccion.codigoPostal;
 
+                imgNuevoPerfil.ImageUrl = CargarUrlImagenDonante();
+
             }
 
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Usuario usuario = (Usuario)Session["usuario"];
+                DonanteManager manager = new DonanteManager();
+                Donante donante = new Donante();
+
+                int usuarioId = usuario.idUsuario;
+
+                string ruta = Server.MapPath("./Content/Images/imagen-perfil-usuario/");
+                txtImagen.PostedFile.SaveAs(ruta + "perfil-" + usuarioId + ".jpg");
+
+                donante.nombre = txtNombre.Text;
+                donante.apellido = txtApellido.Text;
+                donante.urlFoto = "perfil-" + usuarioId + ".jpg";
+
+                manager.EditarPerfilDonante(donante, usuarioId);
+
+                Image img = (Image)Master.FindControl("imgAvatar");
+
+                string timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+
+                if (img != null) 
+                {
+                    img.ImageUrl = ResolveUrl(CargarUrlImagenDonante() + "?t=" + timestamp);
+                }
+
+                imgNuevoPerfil.ImageUrl = ResolveUrl(CargarUrlImagenDonante() + "?t=" + timestamp );
+
+            }
+            catch (Exception ex)
+            {
+
+                Session.Add("error", ex.ToString());
+            }
+        }
+
+
+
+        public string CargarUrlImagenDonante()
+        {
+            Usuario usuario = (Usuario)Session["usuario"];
+            string url = "~/Forms/FormsDonante/Content/images/imagen-perfil-usuario/placeHolderPerfilUsuario.jpg";
+
+            if (usuario != null && usuario.TipoUsuario == TipoUsuario.DONANTE)
+            {
+                DonanteManager manager = new DonanteManager();
+                int IdUsuario = usuario.idUsuario;
+                string nombreArchivo = manager.ObtenerUrlAvatarDonante(IdUsuario);
+
+                if (!string.IsNullOrEmpty(nombreArchivo))
+                {
+                    string timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+                    url = "~/Forms/FormsDonante/Content/images/imagen-perfil-usuario/" + nombreArchivo + "?t=" + timestamp;
+
+                    return url;
+                }
+            }
+            return url;
         }
     }
 }

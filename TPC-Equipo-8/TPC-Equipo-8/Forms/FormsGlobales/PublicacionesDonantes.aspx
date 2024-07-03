@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsGlobales/SiteMaster.Master" AutoEventWireup="true" CodeBehind="PublicacionesDonantes.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsGlobales.PublicacionesDonantes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsGlobales/SiteMaster.Master" AutoEventWireup="true" CodeBehind="PublicacionesDonantes.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsGlobales.PublicacionesDonantes" EnableEventValidation="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

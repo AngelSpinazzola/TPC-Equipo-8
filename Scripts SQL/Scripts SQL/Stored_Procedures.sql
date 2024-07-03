@@ -312,17 +312,15 @@ CREATE OR ALTER PROCEDURE SP_Registro
 	@Dni NVARCHAR(30)
 AS
 BEGIN
-
-INSERT INTO Usuarios (Email, Pass)
-VALUES(@Email, @Pass)
-
-DECLARE @UltimoIdUsuario INT
-SET @UltimoIdUsuario = SCOPE_IDENTITY();
-
-
-INSERT INTO Donantes (IdUsuario, Dni)
-OUTPUT inserted.IdUsuario
-VALUES(@UltimoIdUsuario, @Dni)
+	INSERT INTO Usuarios (Email, Pass)
+	VALUES(@Email, @Pass)
+	
+	DECLARE @UltimoIdUsuario INT
+	SET @UltimoIdUsuario = SCOPE_IDENTITY();
+	
+	INSERT INTO Donantes (IdUsuario, Dni)
+	OUTPUT inserted.IdUsuario
+	VALUES(@UltimoIdUsuario, @Dni)
 END
 GO
 
@@ -466,3 +464,21 @@ WHERE u.IdUsuario = @IdUsuario
 END
 
 GO
+
+--- PROCEDURE QUE RECIBE ID DE USUARIO Y ACTUALIZA EL PERFIL DEL DONANTE 
+
+CREATE OR ALTER PROCEDURE SP_ActualizarDatosDonante(
+	@IdUsuario INT,
+	@Nombre NVARCHAR(50),
+	@Apellido NVARCHAR(50),
+	@UrlFoto NVARCHAR(1000)
+)
+AS
+BEGIN
+	UPDATE Donantes
+	SET
+		Nombre = @Nombre,
+		Apellido = @Apellido,
+		UrlFoto = @UrlFoto
+	WHERE IdUsuario = @IdUsuario
+END
