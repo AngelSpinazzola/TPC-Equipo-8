@@ -54,7 +54,7 @@
     <main class="main col">
         <div class="row justify-content-center align-content-center text-center">
             <div class="columna col-lg-6">
-                <div id="infoPersonal" style="display: none;">
+                <div id="infoPersonal" style="display: true;">
                     <h1 class="text-center">Edición del perfil</h1>
                     <div class="container">
                         <div class="row">
@@ -142,6 +142,7 @@
 
                 </div>
             </div>
+
             <div id="contraseña" style="display: none;">
                 Contenido de Contraseña
                
