@@ -8,24 +8,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
         <div class="row">
-
-
-
             <div class="col-md-3 col-lg-2 barra-lateral">
                 <nav class="menu d-flex flex-column">
-                    <a href="#" class="d-flex align-items-center" onclick="showInfoPersonal()"><i class="fas fa-home me-2"></i><span>Información personal</span></a>
+                    <a href="#" class="d-flex align-items-center" onclick="showResumenCuenta()"><i class="fas fa-home me-2"></i><span>Resumen</span></a>
+                    <a href="#" class="d-flex align-items-center" onclick="showEditarPerfil()"><i class="fas fa-user-edit me-2"></i><span>Editar Perfil</span></a>
                     <a href="#" class="d-flex align-items-center" onclick="showContraseña()"><i class="fas fa-lock me-2"></i><span>Contraseña</span></a>
-                    <a href="#" class="d-flex align-items-center" onclick="showProximaDonacion()"><i class="fas fa-calendar-alt me-2"></i><span>Próxima donación</span></a>
-                    <a href="#" class="d-flex align-items-center" onclick="showDonacionesRealizadas()"><i class="fas fa-hand-holding-heart me-2"></i><span>Donaciones realizadas</span></a>
                 </nav>
             </div>
 
-
-
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
                 <div class="container-fluid">
-                    <div id="infoPersonal" class="form-container">
-                        <h1 class="text-center form-title">Mi perfil</h1>
+                    <div id="resumenCuenta" style="display: block;">
+                        Contenido del resumen de la cuenta
+       
+                    </div>
+
+                    <div id="editarPerfil" style="display: none;" class="form-container">
+                        <h1 class="text-center form-title">Edición del perfil</h1>
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="row">
@@ -107,59 +106,35 @@
                         </div>
                     </div>
 
-
-
-
-
                     <div id="contraseña" style="display: none;">
                         Contenido de Contraseña
-               
-                    </div>
-                    <div id="proximaDonacion" style="display: none;">
-                        Contenido de Próxima Donación
-               
-                    </div>
-                    <div id="donacionesRealizadas" style="display: none;">
-                        Contenido de Donaciones Realizadas
-               
+       
                     </div>
                 </div>
             </main>
         </div>
     </div>
 
-
     <script>
-        function showInfoPersonal() {
-            document.getElementById('infoPersonal').style.display = 'block';
+        function showResumenCuenta() {
+            document.getElementById('resumenCuenta').style.display = 'block';
+            document.getElementById('editarPerfil').style.display = 'none';
             document.getElementById('contraseña').style.display = 'none';
-            document.getElementById('proximaDonacion').style.display = 'none';
-            document.getElementById('donacionesRealizadas').style.display = 'none';
+        }
+
+        function showEditarPerfil() {
+            document.getElementById('resumenCuenta').style.display = 'none';
+            document.getElementById('editarPerfil').style.display = 'block';
+            document.getElementById('contraseña').style.display = 'none';
         }
 
         function showContraseña() {
-            document.getElementById('infoPersonal').style.display = 'none';
+            document.getElementById('resumenCuenta').style.display = 'none';
+            document.getElementById('editarPerfil').style.display = 'none';
             document.getElementById('contraseña').style.display = 'block';
-            document.getElementById('proximaDonacion').style.display = 'none';
-            document.getElementById('donacionesRealizadas').style.display = 'none';
         }
-
-        function showProximaDonacion() {
-            document.getElementById('infoPersonal').style.display = 'none';
-            document.getElementById('contraseña').style.display = 'none';
-            document.getElementById('proximaDonacion').style.display = 'block';
-            document.getElementById('donacionesRealizadas').style.display = 'none';
-        }
-
-        function showDonacionesRealizadas() {
-            document.getElementById('infoPersonal').style.display = 'none';
-            document.getElementById('contraseña').style.display = 'none';
-            document.getElementById('proximaDonacion').style.display = 'none';
-            document.getElementById('donacionesRealizadas').style.display = 'block';
-        }
-
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </asp:Content>
