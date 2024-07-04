@@ -14,44 +14,34 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            Usuario usuario = new Usuario();
-            usuario = (Usuario)(Session["usuario"]);
-
-            FilialManager managerFilial = new FilialManager();
-            DonacionManager manager = new DonacionManager();
-
-            int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
-
             if (!IsPostBack)
             {
-                rptFilialDetails.DataSource = managerFilial.ListarFiliales(IdFilial);
-                rptFilialDetails.DataBind();
-                dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(IdFilial);
-                dgvHomeFilialDonantes.DataBind();
+                Usuario usuario = new Usuario();
+                usuario = (Usuario)(Session["usuario"]);
+                FilialManager managerFilial = new FilialManager();
+                DonacionManager manager = new DonacionManager();
+                if (usuario != null && ((Usuario)Session["usuario"]).TipoUsuario == TipoUsuario.FILIAL)
+                {
+                    int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+                    rptFilialDetails.DataSource = managerFilial.ListarFiliales(IdFilial);
+                    rptFilialDetails.DataBind();
+                    dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(IdFilial);
+                    dgvHomeFilialDonantes.DataBind();
+
+                }
+                else
+                {
+                    Response.Redirect("Error.aspx", false);
+                }
+
 
             }
+           
 
 
         }
 
-        protected void ButtonPrueba_Click(object sender, EventArgs e)
-        {
-            //int id = Convert.ToInt32(Session["Filialid"]);
-
-            ////FilialManager manager = new FilialManager();
-            //FilialManager managerFilial = new FilialManager();
-            //DonacionManager manager = new DonacionManager();
-
-            //dgvHomeFilial.DataSource = managerFilial.ListarFiliales(id);
-            //dgvHomeFilial.DataBind();
-
-            //dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(id);
-            //dgvHomeFilialDonantes.DataBind();
-
-
-        }
-
+       
         protected void dgvHomeFilial_RowDataBound(object sender, GridViewRowEventArgs e)
         {
 
@@ -61,15 +51,19 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             FilialManager managerFilial = new FilialManager();
             DonacionManager manager = new DonacionManager();
 
-            int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
-
-
-            string direccion = managerFilial.ObtenerDireccion(IdFilial);
-
-            Label lblDireccion = (Label)e.Row.FindControl("lblDireccion");
-            if (lblDireccion != null)
+            if(usuario != null)
             {
-                lblDireccion.Text = direccion;
+                int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+                string direccion = managerFilial.ObtenerDireccion(IdFilial);
+                Label lblDireccion = (Label)e.Row.FindControl("lblDireccion");
+                if (lblDireccion != null)
+                {
+                    lblDireccion.Text = direccion;
+                }
+            }
+            else
+            {
+                Response.Redirect("Error.aspx", false);
             }
 
         }

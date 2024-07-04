@@ -16,43 +16,56 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         {
 
             Usuario usuario = new Usuario();
-            usuario = (Usuario)(Session["usuario"]);
-
             FilialManager managerFilial = new FilialManager();
+            usuario = (Usuario)(Session["usuario"]);
+            if(usuario != null)
+            {
+                int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+                ProximasDonacionesManager manager = new ProximasDonacionesManager();
+                proximasDonaciones = manager.ListarProximasDonaciones(IdFilial);
+                int idPD = Int32.Parse(Request.QueryString["id"]);
+                ProximasDonaciones seleccionado = proximasDonaciones.FirstOrDefault(d => d.id == idPD);
+                TexNombreDonante.Text = seleccionado.NombreDonante;
+                TexNombreDonante.ReadOnly = true;
+                TexApellidoDonante.Text = seleccionado.ApellidoDonante;
+                TexApellidoDonante.ReadOnly = true;
+                TexDIN.Text = seleccionado.DNI;
+                TexDIN.ReadOnly = true;
+            }
+            else
+            {
+                Response.Redirect("Error.aspx", false);
+            }
+                 
 
-
-            int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
-
-            ProximasDonacionesManager manager = new ProximasDonacionesManager();
-            proximasDonaciones = manager.ListarProximasDonaciones(IdFilial);
-
-            int idPD = Int32.Parse(Request.QueryString["id"]);
-
-            ProximasDonaciones seleccionado = proximasDonaciones.FirstOrDefault(d => d.id == idPD);
-
-            TexNombreDonante.Text = seleccionado.NombreDonante;
-            TexApeliidoDonante.Text = seleccionado.ApellidoDonante;
-            TexDIN.Text = seleccionado.DNI;
-            
-
-
-
-
+              
         }
 
         protected void btnCrear_Click(object sender, EventArgs e)
         {
-            int idPD = Int32.Parse(Request.QueryString["id"]);
+            try
+            {
+               
+                int idPD = Int32.Parse(Request.QueryString["id"]);
 
-            ProximasDonaciones seleccionado = proximasDonaciones.FirstOrDefault(d => d.id == idPD);
+                ProximasDonaciones seleccionado = proximasDonaciones.FirstOrDefault(d => d.id == idPD);
 
-            ProximasDonacionesManager manager = new ProximasDonacionesManager();
+                ProximasDonacionesManager manager = new ProximasDonacionesManager();
 
-            string motivo = txtMotivo.Text;
+                string motivo = txtMotivo.Text;
 
-            manager.RechazarDonacion(seleccionado,motivo);
+                manager.RechazarDonacion(seleccionado, motivo);
 
-            Response.Redirect("FilialGestionDonantes.aspx", false);
+                Response.Redirect("FilialGestionDonantes.aspx", false);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
+            
+            
 
 
 
@@ -61,7 +74,12 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
+            
+               
+            
             Response.Redirect("FilialGestionDonantes.aspx", false);
+            
+            
         }
     }
 }

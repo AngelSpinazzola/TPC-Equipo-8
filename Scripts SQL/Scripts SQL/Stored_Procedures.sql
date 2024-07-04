@@ -460,7 +460,7 @@ LEFT JOIN Localidades L ON L.IdLocalidad = DXU.IdLocalidad
 LEFT JOIN Ciudades C ON C.IdCiudad = L.IdCiudad
 LEFT JOIN Provincias P ON P.IdProvincia = C.IdProvincia
 INNER JOIN GruposSanguineos GS ON GS.IdGrupoSanguineo = D.IdGrupoSanguineo 
-WHERE u.IdUsuario = @IdUsuario
+WHERE U.IdUsuario = @IdUsuario
 END
 
 GO

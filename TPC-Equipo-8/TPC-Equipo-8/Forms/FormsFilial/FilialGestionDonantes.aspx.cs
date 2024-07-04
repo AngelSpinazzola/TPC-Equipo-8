@@ -16,40 +16,54 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario();
-            usuario = (Usuario)(Session["usuario"]);
+           
+                Usuario usuario = new Usuario();
+                usuario = (Usuario)(Session["usuario"]);
+                FilialManager managerFilial = new FilialManager();
 
-            FilialManager managerFilial = new FilialManager();
+                if (usuario != null && ((Usuario)Session["usuario"]).TipoUsuario == TipoUsuario.FILIAL)
+                {
+                    int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+
+                    ProximasDonacionesManager manager = new ProximasDonacionesManager();
+                    proximasDonaciones = manager.ListarProximasDonaciones(IdFilial);
+                    dgvFilialDonantes.DataSource = proximasDonaciones;
+                    dgvFilialDonantes.DataBind();
+
+                }
+                else
+                {
+                    Response.Redirect("Error.aspx", false);
+                }
+
             
-
-            int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
-
-            ProximasDonacionesManager manager = new ProximasDonacionesManager();
-            proximasDonaciones = manager.ListarProximasDonaciones(IdFilial);
-
-            if (!IsPostBack)
-            {
-       
-                dgvFilialDonantes.DataSource = proximasDonaciones;
-                dgvFilialDonantes.DataBind();
-
-            }
-
 
         }
 
         protected void btnDono_Click(object sender, EventArgs e)
         {
-            LinkButton btn = (LinkButton)sender;
-            int id = Convert.ToInt32(btn.CommandArgument);
 
-            ProximasDonaciones seleccionado = proximasDonaciones.FirstOrDefault(d => d.id == id);
+           try
+            {
+                LinkButton btn = (LinkButton)sender;
+                int id = Convert.ToInt32(btn.CommandArgument);
 
-            ProximasDonacionesManager manager =new ProximasDonacionesManager();
+                ProximasDonaciones seleccionado = proximasDonaciones.FirstOrDefault(d => d.id == id);
 
-            manager.AgregarDonacion(seleccionado);
+                ProximasDonacionesManager manager = new ProximasDonacionesManager();
 
-            Response.Redirect("FilialHome.aspx", false);
+                manager.AgregarDonacion(seleccionado);
+
+                Response.Redirect("FilialHome.aspx", false);
+            }
+           catch (Exception ex)
+            {
+
+                Session.Add("error", ex.ToString());
+            }
+            
+            
+            
 
         }
 
