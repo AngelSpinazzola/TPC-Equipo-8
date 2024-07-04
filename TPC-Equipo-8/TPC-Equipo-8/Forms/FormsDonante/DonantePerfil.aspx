@@ -89,7 +89,6 @@
                                 </div>
                             </div>
 
-                            <!-- Sección de carga de imagen -->
                             <div class="col-md-4 text-center">
                                 <div class="profile-image-container">
                                     <asp:Image ID="imgNuevoPerfil" runat="server" CssClass="profile-image" />
@@ -132,6 +131,17 @@
             document.getElementById('resumenCuenta').style.display = 'none';
             document.getElementById('editarPerfil').style.display = 'none';
             document.getElementById('contraseña').style.display = 'block';
+        }
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    document.getElementById('<%= imgNuevoPerfil.ClientID %>').src = e.target.result;
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
         }
     </script>
 
