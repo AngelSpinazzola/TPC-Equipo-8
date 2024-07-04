@@ -13,19 +13,24 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario();
-            usuario = (Usuario)(Session["usuario"]);
-
-            FilialManager managerFilial = new FilialManager();
-            int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
-
-            PublicacionesManager managerPublicaciones = new PublicacionesManager();
+            
 
             if (!IsPostBack)
             {
+                Usuario usuario = new Usuario();
+                usuario = (Usuario)(Session["usuario"]);
 
-                repPublicacionesFilial.DataSource = managerPublicaciones.ListarPublicaciones(IdFilial, soloActivas: true);
-                repPublicacionesFilial.DataBind();
+                FilialManager managerFilial = new FilialManager();
+                if(usuario != null)
+                {
+                    int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+
+                    PublicacionesManager managerPublicaciones = new PublicacionesManager();
+
+                    repPublicacionesFilial.DataSource = managerPublicaciones.ListarPublicaciones(IdFilial, soloActivas: true);
+                    repPublicacionesFilial.DataBind();
+                }
+                
 
             }
 
