@@ -34,7 +34,7 @@
                             <label for="txtMotivo" class="form-label">Motivo Rechazo</label>
                             <asp:TextBox ID="txtMotivo" runat="server" type="text" TextMode="MultiLine" class="form-control"></asp:TextBox>
                             <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtMotivo" runat="server" Display="Dynamic" ForeColor="Red" />
-                            <asp:RegularExpressionValidator ErrorMessage="Solo se permiten letras y espacios. Máximo 100 caracteres."  ControlToValidate="txtMotivo" runat="server" ValidationExpression="^[a-zA-Z\s]{1,100}$" Display="Dynamic" ForeColor="Red" />
+                            <asp:RegularExpressionValidator ErrorMessage="Solo se permiten letras y espacios. Máximo 200 caracteres."  ControlToValidate="txtMotivo" runat="server" ValidationExpression="^[a-zA-Z\s]{1,200}$" Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
 

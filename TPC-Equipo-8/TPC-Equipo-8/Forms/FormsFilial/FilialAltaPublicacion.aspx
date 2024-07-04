@@ -16,6 +16,8 @@
                         <div class="col-12">
                             <label for="txtNombre" class="form-label">Nombre y Apellido del Receptor</label>
                             <asp:TextBox ID="txtNombreReceptor" runat="server" type="text" class="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtNombreReceptor" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <asp:RegularExpressionValidator ErrorMessage="Solo se permiten letras y espacios. Máximo 50 caracteres.Mínimo 3 caracteres alfabéticos."  ControlToValidate="txtNombreReceptor" runat="server" ValidationExpression="^(?![A-Za-z]{1}\s)[A-Za-z\s]{3,50}$" Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
 
@@ -45,22 +47,28 @@
                     <div class="col-12">
                         <label for="txtDonantesNec" class="form-label">Donantes Necesarios</label>
                         <asp:TextBox ID="txtDonantesNec" runat="server" type="text" class="form-control"></asp:TextBox>
+                        <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtDonantesNec" runat="server" Display="Dynamic" ForeColor="Red" />
+                        <asp:RegularExpressionValidator ErrorMessage="Solo se permiten numeros positivos menores a 100."  ControlToValidate="txtDonantesNec" runat="server" ValidationExpression="^(?!0)[1-9][0-9]?$" Display="Dynamic" ForeColor="Red" />
                     </div>
 
                     <div class="col-12">
                         <label for="txtHorarios" class="form-label">Horarios</label>
                         <asp:TextBox ID="textHorarios" runat="server" type="text" class="form-control"></asp:TextBox>
+                        <asp:RequiredFieldValidator ErrorMessage="Campo Requerid" ControlToValidate="textHorarios" runat="server" Display="Dynamic" ForeColor="Red" />
+                        <asp:RegularExpressionValidator ErrorMessage="Solo se permiten letras y números. No se permiten caracteres especiales.Maximo 100 caracteres" ControlToValidate="textHorarios" runat="server" ValidationExpression="^[a-zA-Z0-9\s]{1,100}$" Display="Dynamic" ForeColor="Red"/>
                     </div>
+
 
                     <div class="col-12">
                         <label for="txtFecha" class="form-label">Fecha Limite</label>
                         <asp:TextBox ID="textFecha" runat="server" TextMode="Date" type="text" class="form-control"></asp:TextBox>
+                        <asp:RequiredFieldValidator ErrorMessage="Campo Requerid" ControlToValidate="textFecha" runat="server" Display="Dynamic" ForeColor="Red" />
                     </div>
 
 
                     <div class="col-12 d-flex justify-content-evenly align-items-center mt-4" style="margin-top: 25px;">
                         <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-customContinuar " Text="Aceptar" OnClick="btnCrear_Click" />
-                        <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-customEliminar " Text="Cancelar" OnClick="btnCancelar_Click" />
+                        <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-customEliminar " Text="Cancelar" OnClick="btnCancelar_Click" CausesValidation="false" />
                     </div>
 
 
