@@ -22,6 +22,7 @@ namespace TPC_Equipo_8.Dominio
         public string Urgencia { get; set; }
         public DateTime FechaRegistro { get; set; }
         public DateTime FechaLimite { get; set; }
+        public string nombreFilial { get; set; }
 
     }
 }

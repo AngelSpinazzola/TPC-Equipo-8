@@ -65,7 +65,7 @@ namespace TPC_Equipo_8.Manager
                 datos.setearParametro("IdUsuario", IdUsuario);
                 datos.ejecutarLectura();
 
-                while(datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
                     return datos.Lector["UrlFoto"].ToString();
                 }
@@ -85,7 +85,7 @@ namespace TPC_Equipo_8.Manager
 
         public void EditarPerfilDonante(Donante donante, int IdUsuario)
         {
-            
+
             try
             {
                 datos.comando.Parameters.Clear();
@@ -117,7 +117,7 @@ namespace TPC_Equipo_8.Manager
                 datos.setearParametro("@IdUsuario", usuario.idUsuario);
                 datos.ejecutarLectura();
 
-                while(datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
                     return (int)datos.Lector["IdDonante"];
                 }
@@ -146,7 +146,7 @@ namespace TPC_Equipo_8.Manager
                 datos.setearParametro("@IdDonante", IdDonante);
                 datos.ejecutarLectura();
 
-                while(datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
                     Donacion aux = new Donacion();
 
@@ -166,6 +166,48 @@ namespace TPC_Equipo_8.Manager
 
             }
             catch (Exception ex)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<ProximasDonaciones> ObtenerDatosProximaDonacion(int idDonante)
+        {
+            List<ProximasDonaciones> lista = new List<ProximasDonaciones>();
+
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_RecibirDatosProximaDonacion");
+                datos.setearParametro("@IdDonante", idDonante);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    ProximasDonaciones aux = new ProximasDonaciones();
+
+                    if (!Convert.IsDBNull(datos.Lector["NombreReceptor"]))
+                    {
+                        aux.NombreReceptor = (string)datos.Lector["NombreReceptor"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["FechaRegistro"]))
+                    {
+                        aux.FechaRegistro = (DateTime)datos.Lector["FechaRegistro"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["Nombre"]))
+                    {
+                        aux.nombreFilial = (string)datos.Lector["Nombre"];
+                    }
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception)
             {
 
                 throw;

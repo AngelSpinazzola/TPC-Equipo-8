@@ -22,8 +22,39 @@
                     <!-- SECCION RESUMEN DE LA CUENTA -->
 
                     <div id="resumenCuenta" style="display: block;">
+                        <div class="row">
+                            <h3 class="text-center">Tu próxima donacion</h3>
+                            <div class="container-fluid" style="width: 50%;">
+                                <asp:GridView ID="dgvProximaDonacion" runat="server" CssClass="table table-bordered table-hover custom-table" AutoGenerateColumns="false">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="Nombre receptor">
+                                            <HeaderStyle CssClass="table-header text-center" Width="150px" />
+                                            <ItemStyle CssClass="table-item text-center" Width="150px" />
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblNombreReceptor" runat="server" Text='<%# Eval("NombreReceptor") %>' CssClass="label-text"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
 
-                        <h3 class="text-center">Tus últimas donaciones <i class="fa-solid fa-heart"></i></h3>
+                                        <asp:TemplateField HeaderText="Turno">
+                                            <HeaderStyle CssClass="table-header text-center" Width="150px" />
+                                            <ItemStyle CssClass="table-item text-center" Width="150px" />
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblFechaTurno" runat="server" Text='<%# Eval("FechaRegistro") %>' CssClass="label-text"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+
+                                        <asp:TemplateField HeaderText="Filial">
+                                            <HeaderStyle CssClass="table-header text-center" Width="150px" />
+                                            <ItemStyle CssClass="table-item text-center" Width="150px" />
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblNombreFilial" runat="server" Text='<%# Eval("nombreFilial") %>' CssClass="label-text"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                        </div>
+                        <h3 class="text-center">Tus últimas donaciones</h3>
                         <div class="container-fluid" style="width: 50%;">
                             <asp:GridView ID="dgvUltimasDonaciones" runat="server" CssClass="table table-bordered table-hover custom-table" AutoGenerateColumns="false">
                                 <Columns>
@@ -45,8 +76,6 @@
                                 </Columns>
                             </asp:GridView>
                         </div>
-
-
                     </div>
 
 

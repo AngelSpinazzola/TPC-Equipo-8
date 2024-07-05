@@ -39,6 +39,8 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 dgvUltimasDonaciones.DataSource = manager.ObtenerDatosDonacion(IdDonante);
                 dgvUltimasDonaciones.DataBind();
 
+                dgvProximaDonacion.DataSource = manager.ObtenerDatosProximaDonacion(IdDonante);
+                dgvProximaDonacion.DataBind();
             }
 
         }

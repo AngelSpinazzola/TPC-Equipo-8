@@ -510,3 +510,20 @@ BEGIN
 	WHERE DR.IdDonante = @IdDonante
 END
 
+GO
+
+-- PROCEDURE QUE RECIBE ID DE DONANTE Y DEVUELVE LOS DATOS DE LA PROXIMA DONACION
+
+CREATE OR ALTER PROCEDURE SP_RecibirDatosProximaDonacion(
+	@IdDonante INT
+)
+AS
+BEGIN
+	SELECT P.NombreReceptor, PD.FechaRegistro, F.Nombre FROM ProximosDonantes PD
+	INNER JOIN Publicaciones P ON P.IdPublicacion = PD.IdPublicacion
+	INNER JOIN Filiales F ON F.IdFilial = P.IdFilial
+	WHERE PD.IdDonante = @IdDonante
+END
+
+GO
+
