@@ -43,6 +43,10 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
             {
                 Response.Redirect("Login.aspx");
             }
+            else
+            {
+                Response.Redirect("../FormsDonante/DonanteFormularioDonacion.aspx");
+            }
         }
 
 
