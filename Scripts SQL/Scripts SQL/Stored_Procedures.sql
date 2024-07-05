@@ -482,3 +482,31 @@ BEGIN
 		UrlFoto = @UrlFoto
 	WHERE IdUsuario = @IdUsuario
 END
+
+GO
+
+-- PROCEDURE QUE RECIBE ID DE USUARIO Y DEVUELVE ID DE DONANTE
+
+CREATE OR ALTER PROCEDURE SP_RecibirIdDonante(
+	@IdUsuario INT
+)
+AS
+BEGIN
+	SELECT IdDonante FROM Donantes WHERE IdUsuario = @IdUsuario
+END
+
+GO
+
+-- PROCEDURE QUE RECIBE ID DE DONANTE Y DEVUELVE LOS DATOS DE DONDE DONO
+
+CREATE OR ALTER PROCEDURE SP_RecibirDatosDonacionDonante(
+	@IdDonante INT
+)
+AS
+BEGIN
+	SELECT F.Nombre, DR.FechaDonacion 
+	FROM DonacionesRealizadas DR
+	INNER JOIN Filiales F ON F.IdFilial = DR.IdFilial
+	WHERE DR.IdDonante = @IdDonante
+END
+

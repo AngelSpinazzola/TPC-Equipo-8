@@ -18,10 +18,39 @@
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
                 <div class="container-fluid">
+
+                    <!-- SECCION RESUMEN DE LA CUENTA -->
+
                     <div id="resumenCuenta" style="display: block;">
-                        Contenido del resumen de la cuenta
-       
+
+                        <h3 class="text-center">Tus últimas donaciones <i class="fa-solid fa-heart"></i></h3>
+                        <div class="container-fluid" style="width: 50%;">
+                            <asp:GridView ID="dgvUltimasDonaciones" runat="server" CssClass="table table-bordered table-hover custom-table" AutoGenerateColumns="false">
+                                <Columns>
+                                    <asp:TemplateField HeaderText="Filial">
+                                        <HeaderStyle CssClass="table-header text-center" Width="150px" />
+                                        <ItemStyle CssClass="table-item text-center" Width="150px" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblNombreFilial" runat="server" Text='<%# Eval("NombreFilial") %>' CssClass="label-text"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Fecha donación">
+                                        <HeaderStyle CssClass="table-header text-center" Width="150px" />
+                                        <ItemStyle CssClass="table-item text-center" Width="150px" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblFechaDonacion" runat="server" Text='<%# Eval("FechaRealizada") %>' CssClass="label-text"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+
+
                     </div>
+
+
+                    <!-- SECCION EDITAR PERFIL -->
 
                     <div id="editarPerfil" style="display: none;" class="form-container">
                         <h1 class="text-center form-title">Edición del perfil</h1>
@@ -104,6 +133,8 @@
                             <asp:Button ID="btnAceptar" runat="server" Text="Guardar cambios" CssClass="btn btn-customContinuar" OnClick="btnAceptar_Click" />
                         </div>
                     </div>
+
+                    <!-- SECCION CONTRASEÑA -->
 
                     <div id="contraseña" style="display: none;">
                         Contenido de Contraseña

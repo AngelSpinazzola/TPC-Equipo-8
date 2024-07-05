@@ -108,5 +108,73 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
+        public int ObtenerIdDonante(Usuario usuario)
+        {
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_RecibirIdDonante");
+                datos.setearParametro("@IdUsuario", usuario.idUsuario);
+                datos.ejecutarLectura();
+
+                while(datos.Lector.Read())
+                {
+                    return (int)datos.Lector["IdDonante"];
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return 0;
+
+        }
+
+        public List<Donacion> ObtenerDatosDonacion(int IdDonante)
+        {
+            List<Donacion> lista = new List<Donacion>();
+
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_RecibirDatosDonacionDonante");
+                datos.setearParametro("@IdDonante", IdDonante);
+                datos.ejecutarLectura();
+
+                while(datos.Lector.Read())
+                {
+                    Donacion aux = new Donacion();
+
+                    if (!Convert.IsDBNull(datos.Lector["Nombre"]))
+                    {
+                        aux.nombreFilial = (string)datos.Lector["Nombre"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["FechaDonacion"]))
+                    {
+                        aux.fechaRealizada = (DateTime)datos.Lector["FechaDonacion"];
+
+                    }
+                    lista.Add(aux);
+                }
+
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

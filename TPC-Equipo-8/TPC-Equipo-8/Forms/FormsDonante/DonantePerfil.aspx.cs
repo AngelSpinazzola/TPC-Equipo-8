@@ -15,6 +15,8 @@ namespace TPC_Equipo_8.Forms.FormsDonante
 {
     public partial class DonantePerfil : System.Web.UI.Page
     {
+        public int IdDonante { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -28,34 +30,43 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             }
 
             Usuario usuario = (Usuario)Session["usuario"];
+            DonanteManager manager = new DonanteManager();
 
-            if (usuario != null)
+            if(usuario != null)
             {
-                Donante donante = new Donante();
-                DonanteManager manager = new DonanteManager();
-
-                int usuarioId = usuario.idUsuario;
-
-                donante = manager.ListarDonante(usuarioId);
-
-
-                txtNombre.Text = donante.nombre;
-                txtApellido.Text = donante.apellido;
-                txtDni.Text = donante.dni;
-                txtEmail.Text = donante.email;
-                txtFechaAlta.Text = donante.fechaAlta.ToString();
-                txtNombreGrupoSanguineo.Text = donante.tipoSangre;
-                txtNombreProvincia.Text = donante.direccion.provincia;
-                txtNombreLocalidad.Text = donante.direccion.localidad;
-                txtNombreCiudad.Text = donante.direccion.ciudad;
-                txtCalle.Text = donante.direccion.calle;
-                txtAltura.Text = donante.direccion.altura.ToString();
-                txtCp.Text = donante.direccion.codigoPostal;
-
-                imgNuevoPerfil.ImageUrl = CargarUrlImagenDonante();
+                CargarPerfil(usuario);
+                IdDonante = manager.ObtenerIdDonante(usuario);
+                dgvUltimasDonaciones.DataSource = manager.ObtenerDatosDonacion(IdDonante);
+                dgvUltimasDonaciones.DataBind();
 
             }
 
+        }
+
+        private void CargarPerfil(Usuario usuario)
+        {
+
+            Donante donante = new Donante();
+            DonanteManager manager = new DonanteManager();
+
+            int usuarioId = usuario.idUsuario;
+
+            donante = manager.ListarDonante(usuarioId);
+
+            txtNombre.Text = donante.nombre;
+            txtApellido.Text = donante.apellido;
+            txtDni.Text = donante.dni;
+            txtEmail.Text = donante.email;
+            txtFechaAlta.Text = donante.fechaAlta.ToString();
+            txtNombreGrupoSanguineo.Text = donante.tipoSangre;
+            txtNombreProvincia.Text = donante.direccion.provincia;
+            txtNombreLocalidad.Text = donante.direccion.localidad;
+            txtNombreCiudad.Text = donante.direccion.ciudad;
+            txtCalle.Text = donante.direccion.calle;
+            txtAltura.Text = donante.direccion.altura.ToString();
+            txtCp.Text = donante.direccion.codigoPostal;
+
+            imgNuevoPerfil.ImageUrl = CargarUrlImagenDonante();
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
