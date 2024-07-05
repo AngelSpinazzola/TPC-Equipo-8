@@ -101,7 +101,7 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <%: ObtenerNombreUsuario() %>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
                                 <li>
                                     <a class="dropdown-item micuenta" href="../FormsDonante/DonantePerfil.aspx">Mi perfil</a>
                                 </li>

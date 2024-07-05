@@ -15,7 +15,7 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
         protected void Page_Load(object sender, EventArgs e)
         {
             FilialManager manager = new FilialManager();
-            dgvFiliales.DataSource = manager.ListarFiliales();
+            dgvFiliales.DataSource = manager.ListarFiliales(habilitada: 0);
             dgvFiliales.DataBind();
         }
 

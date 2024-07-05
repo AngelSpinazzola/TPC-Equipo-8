@@ -13,7 +13,7 @@ namespace TPC_Equipo_8.Manager
     {
         AccesoDatos datos = new AccesoDatos();
 
-        public List<Filial> ListarFiliales(int idFilial = -1)
+        public List<Filial> ListarFiliales(int idFilial = -1, int habilitada = -1)
         {
 
             List<Filial> lista = new List<Filial>();
@@ -24,6 +24,7 @@ namespace TPC_Equipo_8.Manager
                 datos.setearProcedimiento("SP_ListarFiliales");
                 //No hace falta el if, ya que, si no recibe el ID de la filial, usa el -1 defecto que tiene en el parametro.
                 datos.setearParametro("@IdFilial", idFilial);
+                datos.setearParametro("@Habilitado", habilitada);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -36,6 +37,7 @@ namespace TPC_Equipo_8.Manager
                     aux.nombre = (string)datos.Lector["Nombre"];
                     aux.telefono = (string)datos.Lector["Telefono"];
                     aux.direccion.calle = (string)datos.Lector["Calle"];
+                    
 
                     if (!Convert.IsDBNull(datos.Lector["HorarioAtencion"]))
                     {
@@ -91,7 +93,6 @@ namespace TPC_Equipo_8.Manager
                     {
                         aux.urlWeb = (string)datos.Lector["UrlWeb"];
                     }
-
                     aux.estado = (bool)datos.Lector["Estado"];
 
                     lista.Add(aux);

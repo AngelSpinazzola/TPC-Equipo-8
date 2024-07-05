@@ -5,30 +5,21 @@ GO
 -- PROCEDURE QUE DEVUELVE LISTADO DE FILIALES
 
 CREATE OR ALTER PROCEDURE SP_ListarFiliales 
-	@IdFilial INT
+	@IdFilial INT = -1,
+	@Habilitado INT = -1
 AS
 BEGIN
-	IF @IdFilial = -1
-	BEGIN
-		SELECT U.IdUsuario, F.*, DU.Calle, DU.Altura, DU.Piso, DU.Departamento, L.Nombre AS Localidad, L.CodigoPostal, C.Nombre AS Ciudad, P.Nombre AS Provincia, U.Estado 
-		FROM Filiales F
-		INNER JOIN Usuarios U ON U.IdUsuario = F.IdUsuario
-		INNER JOIN Direcciones_x_Usuario DU ON DU.IdUsuario = U.IdUsuario
-		INNER JOIN Localidades L ON L.IdLocalidad = DU.IdLocalidad
-		INNER JOIN Ciudades C ON C.IdCiudad = L.IdCiudad
-		INNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia
-	END
-	ELSE
-	BEGIN
-		SELECT U.IdUsuario, F.*, DU.Calle, DU.Altura, DU.Piso, DU.Departamento, L.Nombre AS Localidad, L.CodigoPostal, C.Nombre AS Ciudad, P.Nombre AS Provincia, U.Estado 
-		FROM Filiales F
-		INNER JOIN Usuarios U ON U.IdUsuario = F.IdUsuario
-		INNER JOIN Direcciones_x_Usuario DU ON DU.IdUsuario = U.IdUsuario
-		INNER JOIN Localidades L ON L.IdLocalidad = DU.IdLocalidad
-		INNER JOIN Ciudades C ON C.IdCiudad = L.IdCiudad
-		INNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia
-		WHERE F.IdFilial = @IdFilial
-	END
+    SELECT U.IdUsuario, F.*, DU.Calle, DU.Altura, DU.Piso, DU.Departamento, 
+           L.Nombre AS Localidad, L.CodigoPostal, C.Nombre AS Ciudad, 
+           P.Nombre AS Provincia, U.Estado, F.Habilitado
+    FROM Filiales F
+    INNER JOIN Usuarios U ON U.IdUsuario = F.IdUsuario
+    INNER JOIN Direcciones_x_Usuario DU ON DU.IdUsuario = U.IdUsuario
+    INNER JOIN Localidades L ON L.IdLocalidad = DU.IdLocalidad
+    INNER JOIN Ciudades C ON C.IdCiudad = L.IdCiudad
+    INNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia
+    WHERE (@IdFilial = -1 OR F.IdFilial = @IdFilial)
+      AND (@Habilitado = -1 OR F.Habilitado = CAST(@Habilitado AS BIT))
 END
 
 GO
@@ -545,8 +536,9 @@ AS
 BEGIN
 	BEGIN TRY
 		BEGIN TRANSACTION
-		INSERT INTO Usuarios (Email, Pass, IdRol)
-		VALUES (@Email, @Pass, 3)
+
+		INSERT INTO Usuarios (Username, Email, Pass, IdRol)
+		VALUES (@Nombre, @Email, @Pass, 3)
 
 		DECLARE @UltimoIdUsuario INT
 		SET @UltimoIdUsuario = SCOPE_IDENTITY();

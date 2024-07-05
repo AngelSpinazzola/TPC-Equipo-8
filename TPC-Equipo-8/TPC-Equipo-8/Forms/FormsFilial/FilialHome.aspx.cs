@@ -23,7 +23,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 if (usuario != null && ((Usuario)Session["usuario"]).TipoUsuario == TipoUsuario.FILIAL)
                 {
                     int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
-                    rptFilialDetails.DataSource = managerFilial.ListarFiliales(IdFilial);
+                    rptFilialDetails.DataSource = managerFilial.ListarFiliales(idFilial:IdFilial);
                     rptFilialDetails.DataBind();
                     dgvHomeFilialDonantes.DataSource = manager.ListarDonaciones(IdFilial);
                     dgvHomeFilialDonantes.DataBind();
