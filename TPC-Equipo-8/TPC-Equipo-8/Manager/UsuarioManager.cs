@@ -87,5 +87,38 @@ namespace TPC_Equipo_8.Manager
             
         }
 
+        
+        public void RegistrarFilial(Filial nueva) 
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_RegistroFilial");
+                datos.setearParametro("@Nombre", nueva.nombre);
+                datos.setearParametro("@Telefono", nueva.telefono);
+                datos.setearParametro("@Provincia", nueva.direccion.provincia);
+                datos.setearParametro("@Ciudad", nueva.direccion.ciudad);
+                datos.setearParametro("@Localidad", nueva.direccion.localidad);
+                datos.setearParametro("@CodigoPostal", nueva.direccion.codigoPostal);
+                datos.setearParametro("@Calle", nueva.direccion.calle);
+                datos.setearParametro("@Altura", nueva.direccion.altura);
+                datos.setearParametro("@Email", nueva.email);
+                datos.setearParametro("@Pass", nueva.pass);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        
+
     }
 }

@@ -90,6 +90,7 @@
     <Content Include="Forms\FormsGlobales\LogIn.aspx" />
     <Content Include="Forms\FormsGlobales\PublicacionesDonantes.aspx" />
     <Content Include="Forms\FormsGlobales\Registro.aspx" />
+    <Content Include="Forms\FormsGlobales\RegistroFilial.aspx" />
     <Content Include="Forms\FormsGlobales\Requisitos.aspx" />
     <Content Include="Forms\FormsGlobales\VerFiliales.aspx" />
     <Content Include="Global.asax" />
@@ -258,6 +259,13 @@
     </Compile>
     <Compile Include="Forms\FormsGlobales\Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsGlobales\RegistroFilial.aspx.cs">
+      <DependentUpon>RegistroFilial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsGlobales\RegistroFilial.aspx.designer.cs">
+      <DependentUpon>RegistroFilial.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormsGlobales\Requisitos.aspx.cs">
       <DependentUpon>Requisitos.aspx</DependentUpon>

@@ -23,7 +23,12 @@
                         <label for="txtRegistroPass" class="form-label">Contraseña</label>
                         <asp:TextBox runat="server" placeholder="******" ID="txtRegistroPass" CssClass="form-control" type="password" />
                     </div>
-                    <div class="d-grid" style="margin-bottom: 20px; margin-top: -10px;">
+
+                    <div class="d-flex justify-content-end mb-3">
+                        <a href="RegistroFilial.aspx" style="color: #c12222; margin: 20px; margin-top: -20px;">Soy Filial</a>
+                    </div>
+
+                    <div class="d-grid" style="margin-bottom: 20px; margin-top: -20px;">
                         <asp:Button Text="Continuar" ID="btnContinuarRegistro" OnClick="btnContinuarRegistro_Click" runat="server" CssClass="btn btn-customContinuar" />
                     </div>
 

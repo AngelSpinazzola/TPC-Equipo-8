@@ -527,3 +527,90 @@ END
 
 GO
 
+-- PROCEDURE PARA REGISTRO DE FILIAL
+
+CREATE OR ALTER PROCEDURE SP_RegistroFilial(
+	@Nombre NVARCHAR(50),
+	@Telefono NVARCHAR(30),
+	@Provincia NVARCHAR(50),
+	@Ciudad NVARCHAR(75),
+	@Localidad NVARCHAR(75),
+	@CodigoPostal NVARCHAR(10),
+	@Calle NVARCHAR(100),
+	@Altura INT,
+	@Email NVARCHAR(50),
+	@Pass NVARCHAR(50)
+)
+AS
+BEGIN
+	BEGIN TRY
+		BEGIN TRANSACTION
+		INSERT INTO Usuarios (Email, Pass, IdRol)
+		VALUES (@Email, @Pass, 3)
+
+		DECLARE @UltimoIdUsuario INT
+		SET @UltimoIdUsuario = SCOPE_IDENTITY();
+
+		INSERT INTO Filiales (IdUsuario, Nombre, Telefono)
+		VALUES (@UltimoIdUsuario, @Nombre, @Telefono)
+
+		-- VERIFICA SI LA PROVINCIA EXISTE
+
+		DECLARE @IdProvincia INT
+
+		SELECT @IdProvincia = IdProvincia FROM Provincias WHERE Nombre = @Provincia
+
+		-- SI NO EXISTE, LA INSERTA
+
+		IF @IdProvincia IS NULL
+		BEGIN
+			INSERT INTO Provincias (Nombre) 
+			VALUES (@Provincia)
+
+			SET @IdProvincia = SCOPE_IDENTITY();
+		END
+
+		-- VERIFICA SI LA CIUDAD EXISTE
+
+		DECLARE @IdCiudad INT
+
+		SELECT @IdCiudad = IdCiudad FROM Ciudades WHERE Nombre = @Ciudad
+
+		-- SI NO EXISTE, LA INSERTA
+
+		IF @IdCiudad IS NULL
+		BEGIN
+			INSERT INTO Ciudades (IdProvincia, Nombre) 
+			VALUES ((SELECT IdProvincia FROM Provincias WHERE Nombre = @Provincia), @Ciudad)
+
+			SET @IdCiudad = SCOPE_IDENTITY();
+		END
+
+		-- VERIFICA SI LA LOCALIDAD EXISTE
+
+		DECLARE @IdLocalidad INT
+
+		SELECT @IdLocalidad = IdLocalidad FROM Localidades WHERE Nombre = @Localidad
+
+		-- SI NO EXISTE, LA INSERTA
+
+		IF @IdLocalidad IS NULL
+		BEGIN
+			INSERT INTO Localidades (IdCiudad, Nombre, CodigoPostal) 
+			VALUES ((SELECT IdCiudad FROM Ciudades WHERE Nombre = @Ciudad), @Localidad, @CodigoPostal)
+
+			SET @IdLocalidad = SCOPE_IDENTITY();
+		END
+
+		INSERT INTO Direcciones_x_Usuario (IdUsuario, IdLocalidad, Calle, Altura)
+		VALUES (@UltimoIdUsuario, @IdLocalidad, @Calle, @Altura)
+
+		COMMIT TRANSACTION
+	END TRY
+
+	BEGIN CATCH
+		ROLLBACK TRANSACTION
+	END CATCH
+END
+
+GO
