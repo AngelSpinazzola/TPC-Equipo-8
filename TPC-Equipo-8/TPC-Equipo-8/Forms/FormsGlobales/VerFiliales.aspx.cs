@@ -16,7 +16,7 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
         protected void Page_Load(object sender, EventArgs e)
         {
             FilialManager manager = new FilialManager();
-            ListaFiliales = manager.ListarFiliales();
+            ListaFiliales = manager.ListarFiliales(habilitada:1);
 
             if (!IsPostBack)
             {
@@ -29,7 +29,7 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
         public List<Filial> BuscarFiliales(string textoBusqueda)
         {
             FilialManager manager = new FilialManager();
-            List<Filial> listaFiliales = manager.ListarFiliales();
+            List<Filial> listaFiliales = manager.ListarFiliales(habilitada: 1);
             List<Filial> filialesEncontradas = listaFiliales
 
                 .Where(a => a.direccion.localidad.ToLower().Contains(textoBusqueda.ToLower()))
@@ -57,7 +57,7 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
             int IDFilial = Convert.ToInt32(btn.CommandArgument);
 
             FilialManager manager = new FilialManager();
-            ListaFiliales = manager.ListarFiliales();
+            ListaFiliales = manager.ListarFiliales(habilitada: 1);
 
             List<Filial> seleccionados;
             if (Session["Seleccion"] == null)
