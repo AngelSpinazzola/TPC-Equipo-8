@@ -15,6 +15,15 @@ namespace TPC_Equipo_8.Forms.FormsDonante
     {
 
         /// <summary>
+        /// Control tituloProximaDonacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tituloProximaDonacion;
+
+        /// <summary>
         /// Control dgvProximaDonacion.
         /// </summary>
         /// <remarks>
@@ -24,6 +33,15 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         protected global::System.Web.UI.WebControls.GridView dgvProximaDonacion;
 
         /// <summary>
+        /// Control tituloUltimasDonaciones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tituloUltimasDonaciones;
+
+        /// <summary>
         /// Control dgvUltimasDonaciones.
         /// </summary>
         /// <remarks>
@@ -31,6 +49,33 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvUltimasDonaciones;
+
+        /// <summary>
+        /// Control tituloCantidadPersonasAyudadas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tituloCantidadPersonasAyudadas;
+
+        /// <summary>
+        /// Control divCantPersonasAyudadas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCantPersonasAyudadas;
+
+        /// <summary>
+        /// Control lblCantidadPersonasAyudadas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCantidadPersonasAyudadas;
 
         /// <summary>
         /// Control txtNombre.

@@ -16,38 +16,32 @@ namespace TPC_Equipo_8.Forms.FormsDonante
     public partial class DonantePerfil : System.Web.UI.Page
     {
         public int IdDonante { get; set; }
+        public int cantPersonasAyudadas { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Usuario usuario = (Usuario)Session["usuario"];
+
             if (!IsPostBack)
             {
                 if (Session["usuario"] == null || ((Usuario)Session["usuario"]).TipoUsuario != TipoUsuario.DONANTE)
                 {
                     Response.Redirect("../FormsGlobales/Login.aspx");
                 }
-                
-
             }
 
-            Usuario usuario = (Usuario)Session["usuario"];
-            DonanteManager manager = new DonanteManager();
-
-            if(usuario != null)
+            if (usuario != null)
             {
                 CargarPerfil(usuario);
-                IdDonante = manager.ObtenerIdDonante(usuario);
-                dgvUltimasDonaciones.DataSource = manager.ObtenerDatosDonacion(IdDonante);
-                dgvUltimasDonaciones.DataBind();
+                CargarProximaDonacion(usuario);
+                CargarUltimasDonaciones(usuario);
+                CargarCantidadPersonasAyudadas(usuario);
 
-                dgvProximaDonacion.DataSource = manager.ObtenerDatosProximaDonacion(IdDonante);
-                dgvProximaDonacion.DataBind();
             }
-
         }
 
         private void CargarPerfil(Usuario usuario)
         {
-
             Donante donante = new Donante();
             DonanteManager manager = new DonanteManager();
 
@@ -69,6 +63,43 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             txtCp.Text = donante.direccion.codigoPostal;
 
             imgNuevoPerfil.ImageUrl = CargarUrlImagenDonante();
+        }
+
+        private void CargarProximaDonacion(Usuario usuario)
+        {
+            DonanteManager manager = new DonanteManager();
+            List<ProximasDonaciones> proximaDonacion = new List<ProximasDonaciones>();
+            IdDonante = manager.ObtenerIdDonante(usuario);
+
+            proximaDonacion = manager.ObtenerDatosProximaDonacion(IdDonante);
+
+            if (proximaDonacion.Count() > 0)
+            {
+                dgvProximaDonacion.DataSource = proximaDonacion;
+                dgvProximaDonacion.DataBind();
+            }
+            else
+            {
+                tituloProximaDonacion.Visible = false;
+                dgvProximaDonacion.Visible = false;
+            }
+        }
+
+        private void CargarUltimasDonaciones(Usuario usuario)
+        {
+            DonanteManager manager = new DonanteManager();
+            IdDonante = manager.ObtenerIdDonante(usuario);
+
+            dgvUltimasDonaciones.DataSource = manager.ObtenerDatosDonacionesRealizadas(IdDonante);
+            dgvUltimasDonaciones.DataBind();
+        }
+
+        private void CargarCantidadPersonasAyudadas(Usuario usuario)
+        {
+            DonanteManager manager = new DonanteManager();
+            IdDonante = manager.ObtenerIdDonante(usuario);
+            cantPersonasAyudadas = manager.ObtenerDatosDonacionesRealizadas(IdDonante).Count();
+            lblCantidadPersonasAyudadas.Text = cantPersonasAyudadas.ToString();
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -94,12 +125,12 @@ namespace TPC_Equipo_8.Forms.FormsDonante
 
                 string timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
 
-                if (img != null) 
+                if (img != null)
                 {
                     img.ImageUrl = ResolveUrl(CargarUrlImagenDonante() + "?t=" + timestamp);
                 }
 
-                imgNuevoPerfil.ImageUrl = ResolveUrl(CargarUrlImagenDonante() + "?t=" + timestamp );
+                imgNuevoPerfil.ImageUrl = ResolveUrl(CargarUrlImagenDonante() + "?t=" + timestamp);
 
             }
             catch (Exception ex)

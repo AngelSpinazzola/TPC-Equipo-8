@@ -135,7 +135,7 @@ namespace TPC_Equipo_8.Manager
 
         }
 
-        public List<Donacion> ObtenerDatosDonacion(int IdDonante)
+        public List<Donacion> ObtenerDatosDonacionesRealizadas(int idDonante)
         {
             List<Donacion> lista = new List<Donacion>();
 
@@ -143,7 +143,7 @@ namespace TPC_Equipo_8.Manager
             {
                 datos.comando.Parameters.Clear();
                 datos.setearProcedimiento("SP_RecibirDatosDonacionDonante");
-                datos.setearParametro("@IdDonante", IdDonante);
+                datos.setearParametro("@IdDonante", idDonante);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

@@ -23,7 +23,7 @@
 
                     <div id="resumenCuenta" style="display: block;">
                         <div class="row">
-                            <h3 class="text-center">Tu próxima donacion</h3>
+                            <h3 id="tituloProximaDonacion" runat="server" class="text-center">Tu próxima donacion</h3>
                             <div class="container-fluid" style="width: 50%;">
                                 <asp:GridView ID="dgvProximaDonacion" runat="server" CssClass="table table-bordered table-hover custom-table" AutoGenerateColumns="false">
                                     <Columns>
@@ -54,7 +54,7 @@
                                 </asp:GridView>
                             </div>
                         </div>
-                        <h3 class="text-center">Tus últimas donaciones</h3>
+                        <h3 id="tituloUltimasDonaciones" runat="server" class="text-center">Tus últimas donaciones</h3>
                         <div class="container-fluid" style="width: 50%;">
                             <asp:GridView ID="dgvUltimasDonaciones" runat="server" CssClass="table table-bordered table-hover custom-table" AutoGenerateColumns="false">
                                 <Columns>
@@ -76,8 +76,19 @@
                                 </Columns>
                             </asp:GridView>
                         </div>
-                    </div>
 
+                        <h3 id="tituloCantidadPersonasAyudadas" runat="server" class="text-center">Cantidad de personas ayudadas</h3>
+                        <div id="divCantPersonasAyudadas" runat="server" class="container-fluid" style="width: 50%;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table table-bordered table-hover custom-table">
+                                        <asp:Label ID="lblCantidadPersonasAyudadas" runat="server" CssClass="label-text"></asp:Label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
 
                     <!-- SECCION EDITAR PERFIL -->
 
