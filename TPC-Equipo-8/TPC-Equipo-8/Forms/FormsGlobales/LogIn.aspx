@@ -13,7 +13,7 @@
                 <div class="form-container mt-4 custom-login">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <asp:TextBox runat="server" placeholder="ejemplo@dona.com" ID="txtEmail" CssClass="form-control" />
+                        <asp:TextBox runat="server" placeholder="ejemplo@gmail.com" ID="txtEmail" CssClass="form-control" />
                     </div>
                     <div class="mb-5">
                         <label for="exampleInputPassword1" class="form-label">Contraseña</label>

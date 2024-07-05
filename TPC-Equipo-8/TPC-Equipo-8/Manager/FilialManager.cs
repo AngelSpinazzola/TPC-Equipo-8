@@ -35,8 +35,12 @@ namespace TPC_Equipo_8.Manager
                     aux.idFilial = (int)datos.Lector["IdFilial"];
                     aux.nombre = (string)datos.Lector["Nombre"];
                     aux.telefono = (string)datos.Lector["Telefono"];
-                    aux.horarioAtencion = (string)datos.Lector["HorarioAtencion"];
                     aux.direccion.calle = (string)datos.Lector["Calle"];
+
+                    if (!Convert.IsDBNull(datos.Lector["HorarioAtencion"]))
+                    {
+                        aux.horarioAtencion = (string)datos.Lector["HorarioAtencion"];
+                    }
 
                     if (!Convert.IsDBNull(datos.Lector["Altura"]))
                     {
