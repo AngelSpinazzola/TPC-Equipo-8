@@ -6,7 +6,8 @@ GO
 
 CREATE OR ALTER PROCEDURE SP_ListarFiliales 
 	@IdFilial INT = -1,
-	@Habilitado INT = -1
+	@Habilitado INT = -1,
+	@SoloActivas BIT
 AS
 BEGIN
     SELECT U.IdUsuario, F.*, DU.Calle, DU.Altura, DU.Piso, DU.Departamento, 
@@ -20,6 +21,7 @@ BEGIN
     INNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia
     WHERE (@IdFilial = -1 OR F.IdFilial = @IdFilial)
       AND (@Habilitado = -1 OR F.Habilitado = CAST(@Habilitado AS BIT))
+	  AND (@SoloActivas = 0 OR U.Estado = 1)
 END
 
 GO
@@ -419,6 +421,30 @@ CREATE OR ALTER PROCEDURE SP_DesactivarPublicacion
 AS
 BEGIN
 	UPDATE Publicaciones SET Estado = 0 WHERE IdPublicacion = @IdPublicacion
+END
+
+GO
+
+-- PROCEDURE PARA LA ELIMINACION LOGICA DE UNA FILIAL
+CREATE OR ALTER PROCEDURE SP_DesactivarFilial
+	@IdFilial INT
+AS
+BEGIN
+
+	DECLARE @IdUsuario INT
+
+	SELECT @IdUsuario = IdUsuario FROM Filiales WHERE IdFilial = @IdFilial
+
+	UPDATE Usuarios SET Estado = 0 WHERE IdUsuario = @IdUsuario
+END
+
+GO
+-- PROCEDURE PARA HABILITAR A UNA FILIAL
+CREATE OR ALTER PROCEDURE SP_HabilitarFilial
+	@IdFilial INT
+AS
+BEGIN
+	UPDATE Filiales SET Habilitado = 1 WHERE IdFilial = @IdFilial
 END
 
 GO

@@ -6,16 +6,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1 class="text-center">GESTION DE LAS FILIALES</h1>
     <div class="container-fluid">
-        <asp:GridView ID="dgvFiliales" runat="server" CssClass="table table-hover table-bordered" AutoGenerateColumns="false" OnRowDataBound="dgvFiliales_RowDataBound" >
+        <asp:GridView ID="dgvFiliales" runat="server" CssClass="table table-hover table-bordered" AutoGenerateColumns="false" OnRowDataBound="dgvFiliales_RowDataBound" DataKeyNames="idFilial">
             <Columns>
 
-                <asp:BoundField DataField="idFilial" visible="false"/>
+                <asp:BoundField DataField="idFilial" Visible="false" />
 
                 <asp:BoundField HeaderText="Filial" DataField="nombre" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
 
                 <asp:TemplateField HeaderText="Telefono">
                     <HeaderStyle CssClass="table-header text-center" Width="150px" />
-                    <ItemStyle CssClass="table-item" Width="150px"/>
+                    <ItemStyle CssClass="table-item" Width="150px" />
                     <ItemTemplate>
                         <asp:Label ID="lblTelefono" runat="server" Text='<%# Eval("telefono") %>' CssClass="label-text"></asp:Label>
                     </ItemTemplate>
@@ -42,7 +42,7 @@
                     <ItemStyle CssClass="table-item text-center" Width="100px" Height="50px" />
                     <ItemTemplate>
                         <a href="#" onclick="showImageModal('<%# Eval("urlImagen") %>')">
-                            <img src='<%# Eval("urlImagen") %>' class="img-thumbnail" style="width: 70px; height:70px; margin: auto;" />
+                            <img src='<%# Eval("urlImagen") %>' class="img-thumbnail" style="width: 70px; height: 70px; margin: auto;" />
                         </a>
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -70,7 +70,10 @@
                         <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-primary btn-sm" CommandArgument='<%# Eval("idFilial") %>' CommandName="idFilial" OnClick="btnEditar_Click">
                             <i class="fas fa-edit fa-sm"></i>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnDesactivar" runat="server" CssClass="btn btn-danger btn-sm" CommandName="Delete" OnClick="btnDesactivar_Click">
+                        <asp:LinkButton ID="btnHabilitar" runat="server" CssClass="btn btn-danger btn-success btn-sm" CommandArgument='<%# Eval("idFilial") %>' OnClick="btnHabilitar_Click">
+                            <i class="fa-solid fa-check"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="btnDesactivar" runat="server" CssClass="btn btn-danger btn-sm" CommandArgument='<%# Eval("idFilial") %>' OnClick="btnDesactivar_Click">
                             <i class="fas fa-trash fa-sm"></i>
                         </asp:LinkButton>
                     </ItemTemplate>

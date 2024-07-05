@@ -13,7 +13,7 @@ namespace TPC_Equipo_8.Manager
     {
         AccesoDatos datos = new AccesoDatos();
 
-        public List<Filial> ListarFiliales(int idFilial = -1, int habilitada = -1)
+        public List<Filial> ListarFiliales(int idFilial = -1, int habilitada = -1, bool soloActivas = false)
         {
 
             List<Filial> lista = new List<Filial>();
@@ -25,6 +25,7 @@ namespace TPC_Equipo_8.Manager
                 //No hace falta el if, ya que, si no recibe el ID de la filial, usa el -1 defecto que tiene en el parametro.
                 datos.setearParametro("@IdFilial", idFilial);
                 datos.setearParametro("@Habilitado", habilitada);
+                datos.setearParametro("@SoloActivas", soloActivas);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -109,6 +110,10 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
+        public List<Filial> RecargarFilialesEnAdmin(int idFilial = -1, int habilitado = 0, bool soloActivas = true)
+        {
+            return ListarFiliales(idFilial, habilitado, soloActivas);
+        }
         public void modificarFilial(Filial filial)
         {
             try
@@ -196,8 +201,45 @@ namespace TPC_Equipo_8.Manager
             return id;
         }
 
+        public void DesactivarFilial(int idFilial)
+        {
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_DesactivarFilial");
+                datos.setearParametro("@IdFilial", idFilial);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
+        public void HabilitarFilial(int idFilial)
+        {
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_HabilitarFilial");
+                datos.setearParametro("@IdFilial", idFilial);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
     }
 }

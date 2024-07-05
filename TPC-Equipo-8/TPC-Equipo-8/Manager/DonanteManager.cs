@@ -168,7 +168,7 @@ namespace TPC_Equipo_8.Manager
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
             finally
             {

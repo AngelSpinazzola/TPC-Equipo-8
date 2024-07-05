@@ -14,9 +14,19 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
         public List<Filial> ListaFiliales { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            FilialManager manager = new FilialManager();
-            dgvFiliales.DataSource = manager.ListarFiliales(habilitada: 0);
-            dgvFiliales.DataBind();
+            if (!IsPostBack)
+            {
+                FilialManager manager = new FilialManager();
+                List<Filial> filiales = manager.RecargarFilialesEnAdmin();
+                dgvFiliales.DataSource = filiales;
+                dgvFiliales.DataBind();
+
+                if (Session["MensajeExito"] != null)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", $"alert('{Session["MensajeExito"]}');", true);
+                    Session.Remove("MensajeExito");
+                }
+            }
         }
 
         protected void dgvFiliales_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -37,11 +47,19 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
             }
         }
 
-        protected void btnDesactivar_Click(object sender, EventArgs e)
+        protected void btnHabilitar_Click(object sender, EventArgs e)
         {
             try
             {
-                
+                LinkButton btn = (LinkButton)sender;
+                int idFilial = Convert.ToInt32(btn.CommandArgument);
+
+                FilialManager manager = new FilialManager();
+                manager.HabilitarFilial(idFilial);
+
+                Session["MensajeExito"] = "Filial habilitada con éxito.";
+
+                Response.Redirect(Request.RawUrl);
             }
             catch (Exception ex)
             {
@@ -70,9 +88,9 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
 
             foreach (Filial item in ListaFiliales)
             {
-                if(idFilial == item.idFilial)
+                if (idFilial == item.idFilial)
                 {
-                    if(!seleccionada.Any(a => a.idFilial == item.idFilial))
+                    if (!seleccionada.Any(a => a.idFilial == item.idFilial))
                     {
                         seleccionada.Add(item);
                     }
@@ -83,5 +101,28 @@ namespace TPC_Equipo_8.Forms.FormsAdmin
             Session["FilialSeleccionada"] = seleccionada;
             Response.Redirect("AdminEdicionFilial.aspx?idFilial=" + idFilial);
         }
+
+        protected void btnDesactivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton btn = (LinkButton)sender;
+                int idFilial = Convert.ToInt32(btn.CommandArgument);
+
+                FilialManager manager = new FilialManager();
+                manager.DesactivarFilial(idFilial);
+
+                Session["MensajeExito"] = "Filial eliminada con éxito.";
+
+                Response.Redirect(Request.RawUrl);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+
+            }
+
+        }
     }
 }
+
