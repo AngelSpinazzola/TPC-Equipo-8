@@ -168,9 +168,9 @@ namespace TPC_Equipo_8.Manager
             {
                 string calle = datos.Lector["Calle"].ToString();
                 string altura = datos.Lector["Altura"].ToString();
-                string localidad = datos.Lector["Localidad"].ToString();
-                string ciudad = datos.Lector["Ciudad"].ToString();
-                string provincia = datos.Lector["Provincia"].ToString();
+                //string localidad = datos.Lector["Localidad"].ToString();
+                //string ciudad = datos.Lector["Ciudad"].ToString();
+                string provincia = datos.Lector["Nombre"].ToString();
 
                 direccion = calle + " " + altura + ", " + provincia + ", Argentina";
             }
@@ -246,6 +246,138 @@ namespace TPC_Equipo_8.Manager
                 datos.cerrarConexion();
             }
         }
+
+        public List<Provincia> listarProvincias()
+        {
+
+            List<Provincia> listaProvincias = new List<Provincia >();
+
+            try
+            { 
+               datos.setearConsulta("select P.Nombre as Nombre, P.IdProvincia as id from Provincias as P");
+               datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Provincia provincia = new Provincia();
+                    provincia.nombre = (string)datos.Lector["Nombre"]; 
+                    provincia.id = (int)datos.Lector["id"];
+                    listaProvincias.Add(provincia);
+
+                }
+                return listaProvincias;
+            }   
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public List<Ciudad> listarCiudad(int idProvincia)
+        {
+
+            List<Ciudad> listaCiudad = new List<Ciudad>();
+
+            try
+            {
+                datos.setearConsulta("select c.Nombre as Nombre, c.IdCiudad as id from Ciudades as c where IdProvincia=@idProvincia");
+                datos.setearParametro("@idProvincia", idProvincia);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Ciudad ciudad = new Ciudad();
+                    ciudad.nombre = (string)datos.Lector["Nombre"];
+                    ciudad.id = (int)datos.Lector["id"];
+                    listaCiudad.Add(ciudad);
+
+                }
+                return listaCiudad;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public List<Localidad> listarLocalidad(int idCiudad)
+        {
+
+            List<Localidad> listaLocalidad = new List<Localidad>();
+
+            try
+            {
+                datos.setearConsulta("select l.Nombre as Nombre, l.IdLocalidad as id from Localidades as l where IdCiudad=@IdCiudad");
+                datos.setearParametro("@IdCiudad", idCiudad);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Localidad localidad = new Localidad();
+                    localidad.nombre = (string)datos.Lector["Nombre"];
+                    localidad.id = (int)datos.Lector["id"];
+                    listaLocalidad.Add(localidad);
+
+                }
+                return listaLocalidad;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+        public List<CodigoPostal>  listarCodigoPostal(int idLocalidad)
+        {
+
+            List<CodigoPostal> codigoPostal =new List<CodigoPostal>();
+
+            try
+            {
+                datos.setearConsulta("select l.CodigoPostal as Nombre from Localidades as l where IdLocalidad=@idLocalidad");
+                datos.setearParametro("@idLocalidad", idLocalidad);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    CodigoPostal cp = new CodigoPostal();
+                    cp.nombre = (string)datos.Lector["Nombre"];
+                    //localidad.id = (int)datos.Lector["id"];
+                    codigoPostal.Add(cp);
+
+                }
+                return codigoPostal;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
+
+
+
 
     }
 }
