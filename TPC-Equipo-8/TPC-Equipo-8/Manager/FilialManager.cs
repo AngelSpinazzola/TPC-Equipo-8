@@ -168,9 +168,11 @@ namespace TPC_Equipo_8.Manager
             {
                 string calle = datos.Lector["Calle"].ToString();
                 string altura = datos.Lector["Altura"].ToString();
-                string nombre = datos.Lector["Nombre"].ToString();
+                string localidad = datos.Lector["Localidad"].ToString();
+                string ciudad = datos.Lector["Ciudad"].ToString();
+                string provincia = datos.Lector["Provincia"].ToString();
 
-                direccion = calle + " " + altura + ", " + nombre + ", Argentina";
+                direccion = calle + " " + altura + ", " + provincia + ", Argentina";
             }
 
             return direccion;

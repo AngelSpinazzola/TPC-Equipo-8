@@ -4,9 +4,9 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1 class="text-center">GESTION DE LAS FILIALES</h1>
-    <div class="container-fluid">
-        <asp:GridView ID="dgvFiliales" runat="server" CssClass="table table-hover table-bordered" AutoGenerateColumns="false" OnRowDataBound="dgvFiliales_RowDataBound" DataKeyNames="idFilial">
+    <h1 class="text-center" style="margin-top: 40px; margin-bottom: 40px;">Gestión de nuevas Filiales</h1>
+    <div class="container-fluid" style="max-width: 80%;">
+        <asp:GridView ID="dgvFiliales" runat="server" CssClass="table table-hover table-bordered custom-table" AutoGenerateColumns="false" OnRowDataBound="dgvFiliales_RowDataBound" DataKeyNames="idFilial">
             <Columns>
 
                 <asp:BoundField DataField="idFilial" Visible="false" />
@@ -21,37 +21,11 @@
                     </ItemTemplate>
                 </asp:TemplateField>
 
-                <asp:TemplateField HeaderText="Horario de Atención">
-                    <HeaderStyle CssClass="table-header text-center" />
-                    <ItemStyle CssClass="table-item truncate" />
-                    <ItemTemplate>
-                        <asp:Label ID="lblHorarioAtencion" runat="server" Text='<%# Eval("horarioAtencion") %>' CssClass="label-text truncate" ToolTip='<%# Eval("horarioAtencion") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-
                 <asp:TemplateField HeaderText="Correo">
                     <HeaderStyle CssClass="table-header" />
                     <ItemStyle CssClass="table-item truncate" />
                     <ItemTemplate>
                         <asp:Label ID="lblCorreo" runat="server" Text='<%# Eval("correo") %>' CssClass="label-text truncate" ToolTip='<%# Eval("correo") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-
-                <asp:TemplateField HeaderText="Foto">
-                    <HeaderStyle CssClass="table-header text-center" Width="100px" />
-                    <ItemStyle CssClass="table-item text-center" Width="100px" Height="50px" />
-                    <ItemTemplate>
-                        <a href="#" onclick="showImageModal('<%# Eval("urlImagen") %>')">
-                            <img src='<%# Eval("urlImagen") %>' class="img-thumbnail" style="width: 70px; height: 70px; margin: auto;" />
-                        </a>
-                    </ItemTemplate>
-                </asp:TemplateField>
-
-                <asp:TemplateField HeaderText="Web">
-                    <HeaderStyle CssClass="table-header text-center" />
-                    <ItemStyle CssClass="table-item" />
-                    <ItemTemplate>
-                        <asp:HyperLink ID="hlWeb" runat="server" NavigateUrl='<%# Eval("urlWeb") %>' Text="Link" Target="_blank"></asp:HyperLink>
                     </ItemTemplate>
                 </asp:TemplateField>
 
@@ -67,15 +41,26 @@
                     <HeaderStyle CssClass="table-header text-center" />
                     <ItemStyle CssClass="table-item" />
                     <ItemTemplate>
-                        <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-primary btn-sm" CommandArgument='<%# Eval("idFilial") %>' CommandName="idFilial" OnClick="btnEditar_Click">
+                        <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-warning btn-sm" CommandArgument='<%# Eval("idFilial") %>' CommandName="idFilial" OnClick="btnEditar_Click" ToolTip="Editar">
                             <i class="fas fa-edit fa-sm"></i>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnHabilitar" runat="server" CssClass="btn btn-danger btn-success btn-sm" CommandArgument='<%# Eval("idFilial") %>' OnClick="btnHabilitar_Click">
-                            <i class="fa-solid fa-check"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="btnDesactivar" runat="server" CssClass="btn btn-danger btn-sm" CommandArgument='<%# Eval("idFilial") %>' OnClick="btnDesactivar_Click">
-                            <i class="fas fa-trash fa-sm"></i>
-                        </asp:LinkButton>
+                        <asp:LinkButton ID="btnHabilitar" runat="server"
+                            CssClass="btn btn-success btn-success btn-sm"
+                            CommandArgument='<%# Eval("idFilial") %>'
+                            OnClick="btnHabilitar_Click"
+                            OnClientClick="return confirmarHabilitar();"
+                            ToolTip="Habilitar">
+    <i class="fa-solid fa-check"></i>
+</asp:LinkButton>
+
+                        <asp:LinkButton ID="btnDesactivar" runat="server"
+                            CssClass="btn btn-danger btn-sm"
+                            CommandArgument='<%# Eval("idFilial") %>'
+                            OnClick="btnDesactivar_Click"
+                            OnClientClick="return confirmarEliminar();"
+                            ToolTip="Eliminar">
+    <i class="fas fa-trash fa-sm"></i>
+</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
 
@@ -83,24 +68,18 @@
         </asp:GridView>
     </div>
 
-    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <img id="modalImage" src="#" class="img-fluid" style="margin: auto; width: 100%;" alt="Foto Filial">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function showImageModal(imageUrl) {
-            document.getElementById('modalImage').src = imageUrl;
-            $('#imageModal').modal('show');
-        }
-    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+    function confirmarHabilitar() {
+        return confirm("¿Está seguro que desea habilitar esta filial?");
+    }
+
+    function confirmarEliminar() {
+        return confirm("¿Está seguro que desea eliminar esta filial?");
+    }
+</script>
 
 </asp:Content>

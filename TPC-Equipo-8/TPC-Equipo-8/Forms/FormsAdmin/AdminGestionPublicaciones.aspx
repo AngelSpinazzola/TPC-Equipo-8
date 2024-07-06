@@ -3,9 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1 class="text-center">GESTION DE LAS PUBLICACIONES</h1>
-    <div class="container-fluid">
-        <asp:GridView ID="dgvPublicaciones" runat="server" CssClass="table table-hover table-bordered" AutoGenerateColumns="false" OnRowDataBound="dgvPublicaciones_RowDataBound">
+    <h1 class="text-center" style="margin-top: 40px; margin-bottom: 40px;">Publicaciones activas</h1>
+    <div class="container-fluid" style="max-width: 80%;">
+        <asp:GridView ID="dgvPublicaciones" runat="server" CssClass="table table-hover table-bordered custom-table" AutoGenerateColumns="false" OnRowDataBound="dgvPublicaciones_RowDataBound">
             <Columns>
                 <asp:BoundField DataField="IdPublicacion" visible="false" />
                 <asp:BoundField HeaderText="Receptor" DataField="nombreReceptor" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
@@ -14,7 +14,7 @@
                 <asp:BoundField HeaderText="Urgencia" DataField="urgencia" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
                 <asp:BoundField HeaderText="Donantes Necesarios" DataField="donantesNecesarios" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
                 <asp:BoundField HeaderText="Horarios" DataField="horarios" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
-                <asp:BoundField HeaderText="Fecha Limite" DataField="fechaLimite" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
+                <asp:BoundField HeaderText="Fecha Limite" DataField="fechaLimite" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-CssClass="table-header text-center" ItemStyle-CssClass="table-item" />
 
                 <asp:TemplateField HeaderText="Acciones">
                     <HeaderStyle CssClass="table-header text-center" />
