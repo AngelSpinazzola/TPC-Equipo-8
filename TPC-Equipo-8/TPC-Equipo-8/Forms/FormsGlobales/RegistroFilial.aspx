@@ -11,6 +11,20 @@
             </div>
             <div class="container d-flex justify-content-center">
                 <div class="form-container mt-2 custom-login" style="max-width: 800px;">
+
+
+                    <div class="row mb-3">
+                        <h5 class="text-center">¿Querés inscribirte para donar o para afiliar tu sede a
+                            <label style="font-weight: 650;">sanguis</label>?</h5>
+
+                        <div class="col-6 ps-1">
+                            <a href="Registro.aspx" class="btn btn-customEliminar btn w-100">Quiero donar</a>
+                        </div>
+                        <div class="col-6 pe-1">
+                            <a href="RegistroFilial.aspx" class="btn btn-customEliminar btn w-100">Soy filial</a>
+                        </div>
+                    </div>
+
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <label for="txtRegistroNombre" class="form-label">Nombre</label>
@@ -63,11 +77,9 @@
                             <asp:TextBox runat="server" placeholder="******" ID="txtRegistroPass" CssClass="form-control" type="password" />
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end mb-3">
-                        <a href="Registro.aspx" style="color: #c12222; margin: 20px; margin-top: 10px;">Soy Donante</a>
-                    </div>
 
-                    <div class="d-grid" style="margin-bottom: 20px; margin-top: -20px;">
+
+                    <div class="d-grid" style="margin-bottom: 20px;">
                         <asp:Button Text="Continuar" ID="btnContinuarRegistro" OnClick="btnContinuarRegistro_Click" runat="server" CssClass="btn btn-customContinuar" />
                     </div>
 

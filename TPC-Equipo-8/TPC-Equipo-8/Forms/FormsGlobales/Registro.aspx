@@ -10,7 +10,20 @@
                 <h3 style="margin-top: 60px;">Completá los datos para crear tu cuenta</h3>
             </div>
             <div class="container d-flex justify-content-center">
+
                 <div class="form-container mt-4 custom-login">
+
+                    <div class="row mb-3">
+                        <h5 class="text-center">¿Querés inscribirte para donar o para afiliar tu sede a <label style="font-weight: 650;">sanguis</label>?</h5>
+
+                        <div class="col-6 ps-1">
+                            <a href="Registro.aspx" class="btn btn-customEliminar btn w-100">Quiero donar</a>
+                        </div>
+                        <div class="col-6 pe-1">
+                            <a href="RegistroFilial.aspx" class="btn btn-customEliminar btn w-100">Soy filial</a>
+                        </div>
+                    </div>
+
                     <div class="mb-3">
                         <label for="txtRegistroEmail" class="form-label">Email</label>
                         <asp:TextBox runat="server" placeholder="ejemplo@dona.com" ID="txtRegistroEmail" CssClass="form-control" />
@@ -22,10 +35,6 @@
                     <div class="mb-5">
                         <label for="txtRegistroPass" class="form-label">Contraseña</label>
                         <asp:TextBox runat="server" placeholder="******" ID="txtRegistroPass" CssClass="form-control" type="password" />
-                    </div>
-
-                    <div class="d-flex justify-content-end mb-3">
-                        <a href="RegistroFilial.aspx" style="color: #c12222; margin: 20px; margin-top: -20px;">Soy Filial</a>
                     </div>
 
                     <div class="d-grid" style="margin-bottom: 20px; margin-top: -20px;">

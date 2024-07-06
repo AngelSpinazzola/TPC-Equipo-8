@@ -11,7 +11,7 @@
 
             <h1 class="text-center" style="margin-top: 40px; margin-bottom: 40px;">Edicion de la Filial</h1>
 
-            <div class="container custom-login" style="max-width: 80%; margin-bottom: 40px;">
+            <div class="container custom-login" style="max-width: 80%; margin: auto;">
                 <div class="row g-3">
                     <asp:TextBox ID="txtIdUsuario" runat="server" type="text" class="form-control" Visible="false"></asp:TextBox>
                     <asp:TextBox ID="txtIdFilial" runat="server" type="text" class="form-control" Visible="false"></asp:TextBox>

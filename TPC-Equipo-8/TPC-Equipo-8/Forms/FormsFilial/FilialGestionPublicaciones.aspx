@@ -6,8 +6,10 @@
     <h2 class="text-center" style="margin: 30px">Mis Publicaciones</h2>
 
     <div class="text-center">
-        <%--<a href="FilialAltaPublicacion.aspx" class="btn btn-customCrear"">Nueva Publicacion <i class="fa-solid fa-circle-plus"></i><span class="overlay"></span></a>--%>
-        <asp:Button ID="btnCrearPublicacion" runat="server" Text="Nueva Publicacion" class="btn btn-customCrear fa-solid fa-circle-plus overlay " OnClick="btnCrearPublicacion_Click"/>
+        <asp:LinkButton ID="btnCrearPublicacion" runat="server" CssClass="btn btn-customCrear" OnClick="CrearPublicacion_Click">
+            Nueva Publicacion <i class="fa-solid fa-circle-plus"></i>
+            <span class="overlay"></span>       
+        </asp:LinkButton>
     </div>
 
     <div class="container" style="margin-top: 25px;">

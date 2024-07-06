@@ -116,18 +116,18 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         }
 
-        protected void btnCrearPublicacion_Click(object sender, EventArgs e)
+        protected void CrearPublicacion_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
             usuario = (Usuario)(Session["usuario"]);
           
             if (Seguridad.sessionActiva(usuario) && Seguridad.sessionFilial(usuario) && Seguridad.filialHabilitada(usuario))
             {
-                Response.Redirect("FilialAltaPublicacion.aspx", false);
+                Response.Redirect("FilialAltaPublicacion.aspx");
             }
             else
             {
-                Response.Redirect("FilialNoHabilitada.aspx", false);
+                Response.Redirect("FilialNoHabilitada.aspx");
             }
             
         }
