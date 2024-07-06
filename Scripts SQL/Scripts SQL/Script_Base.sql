@@ -84,7 +84,7 @@ CREATE TABLE Filiales(
 	Correo NVARCHAR(50),
 	UrlImagen NVARCHAR(1000),
 	UrlWeb NVARCHAR(1000),
-	Habilitado BIT NOT NULL DEFAULT 0
+	Habilitado INT NOT NULL DEFAULT 0
 )
 
 CREATE TABLE Administradores(

@@ -15,6 +15,15 @@ namespace TPC_Equipo_8.Forms.FormsFilial
     {
 
         /// <summary>
+        /// Control btnCrearPublicacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCrearPublicacion;
+
+        /// <summary>
         /// Control repPublicacionesFilial.
         /// </summary>
         /// <remarks>

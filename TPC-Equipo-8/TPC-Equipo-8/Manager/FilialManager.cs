@@ -94,6 +94,10 @@ namespace TPC_Equipo_8.Manager
                     {
                         aux.urlWeb = (string)datos.Lector["UrlWeb"];
                     }
+                    if (!Convert.IsDBNull(datos.Lector["Habilitado"]))
+                    {
+                        aux.habilitado = (int)datos.Lector["Habilitado"];
+                    }
                     aux.estado = (bool)datos.Lector["Estado"];
 
                     lista.Add(aux);

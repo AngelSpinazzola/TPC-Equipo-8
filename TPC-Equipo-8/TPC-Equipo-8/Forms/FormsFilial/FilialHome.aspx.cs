@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using manager;
 using TPC_Equipo_8.Dominio;
+using TPC_Equipo_8.Helpers;
 using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsFilial
@@ -20,7 +21,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 usuario = (Usuario)(Session["usuario"]);
                 FilialManager managerFilial = new FilialManager();
                 DonacionManager manager = new DonacionManager();
-                if (usuario != null && ((Usuario)Session["usuario"]).TipoUsuario == TipoUsuario.FILIAL)
+                if (Seguridad.sessionActiva(usuario) && Seguridad.sessionFilial(usuario))
                 {
                     int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
                     rptFilialDetails.DataSource = managerFilial.ListarFiliales(idFilial:IdFilial);
@@ -51,7 +52,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             FilialManager managerFilial = new FilialManager();
             DonacionManager manager = new DonacionManager();
 
-            if(usuario != null)
+            if(Seguridad.sessionActiva(usuario) && Seguridad.sessionFilial(usuario))
             {
                 int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
                 string direccion = managerFilial.ObtenerDireccion(IdFilial);

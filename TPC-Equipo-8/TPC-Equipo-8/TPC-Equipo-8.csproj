@@ -82,6 +82,7 @@
     <Content Include="Forms\FormsFilial\FilialGestionDonantes.aspx" />
     <Content Include="Forms\FormsFilial\FilialGestionPublicaciones.aspx" />
     <Content Include="Forms\FormsFilial\FilialHome.aspx" />
+    <Content Include="Forms\FormsFilial\FilialNoHabilitada.aspx" />
     <Content Include="Forms\FormsFilial\FilialPerfil.aspx" />
     <Content Include="Forms\FormsFilial\FilialRechazoDonacion.aspx" />
     <Content Include="Forms\FormsGlobales\Default.aspx" />
@@ -177,6 +178,13 @@
     </Compile>
     <Compile Include="Forms\FormsFilial\FilialHome.aspx.designer.cs">
       <DependentUpon>FilialHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormsFilial\FilialNoHabilitada.aspx.cs">
+      <DependentUpon>FilialNoHabilitada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsFilial\FilialNoHabilitada.aspx.designer.cs">
+      <DependentUpon>FilialNoHabilitada.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormsFilial\FilialPerfil.aspx.cs">
       <DependentUpon>FilialPerfil.aspx</DependentUpon>
