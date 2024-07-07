@@ -141,31 +141,31 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected global::System.Web.UI.WebControls.DropDownList DropDownProvincia;
 
         /// <summary>
-        /// Control DropDownCiudad.
+        /// Control TextCiudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownCiudad;
+        protected global::System.Web.UI.WebControls.TextBox TextCiudad;
 
         /// <summary>
-        /// Control DropDownLocalidad.
+        /// Control TextLocalidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownLocalidad;
+        protected global::System.Web.UI.WebControls.TextBox TextLocalidad;
 
         /// <summary>
-        /// Control DropDownCP.
+        /// Control TextCP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownCP;
+        protected global::System.Web.UI.WebControls.TextBox TextCP;
 
         /// <summary>
         /// Control btnAceptarDireccion.

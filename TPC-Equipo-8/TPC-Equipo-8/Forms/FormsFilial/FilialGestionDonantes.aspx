@@ -15,7 +15,7 @@
                     <HeaderStyle CssClass="table-header text-center" />
                     <ItemStyle CssClass="table-item text-center" />
                     <ItemTemplate>
-                        <asp:Label ID="lblNombre" runat="server" Text='<%# Eval("NombreDonante") + " " + Eval("ApellidoDonante") %>' CssClass="label-text"></asp:Label>
+                        <asp:Label ID="lblNombre" runat="server" Text='<%# Eval("Username") %>' CssClass="label-text"></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
 

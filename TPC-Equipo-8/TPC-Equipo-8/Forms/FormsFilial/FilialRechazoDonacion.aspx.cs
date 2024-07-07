@@ -27,7 +27,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 ProximasDonaciones seleccionado = proximasDonaciones.FirstOrDefault(d => d.id == idPD);
                 TexNombreDonante.Text = seleccionado.NombreDonante;
                 TexNombreDonante.ReadOnly = true;
-                TexApellidoDonante.Text = seleccionado.ApellidoDonante;
+                TexApellidoDonante.Text = seleccionado.username;
                 TexApellidoDonante.ReadOnly = true;
                 TexDIN.Text = seleccionado.DNI;
                 TexDIN.ReadOnly = true;

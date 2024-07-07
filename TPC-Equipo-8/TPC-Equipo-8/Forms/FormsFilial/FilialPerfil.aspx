@@ -111,7 +111,32 @@
                                         <asp:RequiredFieldValidator ErrorMessage="Seleccione un valor" ControlToValidate="DropDownProvincia" runat="server" Display="Dynamic" ForeColor="Red"/>
                                     </div>
 
-                                    <div class="col-12">
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                             <label for="ciudades" class="form-label">Ciudades</label>
+                                            <asp:TextBox ID="TextCiudad" runat="server" type="text" class="form-control"></asp:TextBox>
+                                           
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label for="localidad" class="form-label">Localidad</label>
+                                            <asp:TextBox ID="TextLocalidad" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label for="codigoPostal" class="form-label">Codigo Postal</label>
+                                            <asp:TextBox ID="TextCP" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            
+                                        </div>
+                                    </div>
+
+
+
+                                    <%--<div class="col-12">
                                         <label for="ciudades" class="form-label">Ciudades</label>
                                         <asp:DropDownList ID="DropDownCiudad" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="DropDownCiudad_SelectedIndexChanged">
                                         </asp:DropDownList>
@@ -128,7 +153,7 @@
                                         <label for="codigoPostal" class="form-label">Codigo Postal</label>
                                         <asp:DropDownList ID="DropDownCP" runat="server" CssClass="form-select" AutoPostBack="true">
                                         </asp:DropDownList>
-                                    </div>
+                                    </div>--%>
                                     <%-- FIN DIRECCION--%>
 
                                     <%-- IMAGEN --%>

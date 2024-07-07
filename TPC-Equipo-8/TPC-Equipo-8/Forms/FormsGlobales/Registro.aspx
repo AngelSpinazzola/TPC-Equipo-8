@@ -30,6 +30,11 @@
                         <asp:TextBox runat="server" placeholder="Juan Perez" ID="txtRegistroNombre" CssClass="form-control" />
                     </div>
 
+                   <%-- <div class="mb-3">
+                        <label for="txtRegistroApellido" class="form-label">Apellido</label>
+                        <asp:TextBox runat="server" placeholder="Perez" ID="txtRegistroApellido" CssClass="form-control" />
+                    </div>--%>
+
                     <div class="mb-3">
                         <label for="txtRegistroEmail" class="form-label">Email</label>
                         <asp:TextBox runat="server" placeholder="ejemplo@dona.com" ID="txtRegistroEmail" CssClass="form-control" />

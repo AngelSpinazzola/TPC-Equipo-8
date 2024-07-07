@@ -47,15 +47,15 @@ namespace TPC_Equipo_8.Manager
                     }
 
 
-                    if (!Convert.IsDBNull(datos.Lector["Nombre"]))
+                    if (!Convert.IsDBNull(datos.Lector["Username"]))
                     {
-                        aux.NombreDonante = (string)datos.Lector["Nombre"];
+                        aux.username = (string)datos.Lector["Username"];
                     }
 
-                    if (!Convert.IsDBNull(datos.Lector["Apellido"]))
-                    {
-                        aux.ApellidoDonante = (string)datos.Lector["Apellido"];
-                    }
+                    //if (!Convert.IsDBNull(datos.Lector["Apellido"]))
+                    //{
+                    //    aux.ApellidoDonante = (string)datos.Lector["Apellido"];
+                    //}
 
                     if (!Convert.IsDBNull(datos.Lector["DNI"]))
                     {

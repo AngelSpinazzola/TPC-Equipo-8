@@ -101,16 +101,17 @@ CREATE OR ALTER PROCEDURE SP_ListarProximasDonaciones
 	@IdFilial INT
 AS
 
-	SELECT PD.IdProximoDonante, PD.IdFilial, PD.IdDonante,PD.IdPublicacion, D.Nombre, D.Apellido, D.Dni, GS.Grupo as GrupoDonante, P.NombreReceptor, 
+	SELECT PD.IdProximoDonante, PD.IdFilial, PD.IdDonante,PD.IdPublicacion, US.Username, D.Dni, GS.Grupo as GrupoDonante, P.NombreReceptor, 
 	P.DonantesNecesarios, 
 	U.Descripcion AS Urgencia,
 	PD.FechaRegistro,
 	P.FechaLimite
 	FROM Donantes D
-	INNER JOIN GruposSanguineos GS ON GS.IdGrupoSanguineo = D.IdGrupoSanguineo
-	INNER JOIN ProximosDonantes PD ON PD.IdDonante = D.IdDonante
+	LEFT JOIN GruposSanguineos GS ON GS.IdGrupoSanguineo = D.IdGrupoSanguineo
+	LEFT JOIN ProximosDonantes PD ON PD.IdDonante = D.IdDonante
 	INNER JOIN Publicaciones P ON P.IdPublicacion = PD.IdPublicacion
 	INNER JOIN Urgencias U ON U.IdUrgencia = P.IdUrgencia
+	LEFT JOIN Usuarios US ON US.IdUsuario = D.IdUsuario
 	WHERE PD.IdFilial = @IdFilial
 
 GO
@@ -301,6 +302,7 @@ GO
 
 CREATE OR ALTER PROCEDURE SP_Registro
 	@Nombre NVARCHAR(30),
+	@Apellido NVARCHAR(30),
 	@Email NVARCHAR(50),
 	@Pass NVARCHAR(50),
 	@Dni NVARCHAR(30)
@@ -312,9 +314,9 @@ BEGIN
 	DECLARE @UltimoIdUsuario INT
 	SET @UltimoIdUsuario = SCOPE_IDENTITY();
 	
-	INSERT INTO Donantes (IdUsuario, Dni)
+	INSERT INTO Donantes (IdUsuario,Nombre,Apellido, Dni)
 	OUTPUT inserted.IdUsuario
-	VALUES(@UltimoIdUsuario, @Dni)
+	VALUES(@UltimoIdUsuario,@Nombre,@Apellido, @Dni)
 END
 GO
 
@@ -649,4 +651,4 @@ GO
 
 -- PROCEDURE QUE INSERTA UN PROXIMO DONANTE
 
-CREATE OR ALTER PROCEDURE SP_insertProximoDonante	@IdPublicacion INT,	@IdUsuario INTASBEGIN	DECLARE @IdFilial INT	DECLARE @IdDonante INT	SELECT @IdFilial = IdFilial FROM Publicaciones WHERE IdPublicacion = @IdPublicacion	SELECT @IdDonante = IdDonante FROM Donantes WHERE IdUsuario = @IdUsuario	INSERT INTO ProximosDonantes VALUES (@IdDonante, @IdFilial, @IdPublicacion, GETDATE())ENDGO
+CREATE OR ALTER PROCEDURE SP_insertProximoDonante	@IdPublicacion INT,	@IdUsuario INTASBEGIN	DECLARE @IdFilial INT	DECLARE @IdDonante INT	SELECT @IdFilial = IdFilial FROM Publicaciones WHERE IdPublicacion = @IdPublicacion	SELECT @IdDonante = IdDonante FROM Donantes WHERE IdUsuario = @IdUsuario	INSERT INTO ProximosDonantes VALUES (@IdDonante, @IdFilial, @IdPublicacion, GETDATE())END

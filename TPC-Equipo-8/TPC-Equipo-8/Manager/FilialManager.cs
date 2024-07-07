@@ -384,7 +384,7 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
-                datos.setearConsulta("SELECT F.Nombre, F.Telefono,F.HorarioAtencion,F.Correo,F.UrlWeb,DU.Calle, DU.Altura,DU.Piso, DU.Departamento, L.IdLocalidad AS Localidad, L.CodigoPostal AS CP, C.IdCiudad AS Ciudad, P.IdProvincia AS Provincia FROM Filiales F INNER JOIN Direcciones_x_Usuario DU ON DU.IdUsuario = F.IdUsuario INNER JOIN Localidades L ON L.IdLocalidad=DU.IdLocalidad INNER JOIN Ciudades C ON C.IdCiudad = L.IdCiudad INNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia WHERE F.IdFilial=@IdFilial");
+                datos.setearConsulta("SELECT F.Nombre, F.Telefono,F.HorarioAtencion,F.Correo,F.UrlWeb,DU.Calle, DU.Altura,DU.Piso, DU.Departamento, L.Nombre AS Localidad, L.CodigoPostal AS CP, C.Nombre AS Ciudad, P.IdProvincia AS Provincia FROM Filiales F INNER JOIN Direcciones_x_Usuario DU ON DU.IdUsuario = F.IdUsuario INNER JOIN Localidades L ON L.IdLocalidad=DU.IdLocalidad INNER JOIN Ciudades C ON C.IdCiudad = L.IdCiudad INNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia WHERE F.IdFilial=1\r\n");
                 datos.setearParametro("@IdFilial", idFilial);
                 datos.ejecutarLectura();
 
@@ -428,7 +428,7 @@ namespace TPC_Equipo_8.Manager
                     }
                     if (!Convert.IsDBNull(datos.Lector["Localidad"]))
                     {
-                        aux.localidad = (int)datos.Lector["Localidad"];
+                        aux.nombreLocalidad = (string)datos.Lector["Localidad"];
                     }
                     if (!Convert.IsDBNull(datos.Lector["CP"]))
                     {
@@ -436,7 +436,7 @@ namespace TPC_Equipo_8.Manager
                     }
                     if (!Convert.IsDBNull(datos.Lector["Ciudad"]))
                     {
-                        aux.ciudad = Convert.ToInt32(datos.Lector["Ciudad"]);
+                        aux.nombreCiudad = (string)(datos.Lector["Ciudad"]);
                     }
                     if (!Convert.IsDBNull(datos.Lector["Provincia"]))
                     {

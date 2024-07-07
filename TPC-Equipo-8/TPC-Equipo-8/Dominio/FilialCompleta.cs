@@ -19,6 +19,8 @@ namespace TPC_Equipo_8.Dominio
         public int piso { get; set; }
         public string departamento { get; set; }
         public int localidad { get; set; }
+        public string nombreLocalidad { get; set; }
+        public string nombreCiudad { get; set; }
         public string cp {  get; set; }
         public int ciudad { get; set; }
         public int provincia { get; set; }

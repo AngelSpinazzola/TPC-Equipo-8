@@ -44,14 +44,17 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                     TextAltura.Text = filial.altura.ToString();
                     TextPiso.Text = filial.piso.ToString();
                     TextDep.Text = filial.departamento;
+                    TextCiudad.Text = filial.nombreCiudad;
+                    TextLocalidad.Text = filial.nombreLocalidad;
+                    TextCP.Text = filial.cp.ToString();
 
                     DropDownProvincia.SelectedValue = filial.provincia.ToString();
-                    LlenarCiudades(filial.provincia);
-                    DropDownCiudad.SelectedValue = filial.ciudad.ToString();
-                    LlenarLocalidades(filial.ciudad);
-                    DropDownLocalidad.SelectedValue = filial.localidad.ToString();
-                    LlenarCodigoPostal(filial.localidad);
-                    DropDownCP.SelectedValue = filial.cp;
+                    //LlenarCiudades(filial.provincia);
+                    //DropDownCiudad.SelectedValue = filial.ciudad.ToString();
+                    //LlenarLocalidades(filial.ciudad);
+                    //DropDownLocalidad.SelectedValue = filial.localidad.ToString();
+                    //LlenarCodigoPostal(filial.localidad);
+                    //DropDownCP.SelectedValue = filial.cp;
 
                 }
             }
@@ -62,7 +65,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         {
 
             
-                int id = int.Parse(DropDownProvincia.SelectedItem.Value);
+                //int id = int.Parse(DropDownProvincia.SelectedItem.Value);
                 //FilialManager filialManager = new FilialManager();
                 //List<Ciudad> ciudads = new List<Ciudad>();
 
@@ -71,14 +74,14 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 //DropDownCiudad.DataTextField = "Nombre";
                 //DropDownCiudad.DataValueField = "id";
                 //DropDownCiudad.DataBind();
-                LlenarCiudades(id);
+                //LlenarCiudades(id);
             //DropDownCP.Items.Clear();
             //Page.Validate();
-            int id1 = int.Parse(DropDownCiudad.SelectedItem.Value);
-            LlenarLocalidades(id1);
+            //int id1 = int.Parse(DropDownCiudad.SelectedItem.Value);
+            //LlenarLocalidades(id1);
 
-            int id2 = int.Parse(DropDownLocalidad.SelectedItem.Value);
-            LlenarCodigoPostal(id2);
+            //int id2 = int.Parse(DropDownLocalidad.SelectedItem.Value);
+            //LlenarCodigoPostal(id2);
 
 
 
@@ -90,16 +93,16 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         {
             
             
-                int id = int.Parse(DropDownCiudad.SelectedItem.Value);
-                //FilialManager filialManager = new FilialManager();
-                //List<Localidad> localidad = new List<Localidad>();
-                //localidad = filialManager.listarLocalidad(id);
-                //DropDownLocalidad.DataSource = localidad;
-                //DropDownLocalidad.DataTextField = "Nombre";
-                //DropDownLocalidad.DataValueField = "id";
-                //DropDownLocalidad.DataBind();
-                LlenarLocalidades(id);
-                //Page.Validate();
+                //int id = int.Parse(DropDownCiudad.SelectedItem.Value);
+                ////FilialManager filialManager = new FilialManager();
+                ////List<Localidad> localidad = new List<Localidad>();
+                ////localidad = filialManager.listarLocalidad(id);
+                ////DropDownLocalidad.DataSource = localidad;
+                ////DropDownLocalidad.DataTextField = "Nombre";
+                ////DropDownLocalidad.DataValueField = "id";
+                ////DropDownLocalidad.DataBind();
+                //LlenarLocalidades(id);
+                ////Page.Validate();
             
            
         }
@@ -108,14 +111,14 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         {
 
            
-                int id2 = int.Parse(DropDownLocalidad.SelectedItem.Value);
-                //FilialManager filialManager = new FilialManager();
-                //List<CodigoPostal> codigoPostal = new List<CodigoPostal>();
-                //codigoPostal = filialManager.listarCodigoPostal(id2);
-                //DropDownCP.DataSource = codigoPostal;
-                //DropDownCP.DataTextField = "Nombre";
-                //DropDownCP.DataBind();  
-                LlenarCodigoPostal(id2);
+                //int id2 = int.Parse(DropDownLocalidad.SelectedItem.Value);
+                ////FilialManager filialManager = new FilialManager();
+                ////List<CodigoPostal> codigoPostal = new List<CodigoPostal>();
+                ////codigoPostal = filialManager.listarCodigoPostal(id2);
+                ////DropDownCP.DataSource = codigoPostal;
+                ////DropDownCP.DataTextField = "Nombre";
+                ////DropDownCP.DataBind();  
+                //LlenarCodigoPostal(id2);
 
             
             
@@ -123,38 +126,38 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         }
 
-        private void LlenarCiudades(int idProvincia)
-        {
-            FilialManager filialManager = new FilialManager();
-            List<Ciudad> ciudads = new List<Ciudad>();
+        //private void LlenarCiudades(int idProvincia)
+        //{
+        //    FilialManager filialManager = new FilialManager();
+        //    List<Ciudad> ciudads = new List<Ciudad>();
 
-            ciudads = filialManager.listarCiudad(idProvincia);
-            DropDownCiudad.DataSource = ciudads;
-            DropDownCiudad.DataTextField = "Nombre";
-            DropDownCiudad.DataValueField = "id";
-            DropDownCiudad.DataBind();
-        }
+        //    ciudads = filialManager.listarCiudad(idProvincia);
+        //    DropDownCiudad.DataSource = ciudads;
+        //    DropDownCiudad.DataTextField = "Nombre";
+        //    DropDownCiudad.DataValueField = "id";
+        //    DropDownCiudad.DataBind();
+        //}
 
-        private void LlenarLocalidades(int idCiudad)
-        {
-            FilialManager filialManager = new FilialManager();
-            List<Localidad> localidad = new List<Localidad>();
-            localidad = filialManager.listarLocalidad(idCiudad);
-            DropDownLocalidad.DataSource = localidad;
-            DropDownLocalidad.DataTextField = "Nombre";
-            DropDownLocalidad.DataValueField = "id";
-            DropDownLocalidad.DataBind();
-        }
+        //private void LlenarLocalidades(int idCiudad)
+        //{
+        //    FilialManager filialManager = new FilialManager();
+        //    List<Localidad> localidad = new List<Localidad>();
+        //    localidad = filialManager.listarLocalidad(idCiudad);
+        //    DropDownLocalidad.DataSource = localidad;
+        //    DropDownLocalidad.DataTextField = "Nombre";
+        //    DropDownLocalidad.DataValueField = "id";
+        //    DropDownLocalidad.DataBind();
+        //}
 
-        private void LlenarCodigoPostal(int idLocalidad)
-        {
-            FilialManager filialManager = new FilialManager();
-            List<CodigoPostal> codigoPostal = new List<CodigoPostal>();
-            codigoPostal = filialManager.listarCodigoPostal(idLocalidad);
-            DropDownCP.DataSource = codigoPostal;
-            DropDownCP.DataTextField = "Nombre";
-            DropDownCP.DataBind();
-        }
+        //private void LlenarCodigoPostal(int idLocalidad)
+        //{
+        //    FilialManager filialManager = new FilialManager();
+        //    List<CodigoPostal> codigoPostal = new List<CodigoPostal>();
+        //    codigoPostal = filialManager.listarCodigoPostal(idLocalidad);
+        //    DropDownCP.DataSource = codigoPostal;
+        //    DropDownCP.DataTextField = "Nombre";
+        //    DropDownCP.DataBind();
+        //}
 
         protected void btnCancelarPerfil_Click(object sender, EventArgs e)
         {
@@ -217,9 +220,11 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                         filialCompleta.piso = int.Parse(TextPiso.Text);
                     }
                     filialCompleta.departamento = TextDep.Text;
-                    filialCompleta.localidad = Convert.ToInt32(DropDownLocalidad.SelectedValue);
-                    filialCompleta.ciudad = Convert.ToInt32(DropDownCiudad.SelectedValue);
-                    filialCompleta.provincia = Convert.ToInt32(DropDownProvincia.SelectedValue);
+                    filialCompleta.nombreLocalidad = TextLocalidad.Text;
+                    filialCompleta.nombreCiudad= TextCiudad.Text;
+                    filialCompleta.cp=TextCP.Text;
+                    //filialCompleta.ciudad = Convert.ToInt32(DropDownCiudad.SelectedValue);
+                    //filialCompleta.provincia = Convert.ToInt32(DropDownProvincia.SelectedValue);
 
 
                     managerFilial.editarDireccionDeFilialCompleta(filialCompleta, usuario.idUsuario);
