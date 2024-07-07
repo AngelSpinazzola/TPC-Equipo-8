@@ -19,7 +19,12 @@
                         <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                         <asp:TextBox runat="server" type="password" placeholder="******" ID="txtPass" CssClass="form-control" />
                     </div>
-                    <div class="d-grid" style="margin-bottom: 20px; margin-top: -10px;">
+
+                    <div class="text-center" style="margin-top: -10px; margin-bottom: 20px;">
+                        <a href="RecuperacionContraseña.aspx" style="color: #c12222;">Olvidé mi contraseña</a>
+                    </div>
+
+                    <div class="d-grid" style="margin-bottom: 20px;">
 
                         <asp:Button Text="Continuar" ID="btnContinuar" OnClick="btnContinuar_Click" runat="server" CssClass="btn btn-customContinuar" />
                     </div>

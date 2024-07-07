@@ -90,6 +90,7 @@
     <Content Include="Forms\FormsGlobales\Error.aspx" />
     <Content Include="Forms\FormsGlobales\LogIn.aspx" />
     <Content Include="Forms\FormsGlobales\PublicacionesDonantes.aspx" />
+    <Content Include="Forms\FormsGlobales\RecuperacionContraseña.aspx" />
     <Content Include="Forms\FormsGlobales\Registro.aspx" />
     <Content Include="Forms\FormsGlobales\RegistroFilial.aspx" />
     <Content Include="Forms\FormsGlobales\Requisitos.aspx" />
@@ -266,6 +267,13 @@
     <Compile Include="Forms\FormsGlobales\PublicacionesDonantes.aspx.designer.cs">
       <DependentUpon>PublicacionesDonantes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormsGlobales\RecuperacionContraseña.aspx.cs">
+      <DependentUpon>RecuperacionContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\FormsGlobales\RecuperacionContraseña.aspx.designer.cs">
+      <DependentUpon>RecuperacionContraseña.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormsGlobales\Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -297,6 +305,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\EnvioEmail.cs" />
     <Compile Include="Helpers\Seguridad.cs" />
     <Compile Include="Manager\DonacionManager.cs" />
     <Compile Include="Manager\DonanteManager.cs" />
