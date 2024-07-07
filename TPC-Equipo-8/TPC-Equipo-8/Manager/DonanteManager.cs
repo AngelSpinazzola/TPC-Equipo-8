@@ -218,5 +218,29 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
+
+        public void nuevoProximoDonante(int idPublicacion, int idUsuario)
+        {
+
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_insertProximoDonante");
+                datos.setearParametro("@IdPublicacion", idPublicacion);
+                datos.setearParametro("@IdUsuario", idUsuario);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

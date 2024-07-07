@@ -45,9 +45,13 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
             }
             else
             {
-                Response.Redirect("../FormsDonante/DonanteFormularioDonacion.aspx");
+                Button btn = (Button)sender;
+                int idPublicacion = Convert.ToInt32(btn.CommandArgument);
+                Response.Redirect("../FormsDonante/DonanteFormularioDonacion.aspx?idPublicacion=" + idPublicacion);
             }
         }
+
+     
 
 
 

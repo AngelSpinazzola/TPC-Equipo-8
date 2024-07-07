@@ -99,7 +99,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 //DropDownLocalidad.DataValueField = "id";
                 //DropDownLocalidad.DataBind();
                 LlenarLocalidades(id);
-                Page.Validate();
+                //Page.Validate();
             
            
         }
@@ -189,27 +189,50 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         protected void btnAceptarDireccion_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario();
-            usuario = (Usuario)(Session["usuario"]);
-            FilialManager managerFilial = new FilialManager();
-            if (Seguridad.sessionActiva(usuario))
+
+            try
             {
-                FilialCompleta filialCompleta = new FilialCompleta();
-                filialCompleta.calle = TextCalle.Text;
-                filialCompleta.altura = int.Parse(TextAltura.Text);
-                filialCompleta.piso = int.Parse(TextPiso.Text);
-                filialCompleta.departamento = TextDep.Text;
-                filialCompleta.localidad = Convert.ToInt32(DropDownLocalidad.SelectedValue);
-                filialCompleta.ciudad = Convert.ToInt32(DropDownCiudad.SelectedValue);
-                filialCompleta.provincia = Convert.ToInt32(DropDownProvincia.SelectedValue);
+                Usuario usuario = new Usuario();
+                usuario = (Usuario)(Session["usuario"]);
+                FilialManager managerFilial = new FilialManager();
+                if (Seguridad.sessionActiva(usuario))
+                {
+                    FilialCompleta filialCompleta = new FilialCompleta();
+                    filialCompleta.calle = TextCalle.Text;
+                    if (string.IsNullOrEmpty(TextAltura.Text))
+                    {
+                        filialCompleta.altura = 0;
+                    }
+                    else
+                    {
+                        filialCompleta.altura = int.Parse(TextAltura.Text);
+                    }
+
+                    if (string.IsNullOrEmpty(TextPiso.Text))
+                    {
+                        filialCompleta.piso = 0;
+                    }
+                    else
+                    {
+                        filialCompleta.piso = int.Parse(TextPiso.Text);
+                    }
+                    filialCompleta.departamento = TextDep.Text;
+                    filialCompleta.localidad = Convert.ToInt32(DropDownLocalidad.SelectedValue);
+                    filialCompleta.ciudad = Convert.ToInt32(DropDownCiudad.SelectedValue);
+                    filialCompleta.provincia = Convert.ToInt32(DropDownProvincia.SelectedValue);
 
 
-                managerFilial.editarDireccionDeFilialCompleta(filialCompleta, usuario.idUsuario);
+                    managerFilial.editarDireccionDeFilialCompleta(filialCompleta, usuario.idUsuario);
 
-                Response.Redirect("FilialHome.aspx", false);
+                    Response.Redirect("FilialHome.aspx", false);
+                }
             }
+            catch (Exception ex)
+            {
 
-
+                throw ex;
+            }
+            
 
         }
     }

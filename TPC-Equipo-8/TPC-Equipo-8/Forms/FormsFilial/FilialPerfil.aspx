@@ -18,7 +18,7 @@
                         
                         <%--DATOS FILIAL--%>
 
-                        <div id="editarPerfil" style="display: block;" class="form-container">
+                        <div id="editarPerfil" style="display: block;" >
                             <div class="row g-3">
                                 <div class="col-12">
                                     <label for="txtNombreFilial" class="form-label">Nombre de la Filial</label>
@@ -57,7 +57,7 @@
                                 <div class="col-12">
                                     <label for="txtUrlWeb" class="form-label">URL Web</label>
                                     <asp:TextBox ID="txtUrlWeb" runat="server" type="text" class="form-control"></asp:TextBox>
-                                    <asp:RegularExpressionValidator runat="server" ControlToValidate="txtUrlWeb" ErrorMessage="Formato de URL no válido." ValidationExpression="^(https?://)?(www\.)?([\w-]+\.)+[\w-]+(/[/?%&=]*)?$" Display="Dynamic" ForeColor="Red" />
+                                    <asp:RegularExpressionValidator runat="server" ControlToValidate="txtUrlWeb" ErrorMessage="Formato de URL no válido." ValidationExpression="^(https?://)?(www\.)?([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(/\S*)?$" Display="Dynamic" ForeColor="Red" />
                                 </div>
                             </div>
 
@@ -70,7 +70,7 @@
                         </div>
 
                         <%--DIRECCION--%>
-                        <div id="editarDireccion" style="display: none;" class="form-container">
+                        <div id="editarDireccion" style="display: none;">
                             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                             <asp:UpdatePanel runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
@@ -86,14 +86,14 @@
                                         <div class="col-12">
                                             <label for="txtAltura" class="form-label">Altura</label>
                                             <asp:TextBox ID="TextAltura" runat="server" type="text" class="form-control"></asp:TextBox>
-                                            <asp:RegularExpressionValidator runat="server" ControlToValidate="TextAltura" ErrorMessage="Debe ingresar solo números positivos de hasta 6 dígitos." ValidationExpression="^(?!0)\d{1,6}$" Display="Dynamic" ForeColor="Red" />
+                                            <asp:RegularExpressionValidator runat="server" ControlToValidate="TextAltura" ErrorMessage="Debe ingresar solo números positivos de hasta 6 dígitos." ValidationExpression="^(0|[1-9]\d{0,5})$" Display="Dynamic" ForeColor="Red" />
                                         </div>
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-12">
                                             <label for="txtPiso" class="form-label">Piso</label>
                                             <asp:TextBox ID="TextPiso" runat="server" type="text" class="form-control"></asp:TextBox>
-                                            <asp:RegularExpressionValidator ErrorMessage="Debe ingresar solo números positivos de hasta 3 dígitos." ControlToValidate="TextPiso" runat="server" ValidationExpression="^(?!0)\d{1,3}$" Display="Dynamic" ForeColor="Red" />
+                                            <asp:RegularExpressionValidator ErrorMessage="Debe ingresar solo números positivos de hasta 3 dígitos." ControlToValidate="TextPiso" runat="server" ValidationExpression="^(0|[1-9]\d{0,2})$" Display="Dynamic" ForeColor="Red" />
                                         </div>
                                     </div>
                                     <div class="row g-3">

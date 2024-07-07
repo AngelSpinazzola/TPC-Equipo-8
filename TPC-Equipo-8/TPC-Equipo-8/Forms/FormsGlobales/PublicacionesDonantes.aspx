@@ -21,7 +21,7 @@
                                 <li class="list-group-item" style="font-size: 13px; "><strong>Fecha Limite: </strong><%# Eval("fechaLimite", "{0:dd/MM/yyyy}") %></li>
                             </ul>
                             <div class="card-body d-grid">
-                                <asp:Button ID="btnDonar" OnClick="btnDonar_Click" runat="server" CssClass="btn btn-customDonar" Text="¡Quiero Donar!" />
+                                <asp:Button ID="btnDonar" OnClick="btnDonar_Click" runat="server" CssClass="btn btn-customDonar" Text="¡Quiero Donar!" CommandArgument='<%# Eval("IdPublicacion") %>' CommandName="IdPublicacion" />
                             </div>
                         </div>
                     </div>

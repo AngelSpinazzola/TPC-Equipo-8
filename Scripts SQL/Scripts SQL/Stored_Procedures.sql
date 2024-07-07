@@ -646,3 +646,7 @@ BEGIN
 END
 
 GO
+
+-- PROCEDURE QUE INSERTA UN PROXIMO DONANTE
+
+CREATE OR ALTER PROCEDURE SP_insertProximoDonante	@IdPublicacion INT,	@IdUsuario INTASBEGIN	DECLARE @IdFilial INT	DECLARE @IdDonante INT	SELECT @IdFilial = IdFilial FROM Publicaciones WHERE IdPublicacion = @IdPublicacion	SELECT @IdDonante = IdDonante FROM Donantes WHERE IdUsuario = @IdUsuario	INSERT INTO ProximosDonantes VALUES (@IdDonante, @IdFilial, @IdPublicacion, GETDATE())ENDGO

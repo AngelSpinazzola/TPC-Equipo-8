@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TPC_Equipo_8.Dominio;
+using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsDonante
 {
@@ -20,5 +21,36 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 }
             }
         }
+
+        protected void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            if (TodosLosRequisitosConfirmados())
+            {
+                DonanteManager donanteManager = new DonanteManager();
+                Usuario usuario = new Usuario();
+                usuario = (Usuario)(Session["usuario"]);
+
+                donanteManager.nuevoProximoDonante(Int32.Parse(Request.QueryString["idPublicacion"]), usuario.idUsuario);
+
+                string script = @"
+            alert('Te anotaste para donar correctamente. Presentate con DNI en la dirección correspondiente');
+            window.location.href = '../FormsGlobales/Default.aspx';
+        ";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "redirectScript", script, true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                    "alert('Por favor, confirme todos los requisitos antes de continuar.');", true);
+            }
+        }
+
+        private bool TodosLosRequisitosConfirmados()
+        {
+            return chkEdad.Checked && chkPeso.Checked && chkDNI.Checked &&
+                   chkEmbarazo.Checked && chkAnemia.Checked && chkSueno.Checked &&
+                   chkUltimaDonacion.Checked && chkDesayuno.Checked && chkTatuaje.Checked;
+        }
+
     }
 }
