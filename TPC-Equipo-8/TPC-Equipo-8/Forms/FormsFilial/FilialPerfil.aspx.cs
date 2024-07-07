@@ -72,12 +72,15 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 //DropDownCiudad.DataValueField = "id";
                 //DropDownCiudad.DataBind();
                 LlenarCiudades(id);
-                //DropDownCP.Items.Clear();
-                Page.Validate();
+            //DropDownCP.Items.Clear();
+            //Page.Validate();
+            int id1 = int.Parse(DropDownCiudad.SelectedItem.Value);
+            LlenarLocalidades(id1);
 
-            
-            
-           
+            int id2 = int.Parse(DropDownLocalidad.SelectedItem.Value);
+            LlenarCodigoPostal(id2);
+
+
 
 
 
