@@ -78,24 +78,29 @@
                                         <div class="col-12">
                                             <label for="txtCalle" class="form-label">Calle</label>
                                             <asp:TextBox ID="TextCalle" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="TextCalle" runat="server" Display="Dynamic" ForeColor="Red" />
+                                            <asp:RegularExpressionValidator ErrorMessage="Solo letras. Menos de 100 caracteres" ControlToValidate="TextCalle" ValidationExpression="^[A-Za-z\s]{1,100}$" runat="server" Display="Dynamic" ForeColor="Red"  />
                                         </div>
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-12">
                                             <label for="txtAltura" class="form-label">Altura</label>
                                             <asp:TextBox ID="TextAltura" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <asp:RegularExpressionValidator runat="server" ControlToValidate="TextAltura" ErrorMessage="Debe ingresar solo números positivos de hasta 6 dígitos." ValidationExpression="^(?!0)\d{1,6}$" Display="Dynamic" ForeColor="Red" />
                                         </div>
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-12">
                                             <label for="txtPiso" class="form-label">Piso</label>
                                             <asp:TextBox ID="TextPiso" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ErrorMessage="Debe ingresar solo números positivos de hasta 3 dígitos." ControlToValidate="TextPiso" runat="server" ValidationExpression="^(?!0)\d{1,3}$" Display="Dynamic" ForeColor="Red" />
                                         </div>
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-12">
                                             <label for="txtDepartamento" class="form-label">Departamento</label>
                                             <asp:TextBox ID="TextDep" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <asp:RegularExpressionValidator ErrorMessage="Hasta 10 caracteres" ControlToValidate="TextDep" runat="server" ValidationExpression="^[A-Za-z0-9]{1,10}$" Display="Dynamic" ForeColor="Red" />
                                         </div>
                                     </div>
 
@@ -103,12 +108,14 @@
                                         <label for="provincia" class="form-label">Provincia</label>
                                         <asp:DropDownList ID="DropDownProvincia" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="DropDownProvincia_SelectedIndexChanged">
                                         </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ErrorMessage="Seleccione un valor" ControlToValidate="DropDownProvincia" runat="server" Display="Dynamic" ForeColor="Red"/>
                                     </div>
 
                                     <div class="col-12">
                                         <label for="ciudades" class="form-label">Ciudades</label>
                                         <asp:DropDownList ID="DropDownCiudad" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="DropDownCiudad_SelectedIndexChanged">
                                         </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ErrorMessage="Seleccione un valor" ControlToValidate="DropDownCiudad" runat="server" Display="Dynamic" ForeColor="Red"/>
                                     </div>
 
                                     <div class="col-12">

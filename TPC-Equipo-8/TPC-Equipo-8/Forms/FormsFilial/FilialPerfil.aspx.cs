@@ -73,7 +73,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             //DropDownCiudad.DataValueField = "id";
             //DropDownCiudad.DataBind();
             LlenarCiudades(id);
-
+            Page.Validate();
 
 
 
@@ -90,6 +90,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             //DropDownLocalidad.DataValueField = "id";
             //DropDownLocalidad.DataBind();
             LlenarLocalidades(id);
+            Page.Validate();
         }
 
         protected void DropDownLocalidad_SelectedIndexChanged(object sender, EventArgs e)
