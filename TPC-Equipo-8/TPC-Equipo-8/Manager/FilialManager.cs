@@ -1,4 +1,5 @@
 ﻿using manager;
+using Microsoft.SqlServer.Server;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -384,7 +385,7 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
-                datos.setearConsulta("SELECT F.Nombre, F.Telefono,F.HorarioAtencion,F.Correo,F.UrlWeb,DU.Calle, DU.Altura,DU.Piso, DU.Departamento, L.Nombre AS Localidad, L.CodigoPostal AS CP, C.Nombre AS Ciudad, P.IdProvincia AS Provincia FROM Filiales F INNER JOIN Direcciones_x_Usuario DU ON DU.IdUsuario = F.IdUsuario INNER JOIN Localidades L ON L.IdLocalidad=DU.IdLocalidad INNER JOIN Ciudades C ON C.IdCiudad = L.IdCiudad INNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia WHERE F.IdFilial=1\r\n");
+                datos.setearConsulta("SELECT F.Nombre, F.Telefono,F.HorarioAtencion,F.Correo,F.UrlWeb,DU.Calle, DU.Altura,DU.Piso, \r\nDU.Departamento, L.Nombre AS Localidad, L.CodigoPostal AS CP, C.Nombre AS Ciudad, P.Nombre AS Provincia \r\nFROM Filiales F \r\nINNER JOIN Direcciones_x_Usuario DU ON DU.IdUsuario = F.IdUsuario \r\nINNER JOIN Localidades L ON L.IdLocalidad=DU.IdLocalidad \r\nINNER JOIN Ciudades C ON C.IdCiudad = L.IdCiudad \r\nINNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia \r\nWHERE F.IdFilial=1");
                 datos.setearParametro("@IdFilial", idFilial);
                 datos.ejecutarLectura();
 
@@ -440,7 +441,7 @@ namespace TPC_Equipo_8.Manager
                     }
                     if (!Convert.IsDBNull(datos.Lector["Provincia"]))
                     {
-                        aux.provincia = Convert.ToInt32(datos.Lector["Provincia"]);
+                        aux.nombreProvincia = (string)(datos.Lector["Provincia"]);
                     }
                 }
                 return aux;
@@ -487,14 +488,18 @@ namespace TPC_Equipo_8.Manager
             {
                 try
                 {
-                    datos.setearConsulta("UPDATE Direcciones_x_Usuario SET IdLocalidad=@IdLocalidad, Calle=@Calle, Altura=@Altura, Piso =@Piso, Departamento=@Departamento WHERE IdUsuario = @IdUsuario");
-                    datos.setearParametro("@IdLocalidad", filial.localidad);
+                    datos.comando.Parameters.Clear();
+                    datos.setearProcedimiento("SP_UpdateDireccionFilial");
+                    datos.setearParametro("@IdUsuario", idUsuario);
                     datos.setearParametro("@Calle", filial.calle);
                     datos.setearParametro("@Altura", filial.altura);
                     datos.setearParametro("@Piso", filial.piso);
                     datos.setearParametro("@Departamento", filial.departamento);
-                    datos.setearParametro("@IdUsuario", idUsuario);
-
+                    datos.setearParametro("@Localidad", filial.nombreLocalidad);
+                    datos.setearParametro("@CodigoPostal", filial.cp);
+                    datos.setearParametro("@Ciudad", filial.nombreCiudad);
+                    datos.setearParametro("@Provincia", filial.nombreProvincia);
+                                                                          
                     datos.ejecutarAccion();
 
                 }

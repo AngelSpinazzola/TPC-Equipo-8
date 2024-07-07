@@ -651,4 +651,91 @@ GO
 
 -- PROCEDURE QUE INSERTA UN PROXIMO DONANTE
 
-CREATE OR ALTER PROCEDURE SP_insertProximoDonante	@IdPublicacion INT,	@IdUsuario INTASBEGIN	DECLARE @IdFilial INT	DECLARE @IdDonante INT	SELECT @IdFilial = IdFilial FROM Publicaciones WHERE IdPublicacion = @IdPublicacion	SELECT @IdDonante = IdDonante FROM Donantes WHERE IdUsuario = @IdUsuario	INSERT INTO ProximosDonantes VALUES (@IdDonante, @IdFilial, @IdPublicacion, GETDATE())END
+CREATE OR ALTER PROCEDURE SP_insertProximoDonante
+	@IdPublicacion INT,
+	@IdUsuario INT
+AS
+BEGIN
+
+	DECLARE @IdFilial INT
+	DECLARE @IdDonante INT
+
+	SELECT @IdFilial = IdFilial FROM Publicaciones WHERE IdPublicacion = @IdPublicacion
+	SELECT @IdDonante = IdDonante FROM Donantes WHERE IdUsuario = @IdUsuario
+
+	INSERT INTO ProximosDonantes VALUES (@IdDonante, @IdFilial, @IdPublicacion, GETDATE())
+
+END
+
+
+GO
+
+CREATE OR ALTER PROCEDURE SP_UpdateDireccionFilial
+
+	@IdUsuario INT,
+	@Calle NVARCHAR(100),
+	@Altura INT,
+	@Piso INT,
+	@Departamento NVARCHAR(10),
+	@Localidad NVARCHAR(75),
+	@CodigoPostal NVARCHAR(10),
+	@Ciudad NVARCHAR(75),
+	@Provincia NVARCHAR(50)
+
+AS
+BEGIN
+
+	BEGIN TRY
+
+	BEGIN TRANSACTION
+
+	-- VERIFICA SI LA LOCALIDAD EXISTE
+
+	DECLARE @IdLocalidad INT
+
+	SELECT @IdLocalidad = IdLocalidad
+	FROM Localidades
+	WHERE Nombre = @Localidad
+
+	-- SI NO EXISTE, LA INSERTA
+
+	IF @IdLocalidad IS NULL
+	BEGIN
+		INSERT INTO Localidades(Nombre, CodigoPostal) 
+		VALUES (@Localidad, @CodigoPostal)
+
+		SET @IdLocalidad = SCOPE_IDENTITY();
+	END
+
+	-- VERIFICA SI LA CIUDAD EXISTE
+
+	DECLARE @IdCiudad INT
+
+	SELECT @IdCiudad = IdCiudad
+	FROM Ciudades
+	WHERE Nombre = @Ciudad
+
+	-- SI NO EXISTE, LA INSERTA
+
+	IF @IdCiudad IS NULL
+	BEGIN
+		INSERT INTO Ciudades(Nombre) 
+		VALUES (@Ciudad)
+
+		SET @IdCiudad = SCOPE_IDENTITY();
+	END
+
+	UPDATE Direcciones_x_Usuario SET Calle = @Calle, Altura = @Altura, Piso = @Piso, Departamento = @Departamento, IdLocalidad = @IdLocalidad WHERE IdUsuario = @IdUsuario
+
+	COMMIT TRANSACTION
+
+	END TRY
+	BEGIN CATCH
+
+	RAISERROR('ERROR', 16, 0)
+	ROLLBACK TRANSACTION
+
+	END CATCH
+
+END
+

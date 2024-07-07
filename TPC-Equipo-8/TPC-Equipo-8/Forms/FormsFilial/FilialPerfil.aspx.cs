@@ -48,7 +48,14 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                     TextLocalidad.Text = filial.nombreLocalidad;
                     TextCP.Text = filial.cp.ToString();
 
-                    DropDownProvincia.SelectedValue = filial.provincia.ToString();
+                    ListItem provinciaSeleccionada = DropDownProvincia.Items.FindByText(filial.nombreProvincia);
+                    if (provinciaSeleccionada != null)
+                    {
+                        DropDownProvincia.ClearSelection();
+                        provinciaSeleccionada.Selected = true;
+                    }
+
+                    //DropDownProvincia.SelectedValue = filial.nombreProvincia;
                     //LlenarCiudades(filial.provincia);
                     //DropDownCiudad.SelectedValue = filial.ciudad.ToString();
                     //LlenarLocalidades(filial.ciudad);
@@ -173,6 +180,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             {
                 int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
                 FilialCompleta filialCompleta = new FilialCompleta();
+                Filial filial = new Filial();
                 filialCompleta.nombre= txtNombreFilial.Text;
                 filialCompleta.telefono= txtTelefono.Text;
                 filialCompleta.horarioAtencion= txtHorarioAtencion.Text;
@@ -224,10 +232,13 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                     filialCompleta.nombreCiudad= TextCiudad.Text;
                     filialCompleta.cp=TextCP.Text;
                     //filialCompleta.ciudad = Convert.ToInt32(DropDownCiudad.SelectedValue);
-                    //filialCompleta.provincia = Convert.ToInt32(DropDownProvincia.SelectedValue);
+                    filialCompleta.nombreProvincia = DropDownProvincia.SelectedItem.Text;
+
+                 
 
 
                     managerFilial.editarDireccionDeFilialCompleta(filialCompleta, usuario.idUsuario);
+                    //managerFilial.editarDireccionDeFilialCompleta(filialCompleta, usuario.idUsuario);
 
                     Response.Redirect("FilialHome.aspx", false);
                 }

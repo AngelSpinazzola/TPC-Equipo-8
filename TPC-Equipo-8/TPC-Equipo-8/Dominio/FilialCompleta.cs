@@ -24,6 +24,7 @@ namespace TPC_Equipo_8.Dominio
         public string cp {  get; set; }
         public int ciudad { get; set; }
         public int provincia { get; set; }
+        public string nombreProvincia { get; set; }
 
 
     }
