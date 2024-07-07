@@ -57,6 +57,33 @@
                                 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <label for="txtCalle" class="form-label">Calle</label>
+                                                <asp:TextBox ID="TextCalle" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <label for="txtAltura" class="form-label">Altura</label>
+                                                <asp:TextBox ID="TextAltura" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <label for="txtPiso" class="form-label">Piso</label>
+                                                <asp:TextBox ID="TextPiso" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <label for="txtDepartamento" class="form-label">Departamento</label>
+                                                <asp:TextBox ID="TextDep" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            </div>
+                                        </div>
+
+
+
                                         <div class="col-12">
                                             <label for="provincia" class="form-label">Provincia</label>
                                             <asp:DropDownList ID="DropDownProvincia" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="DropDownProvincia_SelectedIndexChanged">
@@ -80,11 +107,23 @@
                                             <asp:DropDownList ID="DropDownCP" runat="server" CssClass="form-select" AutoPostBack="true">
                                             </asp:DropDownList>
                                         </div>
+                                        <%-- FIN DIRECCION--%>
 
+                                        <%-- IMAGEN --%>
 
-
+                                        <%--<div class="col-md-6">
+                                            <div class="img-fluid rounded shadow-sm">
+                                                <asp:Image ID="imgNuevoPerfil" runat="server" CssClass="profile-image" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Imagen Perfil</label>
+                                                <input type="file" id="txtImagen" runat="server" class="form-control" accept="image/*" onchange="previewImage(this);" />
+                                            </div>
+                                        </div>--%>
                                     </ContentTemplate>
                                 </asp:UpdatePanel>
+
+
                                 
 
 

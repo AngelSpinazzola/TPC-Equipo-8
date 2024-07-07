@@ -102,6 +102,7 @@
     <Compile Include="Dominio\Ciudad.cs" />
     <Compile Include="Dominio\CodigoPostal.cs" />
     <Compile Include="Dominio\Donacion.cs" />
+    <Compile Include="Dominio\FilialCompleta.cs" />
     <Compile Include="Dominio\Localidad.cs" />
     <Compile Include="Dominio\Provincia.cs" />
     <Compile Include="Dominio\ProximasDonaciones.cs" />

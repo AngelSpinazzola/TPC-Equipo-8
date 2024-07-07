@@ -118,6 +118,7 @@ namespace TPC_Equipo_8.Manager
         {
             return ListarFiliales(idFilial, habilitado, soloActivas);
         }
+       
         public void modificarFilial(Filial filial)
         {
             try
@@ -362,6 +363,87 @@ namespace TPC_Equipo_8.Manager
 
                 }
                 return codigoPostal;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
+
+
+
+        public FilialCompleta listarUnaFilialCompleta(int idFilial)
+        {
+
+           FilialCompleta aux =new FilialCompleta();
+
+            try
+            {
+                datos.setearConsulta("SELECT F.Nombre, F.Telefono,F.HorarioAtencion,F.Correo,F.UrlWeb,DU.Calle, DU.Altura,DU.Piso, DU.Departamento, L.IdLocalidad AS Localidad, L.CodigoPostal AS CP, C.IdCiudad AS Ciudad, P.IdProvincia AS Provincia FROM Filiales F INNER JOIN Direcciones_x_Usuario DU ON DU.IdUsuario = F.IdUsuario INNER JOIN Localidades L ON L.IdLocalidad=DU.IdLocalidad INNER JOIN Ciudades C ON C.IdCiudad = L.IdCiudad INNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia WHERE F.IdFilial=@IdFilial");
+                datos.setearParametro("@IdFilial", idFilial);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    if (!Convert.IsDBNull(datos.Lector["Nombre"]))
+                    {
+                        aux.nombre = (string)datos.Lector["Nombre"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["Telefono"]))
+                    {
+                        aux.telefono = (string)datos.Lector["Telefono"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["HorarioAtencion"]))
+                    {
+                        aux.horarioAtencion = (string)datos.Lector["HorarioAtencion"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["Correo"]))
+                    {
+                        aux.correo = (string)datos.Lector["Correo"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["UrlWeb"]))
+                    {
+                        aux.urlWeb = (string)datos.Lector["UrlWeb"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["Calle"]))
+                    {
+                        aux.calle = (string)datos.Lector["Calle"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["Altura"]))
+                    {
+                        aux.altura = (int)datos.Lector["Altura"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["Piso"]))
+                    {
+                        aux.piso = (int)datos.Lector["Piso"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["Departamento"]))
+                    {
+                        aux.departamento = (string)datos.Lector["Departamento"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["Localidad"]))
+                    {
+                        aux.localidad = (int)datos.Lector["Localidad"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["CP"]))
+                    {
+                        aux.cp = (string)datos.Lector["CP"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["Ciudad"]))
+                    {
+                        aux.ciudad = Convert.ToInt32(datos.Lector["Ciudad"]);
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["Provincia"]))
+                    {
+                        aux.provincia = Convert.ToInt32(datos.Lector["Provincia"]);
+                    }
+                }
+                return aux;
             }
             catch (Exception ex)
             {

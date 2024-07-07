@@ -69,6 +69,42 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
+        /// Control TextCalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextCalle;
+
+        /// <summary>
+        /// Control TextAltura.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextAltura;
+
+        /// <summary>
+        /// Control TextPiso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextPiso;
+
+        /// <summary>
+        /// Control TextDep.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextDep;
+
+        /// <summary>
         /// Control DropDownProvincia.
         /// </summary>
         /// <remarks>
