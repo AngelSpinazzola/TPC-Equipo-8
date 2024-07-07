@@ -72,7 +72,7 @@
                         <%--DIRECCION--%>
                         <div id="editarDireccion" style="display: none;" class="form-container">
                             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                            <asp:UpdatePanel runat="server">
+                            <asp:UpdatePanel runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
                                     <div class="row g-3">
                                         <div class="col-12">
