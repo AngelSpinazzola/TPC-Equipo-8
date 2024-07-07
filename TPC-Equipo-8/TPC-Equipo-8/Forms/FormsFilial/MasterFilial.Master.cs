@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TPC_Equipo_8.Dominio;
 using TPC_Equipo_8.Helpers;
+using TPC_Equipo_8.Manager;
 
 namespace TPC_Equipo_8.Forms.FormsFilial
 {
@@ -32,8 +33,22 @@ namespace TPC_Equipo_8.Forms.FormsFilial
 
         public string ObtenerNombreUsuario()
         {
-            Usuario usuario = Session["usuario"] as Usuario;
-            return usuario != null ? usuario.Username : string.Empty;
+            //Usuario usuario = Session["usuario"] as Usuario;
+
+
+
+            Usuario usuario = new Usuario();
+            usuario = (Usuario)(Session["usuario"]);
+            FilialManager managerFilial = new FilialManager();
+
+            if(Seguridad.sessionActiva(usuario))
+            {
+                int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+                FilialCompleta filial = managerFilial.listarUnaFilialCompleta(IdFilial);
+                return filial.nombre;
+            }
+            return string.Empty;
+            //return usuario != null ? usuario.Username : string.Empty;
         }
     }
 }

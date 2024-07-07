@@ -42,6 +42,15 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected global::System.Web.UI.WebControls.TextBox txtHorarioAtencion;
 
         /// <summary>
+        /// Control revHorarioAtencion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revHorarioAtencion;
+
+        /// <summary>
         /// Control txtCorreo.
         /// </summary>
         /// <remarks>

@@ -23,6 +23,8 @@
                                 <div class="col-12">
                                     <label for="txtNombreFilial" class="form-label">Nombre de la Filial</label>
                                     <asp:TextBox ID="txtNombreFilial" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtNombreFilial" runat="server" Display="Dynamic" ForeColor="Red" />
+                                    <asp:RegularExpressionValidator ErrorMessage="Solo se permiten letras y espacios. Máximo 50 caracteres.Mínimo 3 caracteres alfabéticos."  ControlToValidate="txtNombreFilial" runat="server" ValidationExpression="^(?![A-Za-z]{1}\s)[A-Za-z\s]{3,50}$" Display="Dynamic" ForeColor="Red" />
                                 </div>
                             </div>
 
@@ -30,6 +32,8 @@
                                 <div class="col-12">
                                     <label for="txtTelefono" class="form-label">Teléfono</label>
                                     <asp:TextBox ID="txtTelefono" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtTelefono" runat="server" Display="Dynamic" ForeColor="Red" />
+                                    <asp:RegularExpressionValidator runat="server" ErrorMessage="Formato de teléfono inválido. Debe tener al menos 6 caracteres y acepta guiones." ControlToValidate="txtTelefono" ValidationExpression="^[0-9\-]{6,30}$" Display="Dynamic" ForeColor="Red" />
                                 </div>
                             </div>
 
@@ -37,6 +41,7 @@
                                 <div class="col-12">
                                     <label for="txtHorarioAtencion" class="form-label">Horario de Atención</label>
                                     <asp:TextBox ID="txtHorarioAtencion" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="revHorarioAtencion" runat="server" ControlToValidate="txtHorarioAtencion" ErrorMessage="Ingrese menos 100 caracteres y puede contener dos puntos (:), guiones (-), puntos (.) y coma (,)" ValidationExpression="^[\w\sáéíóú,:\-\&]{1,100}$" Display="Dynamic" ForeColor="Red" />
                                 </div>
                             </div>
 
@@ -44,6 +49,7 @@
                                 <div class="col-12">
                                     <label for="txtCorreo" class="form-label">Correo</label>
                                     <asp:TextBox ID="txtCorreo" runat="server" type="email" class="form-control"></asp:TextBox>
+                                     <asp:RegularExpressionValidator runat="server" ControlToValidate="txtCorreo" ErrorMessage="Formato de correo electrónico no válido." ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" Display="Dynamic" ForeColor="Red" />
                                 </div>
                             </div>
 
@@ -51,12 +57,13 @@
                                 <div class="col-12">
                                     <label for="txtUrlWeb" class="form-label">URL Web</label>
                                     <asp:TextBox ID="txtUrlWeb" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    <asp:RegularExpressionValidator runat="server" ControlToValidate="txtUrlWeb" ErrorMessage="Formato de URL no válido." ValidationExpression="^(https?://)?(www\.)?([\w-]+\.)+[\w-]+(/[/?%&=]*)?$" Display="Dynamic" ForeColor="Red" />
                                 </div>
                             </div>
 
                             <div class="col-12 d-flex justify-content-evenly align-items-center mt-4" style="margin-top: 25px;">
                                 <asp:Button ID="btnAceparPerfil" runat="server" CssClass="btn btn-customContinuar " Text="Aceptar" OnClick="btnAceparPerfil_Click"/>
-                                <asp:Button ID="btnCancelarPerfil" runat="server" CssClass="btn btn-customEliminar " Text="Cancelar" OnClick="btnCancelarPerfil_Click" />
+                                <asp:Button ID="btnCancelarPerfil" runat="server" CssClass="btn btn-customEliminar " Text="Cancelar" OnClick="btnCancelarPerfil_Click" CausesValidation="false" />
                             </div>
 
 
