@@ -140,5 +140,30 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             DropDownCP.DataBind();
         }
 
+        protected void btnCancelarPerfil_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FilialHome.aspx", false);
+        }
+
+        protected void btnAceparPerfil_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            usuario = (Usuario)(Session["usuario"]);
+            FilialManager managerFilial = new FilialManager();
+            if (Seguridad.sessionActiva(usuario))
+            {
+                int IdFilial = managerFilial.ObtenerIdFilial(usuario.idUsuario);
+                FilialCompleta filialCompleta = new FilialCompleta();
+                filialCompleta.nombre= txtNombreFilial.Text;
+                filialCompleta.telefono= txtTelefono.Text;
+                filialCompleta.horarioAtencion= txtHorarioAtencion.Text;
+                filialCompleta.correo= txtCorreo.Text; 
+                filialCompleta.urlWeb= txtUrlWeb.Text;
+
+                managerFilial.editarFilialCompleta(filialCompleta, IdFilial);
+
+                Response.Redirect("FilialHome.aspx", false);
+            }
+        }
     }
 }

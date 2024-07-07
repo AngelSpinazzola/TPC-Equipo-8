@@ -457,6 +457,35 @@ namespace TPC_Equipo_8.Manager
         }
 
 
+        public void editarFilialCompleta (FilialCompleta filial, int idFilial)
+        {
+            try
+            {
+                datos.setearConsulta("UPDATE Filiales SET Nombre = @Nombre, Telefono=@Telefono, HorarioAtencion=@HorarioAtencion, Correo=@Correo, UrlWeb=@UrlWeb WHERE IdFilial = @idFilial");
+                datos.setearParametro("@Nombre", filial.nombre);
+                datos.setearParametro("@Telefono", filial.telefono);
+                datos.setearParametro("@HorarioAtencion", filial.horarioAtencion);
+                datos.setearParametro("@Correo", filial.correo);
+                datos.setearParametro("@UrlWeb", filial.urlWeb);
+                datos.setearParametro("@idFilial", idFilial);
+
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+
+        }
+
+
 
 
 
