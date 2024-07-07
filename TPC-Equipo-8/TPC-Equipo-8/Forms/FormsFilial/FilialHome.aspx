@@ -19,8 +19,8 @@
                                 <p><strong><i class="fas fa-map-marker-alt"></i>Dirección:</strong> <%# Eval("direccion.calle") %> <%# Eval("direccion.altura") %>, <%# Eval("direccion.localidad") %>, <%# Eval("direccion.provincia") %></p>
                                 <p><strong><i class="fas fa-globe"></i>Sitio Web: </strong><a href='<%# Eval("urlWeb") %>' target="_blank"><%# Eval("urlWeb") %></a></p>
                                 <div class="mt-4">
-                                    <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-customEditar"
-                                        CommandArgument='<%# Eval("idFilial") %>' CommandName="Edit">
+                                    <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-customEditar" 
+                                        CommandArgument='<%# Eval("idFilial") %>' CommandName="Edit" OnClick="btnEditar_Click">
                                     <i class="fas fa-edit"></i> Editar
                                     </asp:LinkButton>
                                 </div>

@@ -136,8 +136,8 @@
                                             </div>
                                         </div>--%>
                                     <div class="col-12 d-flex justify-content-evenly align-items-center mt-4" style="margin-top: 25px;">
-                                        <asp:Button ID="btnAceptarDireccion" runat="server" CssClass="btn btn-customContinuar " Text="Aceptar" />
-                                        <asp:Button ID="btnCancelarDireccion" runat="server" CssClass="btn btn-customEliminar " Text="Cancelar" />
+                                        <asp:Button ID="btnAceptarDireccion" runat="server" CssClass="btn btn-customContinuar " Text="Aceptar" OnClick="btnAceptarDireccion_Click"/>
+                                        <asp:Button ID="btnCancelarDireccion" runat="server" CssClass="btn btn-customEliminar " Text="Cancelar" CausesValidation="false" OnClick="btnCancelarDireccion_Click" />
                                     </div>
 
                                 </ContentTemplate>

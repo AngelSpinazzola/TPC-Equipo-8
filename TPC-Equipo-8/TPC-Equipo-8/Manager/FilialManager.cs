@@ -457,7 +457,7 @@ namespace TPC_Equipo_8.Manager
         }
 
 
-        public void editarFilialCompleta (FilialCompleta filial, int idFilial)
+        public void editarFilialCompleta(FilialCompleta filial, int idFilial)
         {
             try
             {
@@ -481,9 +481,33 @@ namespace TPC_Equipo_8.Manager
             {
                 datos.cerrarConexion();
             }
-
-
         }
+
+            public void editarDireccionDeFilialCompleta(FilialCompleta filial, int idUsuario)
+            {
+                try
+                {
+                    datos.setearConsulta("UPDATE Direcciones_x_Usuario SET IdLocalidad=@IdLocalidad, Calle=@Calle, Altura=@Altura, Piso =@Piso, Departamento=@Departamento WHERE IdUsuario = @IdUsuario");
+                    datos.setearParametro("@IdLocalidad", filial.localidad);
+                    datos.setearParametro("@Calle", filial.calle);
+                    datos.setearParametro("@Altura", filial.altura);
+                    datos.setearParametro("@Piso", filial.piso);
+                    datos.setearParametro("@Departamento", filial.departamento);
+                    datos.setearParametro("@IdUsuario", idUsuario);
+
+                    datos.ejecutarAccion();
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+                finally
+                {
+                    datos.cerrarConexion();
+                }
+            }
 
 
 

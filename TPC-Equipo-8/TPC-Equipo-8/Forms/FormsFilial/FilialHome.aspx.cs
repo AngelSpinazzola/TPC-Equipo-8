@@ -68,5 +68,10 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             }
 
         }
+
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FilialPerfil.aspx");
+        }
     }
 }

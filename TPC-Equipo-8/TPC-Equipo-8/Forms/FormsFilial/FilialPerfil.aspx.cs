@@ -165,5 +165,36 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 Response.Redirect("FilialHome.aspx", false);
             }
         }
+
+        protected void btnCancelarDireccion_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FilialHome.aspx", false);
+        }
+
+        protected void btnAceptarDireccion_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            usuario = (Usuario)(Session["usuario"]);
+            FilialManager managerFilial = new FilialManager();
+            if (Seguridad.sessionActiva(usuario))
+            {
+                FilialCompleta filialCompleta = new FilialCompleta();
+                filialCompleta.calle = TextCalle.Text;
+                filialCompleta.altura = int.Parse(TextAltura.Text);
+                filialCompleta.piso = int.Parse(TextPiso.Text);
+                filialCompleta.departamento = TextDep.Text;
+                filialCompleta.localidad = Convert.ToInt32(DropDownLocalidad.SelectedValue);
+                filialCompleta.ciudad = Convert.ToInt32(DropDownCiudad.SelectedValue);
+                filialCompleta.provincia = Convert.ToInt32(DropDownProvincia.SelectedValue);
+
+
+                managerFilial.editarDireccionDeFilialCompleta(filialCompleta, usuario.idUsuario);
+
+                Response.Redirect("FilialHome.aspx", false);
+            }
+
+
+
+        }
     }
 }
