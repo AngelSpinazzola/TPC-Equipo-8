@@ -14,7 +14,8 @@
                 <div class="form-container mt-4 custom-login">
 
                     <div class="row mb-3">
-                        <h5 class="text-center">¿Querés inscribirte para donar o para afiliar tu sede a <label style="font-weight: 650;">sanguis</label>?</h5>
+                        <h5 class="text-center">¿Querés inscribirte para donar o para afiliar tu sede a
+                            <label style="font-weight: 650;">sanguis</label>?</h5>
 
                         <div class="col-6 ps-1">
                             <a href="Registro.aspx" class="btn btn-customEliminar btn w-100">Quiero donar</a>
@@ -22,6 +23,11 @@
                         <div class="col-6 pe-1">
                             <a href="RegistroFilial.aspx" class="btn btn-customEliminar btn w-100">Soy filial</a>
                         </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="txtRegistroNombre" class="form-label">Nombre y Apellido</label>
+                        <asp:TextBox runat="server" placeholder="Juan Perez" ID="txtRegistroNombre" CssClass="form-control" />
                     </div>
 
                     <div class="mb-3">

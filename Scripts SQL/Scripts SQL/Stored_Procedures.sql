@@ -300,13 +300,14 @@ GO
 -- PROCEDURE PARA REGISTRO
 
 CREATE OR ALTER PROCEDURE SP_Registro
+	@Nombre NVARCHAR(30),
 	@Email NVARCHAR(50),
 	@Pass NVARCHAR(50),
 	@Dni NVARCHAR(30)
 AS
 BEGIN
-	INSERT INTO Usuarios (Email, Pass)
-	VALUES(@Email, @Pass)
+	INSERT INTO Usuarios (Username, Email, Pass)
+	VALUES(@Nombre, @Email, @Pass)
 	
 	DECLARE @UltimoIdUsuario INT
 	SET @UltimoIdUsuario = SCOPE_IDENTITY();

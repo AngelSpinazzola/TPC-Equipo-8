@@ -69,6 +69,7 @@ namespace TPC_Equipo_8.Manager
             try
             {
                 datos.setearProcedimiento("SP_Registro");
+                datos.setearParametro("@Nombre", nuevo.Username);
                 datos.setearParametro("@Email", nuevo.email);
                 datos.setearParametro("@Pass", nuevo.pass);
                 datos.setearParametro("@Dni", nuevo.dni);

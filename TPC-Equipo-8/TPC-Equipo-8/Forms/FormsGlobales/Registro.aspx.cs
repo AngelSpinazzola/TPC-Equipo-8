@@ -22,6 +22,8 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
             {
                 Usuario nuevo = new Usuario();
                 UsuarioManager usuarioManager = new UsuarioManager();
+
+                nuevo.Username = txtRegistroNombre.Text;
                 nuevo.email = txtRegistroEmail.Text;
                 nuevo.pass = txtRegistroPass.Text;
                 nuevo.dni = txtRegistroDni.Text;
