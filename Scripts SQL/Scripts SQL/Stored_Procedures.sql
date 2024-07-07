@@ -569,8 +569,8 @@ BEGIN
 		DECLARE @UltimoIdUsuario INT
 		SET @UltimoIdUsuario = SCOPE_IDENTITY();
 
-		INSERT INTO Filiales (IdUsuario, Nombre, Telefono)
-		VALUES (@UltimoIdUsuario, @Nombre, @Telefono)
+		INSERT INTO Filiales (IdUsuario, Nombre, Telefono, Correo)
+		VALUES (@UltimoIdUsuario, @Nombre, @Telefono, @Email)
 
 		-- VERIFICA SI LA PROVINCIA EXISTE
 
