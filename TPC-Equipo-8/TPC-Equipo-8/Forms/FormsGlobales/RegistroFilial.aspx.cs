@@ -30,18 +30,38 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
                 nueva.direccion.ciudad = txtRegistroCiudad.Text;
                 nueva.direccion.localidad = txtRegistroLocalidad.Text;
                 nueva.direccion.codigoPostal = txtCodigoPostal.Text;
-                nueva.direccion.calle = txtRegistroCalle.Text;  
+                nueva.direccion.calle = txtRegistroCalle.Text;
                 nueva.direccion.altura = int.Parse(txtRegistroAltura.Text);
                 nueva.email = txtRegistroEmail.Text;
-                nueva.pass = txtRegistroPass.Text;  
+                nueva.pass = txtRegistroPass.Text;
 
                 usuarioManager.RegistrarFilial(nueva);
 
-                Response.Redirect("Login.aspx");
+                string script = @"
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Tu cuenta se creó correctamente. Por favor, ingresá tus datos para continuar.',
+                    showCancelButton: false,
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'Login.aspx';
+                    }
+                });";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageAndRedirect", script, true);
             }
             catch (Exception ex)
             {
 
+                string errorScript = $@"
+        Swal.fire({{
+            icon: 'error',
+            title: 'Error',
+            text: 'Error al crear la cuenta: {ex.Message}',
+            showCancelButton: false,
+            confirmButtonText: 'OK'
+        }});";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showErrorMessage", errorScript, true);
                 Session.Add("error", ex.ToString());
             }
         }

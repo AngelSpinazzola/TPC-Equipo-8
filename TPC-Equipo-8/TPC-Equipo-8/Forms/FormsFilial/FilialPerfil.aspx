@@ -213,7 +213,7 @@
                             <div class="row g-3">
                                 <div class="col-12">
                                     <label for="txtContraseña" class="form-label">Contraseña</label>
-                                    <asp:TextBox ID="TextContraseña" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="TextContraseña" runat="server" type="password" class="form-control"></asp:TextBox>
 
                                 </div>
                             </div>
@@ -221,7 +221,7 @@
                             <div class="row g-3">
                                 <div class="col-12">
                                     <label for="txtContraseñaNueva" class="form-label">Nueva Contraseña</label>
-                                    <asp:TextBox ID="TextCotraseñaNueva" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="TextCotraseñaNueva" runat="server" type="password" class="form-control"></asp:TextBox>
 
                                 </div>
                             </div>

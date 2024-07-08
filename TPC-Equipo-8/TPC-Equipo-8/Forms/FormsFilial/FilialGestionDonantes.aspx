@@ -80,10 +80,10 @@
                     <HeaderStyle Width="50px" />
                     <ItemStyle CssClass="d-flex justify-content-center align-items-center border-0" />
                     <ItemTemplate>
-                        <asp:LinkButton ID="btnDono" runat="server" CssClass="btn btn-success btn-sm mx-1" OnClick="btnDono_Click" CommandArgument='<%# Eval("id") %>' CommandName="id">
+                        <asp:LinkButton ID="btnDono" runat="server" CssClass="btn btn-success btn-sm mx-1" OnClick="btnDono_Click" CommandArgument='<%# Eval("id") %>' CommandName="id" ToolTip="Donó">
             <i class="fa-solid fa-check"></i>
         </asp:LinkButton>
-                        <asp:LinkButton ID="btnNoDono" runat="server" CssClass="btn btn-danger btn-sm mx-1" OnClick="btnNoDono_Click" CommandArgument='<%# Eval("id") %>' CommandName="id">
+                        <asp:LinkButton ID="btnNoDono" runat="server" CssClass="btn btn-danger btn-sm mx-1" OnClick="btnNoDono_Click" CommandArgument='<%# Eval("id") %>' CommandName="id" ToolTip="No Donó">
             <i class="fa-solid fa-xmark"></i>
         </asp:LinkButton>
                     </ItemTemplate>
