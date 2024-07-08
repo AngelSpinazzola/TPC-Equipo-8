@@ -22,18 +22,37 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
             {
                 Usuario nuevo = new Usuario();
                 UsuarioManager usuarioManager = new UsuarioManager();
-
                 nuevo.Username = txtRegistroNombre.Text;
                 nuevo.email = txtRegistroEmail.Text;
                 nuevo.pass = txtRegistroPass.Text;
                 nuevo.dni = txtRegistroDni.Text;
                 nuevo.idUsuario = usuarioManager.insertarNuevo(nuevo);
 
-                Response.Redirect("Login.aspx");
+                string script = @"
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Tu cuenta se creó correctamente. Por favor, ingresá tus datos para continuar.',
+                    showCancelButton: false,
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'Login.aspx';
+                    }
+                });";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageAndRedirect", script, true);
             }
             catch (Exception ex)
             {
-
+                // Manejo de errores
+                string errorScript = $@"
+        Swal.fire({{
+            icon: 'error',
+            title: 'Error',
+            text: 'Error al crear la cuenta: {ex.Message}',
+            showCancelButton: false,
+            confirmButtonText: 'OK'
+        }});";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showErrorMessage", errorScript, true);
                 Session.Add("error", ex.ToString());
             }
         }

@@ -301,22 +301,21 @@ GO
 -- PROCEDURE PARA REGISTRO
 
 CREATE OR ALTER PROCEDURE SP_Registro
-	@Nombre NVARCHAR(30),
-	@Apellido NVARCHAR(30),
+	@Username NVARCHAR(30),
 	@Email NVARCHAR(50),
 	@Pass NVARCHAR(50),
 	@Dni NVARCHAR(30)
 AS
 BEGIN
 	INSERT INTO Usuarios (Username, Email, Pass)
-	VALUES(@Nombre, @Email, @Pass)
+	VALUES(@Username, @Email, @Pass)
 	
 	DECLARE @UltimoIdUsuario INT
 	SET @UltimoIdUsuario = SCOPE_IDENTITY();
 	
-	INSERT INTO Donantes (IdUsuario,Nombre,Apellido, Dni)
+	INSERT INTO Donantes (IdUsuario, Dni)
 	OUTPUT inserted.IdUsuario
-	VALUES(@UltimoIdUsuario,@Nombre,@Apellido, @Dni)
+	VALUES(@UltimoIdUsuario, @Dni)
 END
 GO
 

@@ -92,13 +92,16 @@
         </div>
     </div>
     <script>
-        function mostrarMensaje(mensaje, icon) {
+        function mostrarMensaje(mensaje, icon, redirectUrl) {
             Swal.fire({
                 icon: icon,
-                title: 'Mensaje',
                 text: mensaje,
                 showCancelButton: false,
                 confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed && redirectUrl) {
+                    window.location.href = redirectUrl;
+                }
             });
         }
     </script>

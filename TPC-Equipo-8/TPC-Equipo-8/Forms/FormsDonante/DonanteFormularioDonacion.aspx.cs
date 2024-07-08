@@ -29,18 +29,18 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 DonanteManager donanteManager = new DonanteManager();
                 Usuario usuario = (Usuario)(Session["usuario"]);
                 int verificacionTurno = donanteManager.VerificarTurnoDonacion(usuario);
+                string redirectUrl = "../FormsDonante/DonantePerfil.aspx";
+
                 if (verificacionTurno == 1)
                 {
-                    string script = "mostrarMensaje('Ya tenés turno para donar.', 'info');";
+                    string script = $"mostrarMensaje('Ya tenés turno para donar.', 'info', '{redirectUrl}');";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageScript", script, true);
-                    return;
                 }
                 else if (verificacionTurno == 2)
                 {
                     donanteManager.nuevoProximoDonante(Int32.Parse(Request.QueryString["idPublicacion"]), usuario.idUsuario);
-                    string scriptExito = "mostrarMensaje('Te anotaste para donar correctamente. Presentate con DNI en la dirección correspondiente', 'success');";
+                    string scriptExito = $"mostrarMensaje('Te anotaste para donar correctamente. Presentate con DNI en la dirección correspondiente', 'success', '{redirectUrl}');";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageExitoScript", scriptExito, true);
-                    return;
                 }
                 else
                 {

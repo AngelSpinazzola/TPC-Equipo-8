@@ -27,4 +27,15 @@
 
         </div>
     </div>
+
+    <script>
+        function mostrarMensaje(mensaje, icon) {
+            Swal.fire({
+                icon: icon,
+                text: mensaje,
+                showCancelButton: false,
+                confirmButtonText: 'OK'
+            });
+        }
+    </script>
 </asp:Content>

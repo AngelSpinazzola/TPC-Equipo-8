@@ -17,35 +17,39 @@ namespace TPC_Equipo_8.Helpers
 
         public EnvioEmail()
         {
-            server = new SmtpClient();
-            server.Credentials = new NetworkCredential("sanguis.donaciones@gmail.com", "sanguis123");
-            server.EnableSsl = true;
-            server.Port = 587;
-            server.Host = "smtp.gmail.com";
+            server = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("sanguis.donasangre@hotmail.com", "sanguis123"),
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false
+            };
         }
 
+        public class EmailNotFoundException : Exception
+        {
+            public EmailNotFoundException(string message) : base(message) { }
+        }
         public void armarCorreoRecuperacion(string correoDestino)
         {
-
             string contrasena = ObtenerContrasena(correoDestino);
-
             if (string.IsNullOrEmpty(contrasena))
             {
-                throw new ApplicationException("No se encontró una contraseña para este correo.");
+                throw new EmailNotFoundException("El email ingresado no es correcto. Por favor, ingrese nuevamente.");
             }
-
-            email = new MailMessage();
-            email.From = new MailAddress("noresponder@sanguis.com");
-            email.To.Add(correoDestino);
-            email.Subject = "Recuperación de tu contraseña";
-            email.IsBodyHtml = true;
-            email.Body = $@"
+            email = new MailMessage
+            {
+                From = new MailAddress("noresponder@sanguis.com"),
+                Subject = "Recuperación de tu contraseña",
+                IsBodyHtml = true,
+                Body = $@"
                 <h3>Recuperación de contraseña</h3>
                 <p>Has solicitado recuperar tu contraseña.</p>
                 <p>Tu contraseña es: <strong>{contrasena}</strong></p>
                 <p>Por razones de seguridad, te recomendamos cambiar esta contraseña después de iniciar sesión.</p>
-                <p>Si no has solicitado esta recuperación, por favor contacta con nuestro soporte técnico inmediatamente.</p>";
-
+                <p>Si no has solicitado esta recuperación, por favor contacta con nuestro soporte técnico inmediatamente.</p>"
+            };
+            email.To.Add(correoDestino);
         }
 
         private string ObtenerContrasena(string correoDestino)
@@ -58,30 +62,18 @@ namespace TPC_Equipo_8.Helpers
                 datos.setearParametro("@Email", correoDestino);
                 datos.ejecutarLectura();
 
-                if (datos.Lector.HasRows)
+                if (datos.Lector.Read())
                 {
-                    if (datos.Lector.Read())
+                    if (!datos.Lector.IsDBNull(datos.Lector.GetOrdinal("Pass")))
                     {
-                        if (!datos.Lector.IsDBNull(datos.Lector.GetOrdinal("Pass")))
-                        {
-                            contrasena = datos.Lector["Pass"].ToString();
-                        }
-                        else
-                        {
-                            Console.WriteLine("La contraseña es NULL en la base de datos.");
-                        }
+                        contrasena = datos.Lector["Pass"].ToString();
                     }
-                }
-                else
-                {
-                    Console.WriteLine("No se encontraron filas para el email proporcionado.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al obtener la contraseña: {ex.Message}");
-                Console.WriteLine($"StackTrace: {ex.StackTrace}");
-                throw;
+                throw new Exception("Error al obtener la contraseña", ex);
+                
             }
             finally
             {
@@ -96,11 +88,13 @@ namespace TPC_Equipo_8.Helpers
             {
                 server.Send(email);
             }
+            catch (SmtpException smtpEx)
+            {
+                throw new Exception($"Error al enviar el email: {smtpEx.StatusCode} - {smtpEx.Message}", smtpEx);
+            }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error al enviar el email: {ex.Message}");
-                Console.WriteLine($"StackTrace: {ex.StackTrace}");
-                throw;
+                throw new Exception("Error al enviar el email", ex);
             }
         }
     }

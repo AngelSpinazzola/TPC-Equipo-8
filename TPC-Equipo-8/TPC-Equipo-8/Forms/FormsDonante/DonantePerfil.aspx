@@ -59,7 +59,7 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
-                                            <asp:TemplateField HeaderText="Turno">
+                                            <asp:TemplateField HeaderText="Hora confirmación">
                                                 <HeaderStyle CssClass="table-header text-center" Width="150px" />
                                                 <ItemStyle CssClass="table-item text-center" Width="150px" />
                                                 <ItemTemplate>
