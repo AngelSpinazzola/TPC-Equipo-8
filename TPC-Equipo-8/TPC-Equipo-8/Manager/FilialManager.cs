@@ -489,7 +489,7 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
-            public void editarDireccionDeFilialCompleta(FilialCompleta filial, int idUsuario)
+         public void editarDireccionDeFilialCompleta(FilialCompleta filial, int idUsuario)
             {
                 try
                 {
@@ -518,6 +518,36 @@ namespace TPC_Equipo_8.Manager
                     datos.cerrarConexion();
                 }
             }
+
+        public Usuario obtenerCorreoyPass (int idUsuario)
+        {
+            try
+            {
+                Usuario aux = new Usuario();
+
+                datos.setearConsulta("select Email, Pass from Usuarios where IdUsuario=@idUsuario");
+                datos.setearParametro("@idUsuario", idUsuario);
+                datos.ejecutarLectura();
+
+                while(datos.Lector.Read())
+                {
+                    aux.email = (string)datos.Lector["Email"];
+                    aux.pass = (string)datos.Lector["Pass"];
+                }
+                return aux;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+
+        }
 
 
 

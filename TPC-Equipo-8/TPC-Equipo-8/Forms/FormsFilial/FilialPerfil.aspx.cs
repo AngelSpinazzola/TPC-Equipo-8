@@ -50,6 +50,12 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                     TextProvincia.Text = filial.nombreProvincia;
                     TextUrlImg.Text=filial.urlImagen;
 
+
+                    Usuario usuario1 = new Usuario();
+                    usuario1 = managerFilial.obtenerCorreoyPass(usuario.idUsuario);
+                    TextCorreoUsuario.Text = usuario1.email;
+                    TextContraseña.Text = usuario1.pass;
+
                     //ListItem provinciaSeleccionada = DropDownProvincia.Items.FindByText(filial.nombreProvincia);
                     //if (provinciaSeleccionada != null)
                     //{
@@ -253,6 +259,16 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 throw ex;
             }
             
+
+        }
+
+        protected void btnCnacelarContraseña_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FilialHome.aspx", false);
+        }
+
+        protected void btnAcepatarContraseña_Click(object sender, EventArgs e)
+        {
 
         }
     }

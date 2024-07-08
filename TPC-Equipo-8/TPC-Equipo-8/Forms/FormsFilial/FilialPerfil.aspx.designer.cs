@@ -195,6 +195,33 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected global::System.Web.UI.WebControls.Button btnCancelarDireccion;
 
         /// <summary>
+        /// Control TextCorreoUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextCorreoUsuario;
+
+        /// <summary>
+        /// Control TextContraseña.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextContraseña;
+
+        /// <summary>
+        /// Control TextCotraseñaNueva.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextCotraseñaNueva;
+
+        /// <summary>
         /// Control btnAcepatarContraseña.
         /// </summary>
         /// <remarks>

@@ -203,12 +203,33 @@
 
                         <%--FIN CONTRASEÑA--%>
                         <div id="contraseña" style="display: none;">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label for="txtCorreoUsuario" class="form-label">Correo de Ingreso</label>
+                                    <asp:TextBox ID="TextCorreoUsuario" runat="server" type="text" class="form-control"></asp:TextBox>
+                                    
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label for="txtContraseña" class="form-label">Contraseña</label>
+                                    <asp:TextBox ID="TextContraseña" runat="server" type="text" class="form-control"></asp:TextBox>
 
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label for="txtContraseñaNueva" class="form-label">Nueva Contraseña</label>
+                                    <asp:TextBox ID="TextCotraseñaNueva" runat="server" type="text" class="form-control"></asp:TextBox>
+
+                                </div>
+                            </div>
 
 
                             <div class="col-12 d-flex justify-content-evenly align-items-center mt-4" style="margin-top: 25px;">
-                                <asp:Button ID="btnAcepatarContraseña" runat="server" CssClass="btn btn-customContinuar " Text="Aceptar"  />
-                                <asp:Button ID="btnCnacelarContraseña" runat="server" CssClass="btn btn-customEliminar " Text="Cancelar" CausesValidation="false"  />
+                                <asp:Button ID="btnAcepatarContraseña" runat="server" CssClass="btn btn-customContinuar " Text="Aceptar" OnClick="btnAcepatarContraseña_Click" />
+                                <asp:Button ID="btnCnacelarContraseña" runat="server" CssClass="btn btn-customEliminar " Text="Cancelar" CausesValidation="false" OnClick="btnCnacelarContraseña_Click" />
                             </div>
 
                         </div>
