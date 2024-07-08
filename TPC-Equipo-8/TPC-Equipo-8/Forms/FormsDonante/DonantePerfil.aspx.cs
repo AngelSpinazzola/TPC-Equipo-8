@@ -28,7 +28,7 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 {
                     Response.Redirect("../FormsGlobales/Login.aspx");
                 }
-                if(usuario != null)
+                if (usuario != null)
                 {
                     CargarPerfil(usuario);
                     CargarProximaDonacion(usuario);
@@ -60,7 +60,6 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             txtCalle.Text = donante.direccion.calle;
             txtAltura.Text = donante.direccion.altura.ToString();
             txtCp.Text = donante.direccion.codigoPostal;
-
             imgNuevoPerfil.ImageUrl = CargarUrlImagenDonante();
         }
 
@@ -127,6 +126,7 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                     donante.urlFoto = "perfil-" + usuarioId + ".jpg";
                 }
 
+
                 donante.direccion = new Direccion();
 
                 donante.direccion.provincia = txtProvincia.Text;
@@ -159,7 +159,7 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         public string CargarUrlImagenDonante()
         {
             Usuario usuario = (Usuario)Session["usuario"];
-            string url = "~/Forms/FormsDonante/Content/images/imagen-perfil-usuario/placeHolderPerfilUsuario.jpg";
+            string url = ResolveUrl("~/Forms/FormsDonante/Content/images/imagen-perfil-usuario/placeHolderPerfilUsuario.jpg");
 
             if (usuario != null && usuario.TipoUsuario == TipoUsuario.DONANTE)
             {
@@ -170,11 +170,10 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 if (!string.IsNullOrEmpty(nombreArchivo))
                 {
                     string timestamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-                    url = "~/Forms/FormsDonante/Content/images/imagen-perfil-usuario/" + nombreArchivo + "?t=" + timestamp;
-
-                    return url;
+                    url = ResolveUrl("~/Forms/FormsDonante/Content/images/imagen-perfil-usuario/" + nombreArchivo + "?t=" + timestamp);
                 }
             }
+
             return url;
         }
 
@@ -198,7 +197,7 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             }
             finally
             {
-                
+
             }
         }
     }

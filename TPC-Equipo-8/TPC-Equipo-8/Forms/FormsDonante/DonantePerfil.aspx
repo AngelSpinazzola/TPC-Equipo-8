@@ -24,6 +24,11 @@
                 color: #c12222 !important;
                 border: 2px solid #c12222 !important;
             }
+
+        .form-control[readonly] {
+            background-color: #f0f0f0; /* Color de fondo gris */
+            cursor: not-allowed; /* Cambia el cursor a "no permitido" */
+        }
     </style>
 </asp:Content>
 
@@ -134,7 +139,7 @@
                                                 ErrorMessage="Solo se permiten letras y espacios. Máximo 50 caracteres. Mínimo 3 caracteres alfabéticos."
                                                 ControlToValidate="txtNombre"
                                                 runat="server"
-                                                ValidationExpression="^[A-Za-z\s]{3,50}$"
+                                                ValidationExpression="^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]{3,50}$"
                                                 Display="Dynamic"
                                                 ForeColor="Red" />
                                         </div>
@@ -151,7 +156,7 @@
                                                 ErrorMessage="Solo se permiten letras y espacios. Máximo 50 caracteres. Mínimo 3 caracteres alfabéticos."
                                                 ControlToValidate="txtApellido"
                                                 runat="server"
-                                                ValidationExpression="^[A-Za-z\s]{3,50}$"
+                                                ValidationExpression="^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]{3,50}$"
                                                 Display="Dynamic"
                                                 ForeColor="Red" />
                                         </div>
@@ -159,7 +164,7 @@
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label for="txtEmail" class="form-label">Email</label>
-                                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" style="background-color: #f0f0f0; cursor: not-allowed;" ReadOnly="true"></asp:TextBox>
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="txtDni" class="form-label">DNI</label>
@@ -173,7 +178,7 @@
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="txtNombreGrupoSanguineo" class="form-label">Grupo Sanguíneo</label>
-                                            <asp:TextBox ID="txtNombreGrupoSanguineo" runat="server" type="text" class="form-control" ReadOnly="true"></asp:TextBox>
+                                            <asp:TextBox ID="txtNombreGrupoSanguineo" runat="server" type="text" class="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -317,7 +322,7 @@
                                                     ControlToValidate="txtContrasenaActual"
                                                     Display="Dynamic"
                                                     ForeColor="Red"
-                                                    ClientIDMode="Static" 
+                                                    ClientIDMode="Static"
                                                     ValidationGroup="cambiarContrasena" />
                                             </div>
                                             <div class="mb-5">
@@ -329,9 +334,8 @@
                                                     ErrorMessage="El campo es requerido"
                                                     ControlToValidate="txtContrasenaNueva"
                                                     Display="Dynamic"
-                                                    ForeColor="Red" 
-                                                    ValidationGroup="cambiarContrasena"
-                                                    />
+                                                    ForeColor="Red"
+                                                    ValidationGroup="cambiarContrasena" />
                                                 <asp:RegularExpressionValidator
                                                     ID="RegularExpressionValidator1"
                                                     runat="server"
@@ -339,9 +343,8 @@
                                                     ControlToValidate="txtContrasenaNueva"
                                                     ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
                                                     Display="Dynamic"
-                                                    ForeColor="Red" 
-                                                    ValidationGroup="cambiarContrasena"
-                                                    />
+                                                    ForeColor="Red"
+                                                    ValidationGroup="cambiarContrasena" />
                                             </div>
                                             <div class="mb-5">
                                                 <label for="txtRepetirContrasena" class="form-label">Repetir contraseña nueva</label>
@@ -352,8 +355,8 @@
                                                     ErrorMessage="El campo es requerido"
                                                     ControlToValidate="txtRepetirContrasena"
                                                     Display="Dynamic"
-                                                    ForeColor="Red" 
-                                                    ValidationGroup="cambiarContrasena"/>
+                                                    ForeColor="Red"
+                                                    ValidationGroup="cambiarContrasena" />
                                                 <asp:CompareValidator
                                                     ID="CompareValidator1"
                                                     runat="server"
@@ -361,8 +364,8 @@
                                                     ControlToValidate="txtRepetirContrasena"
                                                     ControlToCompare="txtContrasenaNueva"
                                                     Display="Dynamic"
-                                                    ForeColor="Red" 
-                                                    ValidationGroup="cambiarContrasena"/>
+                                                    ForeColor="Red"
+                                                    ValidationGroup="cambiarContrasena" />
                                             </div>
                                             <div class="row mt-4">
                                                 <asp:Button ID="btnCambiarContrasena" runat="server" Text="Guardar cambios" CssClass="btn btn-customContinuar" OnClick="btnCambiarContrasena_Click" CausesValidation="false" />
