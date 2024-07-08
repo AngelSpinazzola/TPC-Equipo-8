@@ -106,7 +106,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="table table-bordered table-hover custom-table">
-                                            <asp:Label ID="lblCantidadPersonasAyudadas" runat="server" CssClass="label-text" style="font-size: 30px;"><strong></strong></asp:Label>
+                                            <asp:Label ID="lblCantidadPersonasAyudadas" runat="server" CssClass="label-text" Style="font-size: 30px;"><strong></strong></asp:Label>
                                         </div>
                                     </div>
                                 </div>
@@ -316,7 +316,9 @@
                                                     ErrorMessage="El campo es requerido"
                                                     ControlToValidate="txtContrasenaActual"
                                                     Display="Dynamic"
-                                                    ForeColor="Red" />
+                                                    ForeColor="Red"
+                                                    ClientIDMode="Static" 
+                                                    ValidationGroup="cambiarContrasena" />
                                             </div>
                                             <div class="mb-5">
                                                 <label for="txtContrasenaNueva" class="form-label">Contraseña nueva</label>
@@ -327,7 +329,9 @@
                                                     ErrorMessage="El campo es requerido"
                                                     ControlToValidate="txtContrasenaNueva"
                                                     Display="Dynamic"
-                                                    ForeColor="Red" />
+                                                    ForeColor="Red" 
+                                                    ValidationGroup="cambiarContrasena"
+                                                    />
                                                 <asp:RegularExpressionValidator
                                                     ID="RegularExpressionValidator1"
                                                     runat="server"
@@ -335,7 +339,9 @@
                                                     ControlToValidate="txtContrasenaNueva"
                                                     ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
                                                     Display="Dynamic"
-                                                    ForeColor="Red" />
+                                                    ForeColor="Red" 
+                                                    ValidationGroup="cambiarContrasena"
+                                                    />
                                             </div>
                                             <div class="mb-5">
                                                 <label for="txtRepetirContrasena" class="form-label">Repetir contraseña nueva</label>
@@ -346,7 +352,8 @@
                                                     ErrorMessage="El campo es requerido"
                                                     ControlToValidate="txtRepetirContrasena"
                                                     Display="Dynamic"
-                                                    ForeColor="Red" />
+                                                    ForeColor="Red" 
+                                                    ValidationGroup="cambiarContrasena"/>
                                                 <asp:CompareValidator
                                                     ID="CompareValidator1"
                                                     runat="server"
@@ -354,10 +361,11 @@
                                                     ControlToValidate="txtRepetirContrasena"
                                                     ControlToCompare="txtContrasenaNueva"
                                                     Display="Dynamic"
-                                                    ForeColor="Red" />
+                                                    ForeColor="Red" 
+                                                    ValidationGroup="cambiarContrasena"/>
                                             </div>
                                             <div class="row mt-4">
-                                                <asp:Button ID="btnCambiarContrasena" runat="server" Text="Guardar cambios" CssClass="btn btn-customContinuar" OnClick="btnCambiarContrasena_Click" />
+                                                <asp:Button ID="btnCambiarContrasena" runat="server" Text="Guardar cambios" CssClass="btn btn-customContinuar" OnClick="btnCambiarContrasena_Click" CausesValidation="false" />
                                             </div>
                                         </div>
                                     </div>
@@ -371,6 +379,17 @@
     </div>
 
     <script>
+        function desactivarValidadores() {
+            Page_Validators.forEach(validator => {
+                validator.enabled = false;
+            });
+        }
+
+        function activarValidadores() {
+            Page_Validators.forEach(validator => {
+                validator.enabled = true;
+            });
+        }
         function showResumenCuenta() {
             document.getElementById('resumenCuenta').style.display = 'block';
             document.getElementById('editarPerfil').style.display = 'none';
@@ -387,6 +406,16 @@
             document.getElementById('resumenCuenta').style.display = 'none';
             document.getElementById('editarPerfil').style.display = 'none';
             document.getElementById('contraseña').style.display = 'block';
+        }
+        function logout() {
+            var pageValidators = Page_Validators;
+            if (pageValidators) {
+                for (var i = 0; i < pageValidators.length; i++) {
+                    ValidatorEnable(pageValidators[i], false);
+                }
+            }
+
+            window.location.href = '../FormsGlobales/Default.aspx';
         }
         function previewImage(input) {
             if (input.files && input.files[0]) {
