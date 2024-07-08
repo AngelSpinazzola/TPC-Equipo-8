@@ -62,7 +62,7 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
-        public int insertarNuevo(Usuario nuevo)
+        public void insertarNuevo(Usuario nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -73,7 +73,7 @@ namespace TPC_Equipo_8.Manager
                 datos.setearParametro("@Email", nuevo.email);
                 datos.setearParametro("@Pass", nuevo.pass);
                 datos.setearParametro("@Dni", nuevo.dni);
-                return datos.ejecutarAccionScalar();
+                datos.ejecutarAccion();
 
             }
             catch (Exception ex)

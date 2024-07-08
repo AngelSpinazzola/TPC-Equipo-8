@@ -28,14 +28,15 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 {
                     Response.Redirect("../FormsGlobales/Login.aspx");
                 }
-                if(usuario != null)
-                {
-                    CargarPerfil(usuario);
-                }
+                //if(usuario != null)
+                //{
+                //    CargarPerfil(usuario);
+                //}
             }
 
             if (usuario != null)
             {
+                CargarPerfil(usuario);
                 CargarProximaDonacion(usuario);
                 CargarUltimasDonaciones(usuario);
                 CargarCantidadPersonasAyudadas(usuario);

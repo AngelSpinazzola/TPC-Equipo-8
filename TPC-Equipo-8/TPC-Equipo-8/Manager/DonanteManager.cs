@@ -32,7 +32,7 @@ namespace TPC_Equipo_8.Manager
                     donante.dni = (string)datos.Lector["Dni"];
                     donante.email = (string)datos.Lector["Email"];
                     donante.fechaAlta = (DateTime)datos.Lector["FechaAlta"];
-                    donante.tipoSangre = (string)datos.Lector["Grupo"];
+                    donante.tipoSangre = datos.Lector["Grupo"] != DBNull.Value ? (string)datos.Lector["Grupo"] : null;
 
                     donante.direccion.provincia = datos.Lector["nombreProvincia"] != DBNull.Value ? (string)datos.Lector["nombreProvincia"] : null;
                     donante.direccion.ciudad = datos.Lector["nombreCiudad"] != DBNull.Value ? (string)datos.Lector["nombreCiudad"] : null;

@@ -26,7 +26,7 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
                 nuevo.email = txtRegistroEmail.Text;
                 nuevo.pass = txtRegistroPass.Text;
                 nuevo.dni = txtRegistroDni.Text;
-                nuevo.idUsuario = usuarioManager.insertarNuevo(nuevo);
+                usuarioManager.insertarNuevo(nuevo);
 
                 string script = @"
                 Swal.fire({

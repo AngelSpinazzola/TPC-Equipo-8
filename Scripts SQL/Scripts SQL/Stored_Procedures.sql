@@ -315,7 +315,6 @@ BEGIN
 	SET @UltimoIdUsuario = SCOPE_IDENTITY();
 	
 	INSERT INTO Donantes (IdUsuario, Dni)
-	OUTPUT inserted.IdUsuario
 	VALUES(@UltimoIdUsuario, @Dni)
 END
 GO
@@ -464,7 +463,6 @@ SELECT
 	D.Apellido,
 	D.Dni, 
 	U.Email, 
-	U.Pass, 
 	U.FechaAlta,
 	GS.Grupo,
 	P.Nombre AS nombreProvincia,
@@ -473,14 +471,14 @@ SELECT
 	L.CodigoPostal,
 	DXU.Calle,
 	DXU.Altura
-	FROM Usuarios U
+FROM Usuarios U
 LEFT JOIN Donantes D ON D.IdUsuario = U.IdUsuario
 LEFT JOIN Direcciones_x_Usuario DXU ON DXU.IdUsuario = U.IdUsuario
 LEFT JOIN Localidades L ON L.IdLocalidad = DXU.IdLocalidad
 LEFT JOIN Ciudades C ON C.IdCiudad = L.IdCiudad
 LEFT JOIN Provincias P ON P.IdProvincia = C.IdProvincia
-INNER JOIN GruposSanguineos GS ON GS.IdGrupoSanguineo = D.IdGrupoSanguineo 
-WHERE U.IdUsuario = @IdUsuario
+LEFT JOIN GruposSanguineos GS ON GS.IdGrupoSanguineo = D.IdGrupoSanguineo 
+WHERE D.IdUsuario = 18
 END
 
 GO
@@ -567,13 +565,20 @@ BEGIN
 			SET @IdLocalidad = SCOPE_IDENTITY();
 		END
 
+		IF EXISTS (SELECT * FROM Direcciones_x_Usuario WHERE IdUsuario = @IdUsuario) BEGIN
+			UPDATE Direcciones_x_Usuario 
+			SET 
+				IdLocalidad = @IdLocalidad, 
+				Calle = @Calle, 
+				Altura = @Altura
+			WHERE IdUsuario = @IdUsuario
+		END
+		ELSE
+		BEGIN
+			INSERT INTO Direcciones_x_Usuario (IdUsuario, IdLocalidad, Calle, Altura)
+			VALUES(@IdUsuario, @IdLocalidad, @Calle, @Altura)
+		END
 
-		UPDATE Direcciones_x_Usuario 
-		SET 
-			IdLocalidad = @IdLocalidad, 
-			Calle = @Calle, 
-			Altura = @Altura
-		WHERE IdUsuario = @IdUsuario
 	COMMIT TRANSACTION
 	END TRY
 
