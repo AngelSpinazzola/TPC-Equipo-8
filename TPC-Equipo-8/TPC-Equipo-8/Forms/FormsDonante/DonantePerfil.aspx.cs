@@ -18,6 +18,31 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         public int IdDonante { get; set; }
         public int cantPersonasAyudadas { get; set; }
 
+        private Dictionary<string, string> tipoSangreValores = new Dictionary<string, string>
+        {
+            { "A+", "1" },
+            { "A-", "2" },
+            { "B+", "3" },
+            { "B-", "4" },
+            { "AB+", "5" },
+            { "AB-", "6" },
+            { "O+", "7" },
+            { "O-", "8" }
+        };
+
+        protected string ObtenerValorTipoSangre(string tipoSangre)
+        {
+            if (tipoSangreValores.ContainsKey(tipoSangre))
+            {
+                return tipoSangreValores[tipoSangre];
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Usuario usuario = (Usuario)Session["usuario"];
@@ -53,7 +78,7 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             txtDni.Text = donante.dni;
             txtEmail.Text = donante.email;
             txtFechaAlta.Text = donante.fechaAlta.ToString();
-            txtNombreGrupoSanguineo.Text = donante.tipoSangre;
+            DropDownTipoSangre.SelectedValue = ObtenerValorTipoSangre(donante.tipoSangre);
             txtProvincia.Text = donante.direccion.provincia;
             txtLocalidad.Text = donante.direccion.localidad;
             txtCiudad.Text = donante.direccion.ciudad;
@@ -113,6 +138,9 @@ namespace TPC_Equipo_8.Forms.FormsDonante
 
                 donante.nombre = txtNombre.Text;
                 donante.apellido = txtApellido.Text;
+
+
+                donante.tipoSangre = DropDownTipoSangre.SelectedValue;
 
                 if (txtImagen.PostedFile != null && txtImagen.PostedFile.ContentLength > 0)
                 {

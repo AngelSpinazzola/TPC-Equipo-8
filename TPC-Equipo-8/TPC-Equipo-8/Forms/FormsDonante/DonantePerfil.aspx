@@ -164,7 +164,7 @@
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label for="txtEmail" class="form-label">Email</label>
-                                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" style="background-color: #f0f0f0; cursor: not-allowed;" ReadOnly="true"></asp:TextBox>
+                                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" Style="background-color: #f0f0f0; cursor: not-allowed;" ReadOnly="true"></asp:TextBox>
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="txtDni" class="form-label">DNI</label>
@@ -178,7 +178,16 @@
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="txtNombreGrupoSanguineo" class="form-label">Grupo Sanguíneo</label>
-                                            <asp:TextBox ID="txtNombreGrupoSanguineo" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <asp:DropDownList ID="DropDownTipoSangre" runat="server" CssClass="form-select">
+                                                <asp:ListItem Text="A+" Value="1"></asp:ListItem>
+                                                <asp:ListItem Text="A-" Value="2"></asp:ListItem>
+                                                <asp:ListItem Text="B+" Value="3"></asp:ListItem>
+                                                <asp:ListItem Text="B-" Value="4"></asp:ListItem>
+                                                <asp:ListItem Text="AB+" Value="5"></asp:ListItem>
+                                                <asp:ListItem Text="AB-" Value="6"></asp:ListItem>
+                                                <asp:ListItem Text="O+" Value="7"></asp:ListItem>
+                                                <asp:ListItem Text="O-" Value="8"></asp:ListItem>
+                                            </asp:DropDownList>
                                         </div>
                                     </div>
                                     <div class="row">

@@ -101,6 +101,7 @@ namespace TPC_Equipo_8.Manager
                 datos.setearParametro("@IdUsuario", IdUsuario);
                 datos.setearParametro("@Nombre", donante.nombre);
                 datos.setearParametro("@Apellido", donante.apellido);
+                datos.setearParametro("@IdGrupoSanguineo", donante.tipoSangre);
                 datos.setearParametro("@UrlFoto", donante.urlFoto);
                 datos.setearParametro("@Provincia", donante.direccion.provincia);
                 datos.setearParametro("@Ciudad", donante.direccion.ciudad);

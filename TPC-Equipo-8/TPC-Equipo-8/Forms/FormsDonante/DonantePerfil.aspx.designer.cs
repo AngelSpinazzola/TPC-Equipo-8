@@ -123,13 +123,13 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         protected global::System.Web.UI.WebControls.TextBox txtFechaAlta;
 
         /// <summary>
-        /// Control txtNombreGrupoSanguineo.
+        /// Control DropDownTipoSangre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreGrupoSanguineo;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownTipoSangre;
 
         /// <summary>
         /// Control txtCalle.

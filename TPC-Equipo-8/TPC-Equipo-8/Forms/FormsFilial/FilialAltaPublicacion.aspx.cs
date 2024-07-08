@@ -74,7 +74,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                         Publicacion seleccionada = lista[0];
 
                         txtNombreReceptor.Text = seleccionada.nombreReceptor;
-                        DropDownTipoSangre.SelectedValue = ObtenerValorTipoSangre(seleccionada.grupoSanguineo); ;
+                        DropDownTipoSangre.SelectedValue = ObtenerValorTipoSangre(seleccionada.grupoSanguineo); 
                         DropDownUrgencia.SelectedValue = ObtenerValorTipoUrgencia(seleccionada.urgencia);
                         txtDonantesNec.Text = seleccionada.donantesNecesarios.ToString();
                         textHorarios.Text = seleccionada.horarios;
