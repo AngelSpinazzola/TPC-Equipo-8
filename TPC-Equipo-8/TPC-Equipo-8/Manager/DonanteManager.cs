@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 using TPC_Equipo_8.Dominio;
 
 
@@ -27,8 +28,8 @@ namespace TPC_Equipo_8.Manager
 
                 while (datos.Lector.Read())
                 {
-                    donante.nombre = (string)datos.Lector["Nombre"];
-                    donante.apellido = (string)datos.Lector["Apellido"];
+                    donante.nombre = datos.Lector["Nombre"] != DBNull.Value ? (string)datos.Lector["Nombre"] : null;
+                    donante.apellido = datos.Lector["Apellido"] != DBNull.Value ? (string)datos.Lector["Apellido"] : null;
                     donante.dni = (string)datos.Lector["Dni"];
                     donante.email = (string)datos.Lector["Email"];
                     donante.fechaAlta = (DateTime)datos.Lector["FechaAlta"];
@@ -39,7 +40,14 @@ namespace TPC_Equipo_8.Manager
                     donante.direccion.localidad = datos.Lector["nombreLocalidad"] != DBNull.Value ? (string)datos.Lector["NombreLocalidad"] : null;
                     donante.direccion.codigoPostal = datos.Lector["CodigoPostal"] != DBNull.Value ? (string)datos.Lector["CodigoPostal"] : null;
                     donante.direccion.calle = datos.Lector["Calle"] != DBNull.Value ? (string)datos.Lector["Calle"] : null;
-                    donante.direccion.altura = (int)datos.Lector["Altura"];
+
+                    int altura;
+
+                    if (datos.Lector["Altura"] != DBNull.Value && int.TryParse(datos.Lector["Altura"].ToString(), out altura))
+                    {
+                        donante.direccion.altura = altura;
+                    }
+                    
                 }
 
             }
