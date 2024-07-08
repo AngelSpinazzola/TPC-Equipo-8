@@ -282,8 +282,6 @@ namespace TPC_Equipo_8.Manager
         {
             try
             {
-                int IdDonate = ObtenerIdDonante(usuario);
-
                 datos.comando.Parameters.Clear();
                 datos.setearProcedimiento("SP_ActualizarPassDonante");
                 datos.setearParametro("@IdUsuario", usuario.idUsuario);

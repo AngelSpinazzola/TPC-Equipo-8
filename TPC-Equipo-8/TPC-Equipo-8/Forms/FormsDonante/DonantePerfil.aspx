@@ -186,13 +186,7 @@
                                                 runat="server"
                                                 Display="Dynamic"
                                                 ForeColor="Red" />
-                                            <asp:RegularExpressionValidator
-                                                ErrorMessage="Solo se permiten letras y espacios. Máximo 100 caracteres, mínimo 3 caracteres alfabéticos."
-                                                ControlToValidate="txtCalle"
-                                                runat="server"
-                                                ValidationExpression="^[A-Za-z\s]{3,100}$"
-                                                Display="Dynamic"
-                                                ForeColor="Red" />
+
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="txtAltura" class="form-label">Altura</label>
@@ -370,51 +364,52 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </main>
             </div>
         </div>
+    </div>
 
+    <script>
+        function showResumenCuenta() {
+            document.getElementById('resumenCuenta').style.display = 'block';
+            document.getElementById('editarPerfil').style.display = 'none';
+            document.getElementById('contraseña').style.display = 'none';
+        }
 
-        <script>
-            function showResumenCuenta() {
-                document.getElementById('resumenCuenta').style.display = 'block';
-                document.getElementById('editarPerfil').style.display = 'none';
-                document.getElementById('contraseña').style.display = 'none';
-            }
+        function showEditarPerfil() {
+            document.getElementById('resumenCuenta').style.display = 'none';
+            document.getElementById('editarPerfil').style.display = 'block';
+            document.getElementById('contraseña').style.display = 'none';
+        }
 
-            function showEditarPerfil() {
-                document.getElementById('resumenCuenta').style.display = 'none';
-                document.getElementById('editarPerfil').style.display = 'block';
-                document.getElementById('contraseña').style.display = 'none';
-            }
+        function showContraseña() {
+            document.getElementById('resumenCuenta').style.display = 'none';
+            document.getElementById('editarPerfil').style.display = 'none';
+            document.getElementById('contraseña').style.display = 'block';
+        }
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-            function showContraseña() {
-                document.getElementById('resumenCuenta').style.display = 'none';
-                document.getElementById('editarPerfil').style.display = 'none';
-                document.getElementById('contraseña').style.display = 'block';
-            }
-            function previewImage(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        document.getElementById('<%= imgNuevoPerfil.ClientID %>').src = e.target.result;
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
+                reader.onload = function (e) {
+                    document.getElementById('<%= imgNuevoPerfil.ClientID %>').src = e.target.result;
                 }
+
+                reader.readAsDataURL(input.files[0]);
             }
-            function mostrarMensaje(mensaje) {
-                Swal.fire({
-                    icon: 'info',
-                    title: 'Mensaje',
-                    text: mensaje,
-                    showCancelButton: false,
-                    confirmButtonText: 'OK'
-                });
-            }
-        </script>
+        }
+        function mostrarMensaje(mensaje) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje',
+                text: mensaje,
+                showCancelButton: false,
+                confirmButtonText: 'OK'
+            });
+        }
+    </script>
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </asp:Content>

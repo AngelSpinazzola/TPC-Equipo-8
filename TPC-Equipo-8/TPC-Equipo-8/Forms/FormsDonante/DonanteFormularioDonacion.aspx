@@ -91,10 +91,10 @@
                 CssClass="btn btn-customDonar btn-lg" OnClick="btnConfirmar_Click" />
         </div>
     </div>
-    <script type="text/javascript">
-        function mostrarMensaje(mensaje) {
+    <script>
+        function mostrarMensaje(mensaje, icon) {
             Swal.fire({
-                icon: 'info',
+                icon: icon,
                 title: 'Mensaje',
                 text: mensaje,
                 showCancelButton: false,

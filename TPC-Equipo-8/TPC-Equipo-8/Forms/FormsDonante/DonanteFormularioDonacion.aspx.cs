@@ -28,42 +28,38 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             {
                 DonanteManager donanteManager = new DonanteManager();
                 Usuario usuario = (Usuario)(Session["usuario"]);
-
                 int verificacionTurno = donanteManager.VerificarTurnoDonacion(usuario);
-
                 if (verificacionTurno == 1)
                 {
-                    string script = "mostrarMensaje('Ya tenés turno para donar.');";
+                    string script = "mostrarMensaje('Ya tenés turno para donar.', 'info');";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageScript", script, true);
                     return;
                 }
                 else if (verificacionTurno == 2)
                 {
                     donanteManager.nuevoProximoDonante(Int32.Parse(Request.QueryString["idPublicacion"]), usuario.idUsuario);
-
-                    string scriptExito = "mostrarMensaje('Te anotaste para donar correctamente. Presentate con DNI en la dirección correspondiente');";
+                    string scriptExito = "mostrarMensaje('Te anotaste para donar correctamente. Presentate con DNI en la dirección correspondiente', 'success');";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageExitoScript", scriptExito, true);
                     return;
                 }
                 else
                 {
-                    string scriptError = "mostrarMensaje('Por favor, confirme todos los requisitos antes de continuar.');";
+                    string scriptError = "mostrarMensaje('Por favor, confirme todos los requisitos antes de continuar.', 'warning');";
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageErrorScript", scriptError, true);
                 }
             }
             else
             {
-                string scriptError = "mostrarMensaje('Por favor, confirme todos los requisitos antes de continuar.');";
+                string scriptError = "mostrarMensaje('Por favor, confirme todos los requisitos antes de continuar.', 'warning');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageErrorScript", scriptError, true);
             }
         }
-
         private bool TodosLosRequisitosConfirmados()
         {
             return chkEdad.Checked && chkPeso.Checked && chkDNI.Checked &&
                    chkEmbarazo.Checked && chkAnemia.Checked && chkSueno.Checked &&
                    chkUltimaDonacion.Checked && chkDesayuno.Checked && chkTatuaje.Checked;
         }
-
     }
+
 }
