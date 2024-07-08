@@ -18,12 +18,12 @@
 
                 <asp:TemplateField HeaderText="Acciones">
                     <HeaderStyle CssClass="table-header text-center" />
-                    <ItemStyle CssClass="table-item" />
+                    <ItemStyle CssClass="table-item text-center" />
                     <ItemTemplate>
-                        <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-primary btn-sm" CommandArgument='<%# Eval("idPublicacion") %>' CommandName="idPublicacion" OnClick="btnEditar_Click">
+                        <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-primary btn-sm" CommandArgument='<%# Eval("idPublicacion") %>' CommandName="idPublicacion" OnClick="btnEditar_Click" ToolTip="Editar">
                             <i class="fas fa-edit fa-sm"></i>
                         </asp:LinkButton>
-                        <asp:LinkButton ID="btnDesactivar" runat="server" CssClass="btn btn-danger btn-sm" CommandName="Desactivar" CommandArgument='<%# Eval("IdPublicacion") %>' OnClientClick="return confirm('¿Estás seguro que deseas eliminar esta publicación?');" OnClick="btnDesactivar_Click">
+                        <asp:LinkButton ID="btnDesactivar" runat="server" CssClass="btn btn-danger btn-sm" CommandName="Desactivar" CommandArgument='<%# Eval("IdPublicacion") %>' OnClientClick="return confirm('¿Estás seguro que deseas eliminar esta publicación?');" OnClick="btnDesactivar_Click" ToolTip="Denegar">
                             <i class="fas fa-trash fa-sm"></i>
                         </asp:LinkButton>
                     </ItemTemplate>

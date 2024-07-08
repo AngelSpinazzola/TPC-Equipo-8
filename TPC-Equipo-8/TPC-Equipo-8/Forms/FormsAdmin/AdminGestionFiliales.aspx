@@ -22,7 +22,7 @@
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="Correo">
-                    <HeaderStyle CssClass="table-header" />
+                    <HeaderStyle CssClass="table-header text-center" />
                     <ItemStyle CssClass="table-item truncate" />
                     <ItemTemplate>
                         <asp:Label ID="lblCorreo" runat="server" Text='<%# Eval("correo") %>' CssClass="label-text truncate" ToolTip='<%# Eval("correo") %>'></asp:Label>
@@ -39,7 +39,7 @@
 
                 <asp:TemplateField HeaderText="Acciones">
                     <HeaderStyle CssClass="table-header text-center" />
-                    <ItemStyle CssClass="table-item" />
+                    <ItemStyle CssClass="table-item text-center" />
                     <ItemTemplate>
                         <asp:LinkButton ID="btnEditar" runat="server" CssClass="btn btn-warning btn-sm" CommandArgument='<%# Eval("idFilial") %>' CommandName="idFilial" OnClick="btnEditar_Click" ToolTip="Editar">
                             <i class="fas fa-edit fa-sm"></i>
