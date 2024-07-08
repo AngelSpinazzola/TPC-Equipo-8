@@ -27,28 +27,34 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             if (TodosLosRequisitosConfirmados())
             {
                 DonanteManager donanteManager = new DonanteManager();
-                Usuario usuario = new Usuario();
-                usuario = (Usuario)(Session["usuario"]);
+                Usuario usuario = (Usuario)(Session["usuario"]);
 
-                if (donanteManager.VerificarTurnoDonacion(usuario) == 1)
+                int verificacionTurno = donanteManager.VerificarTurnoDonacion(usuario);
+
+                if (verificacionTurno == 1)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                "alert('Ya tenés turno para donar.');", true);
+                    string script = "mostrarMensaje('Ya tenés turno para donar.');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageScript", script, true);
                     return;
                 }
+                else if (verificacionTurno == 2)
+                {
+                    donanteManager.nuevoProximoDonante(Int32.Parse(Request.QueryString["idPublicacion"]), usuario.idUsuario);
 
-                donanteManager.nuevoProximoDonante(Int32.Parse(Request.QueryString["idPublicacion"]), usuario.idUsuario);
-
-                string script = @"
-            alert('Te anotaste para donar correctamente. Presentate con DNI en la dirección correspondiente');
-            window.location.href = '../FormsGlobales/Default.aspx';
-        ";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "redirectScript", script, true);
+                    string scriptExito = "mostrarMensaje('Te anotaste para donar correctamente. Presentate con DNI en la dirección correspondiente');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageExitoScript", scriptExito, true);
+                    return;
+                }
+                else
+                {
+                    string scriptError = "mostrarMensaje('Por favor, confirme todos los requisitos antes de continuar.');";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageErrorScript", scriptError, true);
+                }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                    "alert('Por favor, confirme todos los requisitos antes de continuar.');", true);
+                string scriptError = "mostrarMensaje('Por favor, confirme todos los requisitos antes de continuar.');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageErrorScript", scriptError, true);
             }
         }
 

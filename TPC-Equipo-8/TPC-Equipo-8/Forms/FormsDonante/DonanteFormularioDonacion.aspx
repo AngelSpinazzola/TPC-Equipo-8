@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsDonante/MasterDonante.Master" AutoEventWireup="true" CodeBehind="DonanteFormularioDonacion.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsDonante.DonanteFormularioDonacion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- SweetAlert JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
     <style>
         .custom-checkbox {
             padding: 10px;
@@ -28,6 +34,21 @@
             padding: 0;
         }
 
+        .swal2-confirm {
+            width: 150px !important;
+            background-color: #c12222 !important;
+            color: white !important;
+            border-radius: 100px !important;
+            border: 2px solid #c12222 !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+        }
+
+            .swal2-confirm:hover {
+                background-color: white !important;
+                color: #c12222 !important;
+                border: 2px solid #c12222 !important;
+            }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -67,7 +88,18 @@
         </div>
         <div class="text-center">
             <asp:Button ID="btnConfirmar" runat="server" Text="Acepto los requisitos y estoy en condiciones de donar sangre"
-                CssClass="btn btn-customDonar btn-lg" Onclick="btnConfirmar_Click"/>
+                CssClass="btn btn-customDonar btn-lg" OnClick="btnConfirmar_Click" />
         </div>
     </div>
+    <script type="text/javascript">
+        function mostrarMensaje(mensaje) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Mensaje',
+                text: mensaje,
+                showCancelButton: false,
+                confirmButtonText: 'OK'
+            });
+        }
+    </script>
 </asp:Content>
