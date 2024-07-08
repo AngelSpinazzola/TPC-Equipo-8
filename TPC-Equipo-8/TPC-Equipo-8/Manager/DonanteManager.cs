@@ -242,5 +242,35 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
+        public int VerificarTurnoDonacion(Usuario usuario)
+        {
+            try
+            {
+                int IdDonante = ObtenerIdDonante(usuario);
+                int turno = 0;
+
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_DonanteVerificarTurno");
+                datos.setearParametro("@IdDonante", IdDonante);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    turno = Convert.ToInt32(datos.Lector[0]);
+                }
+
+                return turno;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

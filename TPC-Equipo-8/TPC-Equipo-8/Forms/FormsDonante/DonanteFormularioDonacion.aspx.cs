@@ -30,6 +30,13 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 Usuario usuario = new Usuario();
                 usuario = (Usuario)(Session["usuario"]);
 
+                if (donanteManager.VerificarTurnoDonacion(usuario) == 1)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                "alert('Ya tenés turno para donar.');", true);
+                    return;
+                }
+
                 donanteManager.nuevoProximoDonante(Int32.Parse(Request.QueryString["idPublicacion"]), usuario.idUsuario);
 
                 string script = @"

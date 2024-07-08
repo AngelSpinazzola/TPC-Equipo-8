@@ -739,3 +739,31 @@ BEGIN
 
 END
 
+GO
+
+-- PROCEDURE QUE RECIBE ID DE DONANTE Y VERIFICA SI TIENE UN TURNO PARA DONAR PENDIENTE
+
+CREATE OR ALTER PROCEDURE SP_DonanteVerificarTurno(
+    @IdDonante INT
+)
+AS
+BEGIN
+    DECLARE @IdPublicacion INT
+
+    SELECT TOP 1 @IdPublicacion = P.IdPublicacion 
+    FROM Publicaciones P
+    INNER JOIN ProximosDonantes PD ON PD.IdPublicacion = P.IdPublicacion
+    WHERE PD.IdDonante = @IdDonante
+
+    IF @IdPublicacion IS NOT NULL AND @IdPublicacion NOT IN (SELECT DR.IdPublicacion FROM DonacionesRechazadas DR WHERE DR.IdDonante = @IdDonante) 
+    BEGIN
+		-- SI RETORNA 1 SIGNIFICA QUE TIENE TURNO PENDIENTE.
+        SELECT 1 AS Resultado
+    END
+    ELSE
+    BEGIN
+        SELECT 2 AS Resultado
+    END
+END
+
+GO
