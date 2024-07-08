@@ -32,7 +32,7 @@ namespace TPC_Equipo_8.Forms.FormsDonante
 
         protected string ObtenerValorTipoSangre(string tipoSangre)
         {
-            if (tipoSangreValores.ContainsKey(tipoSangre))
+            if (!string.IsNullOrEmpty(tipoSangre) && tipoSangreValores.ContainsKey(tipoSangre))
             {
                 return tipoSangreValores[tipoSangre];
             }
@@ -78,7 +78,16 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             txtDni.Text = donante.dni;
             txtEmail.Text = donante.email;
             txtFechaAlta.Text = donante.fechaAlta.ToString();
-            DropDownTipoSangre.SelectedValue = ObtenerValorTipoSangre(donante.tipoSangre);
+
+            if (!string.IsNullOrEmpty(donante.tipoSangre))
+            {
+                DropDownTipoSangre.SelectedValue = ObtenerValorTipoSangre(donante.tipoSangre);
+            }
+            else
+            {
+                DropDownTipoSangre.SelectedValue = string.Empty;
+            }
+
             txtProvincia.Text = donante.direccion.provincia;
             txtLocalidad.Text = donante.direccion.localidad;
             txtCiudad.Text = donante.direccion.ciudad;
