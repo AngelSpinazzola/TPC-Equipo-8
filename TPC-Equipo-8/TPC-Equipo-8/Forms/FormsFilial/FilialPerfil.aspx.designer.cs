@@ -69,6 +69,15 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected global::System.Web.UI.WebControls.TextBox txtUrlWeb;
 
         /// <summary>
+        /// Control TextUrlImg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextUrlImg;
+
+        /// <summary>
         /// Control btnAceparPerfil.
         /// </summary>
         /// <remarks>
@@ -132,13 +141,13 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         protected global::System.Web.UI.WebControls.TextBox TextDep;
 
         /// <summary>
-        /// Control DropDownProvincia.
+        /// Control TextProvincia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownProvincia;
+        protected global::System.Web.UI.WebControls.TextBox TextProvincia;
 
         /// <summary>
         /// Control TextCiudad.
@@ -184,5 +193,23 @@ namespace TPC_Equipo_8.Forms.FormsFilial
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelarDireccion;
+
+        /// <summary>
+        /// Control btnAcepatarContraseña.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAcepatarContraseña;
+
+        /// <summary>
+        /// Control btnCnacelarContraseña.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCnacelarContraseña;
     }
 }

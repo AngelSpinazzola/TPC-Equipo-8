@@ -19,11 +19,11 @@ namespace TPC_Equipo_8.Forms.FormsFilial
             List <Provincia> provincias = new List <Provincia>();
             if(!IsPostBack)
             {
-                provincias = filialManager.listarProvincias();
-                DropDownProvincia.DataSource = provincias;
-                DropDownProvincia.DataTextField = "Nombre";
-                DropDownProvincia.DataValueField = "id";
-                DropDownProvincia.DataBind();
+                //provincias = filialManager.listarProvincias();
+                //DropDownProvincia.DataSource = provincias;
+                //DropDownProvincia.DataTextField = "Nombre";
+                //DropDownProvincia.DataValueField = "id";
+                //DropDownProvincia.DataBind();
                 
                
                
@@ -47,13 +47,15 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                     TextCiudad.Text = filial.nombreCiudad;
                     TextLocalidad.Text = filial.nombreLocalidad;
                     TextCP.Text = filial.cp.ToString();
+                    TextProvincia.Text = filial.nombreProvincia;
+                    TextUrlImg.Text=filial.urlImagen;
 
-                    ListItem provinciaSeleccionada = DropDownProvincia.Items.FindByText(filial.nombreProvincia);
-                    if (provinciaSeleccionada != null)
-                    {
-                        DropDownProvincia.ClearSelection();
-                        provinciaSeleccionada.Selected = true;
-                    }
+                    //ListItem provinciaSeleccionada = DropDownProvincia.Items.FindByText(filial.nombreProvincia);
+                    //if (provinciaSeleccionada != null)
+                    //{
+                    //    DropDownProvincia.ClearSelection();
+                    //    provinciaSeleccionada.Selected = true;
+                    //}
 
                     //DropDownProvincia.SelectedValue = filial.nombreProvincia;
                     //LlenarCiudades(filial.provincia);
@@ -186,6 +188,7 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                 filialCompleta.horarioAtencion= txtHorarioAtencion.Text;
                 filialCompleta.correo= txtCorreo.Text; 
                 filialCompleta.urlWeb= txtUrlWeb.Text;
+                filialCompleta.urlImagen=TextUrlImg.Text;
 
                 managerFilial.editarFilialCompleta(filialCompleta, IdFilial);
 
@@ -231,8 +234,9 @@ namespace TPC_Equipo_8.Forms.FormsFilial
                     filialCompleta.nombreLocalidad = TextLocalidad.Text;
                     filialCompleta.nombreCiudad= TextCiudad.Text;
                     filialCompleta.cp=TextCP.Text;
+                    filialCompleta.nombreProvincia=TextProvincia.Text;
                     //filialCompleta.ciudad = Convert.ToInt32(DropDownCiudad.SelectedValue);
-                    filialCompleta.nombreProvincia = DropDownProvincia.SelectedItem.Text;
+                    //filialCompleta.nombreProvincia = DropDownProvincia.SelectedItem.Text;
 
                  
 

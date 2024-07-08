@@ -61,6 +61,14 @@
                                 </div>
                             </div>
 
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label for="txtUrlImg" class="form-label">URL Imagen</label>
+                                    <asp:TextBox ID="TextUrlImg" runat="server" type="text" class="form-control"></asp:TextBox>
+                                   
+                                </div>
+                            </div>
+
                             <div class="col-12 d-flex justify-content-evenly align-items-center mt-4" style="margin-top: 25px;">
                                 <asp:Button ID="btnAceparPerfil" runat="server" CssClass="btn btn-customContinuar " Text="Aceptar" OnClick="btnAceparPerfil_Click"/>
                                 <asp:Button ID="btnCancelarPerfil" runat="server" CssClass="btn btn-customEliminar " Text="Cancelar" OnClick="btnCancelarPerfil_Click" CausesValidation="false" />
@@ -104,12 +112,20 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12">
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label for="provincia" class="form-label">Provincia</label>
+                                            <asp:TextBox ID="TextProvincia" runat="server" type="text" class="form-control"></asp:TextBox>
+
+                                        </div>
+                                    </div>
+
+                                    <%--<div class="col-12">
                                         <label for="provincia" class="form-label">Provincia</label>
                                         <asp:DropDownList ID="DropDownProvincia" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="DropDownProvincia_SelectedIndexChanged">
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ErrorMessage="Seleccione un valor" ControlToValidate="DropDownProvincia" runat="server" Display="Dynamic" ForeColor="Red"/>
-                                    </div>
+                                    </div>--%>
 
                                     <div class="row g-3">
                                         <div class="col-12">
@@ -182,8 +198,21 @@
                                     <asp:Button ID="btnCrear" runat="server" CssClass="btn btn-customContinuar " Text="Aceptar" />
                                     <asp:Button ID="btnCancelar" runat="server" CssClass="btn btn-customEliminar " Text="Cancelar" />
                                 </div>--%>
-                            </div> <%--DATOS FILIAL--%>
+                             <%--DATOS FILIAL--%>
                          <%--FIN EDICION PERFIL--%>
+
+                        <%--FIN CONTRASEÑA--%>
+                        <div id="contraseña" style="display: none;">
+
+
+
+                            <div class="col-12 d-flex justify-content-evenly align-items-center mt-4" style="margin-top: 25px;">
+                                <asp:Button ID="btnAcepatarContraseña" runat="server" CssClass="btn btn-customContinuar " Text="Aceptar"  />
+                                <asp:Button ID="btnCnacelarContraseña" runat="server" CssClass="btn btn-customEliminar " Text="Cancelar" CausesValidation="false"  />
+                            </div>
+
+                        </div>
+
 
                     </div>
                 </div>

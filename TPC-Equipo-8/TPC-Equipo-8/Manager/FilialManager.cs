@@ -385,7 +385,7 @@ namespace TPC_Equipo_8.Manager
 
             try
             {
-                datos.setearConsulta("SELECT F.Nombre, F.Telefono,F.HorarioAtencion,F.Correo,F.UrlWeb,DU.Calle, DU.Altura,DU.Piso, \r\nDU.Departamento, L.Nombre AS Localidad, L.CodigoPostal AS CP, C.Nombre AS Ciudad, P.Nombre AS Provincia \r\nFROM Filiales F \r\nINNER JOIN Direcciones_x_Usuario DU ON DU.IdUsuario = F.IdUsuario \r\nINNER JOIN Localidades L ON L.IdLocalidad=DU.IdLocalidad \r\nINNER JOIN Ciudades C ON C.IdCiudad = L.IdCiudad \r\nINNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia \r\nWHERE F.IdFilial=1");
+                datos.setearConsulta("SELECT F.Nombre, F.Telefono,F.HorarioAtencion,F.Correo,F.UrlWeb,F.UrlImagen,DU.Calle, DU.Altura,DU.Piso,DU.Departamento, L.Nombre AS Localidad, L.CodigoPostal AS CP, C.Nombre AS Ciudad, P.Nombre AS Provincia FROM Filiales F INNER JOIN Direcciones_x_Usuario DU ON DU.IdUsuario = F.IdUsuario INNER JOIN Localidades L ON L.IdLocalidad=DU.IdLocalidad INNER JOIN Ciudades C ON C.IdCiudad = L.IdCiudad INNER JOIN Provincias P ON P.IdProvincia = C.IdProvincia WHERE F.IdFilial=@IdFilial");
                 datos.setearParametro("@IdFilial", idFilial);
                 datos.ejecutarLectura();
 
@@ -410,6 +410,10 @@ namespace TPC_Equipo_8.Manager
                     if (!Convert.IsDBNull(datos.Lector["UrlWeb"]))
                     {
                         aux.urlWeb = (string)datos.Lector["UrlWeb"];
+                    }
+                    if (!Convert.IsDBNull(datos.Lector["UrlImagen"]))
+                    {
+                        aux.urlImagen = (string)datos.Lector["UrlImagen"];
                     }
                     if (!Convert.IsDBNull(datos.Lector["Calle"]))
                     {
@@ -462,12 +466,13 @@ namespace TPC_Equipo_8.Manager
         {
             try
             {
-                datos.setearConsulta("UPDATE Filiales SET Nombre = @Nombre, Telefono=@Telefono, HorarioAtencion=@HorarioAtencion, Correo=@Correo, UrlWeb=@UrlWeb WHERE IdFilial = @idFilial");
+                datos.setearConsulta("UPDATE Filiales SET Nombre = @Nombre, Telefono=@Telefono,UrlImagen=@UrlImagen ,HorarioAtencion=@HorarioAtencion, Correo=@Correo, UrlWeb=@UrlWeb WHERE IdFilial = @idFilial");
                 datos.setearParametro("@Nombre", filial.nombre);
                 datos.setearParametro("@Telefono", filial.telefono);
                 datos.setearParametro("@HorarioAtencion", filial.horarioAtencion);
                 datos.setearParametro("@Correo", filial.correo);
                 datos.setearParametro("@UrlWeb", filial.urlWeb);
+                datos.setearParametro("@UrlImagen", filial.urlImagen);
                 datos.setearParametro("@idFilial", idFilial);
 
                 datos.ejecutarAccion();
