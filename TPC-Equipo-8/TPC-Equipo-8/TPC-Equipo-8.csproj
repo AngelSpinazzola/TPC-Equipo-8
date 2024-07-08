@@ -305,7 +305,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\EnvioEmail.cs" />
+    <Compile Include="Helpers\EmailService.cs" />
     <Compile Include="Helpers\Seguridad.cs" />
     <Compile Include="Manager\DonacionManager.cs" />
     <Compile Include="Manager\DonanteManager.cs" />

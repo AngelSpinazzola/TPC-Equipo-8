@@ -8,16 +8,16 @@ using System.Web;
 
 namespace TPC_Equipo_8.Helpers
 {
-    public class EnvioEmail
+    public class EmailService
     {
         AccesoDatos datos = new AccesoDatos();
 
         private MailMessage email;
         private SmtpClient server;
 
-        public EnvioEmail()
+        public EmailService()
         {
-            server = new SmtpClient("smtp.gmail.com", 587)
+            server = new SmtpClient("smtp.live.com", 587)
             {
                 Credentials = new NetworkCredential("sanguis.donasangre@hotmail.com", "sanguis123"),
                 EnableSsl = true,
@@ -73,7 +73,7 @@ namespace TPC_Equipo_8.Helpers
             catch (Exception ex)
             {
                 throw new Exception("Error al obtener la contraseña", ex);
-                
+
             }
             finally
             {

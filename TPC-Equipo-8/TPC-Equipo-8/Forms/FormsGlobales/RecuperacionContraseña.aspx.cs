@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TPC_Equipo_8.Helpers;
-using static TPC_Equipo_8.Helpers.EnvioEmail;
+using static TPC_Equipo_8.Helpers.EmailService;
 
 namespace TPC_Equipo_8.Forms.FormsGlobales
 {
@@ -21,7 +21,7 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
         protected void btnRecuperarContraseña_Click(object sender, EventArgs e)
         {
             string correoDestino = txtEmail.Text; // 
-            EnvioEmail emailService = new EnvioEmail();
+            EmailService emailService = new EmailService();
 
             try
             {
