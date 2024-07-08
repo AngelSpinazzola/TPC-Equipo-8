@@ -1,8 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsDonante/MasterDonante.Master" AutoEventWireup="true" CodeBehind="DonantePerfil.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsDonante.DonantePerfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- SweetAlert JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../../Estilos/EstilosGlobales.css" />
+    <style>
+        .swal2-confirm {
+            width: 150px !important;
+            background-color: #c12222 !important;
+            color: white !important;
+            border-radius: 100px !important;
+            border: 2px solid #c12222 !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+        }
+
+            .swal2-confirm:hover {
+                background-color: white !important;
+                color: #c12222 !important;
+                border: 2px solid #c12222 !important;
+            }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -283,47 +305,116 @@
                         <!-- SECCION CONTRASEÑA -->
 
                         <div id="contraseña" style="display: none;">
-                            Contenido de Contraseña
-       
+
+                            <div class="form-wrapper">
+                                <div class="content-wrapper">
+                                    <div class="text-center mt-4">
+                                        <h3 style="margin-top: 60px;">Cambiar contraseña</h3>
+                                    </div>
+                                    <div class="container d-flex justify-content-center">
+                                        <div class="form-container mt-4 custom-login">
+                                            <div class="mb-5">
+                                                <label for="txtContrasenaActual" class="form-label">Contraseña actual</label>
+                                                <asp:TextBox ID="txtContrasenaActual" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                                <asp:RequiredFieldValidator
+                                                    ID="RequiredFieldValidator1"
+                                                    runat="server"
+                                                    ErrorMessage="El campo es requerido"
+                                                    ControlToValidate="txtContrasenaActual"
+                                                    Display="Dynamic"
+                                                    ForeColor="Red" />
+                                            </div>
+                                            <div class="mb-5">
+                                                <label for="txtContrasenaNueva" class="form-label">Contraseña nueva</label>
+                                                <asp:TextBox ID="txtContrasenaNueva" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                                <asp:RequiredFieldValidator
+                                                    ID="RequiredFieldValidator2"
+                                                    runat="server"
+                                                    ErrorMessage="El campo es requerido"
+                                                    ControlToValidate="txtContrasenaNueva"
+                                                    Display="Dynamic"
+                                                    ForeColor="Red" />
+                                                <asp:RegularExpressionValidator
+                                                    ID="RegularExpressionValidator1"
+                                                    runat="server"
+                                                    ErrorMessage="La contraseña debe tener al menos 8 caracteres y contener al menos una letra mayúscula, una minúscula y un número."
+                                                    ControlToValidate="txtContrasenaNueva"
+                                                    ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
+                                                    Display="Dynamic"
+                                                    ForeColor="Red" />
+                                            </div>
+                                            <div class="mb-5">
+                                                <label for="txtRepetirContrasena" class="form-label">Repetir contraseña nueva</label>
+                                                <asp:TextBox ID="txtRepetirContrasena" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                                <asp:RequiredFieldValidator
+                                                    ID="RequiredFieldValidator3"
+                                                    runat="server"
+                                                    ErrorMessage="El campo es requerido"
+                                                    ControlToValidate="txtRepetirContrasena"
+                                                    Display="Dynamic"
+                                                    ForeColor="Red" />
+                                                <asp:CompareValidator
+                                                    ID="CompareValidator1"
+                                                    runat="server"
+                                                    ErrorMessage="Las contraseñas no coinciden."
+                                                    ControlToValidate="txtRepetirContrasena"
+                                                    ControlToCompare="txtContrasenaNueva"
+                                                    Display="Dynamic"
+                                                    ForeColor="Red" />
+                                            </div>
+                                            <div class="row mt-4">
+                                                <asp:Button ID="btnCambiarContrasena" runat="server" Text="Guardar cambios" CssClass="btn btn-customContinuar" OnClick="btnCambiarContrasena_Click" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
                 </main>
             </div>
         </div>
-    </div>
 
 
-    <script>
-        function showResumenCuenta() {
-            document.getElementById('resumenCuenta').style.display = 'block';
-            document.getElementById('editarPerfil').style.display = 'none';
-            document.getElementById('contraseña').style.display = 'none';
-        }
-
-        function showEditarPerfil() {
-            document.getElementById('resumenCuenta').style.display = 'none';
-            document.getElementById('editarPerfil').style.display = 'block';
-            document.getElementById('contraseña').style.display = 'none';
-        }
-
-        function showContraseña() {
-            document.getElementById('resumenCuenta').style.display = 'none';
-            document.getElementById('editarPerfil').style.display = 'none';
-            document.getElementById('contraseña').style.display = 'block';
-        }
-        function previewImage(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    document.getElementById('<%= imgNuevoPerfil.ClientID %>').src = e.target.result;
-                }
-
-                reader.readAsDataURL(input.files[0]);
+        <script>
+            function showResumenCuenta() {
+                document.getElementById('resumenCuenta').style.display = 'block';
+                document.getElementById('editarPerfil').style.display = 'none';
+                document.getElementById('contraseña').style.display = 'none';
             }
-        }
-    </script>
+
+            function showEditarPerfil() {
+                document.getElementById('resumenCuenta').style.display = 'none';
+                document.getElementById('editarPerfil').style.display = 'block';
+                document.getElementById('contraseña').style.display = 'none';
+            }
+
+            function showContraseña() {
+                document.getElementById('resumenCuenta').style.display = 'none';
+                document.getElementById('editarPerfil').style.display = 'none';
+                document.getElementById('contraseña').style.display = 'block';
+            }
+            function previewImage(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        document.getElementById('<%= imgNuevoPerfil.ClientID %>').src = e.target.result;
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function mostrarMensaje(mensaje) {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Mensaje',
+                    text: mensaje,
+                    showCancelButton: false,
+                    confirmButtonText: 'OK'
+                });
+            }
+        </script>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </asp:Content>

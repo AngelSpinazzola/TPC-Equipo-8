@@ -278,5 +278,28 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
+        public void ActualizarPassword(Usuario usuario, string PassNuevo)
+        {
+            try
+            {
+                int IdDonate = ObtenerIdDonante(usuario);
+
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_ActualizarPassDonante");
+                datos.setearParametro("@IdUsuario", usuario.idUsuario);
+                datos.setearParametro("@PassNuevo", PassNuevo);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

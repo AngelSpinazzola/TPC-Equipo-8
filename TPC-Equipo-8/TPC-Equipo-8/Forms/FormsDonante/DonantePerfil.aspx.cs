@@ -180,5 +180,29 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             }
             return url;
         }
+
+        protected void btnCambiarContrasena_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Usuario usuario = (Usuario)Session["usuario"];
+                DonanteManager donanteManager = new DonanteManager();
+
+
+                donanteManager.ActualizarPassword(usuario, txtContrasenaNueva.Text);
+                string scriptExito = "mostrarMensaje('Contraseña actualizada correctamente.');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageExitoScript", scriptExito, true);
+            }
+            catch (Exception ex)
+            {
+
+                string scriptError = $"mostrarMensaje('Error al actualizar la contraseña: {ex.Message}');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageErrorScript", scriptError, true);
+            }
+            finally
+            {
+                
+            }
+        }
     }
 }

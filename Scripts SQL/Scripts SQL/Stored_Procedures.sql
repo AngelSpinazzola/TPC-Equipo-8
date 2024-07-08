@@ -491,16 +491,96 @@ CREATE OR ALTER PROCEDURE SP_ActualizarDatosDonante(
 	@IdUsuario INT,
 	@Nombre NVARCHAR(50),
 	@Apellido NVARCHAR(50),
-	@UrlFoto NVARCHAR(1000)
+	@UrlFoto NVARCHAR(1000),
+	@Provincia NVARCHAR(50),
+	@Ciudad NVARCHAR (75),
+	@Localidad NVARCHAR(75),
+	@CodigoPostal NVARCHAR(10),
+	@Calle NVARCHAR(100),
+	@Altura INT
 )
 AS
 BEGIN
-	UPDATE Donantes
-	SET
-		Nombre = @Nombre,
-		Apellido = @Apellido,
-		UrlFoto = @UrlFoto
-	WHERE IdUsuario = @IdUsuario
+	BEGIN TRY
+	BEGIN TRANSACTION
+		UPDATE Donantes
+		SET
+			Nombre = @Nombre,
+			Apellido = @Apellido
+		WHERE IdUsuario = @IdUsuario
+
+		IF @UrlFoto IS NOT NULL BEGIN
+			UPDATE Donantes SET UrlFoto = @UrlFoto WHERE IdUsuario = @IdUsuario
+		END
+
+		-- VERIFICA SI LA PROVINCIA EXISTE
+
+		DECLARE @IdProvincia INT
+
+		SELECT @IdProvincia = IdProvincia
+		FROM Provincias
+		WHERE Nombre = @Provincia
+
+		-- SI NO EXISTE, LA INSERTA
+
+		IF @IdProvincia IS NULL
+		BEGIN
+			INSERT INTO Provincias (Nombre) 
+			VALUES (@Provincia)
+
+			SET @IdProvincia = SCOPE_IDENTITY();
+		END
+
+		-- VERIFICA SI LA CIUDAD EXISTE
+
+		DECLARE @IdCiudad INT
+
+		SELECT @IdCiudad = IdCiudad
+		FROM Ciudades
+		WHERE Nombre = @Ciudad
+
+		-- SI NO EXISTE, LA INSERTA
+
+		IF @IdCiudad IS NULL
+		BEGIN
+			INSERT INTO Ciudades (IdProvincia, Nombre) 
+			VALUES ((SELECT IdProvincia FROM Provincias WHERE Nombre = @Provincia), @Ciudad)
+
+			SET @IdCiudad = SCOPE_IDENTITY();
+		END
+
+		-- VERIFICA SI LA LOCALIDAD EXISTE
+
+		DECLARE @IdLocalidad INT
+
+		SELECT @IdLocalidad = IdLocalidad
+		FROM Localidades
+		WHERE Nombre = @Localidad
+
+		-- SI NO EXISTE, LA INSERTA
+
+		IF @IdLocalidad IS NULL
+		BEGIN
+			INSERT INTO Localidades (IdCiudad, Nombre, CodigoPostal) 
+			VALUES ((SELECT IdCiudad FROM Ciudades WHERE Nombre = @Ciudad), @Localidad, @CodigoPostal)
+
+			SET @IdLocalidad = SCOPE_IDENTITY();
+		END
+
+
+		UPDATE Direcciones_x_Usuario 
+		SET 
+			IdLocalidad = @IdLocalidad, 
+			Calle = @Calle, 
+			Altura = @Altura
+		WHERE IdUsuario = @IdUsuario
+	COMMIT TRANSACTION
+	END TRY
+
+	BEGIN CATCH
+		ROLLBACK TRANSACTION
+		RETURN
+	END CATCH
 END
 
 GO
@@ -764,6 +844,19 @@ BEGIN
     BEGIN
         SELECT 2 AS Resultado
     END
+END
+
+GO
+
+-- PROCEDURE PARA ACTUALIZAR LA CONTRASEÑA DEL DONANTE
+
+CREATE OR ALTER PROCEDURE SP_ActualizarPassDonante(
+	@IdUsuario INT,
+	@PassNuevo NVARCHAR(50)
+)
+AS
+BEGIN
+	UPDATE Usuarios SET Pass = @PassNuevo WHERE IdUsuario = @IdUsuario
 END
 
 GO
