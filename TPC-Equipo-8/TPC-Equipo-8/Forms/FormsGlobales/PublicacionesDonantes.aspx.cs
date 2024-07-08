@@ -37,6 +37,21 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
             }
         }
 
+        protected string GetUrgencyCardClass(object urgencyObj)
+        {
+            string urgency = urgencyObj.ToString();
+            switch (urgency)
+            {
+                case "Alta":
+                    return "urgency-high"; 
+                case "Media":
+                    return "urgency-medium";
+                case "Baja":
+                    return "urgency-low";
+                default:
+                    return ""; 
+            }
+        }
         protected void btnDonar_Click(object sender, EventArgs e)
         {
             if (Session["usuario"] == null)

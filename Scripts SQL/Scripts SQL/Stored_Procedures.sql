@@ -78,6 +78,7 @@ BEGIN
     INNER JOIN Urgencias U ON U.IdUrgencia = P.IdUrgencia
     WHERE (@IdFilial = -1 OR P.IdFilial = @IdFilial)
     AND (@SoloActivas = 0 OR P.Estado = 1)
+	ORDER BY P.IdUrgencia DESC;
 
 END
 

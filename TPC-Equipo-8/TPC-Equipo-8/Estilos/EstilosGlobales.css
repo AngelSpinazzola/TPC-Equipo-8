@@ -147,12 +147,12 @@ h1, h2, h3, h4 {
     max-height: 150px;
 }
 
-.barra-lateral .menu a {
-    padding: 10px 15px;
-    color: #333;
-    text-decoration: none;
-    display: block;
-}
+    .barra-lateral .menu a {
+        padding: 10px 15px;
+        color: #333;
+        text-decoration: none;
+        display: block;
+    }
 
         .barra-lateral .menu a:hover {
             background-color: #e9ecef;
@@ -184,7 +184,7 @@ h1, h2, h3, h4 {
     border-radius: 5px;
 }
 
-.general-container-profile{
+.general-container-profile {
     padding-top: 60px;
     display: flex;
 }
@@ -383,10 +383,23 @@ custom-dropdown .micuenta {
     color: black;
 }
 
-    .custom-dropdown .micuenta:hover {
-        color: white;
-        background-color: #c12222;
+.custom-dropdown .micuenta:hover {
+    color: white;
+    background-color: #c12222;
+}
+
+.swal2-confirm {
+    width: 150px !important;
+    background-color: #c12222 !important;
+    color: white !important;
+    border-radius: 100px !important;
+    border: 2px solid #c12222 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+    .swal2-confirm:hover {
+        background-color: white !important;
+        color: #c12222 !important;
+        border: 2px solid #c12222 !important;
     }
-
-/* IMAGEN PERFIL NAVBAR */
-

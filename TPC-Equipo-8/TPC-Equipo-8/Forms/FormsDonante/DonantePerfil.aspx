@@ -101,12 +101,12 @@
                                 </asp:GridView>
                             </div>
 
-                            <h3 id="tituloCantidadPersonasAyudadas" runat="server" class="text-center">Cantidad de personas ayudadas</h3>
-                            <div id="divCantPersonasAyudadas" runat="server" class="container-fluid" style="width: 50%;">
+                            <h3 id="tituloCantidadPersonasAyudadas" runat="server" class="text-center" style="margin-top: 20px;">Cantidad de donaciones hechas</h3>
+                            <div id="divCantPersonasAyudadas" runat="server" class="container-fluid" style="width: 20%; margin-top: 10px;">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="table table-bordered table-hover custom-table">
-                                            <asp:Label ID="lblCantidadPersonasAyudadas" runat="server" CssClass="label-text"></asp:Label>
+                                            <asp:Label ID="lblCantidadPersonasAyudadas" runat="server" CssClass="label-text" style="font-size: 30px;"><strong></strong></asp:Label>
                                         </div>
                                     </div>
                                 </div>

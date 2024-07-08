@@ -15,14 +15,13 @@ namespace TPC_Equipo_8.Helpers
         private MailMessage email;
         private SmtpClient server;
 
+
         public EmailService()
         {
-            server = new SmtpClient("smtp.live.com", 587)
+            server = new SmtpClient("smtp.mailtrap.io", 2525)
             {
-                Credentials = new NetworkCredential("sanguis.donasangre@hotmail.com", "sanguis123"),
+                Credentials = new NetworkCredential("8c4eda6efd2e7d", "2bd4f97f9975cb"),
                 EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false
             };
         }
 
