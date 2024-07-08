@@ -102,10 +102,36 @@
                                         <div class="col-md-6 form-group">
                                             <label for="txtNombre" class="form-label">Nombre</label>
                                             <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:RequiredFieldValidator
+                                                ErrorMessage="El campo es requerido"
+                                                ControlToValidate="txtNombre"
+                                                Display="Dynamic"
+                                                ForeColor="Red"
+                                                runat="server" />
+                                            <asp:RegularExpressionValidator
+                                                ErrorMessage="Solo se permiten letras y espacios. Máximo 50 caracteres. Mínimo 3 caracteres alfabéticos."
+                                                ControlToValidate="txtNombre"
+                                                runat="server"
+                                                ValidationExpression="^[A-Za-z\s]{3,50}$"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="txtApellido" class="form-label">Apellido</label>
                                             <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:RequiredFieldValidator
+                                                ErrorMessage="El campo es requerido"
+                                                ControlToValidate="txtApellido"
+                                                runat="server"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
+                                            <asp:RegularExpressionValidator
+                                                ErrorMessage="Solo se permiten letras y espacios. Máximo 50 caracteres. Mínimo 3 caracteres alfabéticos."
+                                                ControlToValidate="txtApellido"
+                                                runat="server"
+                                                ValidationExpression="^[A-Za-z\s]{3,50}$"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
                                         </div>
                                     </div>
                                     <div class="row">
@@ -132,30 +158,108 @@
                                         <div class="col-md-6 form-group">
                                             <label for="txtCalle" class="form-label">Calle</label>
                                             <asp:TextBox ID="txtCalle" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <asp:RequiredFieldValidator
+                                                ErrorMessage="El campo es requerido"
+                                                ControlToValidate="txtCalle"
+                                                runat="server"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
+                                            <asp:RegularExpressionValidator
+                                                ErrorMessage="Solo se permiten letras y espacios. Máximo 100 caracteres, mínimo 3 caracteres alfabéticos."
+                                                ControlToValidate="txtCalle"
+                                                runat="server"
+                                                ValidationExpression="^[A-Za-z\s]{3,100}$"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="txtAltura" class="form-label">Altura</label>
                                             <asp:TextBox ID="txtAltura" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <asp:RequiredFieldValidator
+                                                ErrorMessage="El campo es requerido"
+                                                ControlToValidate="txtAltura"
+                                                runat="server"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
+                                            <asp:RegularExpressionValidator
+                                                ErrorMessage="Solo se permiten números enteros."
+                                                ControlToValidate="txtAltura"
+                                                runat="server"
+                                                ValidationExpression="^\d+$"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 form-group">
                                             <label for="txtCp" class="form-label">Código Postal</label>
                                             <asp:TextBox ID="txtCp" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <asp:RequiredFieldValidator
+                                                ErrorMessage="El campo es requerido"
+                                                ControlToValidate="txtCp"
+                                                runat="server"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
+                                            <asp:RegularExpressionValidator
+                                                ErrorMessage="Solo se permiten números y letras. Máximo 10 caracteres."
+                                                ControlToValidate="txtCp"
+                                                runat="server"
+                                                ValidationExpression="^[A-Za-z0-9]{1,10}$"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <label for="txtNombreLocalidad" class="form-label">Localidad</label>
-                                            <asp:TextBox ID="txtNombreLocalidad" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <label for="txtLocalidad" class="form-label">Localidad</label>
+                                            <asp:TextBox ID="txtLocalidad" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <asp:RequiredFieldValidator
+                                                ErrorMessage="El campo es requerido"
+                                                ControlToValidate="txtLocalidad"
+                                                runat="server"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
+                                            <asp:RegularExpressionValidator
+                                                ErrorMessage="Solo se permiten letras y espacios. Máximo 75 caracteres. Mínimo 3 caracteres alfabéticos."
+                                                ControlToValidate="txtLocalidad"
+                                                runat="server"
+                                                ValidationExpression="^[A-Za-z\s]{3,75}$"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 form-group">
-                                            <label for="txtNombreProvincia" class="form-label">Provincia</label>
-                                            <asp:TextBox ID="txtNombreProvincia" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <label for="txtProvincia" class="form-label">Provincia</label>
+                                            <asp:TextBox ID="txtProvincia" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <asp:RequiredFieldValidator
+                                                ErrorMessage="El campo es requerido"
+                                                ControlToValidate="txtProvincia"
+                                                runat="server"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
+                                            <asp:RegularExpressionValidator
+                                                ErrorMessage="Solo se permiten letras y espacios. Máximo 50 caracteres. Mínimo 3 caracteres alfabéticos."
+                                                ControlToValidate="txtProvincia"
+                                                runat="server"
+                                                ValidationExpression="^[A-Za-z\s]{3,50}$"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
                                         </div>
                                         <div class="col-md-6 form-group">
-                                            <label for="txtNombreCiudad" class="form-label">Ciudad</label>
-                                            <asp:TextBox ID="txtNombreCiudad" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <label for="txtCiudad" class="form-label">Ciudad</label>
+                                            <asp:TextBox ID="txtCiudad" runat="server" type="text" class="form-control"></asp:TextBox>
+                                            <asp:RequiredFieldValidator
+                                                ErrorMessage="El campo es requerido"
+                                                ControlToValidate="txtCiudad"
+                                                runat="server"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
+                                            <asp:RegularExpressionValidator
+                                                ErrorMessage="Solo se permiten letras y espacios. Máximo 75 caracteres. Mínimo 3 caracteres alfabéticos."
+                                                ControlToValidate="txtCiudad"
+                                                runat="server"
+                                                ValidationExpression="^[A-Za-z\s]{3,75}$"
+                                                Display="Dynamic"
+                                                ForeColor="Red" />
                                         </div>
                                     </div>
                                 </div>

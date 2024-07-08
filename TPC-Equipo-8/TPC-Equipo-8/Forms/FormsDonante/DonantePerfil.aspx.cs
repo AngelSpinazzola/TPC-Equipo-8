@@ -55,9 +55,9 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             txtEmail.Text = donante.email;
             txtFechaAlta.Text = donante.fechaAlta.ToString();
             txtNombreGrupoSanguineo.Text = donante.tipoSangre;
-            txtNombreProvincia.Text = donante.direccion.provincia;
-            txtNombreLocalidad.Text = donante.direccion.localidad;
-            txtNombreCiudad.Text = donante.direccion.ciudad;
+            txtProvincia.Text = donante.direccion.provincia;
+            txtLocalidad.Text = donante.direccion.localidad;
+            txtCiudad.Text = donante.direccion.ciudad;
             txtCalle.Text = donante.direccion.calle;
             txtAltura.Text = donante.direccion.altura.ToString();
             txtCp.Text = donante.direccion.codigoPostal;
