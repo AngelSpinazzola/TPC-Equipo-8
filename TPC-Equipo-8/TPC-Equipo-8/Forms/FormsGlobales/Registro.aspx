@@ -52,6 +52,8 @@
                     <div class="mb-3">
                         <label for="txtRegistroNombre" class="form-label">Nombre y Apellido</label>
                         <asp:TextBox runat="server" placeholder="Juan Perez" ID="txtRegistroNombre" CssClass="form-control" />
+                        <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroNombre" runat="server" Display="Dynamic" ForeColor="Red" />
+                        <asp:RegularExpressionValidator ErrorMessage="Solo letras. Maximo 30 caracteres" ControlToValidate="txtRegistroNombre" runat="server" ValidationExpression="^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]{1,30}$" Display="Dynamic" ForeColor="Red"/>
                     </div>
 
                     <%-- <div class="mb-3">
@@ -62,20 +64,28 @@
                     <div class="mb-3">
                         <label for="txtRegistroEmail" class="form-label">Email</label>
                         <asp:TextBox runat="server" placeholder="ejemplo@dona.com" ID="txtRegistroEmail" CssClass="form-control" />
+                        <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroEmail" runat="server" Display="Dynamic" ForeColor="Red" />
+                        <asp:RegularExpressionValidator runat="server" ControlToValidate="txtRegistroEmail" ErrorMessage="Formato de correo electrónico no válido." ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" Display="Dynamic" ForeColor="Red" />
                     </div>
                     <div class="mb-3">
                         <label for="txtRegistroDni" class="form-label">DNI</label>
                         <asp:TextBox runat="server" placeholder="DNI" ID="txtRegistroDni" CssClass="form-control" />
+                         <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroDni" runat="server" Display="Dynamic" ForeColor="Red" />
+                        <asp:RegularExpressionValidator ErrorMessage="Solo numeros.Maximo 30" ControlToValidate="txtRegistroDni" runat="server" ValidationExpression="^\d{1,30}$" Display="Dynamic" ForeColor="Red" />
                     </div>
                     <div class="mb-5">
                         <label for="txtRegistroPass" class="form-label">Contraseña</label>
                         <asp:TextBox runat="server" placeholder="******" ID="txtRegistroPass" CssClass="form-control" type="password" />
+                        <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroPass" runat="server" Display="Dynamic" ForeColor="Red" />
+
                     </div>
 
                     <div class="d-grid" style="margin-bottom: 20px; margin-top: -20px;">
                         <asp:Button Text="Continuar" ID="btnContinuarRegistro" OnClick="btnContinuarRegistro_Click" runat="server" CssClass="btn btn-customContinuar" />
                     </div>
 
+
+                    <%--<asp:Button ID="btnCancelarRegistro" runat="server" Text="Cancelar" CausesValidation="false"/ style="color: #c12222;">--%>
                     <div class="d-flex justify-content-between">
                         <a href="Default.aspx" style="color: #c12222;">Cancelar</a>
                         <a href="LogIn.aspx" style="color: #c12222;">Ya tengo una cuenta</a>

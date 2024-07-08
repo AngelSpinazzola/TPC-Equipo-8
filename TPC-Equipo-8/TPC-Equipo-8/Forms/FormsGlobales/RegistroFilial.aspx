@@ -53,52 +53,65 @@
                         <div class="col-md-12">
                             <label for="txtRegistroNombre" class="form-label">Nombre</label>
                             <asp:TextBox runat="server" placeholder="Nombre de Filial" ID="txtRegistroNombre" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroNombre" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <asp:RegularExpressionValidator runat="server" ControlToValidate="txtRegistroNombre" ErrorMessage="Maximo 30 caracteres." ValidationExpression="^{1,30}$" Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <label for="txtRegistroEmail" class="form-label">Email</label>
                             <asp:TextBox runat="server" placeholder="ejemplo@filial.com" ID="txtRegistroEmail" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroEmail" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <asp:RegularExpressionValidator runat="server" ControlToValidate="txtRegistroEmail" ErrorMessage="Formato de correo electrónico no válido." ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="txtRegistroTelefono" class="form-label">Teléfono</label>
                             <asp:TextBox runat="server" placeholder="Teléfono" ID="txtRegistroTelefono" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroTelefono" runat="server" Display="Dynamic" ForeColor="Red" />
+                            <asp:RegularExpressionValidator runat="server" ErrorMessage="Formato de teléfono inválido. Debe tener al menos 6 caracteres y acepta guiones." ControlToValidate="txtRegistroTelefono" ValidationExpression="^[0-9\-]{6,30}$" Display="Dynamic" ForeColor="Red" />
                         </div>
                         <div class="col-md-6">
                             <label for="txtRegistroProvincia" class="form-label">Provincia</label>
                             <asp:TextBox runat="server" placeholder="Provincia" ID="txtRegistroProvincia" CssClass="form-control" />
+                             <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroProvincia" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="txtRegistroCiudad" class="form-label">Ciudad</label>
                             <asp:TextBox runat="server" placeholder="Ciudad" ID="txtRegistroCiudad" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroCiudad" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
                         <div class="col-md-6">
                             <label for="txtRegistroLocalidad" class="form-label">Localidad</label>
                             <asp:TextBox runat="server" placeholder="Localidad" ID="txtRegistroLocalidad" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroLocalidad" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="txtCodigoPostal" class="form-label">Código Postal</label>
                             <asp:TextBox runat="server" placeholder="Código Postal" ID="txtCodigoPostal" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtCodigoPostal" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
                         <div class="col-md-6">
                             <label for="txtRegistroCalle" class="form-label">Calle</label>
                             <asp:TextBox runat="server" placeholder="Calle" ID="txtRegistroCalle" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroCalle" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="txtRegistroAltura" class="form-label">Altura</label>
                             <asp:TextBox runat="server" placeholder="Altura" ID="txtRegistroAltura" CssClass="form-control" />
+                            <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroAltura" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
                         <div class="col-md-6">
                             <label for="txtRegistroPass" class="form-label">Contraseña</label>
                             <asp:TextBox runat="server" placeholder="******" ID="txtRegistroPass" CssClass="form-control" type="password" />
+                            <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtRegistroPass" runat="server" Display="Dynamic" ForeColor="Red" />
                         </div>
                     </div>
 

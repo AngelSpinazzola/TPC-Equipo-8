@@ -134,14 +134,16 @@
                                                 ControlToValidate="txtNombre"
                                                 Display="Dynamic"
                                                 ForeColor="Red"
-                                                runat="server" />
+                                                runat="server" 
+                                                ValidationGroup="datosPersonales"/>
                                             <asp:RegularExpressionValidator
                                                 ErrorMessage="Solo se permiten letras y espacios. Máximo 50 caracteres. Mínimo 3 caracteres alfabéticos."
                                                 ControlToValidate="txtNombre"
                                                 runat="server"
                                                 ValidationExpression="^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]{3,50}$"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="txtApellido" class="form-label">Apellido</label>
@@ -151,14 +153,16 @@
                                                 ControlToValidate="txtApellido"
                                                 runat="server"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                             <asp:RegularExpressionValidator
                                                 ErrorMessage="Solo se permiten letras y espacios. Máximo 50 caracteres. Mínimo 3 caracteres alfabéticos."
                                                 ControlToValidate="txtApellido"
                                                 runat="server"
                                                 ValidationExpression="^[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s]{3,50}$"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -199,7 +203,8 @@
                                                 ControlToValidate="txtCalle"
                                                 runat="server"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
 
                                         </div>
                                         <div class="col-md-6 form-group">
@@ -210,14 +215,16 @@
                                                 ControlToValidate="txtAltura"
                                                 runat="server"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                             <asp:RegularExpressionValidator
                                                 ErrorMessage="Solo se permiten números enteros."
                                                 ControlToValidate="txtAltura"
                                                 runat="server"
                                                 ValidationExpression="^\d+$"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -229,14 +236,16 @@
                                                 ControlToValidate="txtCp"
                                                 runat="server"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                             <asp:RegularExpressionValidator
                                                 ErrorMessage="Solo se permiten números y letras. Máximo 10 caracteres."
                                                 ControlToValidate="txtCp"
                                                 runat="server"
                                                 ValidationExpression="^[A-Za-z0-9]{1,10}$"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="txtLocalidad" class="form-label">Localidad</label>
@@ -246,14 +255,16 @@
                                                 ControlToValidate="txtLocalidad"
                                                 runat="server"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                             <asp:RegularExpressionValidator
                                                 ErrorMessage="Solo se permiten letras y espacios. Máximo 75 caracteres. Mínimo 3 caracteres alfabéticos."
                                                 ControlToValidate="txtLocalidad"
                                                 runat="server"
                                                 ValidationExpression="^[A-Za-z\s]{3,75}$"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -265,14 +276,16 @@
                                                 ControlToValidate="txtProvincia"
                                                 runat="server"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                             <asp:RegularExpressionValidator
                                                 ErrorMessage="Solo se permiten letras y espacios. Máximo 50 caracteres. Mínimo 3 caracteres alfabéticos."
                                                 ControlToValidate="txtProvincia"
                                                 runat="server"
                                                 ValidationExpression="^[A-Za-z\s]{3,50}$"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="txtCiudad" class="form-label">Ciudad</label>
@@ -282,14 +295,16 @@
                                                 ControlToValidate="txtCiudad"
                                                 runat="server"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                             <asp:RegularExpressionValidator
                                                 ErrorMessage="Solo se permiten letras y espacios. Máximo 75 caracteres. Mínimo 3 caracteres alfabéticos."
                                                 ControlToValidate="txtCiudad"
                                                 runat="server"
                                                 ValidationExpression="^[A-Za-z\s]{3,75}$"
                                                 Display="Dynamic"
-                                                ForeColor="Red" />
+                                                ForeColor="Red" 
+                                                ValidationGroup="datosPersonales"/>
                                         </div>
                                     </div>
                                 </div>
@@ -345,15 +360,7 @@
                                                     Display="Dynamic"
                                                     ForeColor="Red"
                                                     ValidationGroup="cambiarContrasena" />
-                                                <asp:RegularExpressionValidator
-                                                    ID="RegularExpressionValidator1"
-                                                    runat="server"
-                                                    ErrorMessage="La contraseña debe tener al menos 8 caracteres y contener al menos una letra mayúscula, una minúscula y un número."
-                                                    ControlToValidate="txtContrasenaNueva"
-                                                    ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
-                                                    Display="Dynamic"
-                                                    ForeColor="Red"
-                                                    ValidationGroup="cambiarContrasena" />
+                                             
                                             </div>
                                             <div class="mb-5">
                                                 <label for="txtRepetirContrasena" class="form-label">Repetir contraseña nueva</label>

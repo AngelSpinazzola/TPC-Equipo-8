@@ -14,10 +14,13 @@
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
                         <asp:TextBox runat="server" placeholder="ejemplo@gmail.com" ID="txtEmail" CssClass="form-control" />
+                          <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtEmail" runat="server" Display="Dynamic" ForeColor="Red" />
+                        <asp:RegularExpressionValidator runat="server" ControlToValidate="txtEmail" ErrorMessage="Formato de correo electrónico no válido." ValidationExpression="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" Display="Dynamic" ForeColor="Red" />
                     </div>
                     <div class="mb-5">
                         <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                         <asp:TextBox runat="server" type="password" placeholder="******" ID="txtPass" CssClass="form-control" />
+                        <asp:RequiredFieldValidator ErrorMessage="Campo Requerido" ControlToValidate="txtPass" runat="server" Display="Dynamic" ForeColor="Red" />
                     </div>
 
                     <div class="text-center" style="margin-top: -10px; margin-bottom: 20px;">
