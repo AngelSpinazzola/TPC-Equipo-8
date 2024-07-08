@@ -28,15 +28,17 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 {
                     Response.Redirect("../FormsGlobales/Login.aspx");
                 }
+                if(usuario != null)
+                {
+                    CargarPerfil(usuario);
+                }
             }
 
             if (usuario != null)
             {
-                CargarPerfil(usuario);
                 CargarProximaDonacion(usuario);
                 CargarUltimasDonaciones(usuario);
                 CargarCantidadPersonasAyudadas(usuario);
-
             }
         }
 
@@ -107,17 +109,35 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             try
             {
                 Usuario usuario = (Usuario)Session["usuario"];
-                DonanteManager manager = new DonanteManager();
-                Donante donante = new Donante();
-
                 int usuarioId = usuario.idUsuario;
 
-                string ruta = Server.MapPath("./Content/Images/imagen-perfil-usuario/");
-                txtImagen.PostedFile.SaveAs(ruta + "perfil-" + usuarioId + ".jpg");
+                DonanteManager manager = new DonanteManager();
+
+                Donante donante = new Donante();
 
                 donante.nombre = txtNombre.Text;
                 donante.apellido = txtApellido.Text;
-                donante.urlFoto = "perfil-" + usuarioId + ".jpg";
+
+                if (txtImagen.PostedFile != null && txtImagen.PostedFile.ContentLength > 0)
+                {
+                    string ruta = Server.MapPath("./Content/Images/imagen-perfil-usuario/");
+                    txtImagen.PostedFile.SaveAs(ruta + "perfil-" + usuarioId + ".jpg");
+
+                    donante.urlFoto = "perfil-" + usuarioId + ".jpg";
+                }
+                else
+                {
+                    donante.urlFoto = "perfil-" + usuarioId + ".jpg";
+                }
+
+                donante.direccion = new Direccion();
+
+                donante.direccion.provincia = txtProvincia.Text;
+                donante.direccion.calle = txtCalle.Text;
+                donante.direccion.altura = int.Parse(txtAltura.Text);
+                donante.direccion.codigoPostal = txtCp.Text;
+                donante.direccion.localidad = txtLocalidad.Text;
+                donante.direccion.ciudad = txtCiudad.Text;
 
                 manager.EditarPerfilDonante(donante, usuarioId);
 
@@ -131,7 +151,6 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 }
 
                 imgNuevoPerfil.ImageUrl = ResolveUrl(CargarUrlImagenDonante() + "?t=" + timestamp);
-
             }
             catch (Exception ex)
             {
@@ -139,8 +158,6 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 Session.Add("error", ex.ToString());
             }
         }
-
-
 
         public string CargarUrlImagenDonante()
         {

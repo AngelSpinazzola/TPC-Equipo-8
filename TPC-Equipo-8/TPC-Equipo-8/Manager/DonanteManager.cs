@@ -94,6 +94,12 @@ namespace TPC_Equipo_8.Manager
                 datos.setearParametro("@Nombre", donante.nombre);
                 datos.setearParametro("@Apellido", donante.apellido);
                 datos.setearParametro("@UrlFoto", donante.urlFoto);
+                datos.setearParametro("@Provincia", donante.direccion.provincia);
+                datos.setearParametro("@Ciudad", donante.direccion.ciudad);
+                datos.setearParametro("@Localidad", donante.direccion.localidad);
+                datos.setearParametro("@CodigoPostal", donante.direccion.codigoPostal);
+                datos.setearParametro("@Calle", donante.direccion.calle);
+                datos.setearParametro("@Altura", donante.direccion.altura);
                 datos.ejecutarAccion();
 
             }
