@@ -62,7 +62,7 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
-        public void insertarNuevo(Usuario nuevo)
+        public void RegistrarDonante(Donante nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
 

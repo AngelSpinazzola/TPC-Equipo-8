@@ -20,13 +20,13 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
         {
             try
             {
-                Usuario nuevo = new Usuario();
+                Donante nuevoDonante = new Donante();
                 UsuarioManager usuarioManager = new UsuarioManager();
-                nuevo.Username = txtRegistroNombre.Text;
-                nuevo.email = txtRegistroEmail.Text;
-                nuevo.pass = txtRegistroPass.Text;
-                nuevo.dni = txtRegistroDni.Text;
-                usuarioManager.insertarNuevo(nuevo);
+                nuevoDonante.Username = txtRegistroNombre.Text;
+                nuevoDonante.email = txtRegistroEmail.Text;
+                nuevoDonante.pass = txtRegistroPass.Text;
+                nuevoDonante.dni = txtRegistroDni.Text;
+                usuarioManager.RegistrarDonante(nuevoDonante);
 
                 string script = @"
                 Swal.fire({

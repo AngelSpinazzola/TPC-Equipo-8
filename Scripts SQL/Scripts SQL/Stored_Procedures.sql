@@ -478,7 +478,7 @@ LEFT JOIN Localidades L ON L.IdLocalidad = DXU.IdLocalidad
 LEFT JOIN Ciudades C ON C.IdCiudad = L.IdCiudad
 LEFT JOIN Provincias P ON P.IdProvincia = C.IdProvincia
 LEFT JOIN GruposSanguineos GS ON GS.IdGrupoSanguineo = D.IdGrupoSanguineo 
-WHERE D.IdUsuario = 18
+WHERE D.IdUsuario = @IdUsuario
 END
 
 GO
@@ -489,6 +489,7 @@ CREATE OR ALTER PROCEDURE SP_ActualizarDatosDonante(
 	@IdUsuario INT,
 	@Nombre NVARCHAR(50),
 	@Apellido NVARCHAR(50),
+	@IdGrupoSanguineo INT,
 	@UrlFoto NVARCHAR(1000),
 	@Provincia NVARCHAR(50),
 	@Ciudad NVARCHAR (75),
@@ -504,7 +505,8 @@ BEGIN
 		UPDATE Donantes
 		SET
 			Nombre = @Nombre,
-			Apellido = @Apellido
+			Apellido = @Apellido,
+			IdGrupoSanguineo = @IdGrupoSanguineo
 		WHERE IdUsuario = @IdUsuario
 
 		IF @UrlFoto IS NOT NULL BEGIN
