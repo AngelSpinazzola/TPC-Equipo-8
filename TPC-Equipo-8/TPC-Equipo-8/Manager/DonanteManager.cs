@@ -308,5 +308,33 @@ namespace TPC_Equipo_8.Manager
             }
         }
 
+        public int ObtenerIdFilial(int IdUsuario)
+        {
+            try
+            {
+                datos.comando.Parameters.Clear();
+                datos.setearProcedimiento("SP_btnComoLlego");
+                datos.setearParametro("@IdUsuario", IdUsuario);
+                datos.ejecutarLectura();
+
+                int IdFilial = 0;
+
+                if (datos.Lector.Read())
+                {
+                    IdFilial = (int)datos.Lector["IdFilial"];
+                }
+                return IdFilial;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

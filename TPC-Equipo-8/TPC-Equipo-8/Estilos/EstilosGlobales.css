@@ -3,6 +3,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
 
+:root {
+    --bg-overlay-color: rgb(255, 76, 77);
+    --primary-color: #FA4C4C;
+    --secondary-color: #F56160;
+    --hover-color: #EB2720;
+    --text-color: white;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -41,10 +49,11 @@ html {
 /* NAV */
 
 .nav-container {
-    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
-    position: fixed;
+    top: 0;
     width: 100%;
-    z-index: 100000;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
@@ -52,32 +61,32 @@ html {
 }
 
 #customNav {
-    background-color: #c12222;
+    background-color: white;
 }
 
     #customNav a {
-        color: white;
+        color: black;
     }
 
     #customNav ul a:hover {
-        color: #ff5b5b;
+        color: var(--hover-color);
     }
 
 .btn-customSalir {
-    color: white;
+    color: black;
 }
 
     .btn-customSalir:hover {
-        color: #ff5b5b;
+        background-color: var(--hover-color);
     }
 
 .navbar .dropdown-menu .micuenta {
-    color: black !important;
+    color: black;
 }
 
     .navbar .dropdown-menu .micuenta:hover {
-        color: white !important;
-        background-color: #ff5b5b !important;
+        color: white;
+        background-color: var(--hover-color);
     }
 
 /* DEFAULT */
@@ -94,7 +103,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-    color: #c12222;
+    color: black;
     font-family: 'Roboto';
     font-weight: 1000;
 }
@@ -106,16 +115,78 @@ h1, h2, h3, h4 {
     font-size: 60px;
 }
 
+#requisitos-form {
+    margin: 80px 30px 30px 30px;
+    padding: 30px;
+    color: var(--primary-color);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+    #requisitos-form p {
+        color: black;
+    }
+
+.urgency-label {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.urgency-high {
+    background-color: #c12222;
+    color: white;
+}
+
+.urgency-medium {
+    background-color: #ff8128;
+    color: black;
+}
+
+.urgency-low {
+    background-color: #ffd800;
+    color: black;
+}
+
+
+
 #default-div {
-    background-image: linear-gradient(to bottom, #c12222 0%, #e03737 50%, #ff5b5b 100%);
+    background-color: var(--primary-color);
     color: white;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    padding: 50px 0;
 }
 
-    #default-div h1, #default-div h2 {
-        color: white;
+#hero-sobre-nosotros {
+    background-color: white;
+    margin-top: 120px;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+#hero-info-default {
+    padding-top: 50px;
+}
+
+#default-div h1, #default-div h2 {
+    color: white;
+    font-family: roboto;
+}
+
+.planet-icon {
+    color: #FA4C4C;
+    font-size: 40px;
+    transition: color 0.3s ease;
+}
+
+    .planet-icon:hover {
+        color: #D44141;
     }
 
 .custom-login {
@@ -209,7 +280,7 @@ h1, h2, h3, h4 {
 /* BOTONES */
 
 .btn-customQuiero {
-    color: #c12222;
+    background-color: var(--primary-color);
     font-weight: 500;
     background-color: white;
     border-radius: 100px;
@@ -219,27 +290,25 @@ h1, h2, h3, h4 {
 }
 
     .btn-customQuiero:hover {
-        color: white;
+        background-color: var(--hover-color);
         border: solid white;
     }
 
 .btn-customBuscar {
     color: white;
-    background-color: #c12222;
+    background-color: var(--primary-color);
     border-radius: 100px;
-    border: 2px solid #c12222;
     box-shadow: 0 2px 2px rgba(0,0,0,0.2);
 }
 
     .btn-customBuscar:hover {
-        color: #c12222;
-        border: 2px solid #c12222;
-        background-color: white;
+        color: white;
+        background-color: var(--hover-color);
     }
 
 .btn-customDetalle {
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: var(--primary-color);
     border-radius: 100px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s ease;
@@ -247,13 +316,13 @@ h1, h2, h3, h4 {
 
     .btn-customDetalle:hover {
         color: white;
-        background-color: #c12222;
+        background-color: var(--hover-color);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
 
 .btn-customPublicaciones {
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: var(--primary-color);
     border-radius: 100px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s ease;
@@ -262,48 +331,62 @@ h1, h2, h3, h4 {
 
     .btn-customPublicaciones:hover {
         color: white;
-        background-color: #c12222;
+        background-color: var(--hover-color);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
 
 .btn-customDonar {
     color: white;
-    background-color: #c12222;
+    background-color: var(--primary-color);
     border-radius: 100px;
-    border: 2px solid #c12222;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s ease;
     transition: background-color 0.3s ease;
 }
 
     .btn-customDonar:hover {
-        color: #c12222;
-        background-color: white;
-        border: 2px solid #c12222;
+        background-color: var(--hover-color);
+        color: white;
+    }
+
+.btn-customComoLlego {
+    background-color: #5b8de1;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-weight: 400;
+    margin-top: -50px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .btn-customComoLlego:hover {
+        background-color: #7DA5F5;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
 .btn-customContinuar {
     color: white;
-    background-color: #c12222;
+    background-color: var(--primary-color);
     border-radius: 100px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
     .btn-customContinuar:hover {
+        background-color: var(--hover-color);
         color: white;
-        background-color: #ff5b5b;
     }
 
 .btn-customEditar {
     color: white;
-    background-color: #c12222;
+    background-color: var(--primary-color);
     border-radius: 100px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
     .btn-customEditar:hover {
+        background-color: var(--hover-color);
         color: white;
-        background-color: #ff5b5b;
     }
 
 .btn-customEliminar {
@@ -370,13 +453,13 @@ h1, h2, h3, h4 {
 
 /* DROPDOWN */
 
-.custom-dropdown {
+.custom-dropdown .salir-button {
     color: black;
 }
 
     .custom-dropdown .salir-button:hover {
         color: white;
-        background-color: #c12222;
+        background-color: var(--primary-color);
     }
 
 custom-dropdown .micuenta {
@@ -384,22 +467,23 @@ custom-dropdown .micuenta {
 }
 
 .custom-dropdown .micuenta:hover {
-    color: white;
-    background-color: #c12222;
+    color: white !important;
+    background-color: var(--primary-color) !important;
 }
 
 .swal2-confirm {
-    width: 150px !important;
-    background-color: #c12222 !important;
-    color: white !important;
-    border-radius: 100px !important;
-    border: 2px solid #c12222 !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+    width: 150px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 100px;
 }
 
     .swal2-confirm:hover {
-        background-color: white !important;
-        color: #c12222 !important;
-        border: 2px solid #c12222 !important;
+        background-color: var(--hover-color);
+        color: white;
     }
+
+.hidden {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}

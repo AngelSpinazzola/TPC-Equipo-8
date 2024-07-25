@@ -94,7 +94,6 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
-
                         <asp:Image ID="imgPerfil" Style="height: 40px; width: 40px; border-radius: 50%;" runat="server" />
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -150,7 +149,7 @@
     </form>
 
     <div class="footer-container mt-5" style="margin-top: 100px;">
-        <div class="container">
+        <div class="footer-container">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                 <p class="col-md-4 mb-0">sanguis &copy; AJR Solutions</p>
 

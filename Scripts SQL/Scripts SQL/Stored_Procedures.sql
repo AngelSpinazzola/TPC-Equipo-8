@@ -867,3 +867,39 @@ BEGIN
 END
 
 GO
+
+-- PROCEDURE PARA MOSTRAR NOTIFICACION EN DONANTE
+
+CREATE OR ALTER PROCEDURE SP_GenerarNotificacion(
+	@IdUsuario INT,
+	@IdPublicacion INT
+)
+AS
+BEGIN
+	DECLARE @IdDonante INT
+
+	SET @IdDonante =  SELECT * FROM Usuarios U
+	
+	INSERT INTO 
+END
+
+GO
+
+-- PROCEDURE QUE RECIBE ID DE USUARIO Y DEVUELVE ID DE LA FILIAL A LA QUE SE ANOTO PARA DONAR
+
+CREATE OR ALTER PROCEDURE SP_btnComoLlego(
+	@IdUsuario INT
+)
+AS
+BEGIN
+	DECLARE @IdDonante INT
+
+	SELECT @IdDonante = D.IdDonante FROM Donantes D 
+	WHERE IdUsuario = @IdUsuario
+
+	SELECT IdFilial FROM ProximosDonantes
+	WHERE IdDonante = @IdDonante
+
+END
+
+GO

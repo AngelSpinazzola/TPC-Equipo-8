@@ -34,26 +34,15 @@
             padding: 0;
         }
 
-        .swal2-confirm {
-            width: 150px !important;
-            background-color: #c12222 !important;
-            color: white !important;
-            border-radius: 100px !important;
-            border: 2px solid #c12222 !important;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
-            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+        .swal2-styled.no-border {
+            border: none !important;
+            box-shadow: none !important;
         }
-
-            .swal2-confirm:hover {
-                background-color: white !important;
-                color: #c12222 !important;
-                border: 2px solid #c12222 !important;
-            }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container" style="background-color: white; border-radius: 20px; box-shadow: 0 0 20px rgba(0,0,0,0.1); padding: 40px; margin-top: 30px;">
-        <h2 class="text-center mb-4" style="color: #c12222;">Declaración Jurada para Donación de Sangre</h2>
+        <h2 class="text-center mb-4">Declaración Jurada para Donación de Sangre</h2>
         <div class="mb-4">
             <p class="lead text-center">Por favor, confirme que cumple con los siguientes requisitos:</p>
             <ul class="requirements-list">
@@ -91,18 +80,22 @@
                 CssClass="btn btn-customDonar btn-lg" OnClick="btnConfirmar_Click" />
         </div>
     </div>
-    <script>
+    <script type="text/javascript">
         function mostrarMensaje(mensaje, icon, redirectUrl) {
             Swal.fire({
                 icon: icon,
                 text: mensaje,
                 showCancelButton: false,
-                confirmButtonText: 'OK'
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'no-border'
+                }
             }).then((result) => {
                 if (result.isConfirmed && redirectUrl) {
                     window.location.href = redirectUrl;
                 }
             });
         }
+
     </script>
 </asp:Content>

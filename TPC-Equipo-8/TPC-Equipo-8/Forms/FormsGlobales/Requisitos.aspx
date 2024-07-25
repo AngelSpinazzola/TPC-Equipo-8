@@ -1,13 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsGlobales/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Requisitos.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsGlobales.Requisitos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .footer-container{
+            margin: 50px;
+            padding-top: 20px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <h2 class="text-center" style="margin-bottom: -15px; margin-top: 15px">Requisitos para donar sangre</h2>
+    <h2 class="text-center" style="margin-bottom: -15px; margin-top: 50px">Requisitos para donar sangre</h2>
 
-    <div class="container" style="background-color: white; border-radius: 50px; box-shadow: 4px 4px 8px 4px rgba(0,0,0,0.4);">
-        <div class="text-center" style="margin: 30px 30px 30px 30px; padding: 15px; color: #c12222;">
+    <div class="container">
+        <div class="text-center" id="requisitos-form">
 
             <div class="row align-items-start">
                 <div class="col" style="margin: 10px;">

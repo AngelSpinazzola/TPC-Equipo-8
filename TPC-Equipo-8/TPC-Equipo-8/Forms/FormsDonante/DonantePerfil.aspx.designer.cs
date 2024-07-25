@@ -51,33 +51,6 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         protected global::System.Web.UI.WebControls.GridView dgvUltimasDonaciones;
 
         /// <summary>
-        /// Control tituloCantidadPersonasAyudadas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tituloCantidadPersonasAyudadas;
-
-        /// <summary>
-        /// Control divCantPersonasAyudadas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCantPersonasAyudadas;
-
-        /// <summary>
-        /// Control lblCantidadPersonasAyudadas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCantidadPersonasAyudadas;
-
-        /// <summary>
         /// Control txtNombre.
         /// </summary>
         /// <remarks>

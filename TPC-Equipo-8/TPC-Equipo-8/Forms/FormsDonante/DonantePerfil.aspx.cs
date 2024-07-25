@@ -9,6 +9,7 @@ using TPC_Equipo_8.Manager;
 using TPC_Equipo_8.Helpers;
 using System.IO;
 using manager;
+using TPC_Equipo_8.Forms.FormsGlobales;
 
 
 namespace TPC_Equipo_8.Forms.FormsDonante
@@ -131,7 +132,7 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             DonanteManager manager = new DonanteManager();
             IdDonante = manager.ObtenerIdDonante(usuario);
             cantPersonasAyudadas = manager.ObtenerDatosDonacionesRealizadas(IdDonante).Count();
-            lblCantidadPersonasAyudadas.Text = cantPersonasAyudadas.ToString();
+            //lblCantidadPersonasAyudadas.Text = cantPersonasAyudadas.ToString();
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -218,6 +219,10 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         {
             try
             {
+                if (!Page.IsValid)
+                {
+                    return;
+                }
                 Usuario usuario = (Usuario)Session["usuario"];
                 DonanteManager donanteManager = new DonanteManager();
 
@@ -236,6 +241,22 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             {
 
             }
+        }
+
+        protected void btnComoLlego_Click(object sender, EventArgs e)
+        {
+            DonanteManager donanteManager = new DonanteManager();
+            Usuario usuario = (Usuario)Session["usuario"];
+            
+            int idUsuario = usuario.idUsuario;
+
+            int IdFilial = donanteManager.ObtenerIdFilial(idUsuario);
+            
+            if (IdFilial != 0)
+            {
+                Response.Redirect("../FormsGlobales/DetalleFilial.aspx?idFilial=" + IdFilial);
+            }
+
         }
     }
 }

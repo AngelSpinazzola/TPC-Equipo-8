@@ -62,34 +62,12 @@ namespace TPC_Equipo_8.Forms.FormsGlobales
             {
                 Button btn = (Button)sender;
                 int idPublicacion = Convert.ToInt32(btn.CommandArgument);
+
                 Response.Redirect("../FormsDonante/DonanteFormularioDonacion.aspx?idPublicacion=" + idPublicacion);
+
             }
+
         }
-
-     
-
-
-
-
-        //public string ObtenerPosiblesDonantes(int grupoReceptor)
-        //{
-        //    datos.setearProcedimiento("SP_PosiblesDonantes");
-        //    datos.setearParametro("@IdGrupoSanguineo", grupoReceptor);
-        //    datos.ejecutarLectura();
-
-        //    List<string> gruposDonantes = new List<string>();
-
-        //    while (datos.Lector.Read())
-        //    {
-        //        gruposDonantes.Add(datos.Lector["Grupo"].ToString());
-
-        //    }
-
-        //    string concat = string.Join(", ", gruposDonantes);
-
-        //    return concat;
-        //}
-
 
     }
 }

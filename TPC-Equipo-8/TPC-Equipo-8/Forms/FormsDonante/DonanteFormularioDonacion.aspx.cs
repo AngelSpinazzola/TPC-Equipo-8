@@ -53,7 +53,9 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                 string scriptError = "mostrarMensaje('Por favor, confirme todos los requisitos antes de continuar.', 'warning');";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showMessageErrorScript", scriptError, true);
             }
+
         }
+
         private bool TodosLosRequisitosConfirmados()
         {
             return chkEdad.Checked && chkPeso.Checked && chkDNI.Checked &&

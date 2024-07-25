@@ -21,9 +21,9 @@ namespace TPC_Equipo_8
             if (usuario != null)
             {
                 CargarAvatarDonante();
-
             }
         }
+
 
         public void CargarAvatarDonante()
         {

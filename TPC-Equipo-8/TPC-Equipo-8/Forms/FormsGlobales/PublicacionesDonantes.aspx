@@ -1,32 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/FormsGlobales/SiteMaster.Master" AutoEventWireup="true" CodeBehind="PublicacionesDonantes.aspx.cs" Inherits="TPC_Equipo_8.Forms.FormsGlobales.PublicacionesDonantes" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-    <style>
-        .urgency-label {
-            display: inline-block;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .urgency-high {
-            background-color: #c12222;
-            color: white;
-        }
-
-        .urgency-medium {
-            background-color: #ff8128; 
-            color: black;
-        }
-
-        .urgency-low {
-            background-color: #ffd800;
-            color: black;
-        }
-    </style>
-
+    <link rel="stylesheet" href="../../Estilos/EstilosGlobales.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container" style="margin-top: 25px;">
