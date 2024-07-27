@@ -19,8 +19,10 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             if (usuario != null)
             {
                 CargarAvatarDonante();
+                ObtenerNombreUsuario();
             }
         }
+
 
         protected void btnSalir_Click(object sender, EventArgs e)
         {
@@ -32,7 +34,18 @@ namespace TPC_Equipo_8.Forms.FormsDonante
         public string ObtenerNombreUsuario()
         {
             Usuario usuario = Session["usuario"] as Usuario;
-            return usuario != null ? usuario.Username : string.Empty;
+
+            if (usuario != null)
+            {
+                Donante donante = new Donante();
+                DonanteManager manager = new DonanteManager();
+
+                donante = manager.ListarDonante(usuario.idUsuario);
+
+                return donante.Username;
+            }
+
+            return string.Empty;
         }
 
         protected void Button2_Click(object sender, EventArgs e)

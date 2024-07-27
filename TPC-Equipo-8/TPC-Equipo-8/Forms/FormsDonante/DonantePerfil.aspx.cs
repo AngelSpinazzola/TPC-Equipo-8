@@ -59,7 +59,6 @@ namespace TPC_Equipo_8.Forms.FormsDonante
                     CargarPerfil(usuario);
                     CargarProximaDonacion(usuario);
                     CargarUltimasDonaciones(usuario);
-                    CargarCantidadPersonasAyudadas(usuario);
                 }
             }
 
@@ -127,14 +126,6 @@ namespace TPC_Equipo_8.Forms.FormsDonante
             dgvUltimasDonaciones.DataBind();
         }
 
-        private void CargarCantidadPersonasAyudadas(Usuario usuario)
-        {
-            DonanteManager manager = new DonanteManager();
-            IdDonante = manager.ObtenerIdDonante(usuario);
-            cantPersonasAyudadas = manager.ObtenerDatosDonacionesRealizadas(IdDonante).Count();
-            //lblCantidadPersonasAyudadas.Text = cantPersonasAyudadas.ToString();
-        }
-
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -148,6 +139,7 @@ namespace TPC_Equipo_8.Forms.FormsDonante
 
                 donante.nombre = txtNombre.Text;
                 donante.apellido = txtApellido.Text;
+                donante.Username = txtNombre.Text + " " + txtApellido.Text;
 
 
                 donante.tipoSangre = DropDownTipoSangre.SelectedValue;

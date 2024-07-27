@@ -461,6 +461,7 @@ SELECT
 	U.Username,
 	D.Nombre,
 	D.Apellido,
+	U.Username,
 	D.Dni, 
 	U.Email, 
 	U.FechaAlta,
@@ -489,6 +490,7 @@ CREATE OR ALTER PROCEDURE SP_ActualizarDatosDonante(
 	@IdUsuario INT,
 	@Nombre NVARCHAR(50),
 	@Apellido NVARCHAR(50),
+	@Username NVARCHAR(30),
 	@IdGrupoSanguineo INT,
 	@UrlFoto NVARCHAR(1000),
 	@Provincia NVARCHAR(50),
@@ -508,6 +510,8 @@ BEGIN
 			Apellido = @Apellido,
 			IdGrupoSanguineo = @IdGrupoSanguineo
 		WHERE IdUsuario = @IdUsuario
+
+		UPDATE Usuarios SET Username = @Username WHERE IdUsuario = @IdUsuario
 
 		IF @UrlFoto IS NOT NULL BEGIN
 			UPDATE Donantes SET UrlFoto = @UrlFoto WHERE IdUsuario = @IdUsuario
@@ -864,23 +868,6 @@ CREATE OR ALTER PROCEDURE SP_ActualizarPassDonante(
 AS
 BEGIN
 	UPDATE Usuarios SET Pass = @PassNuevo WHERE IdUsuario = @IdUsuario
-END
-
-GO
-
--- PROCEDURE PARA MOSTRAR NOTIFICACION EN DONANTE
-
-CREATE OR ALTER PROCEDURE SP_GenerarNotificacion(
-	@IdUsuario INT,
-	@IdPublicacion INT
-)
-AS
-BEGIN
-	DECLARE @IdDonante INT
-
-	SET @IdDonante =  SELECT * FROM Usuarios U
-	
-	INSERT INTO 
 END
 
 GO

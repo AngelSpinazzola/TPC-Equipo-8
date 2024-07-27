@@ -30,6 +30,7 @@ namespace TPC_Equipo_8.Manager
                 {
                     donante.nombre = datos.Lector["Nombre"] != DBNull.Value ? (string)datos.Lector["Nombre"] : null;
                     donante.apellido = datos.Lector["Apellido"] != DBNull.Value ? (string)datos.Lector["Apellido"] : null;
+                    donante.Username = datos.Lector["Username"] != DBNull.Value ? (string)datos.Lector["Username"] : null;
                     donante.dni = (string)datos.Lector["Dni"];
                     donante.email = (string)datos.Lector["Email"];
                     donante.fechaAlta = (DateTime)datos.Lector["FechaAlta"];
@@ -101,6 +102,7 @@ namespace TPC_Equipo_8.Manager
                 datos.setearParametro("@IdUsuario", IdUsuario);
                 datos.setearParametro("@Nombre", donante.nombre);
                 datos.setearParametro("@Apellido", donante.apellido);
+                datos.setearParametro("@Username", donante.Username);
                 datos.setearParametro("@IdGrupoSanguineo", donante.tipoSangre);
                 datos.setearParametro("@UrlFoto", donante.urlFoto);
                 datos.setearParametro("@Provincia", donante.direccion.provincia);
